@@ -1,0 +1,1240 @@
+%% FT_QuestionPool.tex
+%% ─────────────────────────────────────────────────────────────────────────────
+%% CONTROL QUESTIONS — Question Pool
+%% Foreign Trade and International Organisations, Jan Suchanek, Hochschule Bremen, Summer Semester 2026
+%%
+%% Covers: Ch. 1 Introduction · Ch. 2 The World Economy and National Accounts
+%%         Ch. 3 Freight and Transport · Ch. 4 Terms of Trade and the Effects of Trade
+%%         Ch. 5 Trade Theory · Ch. 6 Presentations: Countries and Markets
+%%         Ch. 7 The State, Taxes and Tariffs · Ch. 8 Subsidies in an Open Economy
+%%         Ch. 9 Multinational Enterprises · Ch. 10 International Law and Governance
+%%         Ch. 11 Monetary Theory · Ch. 12 Macroeconomics in the Open Economy
+%%
+%% Each chapter provides: 3 Multiple Choice · 1 True/False · 1 Open Question
+%% ─────────────────────────────────────────────────────────────────────────────
+\documentclass[paper=a5]{scrartcl}
+
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%% ── Load the question-bank package FIRST ────────────────────────────────────
+\usepackage{hsbquestions}
+
+%% ── TOGGLE — uncomment EXACTLY ONE line ─────────────────────────────────────
+\showanswerstrue               % ANSWER KEY — reveals answers + solutions
+% \showanswersfalse            % STUDENT VERSION — hides answers (default)
+
+\usepackage[headsepline]{scrlayer-scrpage}
+\automark{section}
+\pagestyle{scrheadings}
+\ihead{\leftmark}
+\chead{}
+\ohead{Control Questions}
+
+\setlength{\parskip}{1ex}
+
+\title{Foreign Trade and International Organisations}
+\subtitle{Control Questions — Full Question Pool}
+\author{Sonnet 4.6 / Claude AI using the Script of Jan \noun{Suchanek}}
+
+\begin{document}
+\setcounter{page}{247}
+\onehalfspacing
+
+\maketitle
+
+\clearpage
+
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 1 — The World Economy and National Accounts}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The World as a Closed Economy}
+The world economy is described as the only ``closed economy''. What does
+this imply?
+\begin{choices}
+  \choice        Global trade is regulated by a single world government.
+  \correctchoice No external trading partner exists, so every import is
+                 simultaneously someone else's export, and the global current
+                 account is always zero.
+  \choice        Global GDP cannot grow because there is no new demand.
+  \choice        All currencies must be pegged to gold to prevent imbalances.
+\end{choices}
+\begin{solution}
+  A closed economy has no rest-of-world sector. For the planet as a whole,
+  every buyer has a seller and every import is someone else's export, so the
+  \emph{global} current account must net to zero. This does not mean that
+  individual countries are in balance. The world economy is also \emph{not}
+  a zero-sum game: global production and wealth can grow over time through
+  innovation and specialisation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Orders of Magnitude}
+Why does the script stress the importance of memorising a handful of
+``standard candle'' economic figures (such as your home country's GDP)?
+\begin{choices}
+  \choice        To pass the written exam without additional study.
+  \correctchoice To have reference points that give large economic numbers
+                 meaningful perspective, making it easier to judge whether a
+                 quoted figure is plausible.
+  \choice        Because the WTO requires all traders to know national GDPs.
+  \choice        To be able to convert between currencies without a calculator.
+\end{choices}
+\begin{solution}
+  When dealing with large numbers --- the cost of an oil tanker, the daily
+  grain trade volume, the GDP of a commodity-dependent country --- it helps to
+  anchor them against known figures. If you know Germany's GDP is roughly
+  \$4 trillion, you can quickly judge whether a stated figure for a smaller
+  economy is plausible. The script suggests treating these reference figures
+  as mental ``standard candles''.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Fundamental Balance of the World Economy}
+Which of the following is a direct consequence of the world economy being
+a closed system?
+\begin{choices}
+  \choice        Rich countries always grow faster than poor ones.
+  \choice        Trade is only beneficial when globally balanced.
+  \choice        Currency reserves are always constant worldwide.
+  \correctchoice Every unit of global exports equals a unit of global imports;
+                 no country can run a surplus without another running a deficit.
+\end{choices}
+\begin{solution}
+  Because the world has no external counterpart, every export transaction is
+  simultaneously an import transaction for the receiving country. In aggregate,
+  global exports equal global imports identically. An individual country can
+  accumulate a surplus, but this is exactly mirrored by deficits elsewhere.
+  This accounting identity holds regardless of exchange rate regimes or trade
+  policies.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Global Trade is a Zero-Sum Game}
+Because every exporter's gain corresponds to an importer's payment, global
+trade is a zero-sum game in which total wealth cannot increase.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} Trade is \emph{not} zero-sum. Voluntary exchange occurs
+  because both parties expect to gain --- each values what they receive more
+  than what they give up. Additionally, specialisation according to comparative
+  advantage raises total output, so the global production frontier expands.
+  The world economy grows through trade, innovation, and division of labour,
+  not merely through redistribution of a fixed stock of wealth.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Do ``Orders of Magnitude'' Matter in Foreign Trade
+  Analysis?}
+The script advises students to develop a sense of scale for large economic
+figures. Explain why this skill matters when analysing foreign trade data,
+and give two concrete examples of how it can expose misleading claims.
+
+\answerlines[6]
+
+\begin{solution}
+  Trade data involves very large numbers (billions of USD, millions of tonnes)
+  that are easy to misrepresent or misinterpret without reference points.
+  A sense of scale allows the analyst to detect implausibly large or small
+  claims and to contextualise statistics properly.
+
+  \textbf{Example 1:} A news headline claiming that a country ``earned
+  \$500 billion from coffee exports'' is immediately suspect if you know that
+  the entire global coffee market is worth roughly \$100 billion per year.
+
+  \textbf{Example 2:} A company reporting that it ``controls 5\% of the
+  global copper market'' can be evaluated only if you know that annual global
+  copper production is around 22 million tonnes --- 5\% would be roughly
+  1.1 million tonnes, a significant but plausible quantity for a major miner.
+
+  In both cases, a mental ``standard candle'' --- total market size, a
+  country's GDP, a commodity's annual production volume --- allows rapid
+  plausibility checking.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 2 — Freight and Transport}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Incoterms}
+Incoterms are defined by the International Chamber of Commerce. Their
+primary purpose in a trade contract is to specify:
+\begin{choices}
+  \choice        The currency in which payment must be made.
+  \choice        The applicable import tariff rate for the good.
+  \correctchoice Which party is responsible for which stage of the delivery
+                 chain, including transport, insurance, and the transfer of
+                 risk.
+  \choice        The quality standards the good must meet at the border.
+\end{choices}
+\begin{solution}
+  Incoterms are standardised three-letter codes (e.g.\ FOB, CIF, EXW, DDP)
+  that define the point at which responsibility and risk transfer from seller
+  to buyer. They specify who arranges and pays for inland transport, loading,
+  ocean freight, insurance, and customs clearance in the importing country.
+  Because ownership and risk transfer are among the most legally significant
+  moments in any trade contract, Incoterms reduce disputes and transaction
+  costs enormously.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Contango and Backwardation}
+In commodity futures markets, ``contango'' describes a situation where:
+\begin{choices}
+  \choice        The spot price is higher than the futures price, indicating
+                 excess supply.
+  \correctchoice The futures price is higher than the spot price, reflecting
+                 storage costs, insurance, and the cost of carry.
+  \choice        Prices collapse because sellers outnumber buyers.
+  \choice        A commodity cannot be traded on an exchange.
+\end{choices}
+\begin{solution}
+  Under normal conditions, \textbf{contango} holds: buying a commodity now
+  and storing it costs money (warehouse fees, insurance, financing), so the
+  futures price exceeds the spot price. \textbf{Backwardation} is the
+  opposite: the spot price exceeds the futures price, which can occur when
+  there is an immediate shortage or very high convenience yield. Understanding
+  the term structure of futures prices is essential for hedging trade risk.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Value Chain: Upstream vs.\ Downstream}
+In the commodity value chain, which of the following activities is
+\emph{most upstream}?
+\begin{choices}
+  \choice        Branding and retail distribution to consumers.
+  \choice        Assembly of manufactured consumer goods.
+  \choice        Refining a raw material into an intermediate product.
+  \correctchoice Mining or harvesting the raw material.
+\end{choices}
+\begin{solution}
+  \textbf{Upstream} activities are closest to the resource: mining, drilling,
+  harvesting. Moving downstream, raw materials are refined, then used to
+  produce intermediate goods, which are assembled into manufactured wares,
+  branded, and distributed through wholesale and retail channels.
+  Value is added (and costs incurred) at every stage. Most of the final
+  consumer price typically reflects downstream activities --- branding,
+  marketing, distribution --- not the raw material itself.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Physical and Financial Fulfilment Are Independent}
+In an international trade contract, the physical delivery of goods and the
+financial payment are legally separate events that can occur at different
+times and places, and must both be explicitly specified.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} A trade contract has two sides: \emph{physical fulfilment}
+  (the seller transfers the good to the buyer) and \emph{financial fulfilment}
+  (the buyer pays the seller). The time, place, and conditions for each must
+  be specified in the contract, because they determine when risk and ownership
+  transfer, what insurance is needed, and what happens in case of default.
+  Incoterms govern the physical side; payment terms (letter of credit, open
+  account, etc.) govern the financial side.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Did Technological Progress Historically Drive the
+  Expansion of International Trade?}
+Using examples from the history of trade outlined in the script, explain how
+reductions in transportation costs and financial innovations enabled trade
+to expand across longer distances and larger volumes.
+
+\answerlines[6]
+
+\begin{solution}
+  \textbf{Transport innovations} directly lowered the cost per tonne-kilometre.
+  The discovery of America opened new trade routes; the Suez Canal halved the
+  journey from Europe to Asia; the steam boat replaced unpredictable wind
+  power; and containerisation in the 20th century standardised loading and
+  dramatically cut handling costs. Each innovation made previously unprofitable
+  trade routes commercially viable.
+
+  \textbf{Financial innovations} reduced the risk of long-distance trade.
+  Paper money and the banking system meant that merchants no longer needed to
+  ship precious metals across oceans. Bills of exchange and letters of credit
+  enabled payment without physical currency transfer. Insurance products
+  covered cargo loss. Futures and forward contracts allowed traders to lock in
+  prices and hedge against exchange rate movements during long voyages.
+
+  Together, these innovations made international trade safer, cheaper, and
+  faster --- explaining the long-run trend towards greater openness and
+  globalisation.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 3 — Terms of Trade and the Effects of Trade}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Winners and Losers from Trade}
+When a domestic market opens to free trade and cheaper imports arrive,
+which group typically experiences the sharpest welfare loss?
+\begin{choices}
+  \choice        Consumers of the imported good.
+  \correctchoice Domestic producers of the import-competing good.
+  \choice        Logistics companies and port operators.
+  \choice        Foreign exporters who now supply the market.
+\end{choices}
+\begin{solution}
+  Cheaper imports lower the domestic price, which benefits consumers but
+  undercuts domestic producers. Those producers may be forced to reduce
+  output, lay off workers, or exit the market entirely. Because they are
+  often locally concentrated and well organised, they tend to lobby strongly
+  against trade liberalisation --- even though aggregate consumer gains
+  typically exceed producer losses. This asymmetry between concentrated
+  losers and diffuse winners is a central theme in the political economy
+  of trade.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Terms of Trade}
+The ``terms of trade'' of a country are defined as:
+\begin{choices}
+  \choice        The tariff rates applied at the border.
+  \choice        The Incoterms agreed between buyer and seller.
+  \correctchoice The ratio of a country's export price index to its import
+                 price index.
+  \choice        The legal conditions set by the WTO for bilateral agreements.
+\end{choices}
+\begin{solution}
+  The \textbf{terms of trade} measure the relative price of exports versus
+  imports. An improvement (the ratio rises) means each unit of exports buys
+  more imports --- a gain in purchasing power. A deterioration hurts countries
+  dependent on imports (e.g.\ oil importers after a price spike). Commodity
+  exporters are particularly exposed to terms-of-trade shocks, since their
+  export revenues depend on world commodity prices they cannot control.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Producer Lobbying and Trade Policy}
+Why do producers often succeed in obtaining trade protection even when the
+aggregate welfare case for free trade is strong?
+\begin{choices}
+  \choice        International law obliges governments to protect domestic
+                 producers.
+  \correctchoice Producers are concentrated, well-organised, and face large
+                 per-person losses; consumers are diffuse and face small
+                 individual losses, so they rarely lobby effectively against
+                 protection.
+  \choice        Trade theory is silent on the distributional effects of trade.
+  \choice        Consumers always benefit from tariffs, so they support
+                 protection.
+\end{choices}
+\begin{solution}
+  This is a classic \textbf{political economy} argument. When a factory closes
+  in a single town, all affected workers have a strong, visible incentive to
+  organise and lobby. The cost of the resulting tariff is spread across
+  millions of consumers who each pay a few euros more per year --- too little
+  to justify individual political action. The result is systematic
+  over-representation of producer interests in trade policy, even when the
+  aggregate welfare cost of protection is large.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Free Trade Always Benefits Every Citizen}
+Free trade is welfare-maximising in the aggregate, which means every citizen
+of every trading country is made better off when trade opens.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} Free trade raises \emph{aggregate} welfare, but the gains
+  and losses are distributed unevenly. Consumers and efficient exporters gain;
+  producers of import-competing goods lose. In principle, winners could
+  compensate losers (Kaldor-Hicks criterion), but this compensation rarely
+  occurs automatically. The existence of domestic losers explains why trade
+  liberalisation generates political resistance even in countries that benefit
+  overall.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Explain How Trade Creates Both Winners and Losers Within
+  a Single Country}
+Using the concept of the trade value chain and the supply-demand diagram,
+explain why opening a market to free trade benefits some domestic agents
+and harms others. What determines who wins and who loses?
+
+\answerlines[7]
+
+\begin{solution}
+  When a country opens to trade and the world price of a good is \emph{below}
+  the autarky price, imports flow in and the domestic price falls to the world
+  level.
+
+  \textbf{Winners:} Domestic consumers gain consumer surplus (the price is
+  lower). Traders, logistics companies, and ports benefit from higher trade
+  volumes. Domestic producers of goods that are now \emph{exported} (where
+  the world price exceeds the autarky price) also gain.
+
+  \textbf{Losers:} Domestic producers of import-competing goods face lower
+  prices and may be forced out of the market. Workers in those industries may
+  lose jobs. If the affected industry is geographically concentrated (a
+  ``company town''), entire communities can be negatively affected.
+
+  \textbf{What determines the split?} The elasticities of supply and demand,
+  the share of the good in household budgets, the labour intensity of the
+  industry, and the ease of retraining and relocation. The script notes that
+  producers are typically better organised and lobby more effectively than
+  consumers, which is why protection survives despite aggregate welfare losses.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 4 — Trade Theory}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The Wealth of Nations and Division of Labour}
+According to Adam Smith (1776), what is the foundation of a nation's wealth?
+\begin{choices}
+  \choice        Accumulation of gold and silver reserves.
+  \choice        Military strength and control of trade routes.
+  \correctchoice The division of labour, which raises productivity through
+                 specialisation.
+  \choice        High tariff barriers that protect domestic industry.
+\end{choices}
+\begin{solution}
+  Smith's central insight in \emph{The Wealth of Nations} is that \textbf{the
+  division of labour} drives productivity. By specialising in narrow tasks,
+  workers become more skilled and efficient, and complex goods can be produced
+  at lower cost. This principle scales up from individuals to firms to nations:
+  countries specialise in what they do relatively best, trade the surplus, and
+  import what others produce more cheaply. The result is mutual gain.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Comparative Advantage}
+Ricardo's principle of comparative advantage states that a country should
+export a good when:
+\begin{choices}
+  \choice        It can produce the good with absolutely fewer inputs than
+                 any other country.
+  \choice        Its government has declared the good a strategic industry.
+  \correctchoice Its opportunity cost of producing that good is lower than
+                 its trading partner's, regardless of absolute productivity.
+  \choice        World demand for the good is growing faster than world supply.
+\end{choices}
+\begin{solution}
+  \textbf{Comparative advantage} is about \emph{relative} (opportunity) costs,
+  not absolute productivity. Even if Country A is more productive than
+  Country B in every sector, trade is still mutually beneficial: each country
+  specialises where its opportunity cost is lowest. Country A exports the
+  good in which its productivity advantage is largest; Country B exports the
+  good in which its disadvantage is smallest. Both end up consuming more than
+  in autarky.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Reasons for Trade}
+Which of the following is \emph{not} listed in the script as a reason
+why countries trade?
+\begin{choices}
+  \choice        To obtain goods that require a different climate or resource
+                 base.
+  \choice        To dispose of surplus production.
+  \correctchoice To comply with mandatory WTO membership obligations.
+  \choice        To maximise profits through arbitrage and resale.
+\end{choices}
+\begin{solution}
+  The script identifies genuine economic motivations: obtaining goods you
+  cannot produce (different climate/resources/know-how), exporting surpluses,
+  exploiting comparative advantage, and profit-seeking through arbitrage.
+  WTO membership imposes disciplines on trade policy (tariff bindings, MFN),
+  but it does not \emph{compel} countries to trade; it constrains how they
+  may restrict trade. Trade itself is driven by economic incentives, not
+  legal mandates.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Dumping Is Always Illegal}
+Selling goods on foreign markets at a price below the domestic price or
+below the cost of production --- a practice known as dumping --- is
+automatically illegal under WTO rules.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} Dumping is not automatically illegal under WTO rules.
+  The WTO Anti-Dumping Agreement permits importing countries to impose
+  anti-dumping duties, but only after a formal investigation confirms
+  dumping has occurred, domestic industry has been harmed, and the
+  two are causally linked. The process is lengthy and contested. Many
+  dumping cases are driven by political pressure from domestic industries
+  rather than clear economic harm.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Are the Decisions of What to Produce and What to
+  Trade ``Intrinsically Linked''?}
+The script states that ``we do not just trade things that we happen to have,
+but we have things so that we can trade.'' Explain this idea and its
+implications for how we understand the gains from trade.
+
+\answerlines[6]
+
+\begin{solution}
+  In a simple barter or endowment model, trade is purely about exchanging
+  surpluses. But in a modern economy, production decisions are made
+  \emph{in anticipation of} trade. A coffee farmer in Ethiopia does not
+  grow coffee for personal consumption; they grow it to sell on world
+  markets and purchase other goods with the proceeds. A German car
+  manufacturer designs and produces vehicles specifically for export.
+
+  This means the gains from trade are not limited to exchanging pre-existing
+  surpluses --- trade actively \emph{reshapes} what countries produce. Countries
+  develop industries in which they have comparative advantages because world
+  markets reward specialisation. Without trade, those industries would not
+  exist at their current scale.
+
+  The implication is that the gains from trade are larger and more dynamic
+  than a static endowment model suggests: trade encourages learning-by-doing,
+  scale economies, and investment in productive capacity aligned with
+  comparative advantage.
+\end{solution}
+\end{question}
+
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 5 — The State, Taxes and Tariffs}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Government Expenditure Ratio}
+The government expenditure ratio (state quota) is calculated as:
+\begin{choices}
+  \choice        Tax revenue divided by total government debt.
+  \correctchoice Total government spending divided by GDP.
+  \choice        The share of the workforce employed by the public sector.
+  \choice        Defence spending as a percentage of the national budget.
+\end{choices}
+\begin{solution}
+  The \textbf{state quota} $SQ = G / Y$ measures how large the public
+  sector is relative to the economy. It varies widely: France at around 58\%,
+  Germany at 49\%, the USA at 36\%, Saudi Arabia at 28\%, Pakistan at 20\%.
+  High-income countries tend to have larger state quotas, reflecting more
+  extensive welfare states. War efforts and crises (as Ukraine illustrates)
+  sharply increase the ratio.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Role of the Central Bank}
+Which of the following best describes the primary functions of a central bank?
+\begin{choices}
+  \choice        To compete with commercial banks for retail deposits.
+  \correctchoice To maintain price stability, regulate the banking system,
+                 manage the money supply via interest rates and open market
+                 operations, and act as lender of last resort.
+  \choice        To negotiate international trade agreements on behalf of the
+                 government.
+  \choice        To collect income taxes and distribute social transfers.
+\end{choices}
+\begin{solution}
+  The central bank is a unique public institution that holds the privilege of
+  issuing currency. Its main tools include setting the \textbf{interest rate},
+  conducting \textbf{open market operations} (buying/selling government bonds),
+  setting \textbf{minimum reserve requirements}, and regulating commercial
+  banks. Most modern central banks are formally \emph{independent} of
+  government to prevent short-term political pressure from compromising
+  price stability.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Externalities and the Case for Taxation}
+A factory produces steel but also emits pollutants that impose health costs
+on nearby residents. In the absence of regulation, the factory will:
+\begin{choices}
+  \choice        Voluntarily reduce pollution to maximise social welfare.
+  \correctchoice Over-produce, because it does not bear the external costs
+                 of pollution, so private marginal cost is below social
+                 marginal cost.
+  \choice        Under-produce, because it pays compensation to residents.
+  \choice        Produce at the socially optimal level, because markets are
+                 efficient.
+\end{choices}
+\begin{solution}
+  \textbf{Externalities} are costs (or benefits) imposed on third parties
+  that are not reflected in market prices. When pollution is a negative
+  externality, the firm's private marginal cost lies \emph{below} the social
+  marginal cost. The firm therefore produces too much relative to the social
+  optimum. A \textbf{Pigouvian tax} equal to the marginal external cost can
+  internalise the externality and restore the efficient output level.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{The Statutory and Economic Incidence of a Tariff Always
+  Coincide}
+The party legally required to pay a tariff --- typically the importer ---
+always bears the full economic burden of that tariff.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} The \emph{statutory} incidence (who writes the cheque)
+  differs from the \emph{economic} incidence (who ultimately bears the cost).
+  An importer pays the tariff to customs but may pass some or all of it
+  forward to consumers through higher prices, or absorb part of it through
+  lower margins depending on the elasticities of supply and demand. In a
+  small country, a tariff raises the domestic price and the burden falls on
+  domestic consumers; foreign exporters are unaffected.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{What Are the Main Types of Government Policy, and How
+  Do They Interact in an Open Economy?}
+The script distinguishes between fiscal, regulatory, and monetary policy.
+Explain each briefly and discuss how they interact when a country is exposed
+to international trade.
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{Fiscal policy} involves government spending and borrowing (and
+  implicitly, taxation). Expansionary fiscal policy raises aggregate demand;
+  in an open economy, some of that demand leaks abroad as imports, reducing
+  the domestic multiplier effect.
+
+  \textbf{Regulatory policy} covers rules, standards, tariffs, quotas, and
+  obligations imposed on private actors. Trade-related regulations (tariffs,
+  non-tariff barriers, product standards) directly affect import and export
+  volumes.
+
+  \textbf{Monetary policy} is managed by the (ideally independent) central
+  bank via interest rates and open market operations. In an open economy,
+  interest rate changes affect capital flows and the exchange rate: a rate
+  rise attracts capital inflows, appreciating the currency, which makes
+  exports more expensive and imports cheaper.
+
+  \textbf{Interaction:} A fiscal stimulus can be partially offset if the
+  central bank raises rates to contain inflation, appreciating the currency
+  and reducing net exports. Tariffs that raise net exports have a
+  macroeconomic effect similar to fiscal stimulus (rightward shift of IS).
+  The three policy types must therefore be considered jointly in an open
+  economy context.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 6 — Subsidies in an Open Economy}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Production Subsidy vs.\ Export Subsidy}
+A \emph{production subsidy} differs from an \emph{export subsidy} in that:
+\begin{choices}
+  \choice        A production subsidy is funded by tariff revenue; an export
+                 subsidy is not.
+  \choice        Only an export subsidy is subject to WTO disciplines.
+  \correctchoice A production subsidy lowers costs for both domestic and
+                 export sales; an export subsidy specifically targets goods
+                 sold abroad and may lower their price below the domestic
+                 market price.
+  \choice        There is no meaningful economic difference between the two.
+\end{choices}
+\begin{solution}
+  A \textbf{production subsidy} reduces a producer's costs across the board:
+  output for both home and foreign markets increases. A \textbf{export subsidy}
+  targets only exported goods, driving a wedge between the domestic and
+  foreign price. This is particularly distorting because it can displace
+  efficient foreign producers and may constitute dumping. The WTO's Agreement
+  on Subsidies and Countervailing Measures (SCM) disciplines both, but export
+  subsidies face stricter rules.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Welfare Effect of a Production Subsidy in an Open Economy}
+In a small open economy, a production subsidy to a domestic industry
+(at the world price):
+\begin{choices}
+  \choice        Raises the domestic price above the world price.
+  \choice        Leaves consumer welfare unchanged and reduces producer
+                 welfare.
+  \correctchoice Increases domestic production and reduces imports, while
+                 leaving the domestic consumer price unchanged (equal to the
+                 world price).
+  \choice        Creates a deadweight gain equal to the value of the subsidy.
+\end{choices}
+\begin{solution}
+  Because the small country is a price-taker, the domestic consumer price
+  remains at the world price. The subsidy lowers the effective cost to
+  domestic producers, so they expand output. Since the market still clears
+  at the world price, imports simply fall by the amount of the additional
+  domestic production. Consumers are unaffected; producers gain; but the
+  government (taxpayers) bears the subsidy cost. The net welfare effect is
+  negative: the subsidy cost exceeds the producer surplus gain (deadweight
+  loss triangle).
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Dumping and Export Subsidies}
+An export subsidy that causes the export price to fall below the cost of
+production may constitute dumping. Why is this considered harmful by
+importing countries?
+\begin{choices}
+  \choice        It raises prices for consumers in the importing country.
+  \correctchoice Artificially low prices can drive efficient domestic producers
+                 out of business; once competitors are eliminated, the
+                 subsidising country may raise prices to monopoly level.
+  \choice        It automatically violates GATT Article I (MFN principle).
+  \choice        It reduces the subsidising country's GDP.
+\end{choices}
+\begin{solution}
+  The harm from dumping is dynamic: in the short run, consumers in the
+  importing country benefit from low prices. But if domestic producers exit
+  the market and cannot easily re-enter, the exporter acquires market power
+  and may subsequently raise prices. This is the \emph{predatory pricing}
+  logic applied to trade. Importing countries may respond with
+  \textbf{anti-dumping duties} under WTO rules after a formal injury
+  investigation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Subsidies Always Increase Net Social Welfare}
+A subsidy transfers resources from taxpayers to a domestic industry, but
+because it increases output and reduces imports, it always raises total
+net social welfare.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} A production subsidy creates a \emph{deadweight loss}: the
+  subsidy cost paid by taxpayers exceeds the producer surplus gain. The
+  additional domestic production is supplied at a cost higher than the world
+  price (otherwise domestic producers would have supplied it without the
+  subsidy), meaning resources are used less efficiently than if the same
+  goods were simply imported. Total welfare in the subsidising country falls.
+  Subsidies may be justified on non-economic grounds (strategic industries,
+  food security, environmental goals), but the economic efficiency cost is real.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{How Do Export Subsidies Distort International Trade,
+  and How Does the WTO Address Them?}
+Explain the mechanism by which an export subsidy distorts trade, who gains
+and who loses, and what instruments the international trading system provides
+to counter the distortion.
+
+\answerlines[7]
+
+\begin{solution}
+  An \textbf{export subsidy} artificially lowers the price at which a
+  country's producers can sell abroad. This expands exports, displaces
+  competing producers in importing countries (who face unfair competition),
+  and potentially depresses world prices for the subsidised commodity.
+
+  \textbf{Who gains:} Domestic producers in the subsidising country and
+  consumers in importing countries (lower prices). \textbf{Who loses:}
+  Taxpayers in the subsidising country (who fund the subsidy); domestic
+  producers in importing countries; efficient third-country exporters who
+  lose market share.
+
+  \textbf{WTO instruments:}
+  \begin{itemize}
+    \item The \emph{SCM Agreement} prohibits certain export subsidies (``red
+      light'') and allows countervailing duties against injurious subsidies.
+    \item The importing country may initiate a \emph{countervailing duty}
+      investigation and impose offsetting tariffs if injury is proven.
+    \item Disputes can be brought to the \emph{WTO Dispute Settlement Body}.
+  \end{itemize}
+  Agricultural export subsidies were a major issue in WTO negotiations and
+  were finally eliminated (for most products) under the 2015 Nairobi
+  Decision.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 7 — Multinational Enterprises}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Herfindahl-Hirschman Index}
+The Herfindahl-Hirschman Index (HHI) is calculated as $H = \sum_i a_i^2$,
+where $a_i$ is each firm's market share. What does the HHI measure?
+\begin{choices}
+  \choice        A company's export intensity relative to domestic sales.
+  \correctchoice Market concentration: the higher the HHI, the more the
+                 market is dominated by a few large firms.
+  \choice        The degree of vertical integration in a supply chain.
+  \choice        A country's balance of trade in a specific commodity.
+\end{choices}
+\begin{solution}
+  The \textbf{HHI} ranges from near zero (perfect competition with many
+  small firms) to 1 (or 10{,}000 if expressed in percentage points), which
+  represents pure monopoly. Competition authorities (the EU Commission,
+  the US Department of Justice) use it to assess whether mergers create
+  problematic market concentration. A post-merger HHI above 2{,}500 (in
+  percentage-point form) typically triggers scrutiny.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Transfer Pricing}
+Transfer pricing is relevant to multinational enterprises because:
+\begin{choices}
+  \choice        It determines the official exchange rate used for
+                 intra-group payments.
+  \correctchoice Prices set for transactions between subsidiaries of the
+                 same corporate group can be manipulated to shift profits to
+                 lower-tax jurisdictions, reducing the group's overall tax
+                 bill.
+  \choice        It sets the tariff applied when goods move between
+                 subsidiaries in different customs unions.
+  \choice        It governs the cost of shipping goods between plants.
+\end{choices}
+\begin{solution}
+  \textbf{Transfer pricing} refers to the prices charged on transactions
+  within a multinational group (e.g.\ a subsidiary in a high-tax country
+  selling an intermediate product to a subsidiary in a low-tax country at
+  below-market price). By understating profits in high-tax countries and
+  overstating them in low-tax havens, MNEs reduce their global tax burden.
+  The OECD's \emph{Base Erosion and Profit Shifting} (BEPS) project and
+  country-by-country reporting requirements are designed to counter this.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Market Forms and Competition}
+Which market structure is characterised by many sellers offering
+differentiated products, so that each firm has some price-setting power
+but faces competition from close substitutes?
+\begin{choices}
+  \choice        Perfect competition.
+  \choice        Oligopoly.
+  \correctchoice Monopolistic competition.
+  \choice        Monopsony.
+\end{choices}
+\begin{solution}
+  \textbf{Monopolistic competition} (Chamberlin) combines features of both
+  monopoly and competition: many firms, free entry and exit, but each firm
+  sells a differentiated product and thus faces a downward-sloping demand
+  curve. Examples include restaurants, clothing brands, and petrol stations.
+  In the long run, free entry erodes economic profit, but each firm still
+  produces below the efficient scale (excess capacity theorem).
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{A Company Listed on a Stock Exchange Is Always Publicly
+  Owned}
+If a company is listed on a stock exchange, it is owned by the government.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} A \emph{listed} (publicly traded) company has shares that
+  can be bought and sold on a stock exchange by private investors, funds,
+  and institutions --- it is \emph{publicly traded} but not necessarily
+  \emph{publicly owned}. Government (state) ownership means the government
+  holds the shares; this can occur in listed companies (partial state
+  ownership) but is a separate question from listing status. Many MNEs are
+  fully privately owned and listed; others are state-owned enterprises (SOEs)
+  that may or may not be listed.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Is It Important to Look Beyond a Company's Own
+  Published Information When Analysing an MNE?}
+Describe the limitations of using only a company's website and annual report
+as analytical sources. What additional information should a thorough analysis
+of a multinational enterprise include, and why?
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{Limitations of company-published information:}
+  \begin{itemize}
+    \item Annual reports are audited but shaped by management; they
+      emphasise strengths and legally required disclosures, not strategic
+      weaknesses.
+    \item Websites are marketing tools aimed at customers, employees, and
+      investors, not independent analysis.
+    \item Transfer pricing, tax structures, and lobbying activities are
+      rarely highlighted.
+  \end{itemize}
+
+  \textbf{Additional sources a thorough analysis should include:}
+  \begin{itemize}
+    \item \emph{Independent financial analysts} (broker reports, rating
+      agencies) for profitability, debt levels, and competitive position.
+    \item \emph{Industry reports} from bodies such as the IEA, FAO, ICSG,
+      or UNCTAD for market context and commodity fundamentals.
+    \item \emph{NGO and investigative journalism reports} for environmental,
+      labour, and governance controversies.
+    \item \emph{Regulatory filings} (SEC 20-F for US-listed foreign firms,
+      EU competition decisions) for legally required disclosures.
+    \item \emph{Competitors' reports} for an industry-wide perspective.
+  \end{itemize}
+
+  Only by triangulating these sources can the analyst form a balanced
+  picture of the company's actual performance, risks, and strategic position.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 8 — International Law and Governance}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Why International Law Is Different from National Law}
+International law is described as fundamentally different from domestic
+national law. What is the key reason?
+\begin{choices}
+  \choice        International law applies only to corporations, not to states.
+  \correctchoice There is no world state and no supranational enforcement
+                 authority; all international cooperation is voluntary and
+                 relies on consent between sovereign states.
+  \choice        International law is written by the UN Security Council and
+                 is fully binding on all nations.
+  \choice        International law has no written form and relies solely on
+                 historical custom.
+\end{choices}
+\begin{solution}
+  The absence of a \textbf{world state} is the defining feature. Domestic law
+  can be enforced by courts and police; international law can only be enforced
+  through diplomacy, retaliation, trade sanctions, or (in rare cases) UN
+  Security Council action. Even the WTO Dispute Settlement Body can only
+  authorise retaliation --- it cannot compel compliance. Hugo Grotius
+  (1583--1645), the father of international law, recognised this and built his
+  framework on the idea of states voluntarily accepting norms of natural law.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Most Favoured Nation Principle}
+Article I of GATT requires WTO members to apply the Most Favoured Nation
+(MFN) principle. This means:
+\begin{choices}
+  \choice        The largest trading nation automatically receives the lowest
+                 tariff rate.
+  \choice        Developing countries are exempt from all import duties.
+  \correctchoice A WTO member may not charge any trading partner a tariff
+                 higher than the lowest tariff it charges to any other member,
+                 with the only permitted exception being membership of a
+                 recognised customs union or free trade area.
+  \choice        Members must reduce tariffs to zero within ten years of
+                 joining.
+\end{choices}
+\begin{solution}
+  \textbf{MFN} is the foundational non-discrimination principle of the
+  multilateral trading system: if you give one country a tariff concession,
+  you must give it to all WTO members. The only exception is for \emph{free
+  trade areas and customs unions} (GATT Article XXIV): members of such
+  blocs may give each other preferential treatment without extending it to
+  all WTO members. This exception has been the main driver of the explosion
+  of Preferential Trade Agreements (PTAs) since the 1990s.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Degrees of Economic Integration}
+Preferential Trade Agreements vary in depth. Ranking from shallowest to
+deepest integration, which order is correct?
+\begin{choices}
+  \choice        Customs union → free trade agreement → common market →
+                 economic union → currency union.
+  \choice        Economic union → currency union → common market → customs
+                 union → free trade agreement.
+  \correctchoice Free trade agreement → customs union → common market →
+                 economic union → currency union.
+  \choice        Currency union → economic union → common market → free trade
+                 agreement → customs union.
+\end{choices}
+\begin{solution}
+  The standard taxonomy of integration (Balassa, 1961) runs: \\
+  \textbf{FTA} (no tariffs among members, separate external tariffs) →
+  \textbf{Customs Union} (common external tariff) →
+  \textbf{Common Market} (free movement of goods, services, capital, labour) →
+  \textbf{Economic Union} (common regulatory/policy framework) →
+  \textbf{Currency Union} (single currency).
+  The EU has progressed to currency union for Eurozone members, while USMCA
+  remains a free trade agreement.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{The WTO Replaced GATT, Which No Longer Exists}
+The World Trade Organization replaced the General Agreement on Tariffs and
+Trade (GATT) in 1995, and GATT is no longer legally in force.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} GATT is still legally in force. The WTO incorporated
+  GATT 1994 as one of its founding agreements, and the original GATT 1947
+  continues to have legal effect through transitional provisions. The
+  WTO extended the framework to cover services (GATS) and intellectual
+  property (TRIPS), which GATT did not address. The WTO is thus best
+  understood as \emph{built on top of} GATT, not as its replacement.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Has the MFN Principle Paradoxically Led to a
+  Proliferation of Preferential Trade Agreements?}
+Explain the logic of the MFN principle and why --- rather than promoting
+uniform global free trade --- it has incentivised the formation of regional
+trade blocs.
+
+\answerlines[6]
+
+\begin{solution}
+  The \textbf{MFN principle} requires that any tariff concession granted to
+  one WTO member be extended to all others. This makes bilateral deals that
+  favour only one partner illegal --- unless the two parties form a recognised
+  free trade area or customs union under GATT Article XXIV.
+
+  The \textbf{paradox:} Countries wishing to give preferential market access
+  to close partners (for geopolitical or economic reasons) cannot do so
+  bilaterally under MFN. The only legal route is to form a full FTA or
+  customs union. This creates a strong incentive to establish such blocs,
+  which proliferated dramatically from the 1990s onwards (EU enlargement,
+  NAFTA/USMCA, ASEAN, Mercosur, CETA, JEFTA, etc.).
+
+  The result is a complex ``spaghetti bowl'' of overlapping PTAs with
+  different rules, rather than the clean multilateral liberalisation GATT
+  intended. The \textbf{ratchet principle} --- tariffs can only fall, never
+  rise --- means these concessions lock in, further complicating the
+  multilateral system. WTO members have effectively outsourced much of
+  their trade liberalisation to the regional level.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 9 — Monetary Theory}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The Three Costs of Money}
+The script identifies three distinct costs associated with holding or
+lending money internationally. Which set is correct?
+\begin{choices}
+  \choice        Principal, commission, and exchange fee.
+  \correctchoice The interest rate ($i$), inflation ($\pi$), and the
+                 risk of currency devaluation ($\Delta\text{Exp}$).
+  \choice        Administration costs, custody fees, and transaction charges.
+  \choice        Opportunity cost, sunk cost, and marginal cost.
+\end{choices}
+\begin{solution}
+  When money is lent internationally, the lender faces three risks/costs:
+  (1)~the \textbf{interest rate} is the explicit price of credit; (2)~
+  \textbf{inflation} erodes the real purchasing power of the repayment;
+  (3)~\textbf{currency devaluation} reduces the value of a foreign-currency
+  repayment when converted back to the home currency. Understanding all three
+  is essential for pricing international bonds, setting exchange rate policy,
+  and analysing the Balance of Payments.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Gresham's Law}
+Gresham's Law, famously illustrated by Isaac Newton's failed attempt to
+favour silver over gold in England, states that:
+\begin{choices}
+  \choice        High interest rates always drive foreign capital out of
+                 a country.
+  \choice        Governments that devalue their currency face inflation.
+  \correctchoice ``Bad money drives out good'': when two currencies of
+                 different intrinsic value circulate at the same legal
+                 exchange rate, the overvalued currency circulates while the
+                 undervalued one is hoarded or exported.
+  \choice        Paper money is always preferable to commodity money.
+\end{choices}
+\begin{solution}
+  Newton decreed that gold would be exchanged for silver at a ratio of 1:21
+  (up from 1:20), believing this would encourage use of silver. Instead,
+  gold was now \emph{undervalued} by the new rate: foreigners imported gold
+  (cheap by the official rate) and exported silver. This perfectly illustrates
+  \textbf{Gresham's Law}: the artificially ``cheap'' money (silver, now
+  overvalued officially) circulates; the money whose intrinsic value exceeds
+  its official value (gold) disappears from circulation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Structure of the Balance of Payments}
+The Balance of Payments is divided into which main accounts?
+\begin{choices}
+  \choice        Trade Account and Reserve Account only.
+  \correctchoice Current Account (goods, services, primary and secondary
+                 income) and Financial \& Capital Account (direct investment,
+                 portfolio investment, reserve account).
+  \choice        Fiscal Account and Monetary Account.
+  \choice        Export Account and Import Account.
+\end{choices}
+\begin{solution}
+  The \textbf{Current Account} records flows of goods (trade balance),
+  services, primary factor income (wages, investment returns), and
+  secondary income (transfers). The \textbf{Financial \& Capital Account}
+  records cross-border capital flows: foreign direct investment, portfolio
+  investment (bonds, equities), other investment, and changes in reserve
+  assets. By definition, the sum of all accounts is zero: a current account
+  deficit must be financed by a capital account surplus.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Quantitative Easing Creates ``Something from Nothing''}
+When a central bank buys government bonds through open market operations
+(quantitative easing), it creates new money without any corresponding
+liability, permanently increasing the nation's wealth.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} Quantitative easing (\textbf{QE}) involves the central
+  bank purchasing assets (government bonds, mortgage-backed securities) by
+  crediting the sellers' reserve accounts. The central bank's balance sheet
+  expands symmetrically --- a new asset (the bond) and a new liability
+  (the reserve credit). Wealth is not created from nothing; the central bank
+  exchanges one asset for another. The economic effect is to lower long-term
+  interest rates and increase money supply, stimulating credit and investment.
+  Unwinding QE (quantitative tightening) reverses the process.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Explain the History and Function of the Banking System
+  in Facilitating International Trade}
+Trace how the development of paper money, the giro system, and the banking
+sector reduced the frictions of long-distance trade. What risks did these
+innovations introduce, and how did regulation respond?
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{The friction problem:} Early long-distance trade required shipping
+  precious metals in the opposite direction of goods --- dangerous, slow, and
+  costly. Merchants needed a way to make and receive payment without physically
+  moving gold or silver across oceans.
+
+  \textbf{Innovations:}
+  \begin{itemize}
+    \item The \emph{bill of exchange} (Italian banking, Florence): a written
+      promise to pay, allowing merchants to settle accounts by offsetting
+      debits and credits at a central exchange point.
+    \item The \emph{giro system} (Hamburg 1619, Nuremberg, Venice): banks
+      kept accounts and transferred balances without physical currency.
+    \item \emph{Paper money and banknotes} (Bank of England 1694, Banque de
+      France 1800): convertible claims on the issuing institution, easier
+      to transport than coin.
+    \item \emph{Stock exchanges and bond markets} (Bruges 1276, Amsterdam
+      1602): allowed risks to be pooled and long-term capital to be raised
+      for trade ventures.
+  \end{itemize}
+
+  \textbf{Risks introduced:} Banks can create ``book money'' beyond their
+  reserves, creating systemic risk if confidence collapses (bank runs).
+
+  \textbf{Regulatory response:} Central banks emerged as supervisors and
+  lenders of last resort. Minimum reserve requirements and deposit guarantees
+  were introduced to prevent self-fulfilling bank runs.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 10 — Macroeconomics in the Open Economy}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The IS Curve}
+In the IS-LM model, the IS curve represents:
+\begin{choices}
+  \choice        All combinations of interest rate and output where the money
+                 market is in equilibrium.
+  \correctchoice All combinations of interest rate and output where the real
+                 goods market is in equilibrium, i.e.\ where investment equals
+                 savings ($I = S$).
+  \choice        The relationship between inflation and unemployment (the
+                 Phillips curve).
+  \choice        The effect of government spending on the exchange rate.
+\end{choices}
+\begin{solution}
+  The \textbf{IS curve} is derived from the equilibrium condition in the
+  goods market: investment ($I$) equals savings ($S$). Higher interest rates
+  make borrowing expensive, depressing investment and hence output --- so the
+  IS curve slopes downward. Fiscal policy (government spending $G$, net
+  exports $NX$) shifts the IS curve: a rise in $G$ or in $NX$ (e.g.\ from
+  a tariff) shifts IS to the right, raising both output and the interest rate.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Crowding Out}
+In the IS-LM model, when the government increases spending and shifts the IS
+curve to the right, the resulting higher interest rate partially offsets the
+stimulus. This phenomenon is called:
+\begin{choices}
+  \choice        Quantitative easing.
+  \correctchoice Crowding out.
+  \choice        The Laffer effect.
+  \correctchoice Crowding out.
+\end{choices}
+\begin{solution}
+  \textbf{Crowding out} occurs because the fiscal stimulus raises output and
+  income, increasing the demand for money (transactions motive). This pushes
+  up the interest rate, which reduces private investment. The net increase in
+  output is therefore \emph{less than} the initial government spending
+  increase. In an open economy, additional crowding out can occur if higher
+  interest rates attract capital inflows and appreciate the currency, reducing
+  net exports.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Effect of Expansionary Monetary Policy in the IS-LM
+  Model}
+A central bank expands the money supply, shifting the LM curve to the right.
+The new IS-LM equilibrium shows:
+\begin{choices}
+  \choice        Higher interest rates and higher output.
+  \choice        Lower interest rates and lower output.
+  \correctchoice Lower interest rates and higher output.
+  \choice        Higher interest rates and lower output.
+\end{choices}
+\begin{solution}
+  A rightward shift of the \textbf{LM curve} (more money available at each
+  income level) lowers the interest rate for a given level of output. Lower
+  rates stimulate investment and consumption, raising output. The new
+  equilibrium is at a lower interest rate and higher output. However, the
+  stimulus is also only partial: higher output raises money demand, partially
+  offsetting the initial fall in the interest rate. This is why monetary and
+  fiscal policy are sometimes used together.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{A Tariff in the IS-LM Framework Has No Macroeconomic
+  Effect}
+Because tariffs are a microeconomic trade policy tool, they have no effect
+on the macroeconomic IS or LM curves.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} A tariff reduces imports, raising net exports
+  $NX = EX - IM$. An increase in $NX$ is an increase in aggregate demand,
+  which shifts the \textbf{IS curve to the right} --- exactly the same
+  macroeconomic effect as an increase in government spending. The script
+  explicitly states this. Tariffs therefore have macroeconomic consequences:
+  they raise output and the domestic interest rate, and may trigger retaliatory
+  tariffs, trade wars, or exchange rate adjustments that partly or fully undo
+  the initial stimulus.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Should Central Banks Be Independent of Government,
+  and What Tensions Does This Create?}
+The script notes that ``most central banks today act fully independent of
+the government.'' Explain the economic rationale for central bank independence
+and the potential conflicts this creates with elected governments.
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{Rationale for independence:} Governments face electoral incentives
+  to stimulate the economy before elections, even if doing so causes
+  inflation. If the central bank were under government control, monetary
+  policy would be systematically too loose, leading to a chronic inflation
+  bias (Kydland-Prescott, time-inconsistency problem). An independent central
+  bank can credibly commit to price stability because it does not face
+  re-election pressure.
+
+  \textbf{The IS-LM tension:} Fiscal policy (IS curve) is set by the
+  government; monetary policy (LM curve) is set by the independent central
+  bank. If the government runs a large fiscal stimulus (rightward IS shift),
+  the central bank may counter with tighter money (leftward LM shift) to
+  contain inflation. The result is higher interest rates but little change in
+  output --- the two policies partially cancel out. This is the
+  ``obvious contradiction'' the script mentions between fiscal and monetary
+  policy.
+
+  \textbf{Crisis tensions:} During recessions, governments want the central
+  bank to finance deficits (``monetary financing''). An independent central
+  bank can refuse. The Eurosystem's prohibition on direct government financing
+  (Art.\ 123 TFEU) was heavily contested during the Eurozone debt crisis and
+  again during COVID-19.
+\end{solution}
+\end{question}
+
+\end{document}

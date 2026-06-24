@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->,name path=Laxis] (0,0) -- (8.5,0) node[right] (L) {$u$};
+        \draw[->] (0,0) -- (0,5) node[above] (I) {$\pi$};
+        \coordinate (B) at (1,5);
+        \filldraw (B) circle (2pt) node[above right] {B};        
+        \coordinate (C) at (3,3);
+        \filldraw (C) circle (2pt) node[above right] {C};            
+        \coordinate (D) at (7.5,-3);
+        \filldraw (D) circle (2pt) node[above right] {D};            
+        \draw [name path=phillips] plot [smooth] coordinates { (B) (C) (D)};
+        
+        \path [name intersections={of=phillips and Laxis,by=E}];
+        \filldraw (E) circle (2pt) node[above right] {NAIRU};    
+
+
+        \draw[dashed] (B) -- (B |- L) node[below] {?};
+        \draw[dashed] (C) -- (C |- L) node[below] {?};
+        \draw[dashed] (D) -- (D |- L) node[above] {?};
+
+        \node[anchor=west] at (5,4) {
+            \fbox{
+            \parbox{3cm}{
+            \scriptsize
+            `Non Accelerating Inflation Rate of Umemployment'
+            }
+            }
+        };
+        
+        % \node[anchor=west] at (0,-1) {
+        %     \fbox{
+        %     \scriptsize
+        %     Phillips Curve
+        %     }
+        % };
+        
+    \end{tikzpicture}
+\end{document}

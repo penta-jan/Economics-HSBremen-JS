@@ -1,0 +1,97 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[edges]{forest}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{hsbcommon}
+
+\renewcommand\familydefault{\sfdefault}
+\begin{document}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [Balance of Payments
+        [Current Account
+            [Goods and Services
+                [Trade in goods
+                    [Genearal merchanidse]
+                    [Goods for processing]
+                    [Repairs on goods]
+                    [Goods procured in ports by carriers]
+                    [Nonmonetary gold]
+                ]
+                [Trade in services
+                    [Transportation]
+                    [Travel]
+                    [Communication services]
+                    [Insurance services]
+                    [Financial services]
+                    [Computer and information services]
+                    [Royalties and license fees]
+                    [Other business services]
+                    [Personal{,} cultural and recreational services]
+                    [Government serives]
+                ]
+            ]
+            [Income
+                [Compensation of employees]
+                [Investment incomes
+                    [Direct investment]
+                    [Portfolio investment]
+                    [Other investment]
+                ]
+            ]
+            [Current transfers
+                [General government
+                    [taxes]
+                    [social contributions]
+                    [etc...]
+                ]
+                [Other sectors
+                    [Workers' remittances]
+                    [Other transfers]
+                ]
+            ]
+        ]
+        [Capital and Financial Account
+            [Capital Account
+                [Capital transfers
+                    [General government]
+                    [Other]
+                ]
+                [Acqusision/disposal of immaterial assets]
+            ]
+            [Financial Account
+                [Direct investment]
+                [Portfolio investment
+                    [Assets]
+                    [Liabilities]
+                ]
+                [Other investment
+                    [Assets]
+                    [Liabilities]
+                ]
+                [\textbf{Reserve assets (Reserve Account)}
+                    [Monetary gold]
+                    [Special drawing rights]
+                    [Reserve position in the Fund]
+                    [Foreign exchange
+                        [Currency and deposits]
+                        [Securities]
+                    ]
+                    [Other claims]
+                ]
+            ]
+        ]
+    ]
+    \end{forest}
+
+ 
+
+    
+\end{document}

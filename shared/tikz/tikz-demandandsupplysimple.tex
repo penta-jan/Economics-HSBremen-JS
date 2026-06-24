@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+    \begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_mi$}} -- (8,0) node (Y) [right] {$X$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node (i) [above] {$P$};
+        
+        \coordinate (A) at (0,7);
+        \coordinate (B) at (7,0);
+        \coordinate (E) at (0,1);
+        \coordinate (F) at (7,7);
+        
+        \draw[name path=demand] plot [smooth] coordinates {(A) (B) };
+        % \node[above right] at (A) {$DD$};
+        
+        \draw[name path=supply] plot [smooth] coordinates {(E) (F)};
+        \node[above] at (F) {$SS$};
+            
+            \path [name intersections={of=demand and supply,by=X}];
+    
+            \filldraw (X) node[right] {equilibrium} circle (2pt);
+            \draw[dashed] (0, |- X) node [left] {$p^*$} -- (X) -- (X |-, 0)  node [below] {$x^*$}; 
+        
+        \ifstep{1}{
+            \begin{scope}[color=red]
+    
+                \filldraw (A) node[above right] {prohibitive price} circle (2pt);
+                \filldraw (B) node[above left] {saturation quantity} circle (2pt);
+                
+            
+        \end{scope}
+    }
+
+        \ifstep{2}{
+            \begin{scope}[on background layer]
+                \draw[fill=red!10] (A) --  (X) --   (0, |- X) -- node[below right] {\parbox{13ex}{consumer\\ surplus}} cycle;
+            \end{scope}
+        }
+
+     
+        \ifstep{3}{
+
+        \begin{scope}[on background layer]
+            \draw[fill=blue!10] (E) --  (X) --   (0, |- X) -- node[above right] {\parbox{13ex}{producer\\ surplus}} cycle;
+        \end{scope}
+        
+        }
+
+        
+        \ifstep{4}{
+
+            
+            \draw[dashed, red, ultra thick] (A) --  (X) --   (E) -- node[fill=white, right,xshift=3pt, yshift=3pt,rounded corners] {welfare gain} cycle;
+        
+        }
+
+     
+            
+    \end{tikzpicture}
+\end{document}

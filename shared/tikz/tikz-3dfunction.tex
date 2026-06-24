@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{hsbcommon}
+\pgfplotsset{width=7cm,compat=1.18}
+\begin{document}
+\pgfplotsset{width=7cm,compat=1.18}
+\begin{tikzpicture}
+\begin{axis}[colorbar]
+    \addplot3 [
+        surf,
+        faceted color=blue,
+        samples=15,
+        domain=1:10,y domain=1000:10000
+    ] {x^0.387 * y^0.217};
+\end{axis}
+\end{tikzpicture}
+\end{document}

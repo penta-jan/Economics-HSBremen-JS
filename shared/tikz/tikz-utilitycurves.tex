@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right]  {B};
+        \draw[->] (0,0) -- (0,8) node[above]  {A};
+
+        \def\mya{A}
+        \def\myb{B}
+        \def\mys{S}
+        \def\myp{P}
+        \def\myq{Q}
+
+        \foreach [count=\i] \x/\y/\mycolor in {7/7/red%
+            ,5/5/blue%
+            }
+        {       
+                \begin{scope}[color=\mycolor]
+                    \coordinate (\mya) at (0,\y);
+                    \coordinate (\myb) at (\x,0);
+                    % \node[above right] at (\myb) {$B_\i$};
+             
+                    % \draw [name path=budgetgerade] plot [smooth] coordinates {(\mya) (\myb) };
+            
+                    \coordinate (\mys) at ($(\mya)!0.4!(\myb)$);  %% punkt (fast) in der mitte
+                    % \node[above right] at (\mys) {$S_\i$};
+                    
+                    % \draw [dashed]  (\mys) -- (\mys |-,0);
+                    % \draw [dashed]  (\mys) -- (0, |- \mys);
+                    
+                    % \filldraw (\mys) circle (2pt);
+                    \coordinate (\myp) at ([shift=({-2cm,3.5cm})]\mys); %% punkt links oben
+                    \coordinate (\myq) at ([shift=({3.5cm,-2cm})]\mys); %% punkt rechts unten
+                    
+                    \node[right] at (\myq) {$U_\i$};
+            
+                    \draw [name path=indifferenzkurve] plot [smooth, tension=1] coordinates {(\myp) (\mys) (\myq) };
+                \end{scope}
+        }        
+        
+    \end{tikzpicture}
+\end{document}

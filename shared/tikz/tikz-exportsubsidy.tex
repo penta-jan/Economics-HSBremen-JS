@@ -1,0 +1,117 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_mi$}} -- (8,0) node (Y) [right] {$x$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node (i) [above] {$p$};
+        
+        \coordinate (A) at (0,7);
+        \coordinate (B) at (7,0);
+        \coordinate (E) at (0,1);
+        \coordinate (F) at (7,7);
+        
+        \draw[name path=demand] plot [smooth] coordinates {(A) (B) };
+        \node[above right] at (B) {$DD_{\text{dom.}}$};
+        
+        \draw[name path=supply] plot [smooth] coordinates {(E) (F)};
+        \node[above] at (F) {$SS_{\text{dom.}}$};
+           
+        
+        \path [name intersections={of=demand and supply,by=X}];
+
+        \draw[dashed] (0, |- X) node [left] {$p^*$} -- (X) -- (X |-, 0)  node [below] {$x^*$}; 
+    
+        \begin{scope}[on background layer]
+            
+            \draw[fill=red!10] (A) --  (X) --   (0, |- X) -- node[right] {$CS$} cycle;
+            \draw[fill=blue!10] (E) --  (X) --   (0, |- X) -- node[right] {$PS$} cycle;
+        \end{scope}
+        \filldraw (X) node[right] {$E_1$} circle (2pt);
+
+        \ifstep{1}{
+            \begin{scope}[color=red]
+
+            \draw[name path=worldprice] (0,4.5) node[left] {$p_w$} -- (6,4.5) node[right] {world price};
+
+            \path[name intersections={of=demand and worldprice,by=Y}];
+            \path[name intersections={of=supply and worldprice,by=Z}];
+
+            \draw[dashed] (0, |- Y) -- (Y) -- (Y |-, 0) node[below] {$x_ {\text{free}}$};
+            \draw[dashed] (0, |- Z) -- (Z) -- (Z |-, 0) node[below] {$x_ {\text{dom.}}^{\text{free}}$};
+
+            \draw[ultra thick,<->,>=latex] (Y |-, 1) -- node[below] {\footnotesize laissez-faire export} (Z |-, 1);
+            
+            
+            \draw[draw=black] plot [smooth] coordinates {(E) (F)};
+            \node[color= black, above] at (F) {$SS_{\text{dom.}}$};
+
+            \begin{scope}[on background layer]
+                \draw[fill=red!10] (A) --  (Y) --   (0, |- Y) -- node[right] {$CS$} cycle;
+                \draw[fill=blue!10] (E) --  (Z) --   (0, |- Z) -- node[color=blue, right] {$PS$} cycle;
+            \end{scope}
+            
+            \draw[name path=demand] plot [smooth] coordinates {(A) (B) };
+                
+            \filldraw (Z) node[below right] {$S_2$} circle (2pt);         
+            \filldraw[red] (Y) node[below left] {$E_2$} circle (2pt);         
+
+            
+        \end{scope}
+}
+
+
+        \ifstep{2}{
+            \begin{scope}[color=blue]
+
+            
+            \draw[name path=tariff] (0,5) node[left] {$p_t$} -- (6,5) node[right] {wp+sub.};
+
+            \path[name intersections={of=demand and tariff,by=Y2}];
+            \path[name intersections={of=supply and tariff,by=Z2}];
+
+            \begin{scope}[on background layer]
+                \draw[fill=red!10] (A) --  (Y2) --   (0, |- Y2) -- node[right] {$CS$} cycle;
+                \draw[fill=blue!10] (E) --  (Z2) --   (0, |- Z2) -- node[right] {$PS$} cycle;
+            \end{scope}
+            
+            
+
+            \draw[dashed] (0, |- Y2) -- (Y2) -- (Y2 |-, 0) node[below] {$x_{\text{free}}$};
+            \draw[dashed] (0, |- Z2) -- (Z2) -- (Z2 |-, 0) node[below] {$x_ {\text{dom.}}^{\text{free}}$};
+            
+            \draw[ultra thick,<->,>=latex] (Y2 |-, 1.5) -- node[below] {\footnotesize subv. export} (Z2 |-, 1.5);
+            
+            \draw[name path=demand] plot [smooth] coordinates {(A) (B) };
+            \draw[color=red, name path=worldprice] (0,4.5) node[left] {$p_w$} -- (6,4.5) node[right] {world price};
+            
+            \filldraw[red] (Z) node[below right] {$S_2$} circle (2pt);   
+            
+            \filldraw (Y2) node[above right] {$E_3$} circle (2pt);         
+            \filldraw (Z2) node[below right] {$S_3$} circle (2pt);             
+
+            \draw[draw=black] plot [smooth] coordinates {(E) (F)};
+            \node[above] at (F) {$SS_{\text{dom.}}$};
+            
+        \end{scope}
+}
+
+        
+        \ifsteponly{3}{4}{
+            \draw[dashed,green,ultra thick] (Z2) -- (Y2) node[green, below right] {$subsidy$}  -- (Y2 |-,4.5) -- (Z2 |-, 4.5) -- cycle  ;
+        }
+
+     \ifstep{4}{
+
+        \draw[red, name path=newworldprice] (0,4) node[left] {$\hat{p}_w$} -- (6,4) node[right] {new wp};
+        \draw[dashed,green,ultra thick] (Z2) -- (Y2) node[green, below right] {$subsidy$} -- (Y2 |-,4)   -- (Z2 |-, 4) -- cycle  ;
+
+     
+     }
+            
+    \end{tikzpicture}
+\end{document}

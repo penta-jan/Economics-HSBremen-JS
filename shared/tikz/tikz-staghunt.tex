@@ -1,0 +1,64 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \newcommand{\pft}[2]{{\hfill$#1$ \\ $#2$\hfill\mbox{}}}
+
+
+        \tikzset{
+            horstart/.style={
+                xshift=5ex,yshift=1ex
+            },
+            horend/.style={
+                xshift=7ex,yshift=1ex
+            },
+            verstart/.style={
+                xshift=6.5ex,
+                yshift=2ex
+            },
+            verend/.style={
+                xshift=6.5ex,
+                yshift=-0.5ex
+            }
+        }
+
+
+        \matrix (M) [payoff matrix,
+            payoff matrix/player 1={Alice},
+            payoff matrix/player 2={Bob}
+        ]{
+        & stag & hare \\
+        stag   & \pft{10}{10} & \pft{8}{1} \\
+        hare & \pft{1}{8}   & \pft{5}{5} \\
+        };
+
+    \ifstep{1}{  %%% alices incentives
+        \begin{scope}[red]
+            
+        \draw[->,>=latex]
+            ([horstart]M-2-3.center)   % "1"  in AB
+            to
+            ([horend]M-2-2.center);  % "10" in AA        
+
+        \draw[->,>=latex]
+            ([horend]M-3-2.center)
+            to
+            ([horstart]M-3-3.center)   
+            ;    
+            
+        \draw[->,>=latex]
+            ([verstart]M-3-3.center)    
+            to
+            ([verend]M-2-3.center);       
+
+        \draw[->,>=latex]
+            ([verstart]M-3-2.center)    
+            to
+            ([verend]M-2-2.center);       
+        \end{scope}
+    }
+
+    \end{tikzpicture}
+\end{document}

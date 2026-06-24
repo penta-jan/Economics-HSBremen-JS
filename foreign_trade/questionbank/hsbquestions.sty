@@ -1,0 +1,228 @@
+%% hsbquestions.sty
+%% ─────────────────────────────────────────────────────────────────────────────
+%% Question-bank environment for HSB Economics modules.
+%% Provides:
+%%   \begin{question}[type]{Title}   …   \end{question}
+%%   \begin{choices}                 …   \end{choices}
+%%   \choice{text}       (wrong answer)
+%%   \correctchoice{text}(correct answer — shown only when \showanswerstrue)
+%%   \begin{solution}    …   \end{solution}
+%%   \truefalse{statement}
+%%   \begin{openquestion} … \end{openquestion}
+%%
+%% Global answer-visibility toggle:
+%%   \showanswerstrue    — show correct choices highlighted + solution blocks
+%%   \showanswerSfalse    — hide answers (default, for students)
+%%
+%% Usage in a chapter file:
+%%   \begin{question}[mc]{Elasticity of Demand}
+%%     What happens to quantity demanded when the price of a good rises?
+%%     \begin{choices}
+%%       \choice        It increases.
+%%       \correctchoice It decreases.
+%%       \choice        It remains unchanged.
+%%       \choice        It first increases, then decreases.
+%%     \end{choices}
+%%     \begin{solution}
+%%       A price rise reduces quantity demanded (law of demand, negative slope
+%%       of the demand curve).
+%%     \end{solution}
+%%   \end{question}
+%%
+%% ─────────────────────────────────────────────────────────────────────────────
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hsbquestions}[2026/05/29 v1.0 HSB Question Bank]
+
+% ── Dependencies ──────────────────────────────────────────────────────────────
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\RequirePackage{amssymb}     % \checkmark, \square
+\RequirePackage{ifthen}
+\RequirePackage{xkeyval}
+
+% ── HSB colours (also defined in hsbcommon, but we redefine for standalone use)
+\providecolor{HSBblau}{RGB}{10,85,140}
+\providecolor{HSBgruen}{RGB}{0,145,90}
+\providecolor{HSBrot}{RGB}{195,5,50}
+\providecolor{HSBgelb}{RGB}{250,190,0}
+
+% ── Answer-visibility toggle ──────────────────────────────────────────────────
+\newif\ifshowanswers
+\showanswersfalse    % default: hide answers
+
+% ── Question counter (continuous across the whole document) ───────────────────
+\newcounter{questioncounter}
+\renewcommand{\thequestioncounter}{\arabic{questioncounter}}
+
+% ── Type labels ───────────────────────────────────────────────────────────────
+%  mc  → Multiple Choice
+%  tf  → True / False
+%  open→ Open / Essay
+\newcommand{\@qtype@label}[1]{%
+  \IfStrEqCase{#1}{%
+    {mc}  {\textit{Multiple Choice}}%
+    {tf}  {\textit{True / False}}%
+    {open}{\textit{Open Question}}%
+  }[\textit{#1}]%   fallback: print whatever was given
+}
+
+% ── tcolorbox style for the question frame ────────────────────────────────────
+\tcbset{
+  hsbquestion/.style={
+    enhanced,
+    breakable,
+    colback  = white,
+    colframe = HSBblau,
+    colbacktitle = HSBblau,
+    coltitle = white,
+    fonttitle= \bfseries\small,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    toptitle=2pt, bottomtitle=2pt,
+    arc=3pt,
+    boxrule=0.6pt,
+  },
+  hsbsolution/.style={
+    enhanced,
+    breakable,
+    colback  = HSBgruen!8,
+    colframe = HSBgruen,
+    colbacktitle = HSBgruen,
+    coltitle = white,
+    fonttitle= \bfseries\small,
+    title    = {Solution},
+    left=5pt, right=5pt, top=3pt, bottom=3pt,
+    toptitle=2pt, bottomtitle=2pt,
+    arc=2pt,
+    boxrule=0.5pt,
+  }
+}
+
+% ── The question environment ──────────────────────────────────────────────────
+%  #1 (optional key) : type — mc, tf, open  (default: mc)
+%  #2 (mandatory)    : title / topic
+%
+%  Inside the environment the question text goes first, then \begin{choices}
+%  or \truefalse, then optionally \begin{solution}.
+%
+\define@key{question}{type}{\def\@q@type{#1}}
+\newenvironment{question}[2][type=mc]{%
+  \def\@q@type{mc}%          default type
+  \setkeys{question}{#1}%    parse optional key=value
+  \stepcounter{questioncounter}%
+  \begin{tcolorbox}[
+    hsbquestion,
+    title={\thequestioncounter\quad #2%
+           \hfill{\normalfont\small\@qtype@label{\@q@type}}}
+  ]%
+  \setlength{\parskip}{0.5ex}%
+}{%
+  \end{tcolorbox}%
+  \vspace{0.5ex}%
+}
+
+% ── choices list (inside a question, for mc) ──────────────────────────────────
+%  Uses a custom list with (A) (B) (C) … labels.
+%
+\newcounter{choicecounter}
+
+\newenvironment{choices}{%
+  \setcounter{choicecounter}{0}%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{1.8em}%
+    \setlength{\itemsep}{1pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\topsep}{4pt}%
+  }%
+}{%
+  \end{list}%
+}
+
+%% \choice{text}  — a wrong answer
+\newcommand{\choice}{%
+  \stepcounter{choicecounter}%
+  \color{black}\item[\textbf{(\Alph{choicecounter})}]%
+}
+
+%% \correctchoice{text}  — the correct answer
+%%   When \showanswerstrue: shown with green tick and HSBgruen text
+%%   When \showanswerSfalse: shown identically to a wrong answer
+\newcommand{\correctchoice}{%
+  \stepcounter{choicecounter}%
+  \ifshowanswers
+    \item[\textcolor{HSBgruen}{\textbf{(\Alph{choicecounter})~\checkmark}}]%
+    \color{HSBgruen}%
+  \else
+    \item[\textbf{(\Alph{choicecounter})}]%
+  \fi
+}
+
+% ── True / False (inside a question, for tf) ──────────────────────────────────
+%  Student mode : two tick-boxes  [ ] True    [ ] False
+%  Answer mode  : correct box filled green with tick, wrong box empty
+%
+%  Usage (statement goes in the question body, not here):
+%    \truefalse[true]    — correct answer is True
+%    \truefalse[false]   — correct answer is False
+%
+%  Helper boxes
+\newcommand{\@tfboxempty}{\fbox{\phantom{X}}\,}
+\newcommand{\@tfboxcorrect}{%
+  \textcolor{HSBgruen}{\fbox{\textcolor{HSBgruen}{\checkmark}}}\,}
+
+\newcommand{\truefalse}[1][true]{%
+  \par\vspace{4pt}%
+  \noindent
+  \IfStrEqCase{#1}{%
+    {true}{%
+      \ifshowanswers
+        \textcolor{HSBgruen}{\@tfboxcorrect\textbf{True}}\qquad
+        \@tfboxempty False%
+      \else
+        \@tfboxempty True\qquad
+        \@tfboxempty False%
+      \fi
+    }%
+    {false}{%
+      \ifshowanswers
+        \@tfboxempty True\qquad
+        \textcolor{HSBgruen}{\@tfboxcorrect\textbf{False}}%
+      \else
+        \@tfboxempty True\qquad
+        \@tfboxempty False%
+      \fi
+    }%
+  }%
+  \par\vspace{2pt}%
+}
+
+% ── Solution block ────────────────────────────────────────────────────────────
+%  Only rendered when \showanswerstrue.
+%
+\newenvironment{solution}{%
+  \ifshowanswers
+    \begin{tcolorbox}[hsbsolution]%
+  \else
+    \setbox0=\vbox\bgroup   % gobble everything silently
+  \fi
+}{%
+  \ifshowanswers
+    \end{tcolorbox}%
+  \else
+    \egroup                  % end the gobble box
+  \fi
+}
+
+% ── Open question hint line(s) ────────────────────────────────────────────────
+%  Draws n blank lines for a handwritten answer (default n=6).
+%  Only drawn when \showanswerSfalse (i.e., in student version).
+%
+\newcommand{\answerlines}[1][6]{%
+  \ifshowanswers\else
+    \vspace{0.5ex}%
+    \foreach \n in {1,...,#1}{%
+      \par\noindent\rule{\linewidth}{0.3pt}\par\vspace{2pt}%
+    }%
+  \fi
+}

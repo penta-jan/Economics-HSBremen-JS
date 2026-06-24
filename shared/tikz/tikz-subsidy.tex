@@ -1,0 +1,95 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{0,1,2,3,4}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [right] {$x$};
+    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [above] {$p$};
+
+
+    %% ── All coordinates unconditional ────────────────────────────────────────
+    \coordinate (A) at (0,7);
+    \coordinate (B) at (7,0);
+    \coordinate (E) at (0,1);
+    \coordinate (F) at (7,7);
+    \coordinate (G) at (0,0);   % SS_tax left
+    \coordinate (H) at (6,5);   % SS_tax right
+    \path (A) ++ (0,1) coordinate (C);  % DD_tax top
+    \path (B) ++ (1,0) coordinate (D);  % DD_tax right
+
+    %% ── Named paths ──────────────────────────────────────────────────────────
+    \draw[name path global=demand]     plot [smooth] coordinates {(A)(B)};
+    \draw[name path global=supply]     plot [smooth] coordinates {(E)(F)};
+    \path[name path global=supplysub]  plot [smooth] coordinates {(G)(H)};
+    \path[name path global=demandtaxed] plot [smooth] coordinates {(C)(D)};
+
+    %% ── All intersections pre-computed ───────────────────────────────────────
+    \path [name intersections={of=demand    and supply,    by=X}];  % free market
+    \path [name intersections={of=demand    and supplysub, by=Y}];  % after supply tax
+
+    %% vertical at Y for quantity after tax
+    \path[name path global=xtwo] (Y |-,0) -- (Y |-,8);
+    \path [name intersections={of=xtwo and supply, by=Z}];          % producer price
+
+    %% ── Always visible: free-market equilibrium ──────────────────────────────
+    \node[above right] at (B) {$DD_0$};
+    \node[above]       at (F) {$SS_0$};
+
+    \filldraw (X) node[right] {$E_1$} circle (2pt);
+    \draw[dashed] (0,|- X) node [left] {$p^*$} -- (X) -- (X |-,0) node [below] {$x^*$};
+
+
+    %% step 1 : CS and PS in equilibrium
+
+    \ifstep{1}{
+    \begin{scope}[on background layer]
+        \draw[fill=red!10]  (A) -- (X) -- (0,|- X) -- node[right] {$CS$}  cycle;
+        \draw[fill=blue!10] (E) -- (X) -- (0,|- X) -- node[right] {$PS$}  cycle;
+    \end{scope}
+    }
+
+    %% ── Step 2: subsidy brings SS down, new equilibrium E2 ─────────────────
+    \ifstep{2}{
+        \begin{scope}[color=red]
+            \draw[name path global=supplysub] plot [smooth] coordinates {(G)(H)};
+            \node[above] at (H) {$SS^{sub}$};
+            \filldraw (Y) node[right] {$E_2$} circle (2pt);
+            \draw[dashed] (0,|- Y) node [left] {$p^{sub}$} -- (Y) -- (Y |-,0) node [below] {$x^{sub}$};
+            \coordinate (Lss) at ($(E)!0.7!(F)$);
+            \draw[->,>=latex] (Lss) -- node[right] {$sub$} (Lss |-,4.25);
+        \end{scope}
+    }
+
+    %% --- Step 3: producer price Z, new cs and ps
+
+    \ifstep{3}{
+            \filldraw (Z) node[right] {$Z$} circle (2pt);
+            \draw[dashed]   (Z |-,0) -- (Z) -- (0,|- Z) node [left] {$p^*_{sub}$} ;
+            \begin{scope}[on background layer]
+                
+            \draw[fill=blue!10] (0, |- Y) -- (G) -- (Y) -- cycle;
+            \draw[fill=red!10] (A) -- (Y) -- (0, |- Y) -- cycle;
+            \end{scope}
+    }
+
+
+    %% ── Step 4: transfer rectangle, DWL ─────────────────────────
+    
+    \ifstep{4}{
+        \begin{scope}[color=green]
+                \draw[green,ultra thick]    (Z) -- (Y) -- (0,|- Y) -- (0,|- Z) -- cycle;
+            \begin{scope}[on background layer]                
+                % \draw[fill=yellow!20] (Z) -- node[right] {\footnotesize $DWL$} (Y) -- (X) -- cycle;
+            \end{scope}
+            \path (0, |- Z) -- node {$GE$} (Y);
+        \end{scope}
+    }
+
+
+
+\end{tikzpicture}
+\end{document}

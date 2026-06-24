@@ -1,0 +1,53 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right]  {$K$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node[above]  {$L$};
+
+        \def\mya{A}
+        \def\myb{B}
+        \def\mys{S}
+        \def\myp{P}
+        \def\myq{Q}
+
+        \foreach [count=\i] \x/\y/\mycolor/\myopacity in {3/3/black/1%
+            ,4/4/black/1%
+            ,5/5/black/1%
+            ,6/6/black/1%
+            ,7/7/black/1%
+            }
+        {       
+                \begin{scope}[color=\mycolor,opacity=\myopacity]
+                    \coordinate (\mya) at (0,\y);
+                    \coordinate (\myb) at (\x,0);
+                    \node[above right] at (\myb) {$I_\i$};
+             
+                    \draw [name path=budgetgerade] plot [smooth] coordinates {(\mya) (\myb) };
+            
+                    \coordinate (\mys\i) at ($(\mya)!0.4!(\myb)$);  %% punkt (fast) in der mitte
+                    % \node[right]   at (\mys\i) {$S_\i$};
+                    
+                    % \draw [dashed] (0, |- \mys) -- (\mys) -- (\mys |-,0);
+                    
+                    \filldraw (\mys\i) circle (2pt);
+                    \coordinate (\myp) at ([shift=({-1cm,2.5cm})]\mys\i); %% punkt links oben
+                    \coordinate (\myq) at ([shift=({2.5cm,-1cm})]\mys\i); %% punkt rechts unten
+                    
+                    \node[right] at (\myq) {$P_\i$};
+            
+                    \draw [name path=indifferenzkurve] plot [smooth, tension=1] coordinates {(\myp) (\mys\i) (\myq) };
+                \end{scope}
+        }        
+                \ifstep{1}{
+\begin{scope}[color=red]
+
+                    \draw[thick] (S1) -- (S2)  -- (S3)  -- (S4)  -- (S5)  node[above right] {expansion path}  ;
+                \end{scope}
+}
+
+        
+    \end{tikzpicture}
+\end{document}

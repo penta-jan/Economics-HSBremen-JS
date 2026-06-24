@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[edges]{forest}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{hsbcommon}
+\renewcommand\familydefault{\sfdefault}
+\begin{document}
+\renewcommand\familydefault{\sfdefault}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [Economic Theory
+        [MICROeconomics
+                [consumer theory]
+                [production theory]
+                [game theory]
+                [markets, for tree={color=red},draw, rounded corners]
+                [public finance]
+                [regulation]
+                [fiscal policy]
+                [resources]
+                [money]
+                [institutions]
+                [experimental economics]
+        ]
+        [Macro-
+                    % [domestic production]
+                    % [domestic consumption]
+                    % [employment]
+                    % [capital accumulation]
+                    % [spacial economics]
+                    % [global externalities]
+                    % [international economic relations]
+                    % [interest rates]
+                    % [money supply and demand]
+                    % [business cycles and crises]
+                    % [institutions]
+        ]
+    ]
+    \end{forest}
+\end{document}

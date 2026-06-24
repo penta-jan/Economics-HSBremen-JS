@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right] (Q) {Q};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node[above] (P) {P};
+
+        \coordinate (A) at (1,7);
+        \coordinate (B) at (2,6);
+        \coordinate (C) at (3,4);
+        \coordinate (D) at (4,3);
+        \coordinate (E) at (6,2);
+        \coordinate (F) at (7,1);
+ 
+        \draw [name path=demand] plot [smooth] coordinates {(A) (B) (C) (D) (E) (F)};
+        \node[right] at (F) {DD};
+
+        \draw[dashed,blue] (0,0) rectangle (B);
+        \draw[dashed,green] (0,0) rectangle (C);
+        \draw[dashed,red] (0,0) rectangle (E);
+        
+    \end{tikzpicture}
+\end{document}

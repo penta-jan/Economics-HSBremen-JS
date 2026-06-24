@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+\begin{document}
+
+    \def\myalpha{0.5}
+    \def\mybeta{0.5}
+    \def\myrho{0.5}
+
+    \def\mycesfunktion{$
+        y=\left(\alpha K^{-\rho}+\beta L^{-\rho}\right)^{-\frac{1}{rho}}
+    $}
+    \def\cessolvedfork{$
+        K=\left(-\frac{\beta L^{-\rho}-y^{-\rho}}{\alpha}\right)^{-\frac{1}{\rho}}
+    $}
+
+\begin{tikzpicture}
+    \draw[name path=abscissa,->,>=latex] (0,0) -- (7,0) node [right] {L};
+    \draw[name path=ordinate,->,>=latex] (0,0) -- (0,7) node [above] {K};
+
+    \clip (-1,-1) rectangle (7,7);
+
+    %% Step 1: Cobb-Douglas isoquants
+    \ifstep{1}{
+        \foreach [count=\i] \myniveau in {2,2.4,...,5}
+        {
+            \draw[domain=1.2:7, name path=indiff\i] plot ({\x},{
+                (\myniveau/\x^\myalpha)^(1/\mybeta)});
+        }
+    }
+
+    %% Step 2: CES isoquants (overlaid in red)
+    \ifstep{2}{
+        \begin{scope}[color=red]
+            \foreach [count=\i] \myniveau in {2,2.4,...,5}
+            {
+                \draw[thick, name path=ces\i, domain=1.4:7] plot ({\x},{
+                    (-(\mybeta*\x^(-\myrho)-\myniveau^(-\myrho))/\myalpha)^(-1/\myrho)
+                });
+            }
+        \end{scope}
+    }
+
+\end{tikzpicture}
+\end{document}

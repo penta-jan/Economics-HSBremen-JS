@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+
+
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 7th\or
+    April 14th\or
+    April 21th\or
+    April 28th\or
+    May 5th\or
+    May 19th\or
+    May 26th\or
+    June 2nd\or
+    June 9th\or
+    June 16th\or
+    June 30th\or
+    June 2nd\or
+    July 7th\else
+    \@ctrerr
+  \fi
+}
+
+\begin{document}
+\begin{tikzpicture}
+    \node at (0,0) {
+    \parbox{30ex}%
+    {
+    \foreach \i in {1,...,13}
+        {\mysession{\i} \the\year\par}
+    }
+    };
+\end{tikzpicture}
+\end{document}

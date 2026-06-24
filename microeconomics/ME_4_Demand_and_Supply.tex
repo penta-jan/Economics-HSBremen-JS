@@ -1,0 +1,669 @@
+\section{Demand and Supply}
+
+
+\begin{frame}{Exchange: The Edgeworth Box}
+    \showmytikz[1]{../shared/tikz/tikz-edgeworth.tex}
+    \mycomment{
+    Consider two parties $A, B$ and two goods $X,Y$. For each party having more of a good is better than having less of it ($X,Y$ are normal goods). 
+
+    We begin with one individual Alice ($A$) that happens to have a specific combination of goods ($X,Y$ at point $P$), for whatever the reason.
+
+    }
+\end{frame}
+
+\begin{frame}{Exchange: The Edgeworth Box}
+    \showmytikz[2]{../shared/tikz/tikz-edgeworth.tex}
+    \mycomment{
+    Now imagine our individual Alice meets Bob  ($B$) with - in this case - similar indifference curves.
+
+    If these two can trade, they can make each other better off; Alice would part of some $Y$ in exchange for some $X$, and Bob would part of some $X$ in exchange for some $Y$.
+
+    It is not quite clear which exchange ratio they will choose. At $Q$, Alice will be just as fine as she was before - without gaining or losing anything, while Bob is better off. At $S$, Bob is indifferent, while Alice has improved much. 
+
+    Point $T$ is also good for both, but there could be better. 
+    }
+\end{frame}
+
+\begin{frame}{Exchange: The Edgeworth Box}
+    \showmytikz[2,3,4]{../shared/tikz/tikz-edgeworth.tex}
+    \mycomment{
+    The contact curve or trading curve is the curve in the middle of the Edgeworth box where utility indifference curves of the two parties meet. At any other points the two parties would be better of trading. 
+
+    However, any point on the trading curve is stable, as any movement would necessarily render one of the two parties worse off than before. 
+
+    Notice that this depicts a situation with only two parties. Imagine many $A,B$ engaging in this, like farmers and fishermen meeting on a market. Then, The ratio of exchange between the two parties will reach a defined point. Just which one is something we will inquire next.
+
+    % This can be used to demonstrate the First Fundamental Theorem of Welfare Economics: that free exchange is Pareto-optimal.
+    }
+\end{frame}
+
+\begin{frame}{The Demand Curve}
+    \mycomment{
+    Imagine me wanting to auction a particular good to a number of people (in our visual example, eight people). I start by calling a ridiculously high price, for which nobody raises their hand.
+
+    Then, I gradually decrease the price. 100 Rupies, anyone? 99? 98?
+    
+    If we find out (by experiment, ideally) how many people would buy for a given price, we can sort these numbers and end up with a (decreasing) curve.
+
+    The price someone is maximum willing to pay is called that person's reservation price.
+
+    Of course, the assumption is that buyers do not form strategic coalitions.
+
+    Note that when we are speaking about quantities on a market, we mean quantities per unit of time, like how many lemons are sold \textit{per year} or \textit{per month} etc. 
+    }
+    \showmytikz[1]{../shared/tikz/tikz-demandblocks}
+\end{frame}
+
+\begin{frame}{The Demand Curve}
+    \mycomment{
+    Thus, every price corresponds to exactly one quantity; and every quantity (if we auction it) results in exactly one price. 
+
+    This is an important insight. Every price corresponds to a quantity and every quantity to a price, depending on the willingness of the buyers to spend only.
+
+
+    
+    As long as it stands where it is, any policy applied to the market will not change the fundamental law that there is one price per quantity!
+    
+    }
+    \showmytikz[1,2]{../shared/tikz/tikz-demandblocks}
+\end{frame}
+
+\begin{frame}{The Demand Curve}
+    \mycomment{
+    We can approximate a function that runs through these points. The result is called the demand curve ($DD$).  
+
+    The slope of $DD$ is by definition negative:
+
+    \begin{equation}
+        \frac{
+        \delta p
+        }{
+        \delta x
+        }<0
+    \end{equation}
+
+    The demand curve can partly be influenced, for example by marketing. It depends on a number of other things, for example:
+    
+    \begin{itemize}
+        \item the prices of substitutes;
+        \item the prices of complements, that is: for what this good will be used, or into what it will be made;
+        \item the urgency of the need in a particular situation;
+        \item buyers' incomes. 
+    \end{itemize}
+
+    }
+    \showmytikz[1,2,3]{../shared/tikz/tikz-demandblocks}
+\end{frame}
+
+\begin{frame}{The Demand Curve}
+    \mycomment{
+    Whatever unique combination  of price and quantity we choose will result in turnover ($TR$) as product of price ($P$) and quantity ($Q$). 
+    
+    \begin{equation}
+        TR=P\cdot X
+    \end{equation}
+    
+    Turnover for a given price/quantity ratio is thus the square under the demand curve. 
+    
+    This, of course, is something someone might want to maximise. So if I was to choose that price and quantity, I might want to choose that point that maximises my turnover.
+    }
+    \showmytikz[4]{../shared/tikz/tikz-demandblocks}
+\end{frame}
+
+%%% ELASTICITY
+
+
+
+\begin{frame}{Elasticity of Demand}
+    \showmytikz[1]{../shared/tikz/tikz-elasticity.tex}
+
+    \mycomment{
+    A demand curve can be more or less steep. A flat demand curve means that demand (quantity) reacts very sensitive to price change; a steep demand curve means that demand (quantity) is little sensitive to price change. 
+
+    This is called `price elasticity of demand':
+
+    \begin{equation}
+        \eta = \frac{
+            \frac{\delta Q}{Q}
+        }{
+            \frac{\delta P}{P}
+        }
+    \end{equation}
+
+
+    }    
+\end{frame}
+
+\begin{frame}{Elasticity of Demand}
+    \showmytikz[2]{../shared/tikz/tikz-elasticity.tex}
+
+    \mycomment{
+    Sometimes, we may wish to express the percentage change of the price per percentage change of the quantity, that is, the inverse of the price elasticity of demand: the quantity elasticity of price:
+    \begin{equation}
+        \epsilon = 
+        \frac{1}{\eta} =
+        \frac{
+            \frac{\delta P}{P}
+        }{
+            \frac{\delta Q}{Q}
+        }
+    \end{equation}
+
+    Examples:
+
+    (price-)\textbf{inelastic demand:}  energy 
+
+    (price-)\textbf{elastic demand:}  carousel tickets 
+
+    Elasticity of demand relates to the availability of substitutes. If there is a substitute available, a price increase will have a large substitution effect, and a small income effect. If there is no substitute, the inelasticity will result  in a strong income effect.
+    }    
+\end{frame}
+
+\begin{frame}{Supply}
+    \mytext{
+    Now that we see how demand for a good creates a demand curve, we must look at supply.
+
+    Supply is the result of a decision to offer something on a market. 
+    
+    This is identical to a decision to produce. 
+    }
+    \mycomment{
+        This means that there is no "selling out"; the selling out of a (limited) resource is a matter of resource economics, and not a topic of this course. The keyword is "Hotelling's Rule" (not to be confused with "Hotelling's Law")
+    }
+\end{frame}
+
+%%%% HERE: COMPETITION (rather than at the Cournot Model)
+
+
+\begin{frame}{Competition}
+    \mytext{
+    \begin{itemize}
+        \item \textit{competere }lat. \textit{to strive together}
+        \item \textit{concurrere} lat. \textit{to run together}
+        \item not a zero-sum game
+        \item think of a race (rather than combat)
+        \item market entry barriers
+        \item few participants: more combative 
+        \item many participants: much intelligence
+        \item property structures
+    \end{itemize}
+    }
+    \mycomment{
+    Not only does competition result in the largest possible quantities and the lowest possible price, it also incentivises sellers to strive for productivity increase, that is: to lower their costs. 
+
+    However, perfect competition, as assumed in many models, is rare. There are typically barriers to entry.
+    }
+\end{frame}
+
+\begin{frame}{Competition}
+    \mytext{
+    Under competition
+    \begin{itemize}
+        \item sellers race to the bottom
+        \item every sellers reservation price is her marginal costs
+        \item the supply curve is the marginal costs curve
+    \end{itemize}
+    }
+    \mycomment{
+    Marginal costs are typically increasing with quantity, but there may be exceptions.
+    
+    An individual supplier may experience economies of scale, meaning: decreasing marginal costs. This will, however, hit a ceiling (law of diminishing returns), and in the competitive case only high prices will incite further competitors to enter the market.
+    }
+\end{frame}
+
+\begin{frame}{Law of One Price, Market Failure}
+    \mytext{
+    For every good (that is mass produced and more or less identical everywhere), there is exactly one price.
+
+    For if there be a price difference, people would start profiting from that arbitrage  until it disappears.
+
+    That is, if there \textit{are} barriers such as limited access, there can indeed be multiple prices. But this means that markets be not perfect (market failure).
+
+    This also means that in a free economy, where everyone can choose their trade, profits will be equal in every trade in the long run.
+
+    Thus, what is produced depends on the preferences of the consumers, and the costs of the producers.
+    }
+\end{frame}
+
+\begin{frame}{Differentiation and Market Delimitation}
+    \mytext{
+        \begin{itemize}
+            \item similar items, (almost) substitutes
+            \item differentiation, or become similar?
+            \item cost vs. quality?
+            \item `horizontal' product differentiation (subjective)
+            \item `vertical' product differentiation (objective)
+        \end{itemize}
+    }
+    \mycomment{
+        Typically, a firm would like to be a monopolist, and to operate in some sort of inelastic demand curve area. Customers, on the other hand, do not like to migrate from one product to a similar other in the short term.
+    }
+\end{frame}
+
+\begin{frame}{Hotelling's Law}
+    \showmytikz[]{../shared/tikz/tikz-hotellingslaw.tex}
+    \mycomment{
+        Imagine a beach with two ice cream vendors $A,B$. Where should they set up shop?
+    }
+\end{frame}
+
+\begin{frame}{Hotelling's Law}
+    \showmytikz[1]{../shared/tikz/tikz-hotellingslaw.tex}
+    \mycomment{
+        In competition, for any one of them, moving towards the centre means gaining market share. So both will move to the center.
+    }
+\end{frame}
+
+\begin{frame}{Hotelling's Law}
+    \showmytikz[2]{../shared/tikz/tikz-hotellingslaw.tex}
+    \mycomment{
+        Competitors \textbf{in one market} have an incentive to move close to each other and also to offer identical products - in fact, to become similar in any way.
+
+        This is called \textbf{principle of minimum differentiation.} 
+        
+        Of course there is also an incentive to differentiate, that is: to serve another (niche) market altogether, where there may be a monopoly rent.
+    }
+\end{frame}
+
+\begin{frame}{Hotelling's Law}
+    \showmytikz[]{../shared/tikz/tikz-hotellingslaw.tex}
+    \mycomment{
+        If they form a \textbf{cartel}, they will likely each serve a part of the beach - and also charge monopoly prices.
+    }
+\end{frame}
+
+\begin{frame}{Nature of the Firm (Coase)}
+    \mytext{
+    \begin{itemize}
+        \item Why do firms exist
+        \item rather than just self-employed people?
+        \item cost to coordinate
+        \item information costs
+        \item work by the hour rather than for predefined goals
+        \item work vs. labour vs. job vs. profession vs. vocation
+        \item mixed systems
+    \end{itemize}
+    }
+    \mycomment{
+    Which are the ideal forms of human organisation: should everyone be a freelancer? Why are there firms, that is: larger legal entities? Which is the optimum size of such entities? Should we all be one big company-state, as in communism? When is a central organisation, where one brain rules all, more efficient, and when a market form, where the reasoning of the many results in an optimum outcome? 
+
+    Note that "firm" comes from lat. "firma" for "signature". 
+    }
+\end{frame}
+
+
+\begin{frame}{Costs}
+    \mytext{
+    We will in the following simply distinguish:
+    \begin{enumerate}
+        \item total costs $K$
+        \item fixed costs $K_f$
+        \item marginal costs $k$
+    \end{enumerate}
+    So that total costs are
+    \begin{equation}
+        K=K_f + k\cdot x
+    \end{equation}
+    and marginal costs
+    \begin{equation}
+        \frac{dK}{dx}=k
+    \end{equation}
+    }
+    \mycomment{
+        These costs are payments towards the production factors, which are labour ($L$) and capital ($K$).
+    }
+\end{frame}
+
+\begin{frame}{Costs}
+  \mytext{
+    \begin{itemize}
+        \item fixed costs $F$
+        \item sunk costs 
+        \item costs of durable goods
+        \item variable costs 
+        \item average costs $K/x$
+        \item average fixed costs
+        \item average variable costs
+        \item marginal costs $dK/dx$
+    \end{itemize}    
+  }
+  \mycomment{
+    In practice, it is often difficult to clearly assign costs to products. 
+    
+    Many costs occur only at the setting up of a production process; some occur at longer, some at shorter intervals. 
+
+    Material and labour that goes into the individual product are clearly variable costs. But even then the actual distinction is also a matter of point of view or granularity of the investigation.
+  }  
+\end{frame}
+
+\begin{frame}{Costs}
+  \mytext{
+    \begin{itemize}
+        \item labour costs
+        \item capital expenditure
+        \item debt service
+        \item management and consultancy costs
+        \item taxes and levies
+        \item opportunity costs
+        \item external costs
+        \item future costs
+        \item economies of scale (and scope)
+        \item efficiency gains
+    \end{itemize}    
+  }
+  \mycomment{Economies of scale refer to the fact that marginal costs may drop as quantity rises. In practice, these may be discrete, as we switch from one way of production (one machine) to another. Any discrete functions are difficult to maximise, where particular attention has to be drawn to the corner solutions.}
+\end{frame}
+
+
+
+\begin{frame}{Expenditure (Business Administration)}
+    \showmytikz{../shared/tikz/tikz-expenditureovertime.tex}
+    \mycomment{
+    Typical cash flow / expenditure over time structure for large investments: 
+    \begin{description}
+        \item[DEVEX] development expenditure
+        \item[CAPEX] capital expenditure; costs for the construction and commissioning of assets
+        \item[CAPEX rep.]  cost of capital: financial costs such as interest rate payments
+        \item[OPEX] operational costs, such as variable costs, maintenance of the assets etc.
+    \end{description}
+    }
+\end{frame}
+
+
+\begin{frame}{Production Functions: Cobb-Douglas}
+    \mytext{
+        Factors can be perfect complements or substitutes. Mostly, they will be complements that can only in parts substitute each other. A common mathematical form is:
+        \begin{equation}
+            \Pi = b K^\alpha \cdot L^\beta
+        \end{equation}
+        Where $b$ is a scaling factor. Often with the additional assumption of $\alpha+\beta=1$, which assures constant economies of scale: if you double both inputs, you double the output.
+
+        Equations of this form can also be used as utility functions.
+    }
+    \mycomment{
+        For example, assume you know that 
+        \begin{equation}
+            \begin{cases}
+                12=5^{\alpha}5000^{\beta}\\
+                7=7^{\alpha}4000^{\beta}
+            \end{cases}
+        \end{equation}
+        You solve by taking logarithms:
+        \begin{equation}\label{eq:eins}
+            \ln 12= \alpha\ln 5 + \beta \ln 5000
+        \end{equation}
+        \begin{equation}\label{eq:zwei}
+            \ln 7= \alpha\ln 7 + \beta \ln 4000
+        \end{equation}
+        and solve like any linear system, e.g. divide eq.~\ref{eq:eins} by eq.~\ref{eq:zwei}, etc.
+
+        (This example is based on Mark 8:14-21.)
+    }
+\end{frame}
+
+\begin{frame}{Production Functions: Cobb-Douglas}
+    \showmytikz[2]{../shared/tikz/tikz-ces.tex}
+    \mycomment{
+        Functions of the Cobb-Douglas type are usually good approximations, and mathematically easy to treat. There has been empirical studies on the values of the parameter for large firms, companies and other large aggregates. 
+
+        However, since $\sigma=1$, there are constant rates of substitution also at the more extreme values, which is probably unrealistic. But most optimisation does not happen there. For a more precise modelling, one can use a CES-function instead; we shall not expand on the issue further.
+    
+    }
+\end{frame}
+
+
+% \begin{frame}{Cobb-Douglas vs. CES Function}
+%     \showmytikz[2]{../shared/tikz/tikz-ces.tex}
+%     \mycomment{
+%     For a more precise modelling, one can use the CES function. Cobb-Douglas functions are a special case of CES.
+
+%     \begin{equation}
+%         y=\left(\alpha K^{-\rho}+\beta L^{-\rho}\right)^{-\frac{1}{\rho}}
+%     \end{equation}
+%     with $\alpha,\beta,\rho<1$. Here, $\alpha=\beta=\rho=0.5$.
+
+%     This is more realistic at the more extreme ends, but in the `middle', where most action takes place, the gains might not warrant the complications.
+    
+%     }
+% \end{frame}
+% \begin{frame}{3D Plots}
+%     \showmytikz{../shared/tikz/tikz-3dfunction.tex}
+%     \mycomment{
+%     It is possible to represent such functions in three dimensions, and possible to build more complex models that evade visualisation.
+
+%     Note that the empirical studies typically validate the assumptions of the model: diminishing returns, diminishing marginal rates of substitution. Thus, whatever the actual function, some truths we derive from looking at the general case hold in most real cases.
+    
+%     }
+% \end{frame}
+
+\begin{frame}{Factor Prices}
+    \showmytikz[1]{../shared/tikz/tikz-factorprices.tex}
+    \mycomment{
+        As a firm increases its output, the proportion of factors it requires for production may or may not be constant. 
+
+        Classical factors are labour (variable costs) and capital (fixed costs). 
+
+        Think about labourers and shovels; or about machines and labourers.
+
+        The production frontiers and production line may also not be continuous. 
+
+        Changing factor prices will affect the firms choice of factor combinations. More expensive labour typically leads to more use of machines, which increases labour productivity.
+    }
+\end{frame}
+
+\begin{frame}{Production Possibility Frontier, Opportunity Costs}
+    \showmytikz[1]{../shared/tikz/tikz-ppf}
+    \mycomment{
+        I might be able to choose what combination I produce with the factors I have. For example, a farmer could decide to produce fruit, or to raise animals.
+
+        The result is called production possibility frontier.
+
+    }
+\end{frame}
+
+\begin{frame}{Production Possibility Frontier, Opportunity Costs}
+    \showmytikz[1,2]{../shared/tikz/tikz-ppf}
+    \mycomment{
+        For every extra unit of $B$ that the firm produces, it has to let go of some amount of $A$. This concept is known as opportunity costs. 
+    
+        In this example, the opportunity costs for producting more $B$ measured in $A$ increase.
+    
+    }
+\end{frame}
+
+\begin{frame}{Production Possibility Frontier, Opportunity Costs}
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-ppf}
+    \mycomment{
+    If the two goods use very similar factor inputs, opportunity costs may be constant. An example would be to grow apples and pears: for each apple tree, you would have one pear tree less.
+
+    Which one should you choose? That depends of course on the costs of the factors and the price of the goods. 
+
+
+    }
+\end{frame}
+
+\begin{frame}{Production Possibility Frontier, Opportunity Costs}
+    \showmytikz[1,2,3,4,5]{../shared/tikz/tikz-ppf}
+    \mycomment{
+    An inverted PPF can happen if there are increasing returns for one of the goods produced. In this case, specialisation would be the best outcome.
+
+    The concept can be used for production decisions of any firm, but also of economies as a whole. The production possibility frontier can of course grow (outwards) with (more) factor input or technological change.
+    }
+\end{frame}
+
+\begin{frame}{Supply and Production Decision}
+    \mycomment{
+        The decision to produce a good is actually dependent on many factors. Actual supply on a market can be subject to a plethora of access barriers in the real word. In the following, we thus look at a simplified, idealised world.
+    }
+    \mytext{
+    \begin{itemize}
+        \item produce, when costs are covered
+        \item costs are those for capital and labour: 
+        \item[] wages and interest rates
+        \item in the short term, relevant are variable costs only
+        \item fixed costs are relevant long-term for investment decision, not short-term for production decisions
+        \item in the longer run, the price must also cover costs of capital (per unit), thus equal average total costs.
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Supply Curve}
+    \mycomment{
+    Imagine a market, where multiple sellers offer the good for different prices. While everyone will be trying to get the highest price they can negotiate, everyone will actually have a:
+    \begin{itemize}
+        \item reservation price: the lowest price for which they will agree on a sale.
+    \end{itemize}
+    This reservation price typically corresponds to their costs to procue the good.
+    }
+    \showmytikz[1]{../shared/tikz/tikz-supplyblocks}
+\end{frame}
+
+\begin{frame}{Supply Curve}
+    \mycomment{
+    We can now sort these offers from the lowest to highest. Imagine an auction, where we start with a very low bid, and slowly increase the price to see how many more sellers would be willing to sell at that price tag.
+    }
+    \showmytikz[2]{../shared/tikz/tikz-supplyblocks}    
+\end{frame}
+
+\begin{frame}{Supply Curve}
+    \showmytikz[3]{../shared/tikz/tikz-supplyblocks}
+    \mycomment{For a low price, few people will be willing to sell. The higher the price, there more is for sale. Thus, we can get a supply curve in the same manner.
+
+    By definition, the supply curve slopes upward:
+
+    \begin{equation}
+        \frac{
+        \delta p
+        }{
+        \delta x
+        }>0
+    \end{equation}
+
+    Generally, the supply curve is pretty  `flat': there might be a certain price for which almost any owner of a thing will part from it. 
+    
+    If the price on the market is higher than the costs to produce the good, there will be almost infinite supply at that price - but not all of that supply will also meet demand.
+
+    If profits in one market are just a little higher than in another market, it is likely that more producer will spring up. 
+
+    That means that the price elasticity of supply is typically high \textit{in the long run}. 
+    
+
+    % It follows that for every demand there is a matching supply. This is called `Says law'.
+    
+    }
+\end{frame}
+
+\begin{frame}{Supply Curve}
+    \showmytikz[3,4]{../shared/tikz/tikz-supplyblocks}
+    \mycomment{
+    The supply curve is by definition upward sloping, and it is typically pretty flat with some spikes. That is: as long as the capacities to produce are not all in use, supply will be ample and delivered as long as costs are covered. However, after a certain limit an area of scarcity will be reached, where buyers will start to have to out-bid suppliers.
+     
+    
+    }
+\end{frame}
+
+\begin{frame}{Elasticity of Supply}
+    \showmytikz[1,2]{../shared/tikz/tikz-elasticityofsupply}
+    \mycomment{
+    We see that the concept of elasticity applies to supply as well.
+
+    Typically, supply is very inelastic in the short term, resulting in price spikes if quantity changes. 
+    
+    But in the long run, supply is elastic. You want more apples? I just bring some more to the market. You want more t-shirts? I ramp up production.
+    }
+    
+\end{frame}
+
+\begin{frame}{Pork Cycle}
+    \showmytikz[1]{../shared/tikz/tikz-porkcycle.tex}
+    \mycomment{
+        Supply and prices can be cyclical. A classic example is the market for pork. Assume one year prices are high; all farmers will then grow more pigs. 
+        
+        
+    }
+\end{frame}
+
+\begin{frame}{Pork Cycle}
+    \showmytikz[1,2]{../shared/tikz/tikz-porkcycle.tex}
+    \mycomment{
+ The next year, as the animals are there, overproduction makes prices tumble. Then, everyone moves away from pork (and for example into beef). Thus the cycle continues eventually.
+
+        Such cycles may be the underlying factor for business cycles, where boom and bust  phases seem to alternate. (More precisely: expansion, peak, contraction/recession, trough.) 
+        
+        After expansion comes crisis, after crisis recession, and after recession recovery. However, there is much more to business cycles, and to bubbles, than we cover here.
+
+        Note that the word "crisis" is Greek and means the turning point (originally in an illness). A dismal situation itself is not a crisis (yet).
+
+        % This may or may not correspond do waves of innovation, and product life cycles. Note that the idea of boom-bubble-bust is another, more extreme idea lacking the resulting recovery. This has more to do with herd behaviour, rather than reactions to actual prices.
+    }
+\end{frame}
+
+\begin{frame}{Supply and Demand: Market}
+    \showmytikz{../shared/tikz/tikz-supplyanddemand.tex}
+    \mycomment{
+        Now that we have a supply curve, we can combine it with the demand curve.
+
+        The interaction of those willing to sell and those willing to buy is of course the market. 
+        
+        And the outcome of the market will be that price and that quantity where supply meets demand.       
+
+    }
+\end{frame}
+
+\begin{frame}{Supply and Demand: Market}
+    \showmytikz[1]{../shared/tikz/tikz-supplyanddemand.tex}
+    \mycomment{
+        There is a point where these two curves meet: at a certain price a certain quantity will be traded. Demand meets supply, simply.  
+
+        A given constellation of potential sellers and buyers will result in a price $p$ and a quantity $q$ that is sold at that price.
+
+        Notice that at that price and quantity, not every potential seller sells, and not every potential buyer buys.
+
+    }
+\end{frame}
+
+\begin{frame}{Equilibrium}
+    \showmytikz[1]{../shared/tikz/tikz-demandandsupplysimple.tex}
+    \mycomment{
+        Notice that at equilibrium  price and quantity, not every potential seller sells, and not every potential buyer buys.
+
+        There is a price at which nobody buys: the \textbf{prohibitive price.} 
+
+        There is a maximum quantity turned over at a price of zero: the \textbf{saturation quantity.}
+
+        Note that there may be exceptions: water, energy...
+
+        But more importantly: some would sell for lower price than the market price, some would buy for a higher price. What does this mean?
+    }    
+\end{frame}
+
+\begin{frame}{Energy Supply: Merit Order}
+    \showmytikz[1]{../shared/tikz/tikz-meritorder.tex}
+    \mycomment{
+        The graph shows a typical supply curve in the Energy sector, where  power production methods have different marginal costs. The supply curve has steps, where (at the time of writing) renewables cost about 5ct/KWh, coal about 10ct/KWh, gas turbines 20ct/KWh.
+
+        
+    }
+    
+\end{frame}
+
+\begin{frame}{Energy Supply: Merit Order}
+    \showmytikz[1,2]{../shared/tikz/tikz-meritorder.tex}
+    \mycomment{
+        The costs of the last technology used determines the price. The availability of renewables depends much on the day time, season, and weather.
+
+        This supply will meet a demand (curve). In the case of energy, demand may also vary widely over time.
+
+        Cheaper technologies profit from this situation. 
+        
+    }
+    
+\end{frame}
+
+\begin{frame}{Energy Supply: Merit Order}
+    \showmytikz[1,3]{../shared/tikz/tikz-meritorder.tex}
+    \mycomment{
+        If, however, supply of the cheap source exceeds demand, the price drops dramatically, and profits can disappear. This may can happen when there is much wind and sun.
+    }
+    
+\end{frame}

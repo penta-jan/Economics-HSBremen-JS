@@ -1,0 +1,1277 @@
+%% ME_QuestionPool.tex
+%% ─────────────────────────────────────────────────────────────────────────────
+%% CONTROL QUESTIONS — Question Pool
+%% Microeconomics, Jan Suchanek, Hochschule Bremen, Summer Semester 2026
+%%
+%% Covers: Ch. 2 Recap & Basics · Ch. 3 The Consumer · Ch. 4 Demand & Supply
+%%         Ch. 5 Equilibrium & Welfare · Ch. 6 Market Disruptions
+%%         Ch. 7 Monopolies: The Cournot Model · Ch. 9 Market Imperfections
+%%         Ch. 10 State Intervention & Public Choice
+%%         Ch. 12 Dominance & Strategic Interaction
+%%         Ch. 13 Trade · Ch. 14 Protectionism
+%%
+%% Each chapter provides: 3 Multiple Choice · 2 True/False · 1 Open Question
+%% ─────────────────────────────────────────────────────────────────────────────
+\documentclass[paper=a5]{scrartcl}
+
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%% ── Load the question-bank package FIRST ────────────────────────────────────
+%%    hsbquestions.sty must live in the SAME FOLDER as this .tex file.
+%%    It defines \showanswerstrue / \showanswerSfalse via \newif\ifshowanswers.
+%%    "Undefined control sequence" means the .sty was not found.
+\usepackage{hsbquestions}
+
+%% ── TOGGLE — uncomment EXACTLY ONE line ─────────────────────────────────────
+\showanswerstrue               % ANSWER KEY — reveals answers + solutions
+% \showanswersfalse                % STUDENT VERSION — hides answers (default)
+
+\usepackage[headsepline]{scrlayer-scrpage}
+\automark{section}
+\pagestyle{scrheadings}
+\ihead{\leftmark}
+\chead{}
+\ohead{Control Questions}
+
+\setlength{\parskip}{1ex}
+
+\title{Microeconomics}
+\subtitle{Control Questions — Full Question Pool}
+\author{Sonnet 4.6 / Claude AI using the Script of Jan \noun{Suchanek}}
+% \date{Summer Semester \the\year}
+
+\begin{document}
+\setcounter{page}{247}
+\onehalfspacing
+
+\maketitle
+
+% \begin{abstract}
+% This document contains a question pool for the Microeconomics module, covering all taught chapters. Each chapter provides multiple-choice, true/false, and open questions. Toggle \texttt{\textbackslash showanswerstrue} in the preamble to reveal model answers; \texttt{\textbackslash showanswersfalse} hides them  (default, for distribution to students).
+% \end{abstract}
+
+% \tableofcontents
+
+
+\clearpage
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 1 — Recap and Basics}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Stock and Flow Quantities}
+Which of the following is a \emph{flow} quantity?
+\begin{choices}
+  \choice        The total national debt of Germany.
+  \choice        The oil reserves in a storage tank.
+  \correctchoice The gross domestic product (GDP) per year.
+  \choice        The number of cars registered in Bremen.
+\end{choices}
+\begin{solution}
+  GDP per year is a flow quantity: it measures how much value is \emph{added}
+  over a period of time (here: one year). National debt, oil reserves, and the
+  number of registered cars are all stock quantities — they describe how much
+  of something exists at a point in time.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Price Elasticity of Demand}
+The price elasticity of demand $\eta$ for a good is measured at $\eta = -0.3$.
+Which statement is correct?
+\begin{choices}
+  \choice        Demand is elastic: a 1\,\% price rise causes a 3\,\% quantity drop.
+  \correctchoice Demand is inelastic: a 1\,\% price rise causes only a 0.3\,\%
+                 quantity drop.
+  \choice        Demand is unit elastic.
+  \choice        The demand curve is horizontal.
+\end{choices}
+\begin{solution}
+  $|\eta| = 0.3 < 1$, so demand is \textbf{inelastic}. The quantity demanded
+  barely responds to the price change. Energy and petrol are classic examples
+  of goods with inelastic demand.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Rule of 72}
+An economy grows at 4\,\% per year. Approximately how many years does it take
+to double in size, according to the Rule of 72?
+\begin{choices}
+  \choice        4 years.
+  \choice        9 years.
+  \correctchoice 18 years.
+  \choice        72 years.
+\end{choices}
+\begin{solution}
+  The Rule of 72 states $\Delta t \approx 72 / p$. At $p = 4\,\%$:
+  $\Delta t \approx 72 / 4 = 18$ years.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Giffen Goods}
+A Giffen good is a good for which demand \emph{rises} when its price rises.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} Giffen goods are an exception to the law of demand. Because
+  they are strongly inferior goods consuming a large share of the consumer's
+  budget, the income effect of a price rise dominates the substitution effect,
+  so consumers actually buy \emph{more}. Rice in subsistence economies is the
+  classic textbook example.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Marginal vs.\ Average Values}
+If the marginal value of producing one additional unit is \emph{below} the
+current average, the average must be falling.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} This is a purely mathematical relationship: whenever the next
+  value added (marginal) is below the running average, it pulls the average
+  down. Think of a class average: one very low new grade always lowers the mean.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Discounting and the Interest Rate}
+Explain in your own words why the interest rate can be interpreted as the
+\emph{price of the future}. What happens to your valuation of a future payoff
+when the interest rate rises?
+
+\answerlines[5]
+
+\begin{solution}
+  The interest rate reflects the opportunity cost of holding money in the
+  present rather than investing it. A payment received in the future is worth
+  less in today's terms the higher the interest rate is, because money
+  invested now would grow quickly — the present value $K_0 = K_t/(1+r)^t$
+  falls as $r$ rises.
+
+  Conversely, at near-zero interest rates, the future is valued almost as
+  highly as the present (the discount factor $1/(1+r)^t \approx 1$). High
+  interest rates therefore encourage present consumption and discourage
+  long-term investment.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 2 — The Consumer}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Gossen's Second Law}
+A utility-maximising consumer has spent her entire budget. Gossen's Second Law
+tells us that at the optimum:
+\begin{choices}
+  \choice        She buys only the cheapest good.
+  \correctchoice The marginal utility per euro is equal across all goods purchased.
+  \choice        The marginal utility of each good is zero.
+  \choice        Total utility equals the budget divided by the price level.
+\end{choices}
+\begin{solution}
+  Gossen's Second Law states that utility is maximised when the last euro
+  spent on each good yields the same marginal utility. If this were not the
+  case, the consumer could increase total utility by shifting spending from the
+  lower-MU good to the higher-MU good.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Income and Substitution Effect}
+The price of good $X$ rises. For a \emph{normal} good, the income effect and
+the substitution effect:
+\begin{choices}
+  \choice        Both lead to \emph{more} consumption of $X$.
+  \choice        Work in opposite directions; the income effect dominates.
+  \correctchoice Both lead to \emph{less} consumption of $X$.
+  \choice        Work in opposite directions; the substitution effect dominates.
+\end{choices}
+\begin{solution}
+  For a normal good, both effects reinforce each other. The \textbf{substitution
+  effect} makes $X$ relatively more expensive, so the consumer switches to
+  alternatives. The \textbf{income effect} makes the consumer feel poorer, and
+  since $X$ is a normal good, less of it is consumed. Both effects reduce
+  the quantity demanded.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Inferior and Superior Goods (Engel Curves)}
+As a consumer's income rises, she buys \emph{less} cheap instant noodles and
+\emph{more} restaurant meals. This means:
+\begin{choices}
+  \choice        Both goods are normal goods.
+  \correctchoice Instant noodles are an inferior good; restaurant meals are a
+                 superior (luxury) good.
+  \choice        Both goods are inferior goods.
+  \choice        Instant noodles are a Giffen good.
+\end{choices}
+\begin{solution}
+  A good is \textbf{inferior} if consumption falls as income rises. A good is
+  \textbf{superior} (or luxury) if consumption rises faster than income.
+  Instant noodles are inferior here; restaurant meals are superior.
+  Their Engel curves slope in opposite directions.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Cobb-Douglas Utility: $\alpha + \beta = 1$}
+In the Cobb-Douglas utility function $U = X^{\alpha} \cdot Y^{\beta}$ with
+$\alpha + \beta = 1$, the budget shares spent on $X$ and $Y$ are constant
+at $\alpha$ and $\beta$ respectively, regardless of income or prices.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} This is a standard result for Cobb-Douglas preferences.
+  Optimising the budget gives $p_X \cdot x = \alpha \cdot B$ and
+  $p_Y \cdot y = \beta \cdot B$, so the fraction of the budget spent on each
+  good depends only on the exponents $\alpha$ and $\beta$, not on prices or
+  income. Engel curves are linear and pass through the origin.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Hicks Decomposition}
+The Hicks decomposition isolates the substitution effect by asking: how
+would the consumer re-allocate spending if relative prices changed but
+\emph{real income} (utility) stayed the same?
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} In the Hicks (compensated) approach, we shift the new budget
+  line outward until it is tangent to the \emph{old} indifference curve.
+  The movement along that curve to the new tangency point is the pure
+  substitution effect; the remaining change (between the two budget lines) is
+  the income effect.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Perfect Complements vs.\ Perfect Substitutes}
+Compare perfect complements and perfect substitutes in terms of their
+indifference-curve shapes, their marginal rates of substitution, and
+what happens to the income and substitution effects when the price of
+one good rises.
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{Perfect complements} (e.g.\ left and right shoes) have
+  L-shaped indifference curves. The MRS is zero except at the kink.
+  A price rise of one good causes a pure \emph{income effect}: the
+  consumer becomes poorer and buys less of both goods in fixed proportion.
+  There is no substitution effect.
+
+  \textbf{Perfect substitutes} (e.g.\ two identical shops selling fish and
+  chips) have linear indifference curves. The MRS is constant ($\sigma = \infty$
+  in the limit). A price rise of one good causes a pure \emph{substitution
+  effect}: the consumer switches entirely to the cheaper substitute. There is
+  no income effect (real utility is unchanged).
+
+  The normal, in-between case (Cobb-Douglas) exhibits both effects partially.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 3 — Demand and Supply}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The Supply Curve under Competition}
+Under perfect competition in the short run, the firm's supply curve is:
+\begin{choices}
+  \choice        The average total cost curve.
+  \correctchoice The marginal cost curve (above average variable cost).
+  \choice        Horizontal, because all firms are price takers.
+  \choice        Downward-sloping due to economies of scale.
+\end{choices}
+\begin{solution}
+  A competitive firm sets output where $P = MC$. The supply curve is therefore
+  the \textbf{marginal cost curve}. The firm only supplies if price covers
+  variable costs, so the relevant portion is above average variable cost.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Elasticity of Supply — Short vs.\ Long Run}
+Why is the price elasticity of supply typically \emph{lower} in the short run
+than in the long run?
+\begin{choices}
+  \correctchoice In the short run, capacity is fixed; firms cannot quickly
+                 expand production in response to a price rise.
+  \choice        In the short run, demand is more elastic, which reduces supply
+                 elasticity.
+  \choice        More firms operate in the short run, reducing each firm's
+                 ability to adjust.
+  \choice        Fixed costs do not exist in the long run.
+\end{choices}
+\begin{solution}
+  \textbf{Short-run supply is inelastic} because physical capacity cannot be
+  changed quickly. Over the long run, new capacity can be built and new firms
+  can enter, making supply much more responsive to price changes.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Edgeworth Box and the Trading Curve}
+In an Edgeworth box with two goods and two traders, the \emph{contract curve}
+(trading curve) is:
+\begin{choices}
+  \choice        The diagonal of the box.
+  \correctchoice The locus of all points where both traders' indifference curves
+                 are tangent — any move away harms at least one party.
+  \choice        The locus of points where both traders are at the same utility level.
+  \choice        The budget line shared by both traders.
+\end{choices}
+\begin{solution}
+  The \textbf{contract curve} connects all Pareto-efficient allocations: points
+  where the two indifference curves are tangent (equal MRS). Any point on the
+  curve is stable because moving away would make at least one party worse off.
+  Any point off the curve is inefficient: both parties could gain by trading.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{The Pork Cycle}
+The pork cycle arises because supply reacts to current prices with a time lag,
+generating cyclical price and quantity dynamics.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} High pork prices induce farmers to raise more pigs; supply
+  increases only when the animals mature. Excess supply then depresses prices,
+  triggering herd reductions — and so on. The same cobweb mechanism occurs in
+  shipping, construction, and commodity markets.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Merit Order in Energy Markets}
+In the energy merit order, the price of electricity is determined by the
+marginal cost of the \emph{most expensive} technology needed to meet demand.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} Technologies are stacked from cheapest to most expensive
+  (renewables, coal, gas). The last — most expensive — technology dispatched
+  sets the market price. All cheaper technologies therefore earn rents (producer
+  surplus). When renewable supply is very large and covers all demand, the
+  price can fall to near zero or below.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{The Pork Cycle}
+Describe the pork cycle. Why does it arise, and what broader economic lesson
+does it illustrate?
+
+\answerlines[6]
+
+\begin{solution}
+  When pork prices are high, many farmers invest in raising more pigs. Because
+  pigs take time to grow, supply only reaches the market with a lag of roughly
+  1--2 years. The surplus then depresses prices, causing farmers to reduce
+  herds. With less supply later, prices rise again — and the cycle repeats.
+
+  The pork cycle illustrates that \textbf{markets with production lags can
+  generate endogenous oscillations} (cobweb dynamics) even without external
+  shocks. The same pattern underlies boom-bust cycles in shipping, construction,
+  and commodity markets.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 4 — Equilibrium and Welfare}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Consumer and Producer Surplus}
+In a competitive equilibrium, the consumer surplus is:
+\begin{choices}
+  \choice        The area below the supply curve and above the equilibrium price.
+  \correctchoice The area below the demand curve and above the equilibrium price.
+  \choice        Equal to the producer surplus.
+  \choice        The total revenue of all producers.
+\end{choices}
+\begin{solution}
+  Consumer surplus is the difference between what buyers are \emph{willing to
+  pay} (their reservation prices, read off the demand curve) and what they
+  \emph{actually pay} (the equilibrium price). Graphically it is the triangle
+  below DD and above $p^*$.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Welfare and Pareto Efficiency}
+The outcome of a perfectly competitive market is Pareto optimal. This means:
+\begin{choices}
+  \choice        Everyone has the same income.
+  \correctchoice No reallocation can make one party better off without making
+                 another worse off.
+  \choice        Total output is maximised regardless of how it is distributed.
+  \choice        The government has intervened to correct market failures.
+\end{choices}
+\begin{solution}
+  \textbf{Pareto efficiency} means we have exhausted all mutually beneficial
+  trades. In a competitive equilibrium, all surplus-generating trades are
+  executed, and the sum of consumer and producer surplus is maximised. It says
+  nothing about the \emph{fairness} of the distribution.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Elasticity and Who Captures the Surplus}
+Demand is highly \emph{inelastic} and supply is \emph{elastic}. Which party
+captures the larger share of the total welfare gain?
+\begin{choices}
+  \correctchoice Consumers, because they are willing to pay far more than the
+                 equilibrium price.
+  \choice        Producers, because they have market power.
+  \choice        The surplus is split equally.
+  \choice        No surplus exists if supply is elastic.
+\end{choices}
+\begin{solution}
+  When demand is inelastic, many consumers would have paid a much higher price,
+  so the area below DD and above $p^*$ (consumer surplus) is large relative to
+  the narrow triangle of producer surplus. Examples: energy, insulin.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Reservation Price}
+A consumer's \emph{reservation price} for a good is the maximum price she
+would be willing to pay for it; if the market price is below this, she earns
+a positive consumer surplus.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} Consumer surplus = reservation price $-$ market price. If the
+  market price equals or exceeds the reservation price, the consumer does not
+  buy (zero or negative surplus). The competitive equilibrium aggregates all
+  such individual differences into total consumer surplus.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Pareto and Kaldor-Hicks}
+A policy change that makes some people better off and others worse off
+\emph{cannot} be justified under the Pareto criterion, but it \emph{can}
+be justified under the Kaldor-Hicks criterion if the winners could in
+principle compensate the losers.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} The strict Pareto criterion requires that nobody be made worse
+  off. Kaldor-Hicks relaxes this: a change is desirable if the gains to winners
+  are large enough to \emph{potentially} compensate losers — even if no actual
+  compensation takes place.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Interpreting Consumer and Producer Surplus}
+Using the demand-supply diagram, explain what consumer surplus and producer
+surplus represent. Under what circumstances is one much larger than the other,
+and what real-world examples illustrate this?
+
+\answerlines[6]
+
+\begin{solution}
+  \textbf{Consumer surplus (CS)} is the sum of each buyer's reservation price
+  minus the equilibrium price: the benefit consumers obtain beyond what they
+  pay. Graphically it is the area below the demand curve and above $p^*$.
+
+  \textbf{Producer surplus (PS)} is the amount above the minimum price sellers
+  would accept (their marginal costs): the area above the supply curve and below
+  $p^*$. If there are no fixed costs, it equals profit.
+
+  \textbf{CS} is large relative to \textbf{PS} when demand is inelastic (e.g.\
+  petrol, life-saving medicines): buyers have few substitutes and would pay
+  much more than the market price.
+
+  \textbf{PS} dominates when supply is inelastic (e.g.\ old masters paintings,
+  prime real estate): the quantity is naturally limited, so sellers capture
+  rents.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 5 — Market Disruptions}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Ad Valorem vs.\ Per-Unit Tax}
+An ad valorem tax on a good differs from a per-unit tax in that:
+\begin{choices}
+  \choice        It is paid by consumers, not producers.
+  \correctchoice It is proportional to the value of the good, causing the supply
+                 curve to \emph{rotate} rather than shift in parallel.
+  \choice        It always generates more government revenue.
+  \choice        It has no effect on consumer surplus.
+\end{choices}
+\begin{solution}
+  A \textbf{per-unit tax} adds a fixed amount $T$ to each unit, shifting the
+  supply curve upward by $T$ in parallel. An \textbf{ad valorem tax} levies a
+  percentage of price, so the mark-up is larger at high prices, rotating the
+  supply curve. Both can in principle produce the same equilibrium outcome
+  for the right parameter choice.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Tax Burden and Elasticity}
+A unit tax is imposed on a market where demand is highly inelastic and supply
+is elastic. Who bears the greater share of the tax burden?
+\begin{choices}
+  \choice        Producers, because they choose the price.
+  \correctchoice Consumers, because they cannot easily reduce their quantity.
+  \choice        The burden is always split 50:50 regardless of elasticities.
+  \choice        Nobody; the deadweight loss absorbs the entire tax.
+\end{choices}
+\begin{solution}
+  The \textbf{less elastic} party bears more of the burden. With inelastic
+  demand, consumers have few substitutes and cannot avoid the tax, so most of
+  the price increase passes to them. This is why taxes on energy, tobacco, and
+  alcohol are fiscally attractive: they generate stable revenue with limited
+  market distortion.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Rigid Quantity Restriction}
+A government caps the quantity of a good that may be sold to $x_2 < x^*$
+(the competitive quantity). Compared to the unregulated equilibrium:
+\begin{choices}
+  \choice        The price falls and welfare increases.
+  \choice        Only consumer surplus falls; producer surplus is unchanged.
+  \correctchoice Both consumer and producer surplus change; total welfare falls
+                 and a deadweight loss arises.
+  \choice        The quantity restriction has no effect if demand is elastic.
+\end{choices}
+\begin{solution}
+  A quota below $x^*$ raises the market price above $p^*$. Consumers who are
+  excluded lose surplus. The net effect on producer surplus depends on the
+  elasticities: some producers gain from the higher price, but others are
+  forced out of the market. Total welfare falls because mutually beneficial
+  trades are prevented — this is the deadweight loss triangle.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Supply Shocks Are Always Passed On in Full}
+A cost shock (e.g.\ a sudden rise in raw-material prices) that shifts the
+supply curve upward is always passed on entirely to consumers in the form
+of a higher market price.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} How much of a cost shock is passed on depends on the
+  elasticities of supply and demand. The less elastic party bears more of
+  the burden. In the symmetric case, the burden is shared equally. A cost
+  shock will generally \emph{never} be passed on 100\,\% if demand has any
+  negative slope — producers absorb part of it through lower margins.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Deadweight Loss from a Tax}
+A tax always creates a deadweight loss — a portion of welfare that is
+completely destroyed rather than transferred to the government.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} A tax raises the price and reduces the quantity traded below
+  the efficient level. The transactions that no longer take place would have
+  generated surplus for both buyer and seller, but that potential gain is
+  simply lost. Government revenue (GR) compensates partly, but the triangle
+  of deadweight loss $DWL$ is not captured by anyone.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Welfare Effects of a Supply Shock}
+A per-unit cost increase shifts the supply curve upward. Using a supply-demand
+diagram, describe how this affects price, quantity, consumer surplus, producer
+surplus, and total welfare. Explain the role of elasticities.
+
+\answerlines[7]
+
+\begin{solution}
+  The supply curve shifts up by the size of the cost increase. In the new
+  equilibrium: price rises from $p_1$ to $p_2$ and quantity falls from $x_1$
+  to $x_2$.
+
+  \textbf{Consumer surplus} falls: buyers pay more and fewer units are traded.
+  \textbf{Producer surplus} falls too: although price rose, their costs rose
+  by more, and fewer units are sold.
+  \textbf{Total welfare} falls: the new combined surplus is smaller than before,
+  with a deadweight loss triangle.
+
+  \textbf{Elasticities determine the split:} the less elastic party bears more
+  of the burden. With inelastic demand (e.g.\ petrol), consumers bear most of
+  the cost increase. With inelastic supply, producers bear more.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 6 — Monopolies: The Cournot Model}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Cournot Point}
+A profit-maximising monopolist sets output where:
+\begin{choices}
+  \choice        Price equals average cost.
+  \choice        Price equals marginal cost.
+  \correctchoice Marginal revenue equals marginal cost ($MR = MC$).
+  \choice        Total revenue is maximised.
+\end{choices}
+\begin{solution}
+  The monopolist maximises $\Pi(x) = R(x) - C(x)$ by setting
+  $dR/dx = dC/dx$, i.e.\ $MR = MC$. This is the \textbf{Cournot point}.
+  Price equals marginal cost only under perfect competition. Total revenue
+  is maximised at unit elasticity, not at the profit maximum.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Monopoly Output vs.\ Competitive Output}
+With a linear demand curve and constant marginal costs, a monopolist produces
+approximately:
+\begin{choices}
+  \choice        The same quantity as perfect competition.
+  \choice        Twice the competitive quantity.
+  \correctchoice Half the competitive quantity.
+  \choice        Three-quarters of the competitive quantity.
+\end{choices}
+\begin{solution}
+  For a linear demand curve $P = a - bQ$ and constant $MC = c$, the
+  competitive output is $Q_C = (a-c)/b$ and the monopoly output is
+  $Q_M = (a-c)/(2b) = Q_C/2$. The monopoly price is roughly twice the
+  competitive price.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{First-Degree Price Discrimination}
+A firm practising first-degree (perfect) price discrimination charges each
+buyer their reservation price. The result is:
+\begin{choices}
+  \choice        No transactions take place because prices are too high.
+  \choice        Consumer surplus is maximised at the expense of producer surplus.
+  \correctchoice Consumer surplus is zero and all surplus is captured as
+                 producer surplus; the quantity sold equals the competitive level.
+  \choice        A larger deadweight loss than under standard monopoly pricing.
+\end{choices}
+\begin{solution}
+  With perfect price discrimination, the monopolist extracts the full value from
+  every buyer. Consumer surplus falls to zero, but every consumer who values
+  the good above marginal cost still buys — so quantity equals the competitive
+  level and there is no deadweight loss. In practice this requires perfect
+  information about willingness to pay and no resale between buyers.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Monopoly and Welfare}
+Compared to perfect competition, a monopoly results in a higher price, a lower
+quantity traded, and a net loss of social welfare.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} The monopolist restricts output to $Q_M < Q_C$ and charges
+  $P_M > P_C$. Consumer surplus falls sharply, and the gap between the
+  competitive and monopoly outcomes that is captured by neither party is the
+  \textbf{deadweight welfare loss}. Producer surplus (profit) rises, but total
+  welfare is lower than under competition.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Herfindahl-Hirschman Index (HHI)}
+The Herfindahl-Hirschman Index $H = \sum_{i=1}^{N} a_i^2$ (where $a_i$ is
+each firm's market share) reaches its maximum value of 1 when the market
+is a perfect monopoly.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} If there is one firm with $a_1 = 1$ (100\,\%), then
+  $H = 1^2 = 1$. In perfect competition with infinitely many tiny firms, $H
+  \to 0$. Competition authorities use the HHI to assess market concentration
+  when evaluating mergers.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Arguments For and Against Monopolies}
+Give one economic argument \emph{in favour of} allowing a natural monopoly, and
+one argument \emph{against} it. What does economic theory suggest as the best
+policy response?
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{In favour:} Natural monopolies arise where fixed costs are so high
+  that a single firm can supply the entire market more cheaply than two
+  competing firms (e.g.\ railway networks, electricity grids). Duplicating
+  the infrastructure would waste resources.
+
+  \textbf{Against:} An unregulated monopolist extracts rents, produces less
+  than is socially optimal, and has little incentive to be efficient or
+  innovate.
+
+  \textbf{Policy:} The theoretical best response (Jean Tirole) is
+  \emph{regulation} — capping the monopolist's rate of return or price —
+  rather than nationalisation or break-up, since a change of ownership alone
+  does not necessarily improve incentives or outcomes.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 8 — Market Imperfections}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Adverse Selection}
+Adverse selection in insurance markets arises because:
+\begin{choices}
+  \choice        Insurance companies invest premiums poorly.
+  \correctchoice Those who most want insurance are those most likely to make a
+                 claim, driving up premiums and driving low-risk customers out.
+  \choice        Insured individuals start behaving more recklessly after
+                 taking out a policy.
+  \choice        Governments subsidise insurance companies.
+\end{choices}
+\begin{solution}
+  \textbf{Adverse selection} (Akerlof, 1970) is a pre-contractual information
+  problem: high-risk individuals have greater incentive to buy insurance than
+  low-risk ones. As the insurer cannot distinguish between the two, it must
+  charge a higher premium, which drives out more low-risk customers, raising
+  the average risk further. In the extreme, markets can collapse entirely (the
+  ``market for lemons'').
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Pigouvian Tax}
+A government introduces a Pigouvian tax equal to the marginal \emph{external}
+cost of a polluting industry. The correct new equilibrium achieves:
+\begin{choices}
+  \choice        Zero production, since any pollution is unacceptable.
+  \choice        Maximum government revenue.
+  \correctchoice Production at the socially optimal level where price reflects
+                 full social costs.
+  \choice        An outcome identical to the untaxed market.
+\end{choices}
+\begin{solution}
+  The Pigouvian tax internalises the externality by raising private marginal
+  cost to match social marginal cost. Firms reduce output to the social
+  optimum, where price reflects the full cost — including environmental damage.
+  The government also collects revenue that can compensate those harmed.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Tragedy of the Commons}
+The tragedy of the commons occurs when:
+\begin{choices}
+  \choice        A good is excludable but non-rival, so firms under-produce it.
+  \correctchoice A resource is non-excludable and rival, so individuals over-use
+                 it because private gain exceeds private cost, ignoring the
+                 communal cost.
+  \choice        A monopolist restricts output of a public good.
+  \choice        International trade destroys a domestic commons.
+\end{choices}
+\begin{solution}
+  Common-pool resources are \textbf{rival} (my catch reduces yours) but
+  \textbf{non-excludable} (you cannot stop me fishing). Each individual's
+  private benefit from over-fishing exceeds their private cost, but the
+  communal cost is ignored. Solutions include privatisation, regulation, or
+  — as shown by Elinor Ostrom — community governance without either.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Moral Hazard}
+Moral hazard is an example of a \emph{post-contractual} information problem:
+once insured, a person may take more risks than they would without insurance.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} Moral hazard arises \emph{after} a contract is signed: the
+  insured party's behaviour changes because they no longer bear the full
+  consequences of their actions. By contrast, adverse selection is a
+  \emph{pre-contractual} problem (hidden type, not hidden action).
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Coase Theorem}
+The Coase Theorem states that, provided transaction costs are zero and property
+rights are clearly defined, parties will bargain to an efficient outcome
+regardless of who is initially assigned the property right.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} The key insight is that the \emph{initial} assignment of
+  property rights affects distribution but not efficiency (if bargaining is
+  costless). In practice, transaction costs are never zero, property rights may
+  be contested, and bargaining power is often unequal — which is why Elinor
+  Ostrom's work on commons governance remains important.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Asymmetric Information and the Market for Lemons}
+Explain Akerlof's ``market for lemons'' argument. Why can asymmetric
+information cause a market to function poorly or even collapse? Give a
+real-world example beyond used cars.
+
+\answerlines[7]
+
+\begin{solution}
+  Akerlof observed that in the used-car market, sellers know the true quality
+  of their car but buyers do not. Buyers therefore offer only the \emph{average}
+  price for a random car. Owners of high-quality cars (\emph{``peaches''})
+  find this average price too low and withdraw from the market. The average
+  quality of cars on offer falls, so buyers lower their willingness to pay
+  further — a downward spiral that can empty the market of good cars entirely.
+
+  \textbf{Mechanisms:} Adverse selection (bad drives out good) and the absence
+  of credible quality signals. Solutions include warranties, certification,
+  regulation, or repeated interaction.
+
+  \textbf{Real-world example:} Labour markets (workers know their own
+  productivity better than employers), insurance (only the high-risk seek
+  coverage), or credit markets (only risky borrowers may accept high interest
+  rates).
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 9 — The State}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Price Ceiling}
+A government sets a \emph{price ceiling below} the competitive equilibrium price.
+The most likely result is:
+\begin{choices}
+  \choice        A surplus of goods as producers over-supply at the low price.
+  \correctchoice Excess demand — more buyers want the good at the low price than
+                 sellers are willing to supply.
+  \choice        No change, because markets always clear at the equilibrium price.
+  \choice        An increase in total welfare.
+\end{choices}
+\begin{solution}
+  A binding price ceiling is below $p^*$. At the lower price, demand exceeds
+  supply (\textbf{excess demand}). Some buyers will not find the good, creating
+  queues and potentially black markets. Historical examples include Emperor
+  Diocletian's bread price ceiling, which contributed to shortages.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Laffer Curve}
+The Laffer curve illustrates that:
+\begin{choices}
+  \choice        Tax revenue rises monotonically with the tax rate.
+  \choice        Tax revenue falls monotonically with the tax rate.
+  \correctchoice Tax revenue is zero at both a 0\,\% and 100\,\% tax rate,
+                 implying a revenue-maximising rate somewhere in between.
+  \choice        A flat tax always maximises government revenue.
+\end{choices}
+\begin{solution}
+  At 0\,\% tax, revenue is zero. At 100\,\%, all economic activity ceases and
+  revenue is again zero. Tax revenue must therefore reach a maximum at some
+  intermediate rate. The exact location of that maximum is empirically disputed
+  and subject to income, substitution, and avoidance effects.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Ramsey Pricing Rule}
+The Ramsey rule for optimal taxation states that, to minimise welfare loss,
+the government should:
+\begin{choices}
+  \choice        Tax all goods at the same percentage rate.
+  \correctchoice Tax goods with lower price elasticity more heavily, since
+                 buyers cannot avoid the tax easily.
+  \choice        Tax goods with higher price elasticity more heavily, to
+                 maximise revenue.
+  \choice        Only tax goods that are luxury items.
+\end{choices}
+\begin{solution}
+  The Ramsey rule says to tax more heavily where the distortion is smallest,
+  i.e.\ where demand (or supply) is least elastic. Highly inelastic goods
+  (energy, tobacco) generate revenue with little reduction in traded quantity
+  — minimising deadweight loss. A lump-sum (per-head) tax is the extreme case:
+  it cannot be avoided at all, so it causes no market distortion.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Who Pays a Tax — Producer or Consumer?}
+Whether a unit tax is legally collected from the producer or the consumer
+makes no difference to the ultimate economic incidence of the tax.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} The \emph{statutory} incidence (who writes the cheque) differs
+  from the \emph{economic} incidence (who bears the cost). A tax on producers
+  shifts the supply curve up; a tax on consumers shifts the demand curve down.
+  Both lead to the same new equilibrium price and quantity and the same split
+  of the burden between the two sides of the market.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Subsidies Always Increase Net Welfare}
+Subsidising a market always increases total net social welfare.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} A subsidy lowers the market price and increases quantity
+  traded, raising welfare \emph{in that market}. However, the subsidy must be
+  funded — through taxes elsewhere — which creates an excess burden in other
+  markets. Producers also lose the incentive to reduce costs. The total
+  subsidy paid exceeds the welfare gain in the subsidised market, so there is
+  a net social cost.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Price Ceilings: Why Do They Often Backfire?}
+Analyse the welfare effects of a binding price ceiling below the market
+equilibrium price. Explain what excess demand is, what happens to welfare,
+and why black markets may emerge.
+
+\answerlines[7]
+
+\begin{solution}
+  A binding price ceiling $\bar{p} < p^*$ reduces the quantity supplied (some
+  sellers exit) while increasing quantity demanded. The result is
+  \textbf{excess demand}: a gap $F-G$ between those who want to buy and those
+  willing to sell at $\bar{p}$.
+
+  \textbf{Welfare effects:} Consumer surplus is redistributed and partly
+  destroyed — some buyers gain (those who can buy at the lower price) but many
+  buyers are rationed. Producer surplus falls sharply. Total welfare is lower
+  than at the competitive equilibrium; the lost triangle is a deadweight loss.
+
+  \textbf{Black markets} arise because buyers willing to pay above $\bar{p}$
+  and sellers willing to sell above $\bar{p}$ have an incentive to transact
+  illegally. Enforcement is costly and may be ineffective, as shown
+  historically by rent controls and wartime price controls.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 10 — Game Theory and Duopolies}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Nash Equilibrium}
+A Nash equilibrium in a game is a situation in which:
+\begin{choices}
+  \choice        Both players achieve their maximum possible payoff.
+  \correctchoice No player can increase their own payoff by unilaterally
+                 changing their strategy.
+  \choice        Both players cooperate to maximise total welfare.
+  \choice        The dominant strategy of each player is to defect.
+\end{choices}
+\begin{solution}
+  A \textbf{Nash equilibrium} is a strategy profile in which each player's
+  choice is a best response to the others' choices. No individual has an
+  incentive to deviate unilaterally. Note: it need not maximise total welfare
+  — the Prisoner's Dilemma demonstrates this clearly.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Prisoner's Dilemma}
+In the one-shot Prisoner's Dilemma, the Nash equilibrium is:
+\begin{choices}
+  \choice        Both players cooperate.
+  \correctchoice Both players defect, even though mutual cooperation would be
+                 better for both.
+  \choice        One player cooperates and the other defects.
+  \choice        The players randomise equally between cooperate and defect.
+\end{choices}
+\begin{solution}
+  \textbf{Mutual defection} is the Nash equilibrium: defecting is a dominant
+  strategy (it yields a higher payoff regardless of the other player's choice).
+  Yet mutual cooperation would be better for both — the dilemma. In repeated
+  play, cooperation can be sustained by strategies such as \emph{tit for tat}.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Stackelberg Leadership}
+In a Stackelberg duopoly, the \emph{follower} faces:
+\begin{choices}
+  \choice        The full market demand curve.
+  \choice        A demand curve steeper than the leader's.
+  \correctchoice A \emph{residual} demand curve — the part of market demand
+                 not already served by the leader.
+  \choice        No demand at all, since the leader captures the whole market.
+\end{choices}
+\begin{solution}
+  The Stackelberg leader moves first and serves a portion of the market. The
+  follower then acts as a de-facto monopolist over the \emph{residual demand}
+  — what remains. The leader anticipates this and chooses a large quantity to
+  leave little residual demand for the follower, securing a first-mover
+  advantage. Example: Amazon vs.\ Otto.de.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Battle of the Sexes: Two Nash Equilibria}
+The Battle of the Sexes game has exactly two Nash equilibria in pure
+strategies.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} In the Battle of the Sexes, Alice prefers (Concert, Concert)
+  and Bob prefers (Football, Football), but both prefer to be together rather
+  than apart. Both (Concert, Concert) and (Football, Football) are Nash
+  equilibria in pure strategies — neither player wants to deviate unilaterally
+  once they coordinate. There is also a mixed-strategy equilibrium.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Predatory Pricing}
+Predatory pricing — setting a price so low that rivals cannot survive —
+creates long-term harm to consumers even if it appears to help them in
+the short run.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} The predatory firm accepts short-run losses to drive out
+  competitors, after which it raises prices to monopoly level, recouping
+  losses at the consumers' expense. This is why predatory pricing is mostly
+  illegal under competition law in the EU and the US.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Does the Prisoner's Dilemma Matter for Trade Policy?}
+Explain the logic of the Prisoner's Dilemma and apply it to the decision of
+two countries over whether to impose trade tariffs on each other.
+
+\answerlines[7]
+
+\begin{solution}
+  In the Prisoner's Dilemma, mutual cooperation yields the best collective
+  outcome, but each player has a private incentive to defect regardless of
+  the other's action — so rational self-interest leads to a collectively
+  inferior outcome.
+
+  \textbf{Applied to trade:} If both countries maintain free trade (cooperate),
+  both gain from exchange. But if one country defects by imposing tariffs, it
+  protects its domestic producers at the expense of its trading partner.
+  Because both face this incentive, the Nash equilibrium is mutual tariffs —
+  a trade war that leaves both countries worse off than free trade would.
+
+  \textbf{Solution:} International agreements (WTO, bilateral treaties) act as
+  commitment devices that make sustained cooperation stable, mimicking the
+  ``tit for tat'' outcome in a repeated game.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 11 — Money and Trade}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Absolute Advantage}
+Country A can produce both fish and fruit more efficiently than Country B.
+According to the principle of \emph{absolute} advantage:
+\begin{choices}
+  \choice        Trade is only beneficial for Country A.
+  \choice        No trade will take place because Country B has nothing
+                 to offer.
+  \correctchoice Trade can still be mutually beneficial if each country
+                 specialises in the good it produces relatively more efficiently.
+  \choice        Country B should impose tariffs to protect its industries.
+\end{choices}
+\begin{solution}
+  Absolute advantage says who produces a good \emph{cheaply in absolute terms};
+  comparative advantage (Ricardo) says who produces it \emph{cheaply relative
+  to other goods}. Even if Country A is better at producing everything, trade
+  based on comparative advantage benefits both countries, as each specialises
+  where its opportunity cost is lowest.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Comparative Advantage}
+David Ricardo's principle of comparative advantage states that:
+\begin{choices}
+  \choice        Only countries with an absolute advantage should export goods.
+  \choice        Specialisation is only beneficial if one country is better at
+                 producing all goods.
+  \correctchoice Each country should specialise in the good for which its
+                 \emph{opportunity cost} is lowest, regardless of absolute
+                 productivity levels.
+  \choice        Free trade maximises welfare only when productivity is equal
+                 between trading partners.
+\end{choices}
+\begin{solution}
+  Ricardo showed that \textbf{comparative advantage} — not absolute advantage
+  — drives the gains from trade. A country with lower opportunity cost in
+  producing a good should export that good, even if the other country is
+  absolutely more productive in every sector. Both countries end up consuming
+  more than they could in autarky.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Trade and the Production Possibility Frontier}
+When two countries trade based on comparative advantage:
+\begin{choices}
+  \choice        The combined production possibility frontier contracts.
+  \choice        One country gains but the other loses.
+  \correctchoice The combined PPF expands, allowing both countries to
+                 consume beyond their individual production frontiers.
+  \choice        Specialisation is complete for both countries.
+\end{choices}
+\begin{solution}
+  Trade effectively \emph{pools} the two production frontiers. The combined
+  frontier lies outside both individual frontiers, allowing consumption
+  combinations otherwise unattainable. Typically, the less productive country
+  specialises fully, while the more productive country may still produce some
+  of both goods.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Who Gains and Who Loses from Trade?}
+Opening a country to trade always makes every single citizen of that country
+better off.
+\truefalse[false]
+\begin{solution}
+  \textbf{False.} Free trade increases \emph{aggregate} welfare, but the gains
+  and losses are distributed unevenly. In the fish-fruit example, island fruit
+  producers and continental fishermen are displaced. Compensation is possible
+  in principle (Kaldor-Hicks), but does not automatically occur. Political
+  resistance to trade often reflects these distributional effects.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Comparative Advantage: Small Country}
+When a small island begins trading with a large continent, the impact on the
+continent's prices and trade structure is negligible, while the island
+undergoes complete specialisation.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} A small country is a price-taker on the world market: its
+  trade volumes are too small to move continental prices. The island will
+  fully specialise in its comparative-advantage good (e.g.\ fish), while the
+  continent's relative price of fish shifts only marginally.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Absolute vs.\ Comparative Advantage}
+Distinguish between absolute and comparative advantage. Use the island-continent
+fish-and-fruit example to explain why comparative advantage, not absolute
+advantage, determines the pattern of trade and specialisation.
+
+\answerlines[7]
+
+\begin{solution}
+  \textbf{Absolute advantage}: one party produces a good using fewer inputs
+  than another (e.g.\ the continent is better at \emph{both} fish and fruit).
+
+  \textbf{Comparative advantage}: one party produces a good at a lower
+  \emph{opportunity cost} than another. Even if the continent is absolutely
+  more efficient in both, the island may be relatively better at fishing than
+  at growing fruit.
+
+  In the example, the island trades fish at 1:4 (one fish for four fruit)
+  internally, but can get the same fish at 1:1 on the continent. Island fishers
+  gain dramatically by exporting. Island fruit farmers are out-competed and
+  move into fishing. The island specialises totally in fish.
+
+  \textbf{Key insight (Ricardo):} It is \emph{relative} (opportunity) costs,
+  not absolute productivity, that drive trade. Both parties consume more than
+  in autarky: a genuine ``gains from trade''.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 12 — Protectionism}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Effect of an Import Tariff}
+A government imposes a tariff on imports. Compared to free trade, the tariff:
+\begin{choices}
+  \choice        Increases consumer surplus and decreases producer surplus.
+  \correctchoice Decreases consumer surplus, increases producer surplus and
+                 government revenue, but creates a net deadweight loss.
+  \choice        Raises the world price of the good.
+  \choice        Has no effect on domestic producers.
+\end{choices}
+\begin{solution}
+  A tariff raises the domestic price above the world price. Consumers pay more
+  and buy less (\textbf{CS falls}). Domestic producers gain (\textbf{PS rises}).
+  The government collects tariff revenue (\textbf{GR}). However, the total of
+  CS + PS + GR is less than the original CS + PS under free trade: the two
+  small triangles that are lost to nobody form the \textbf{deadweight loss}.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Quota vs.\ Tariff}
+An import quota and a tariff can, in principle, produce the same equilibrium
+price and quantity. A key difference is:
+\begin{choices}
+  \choice        A quota never reduces consumer surplus; a tariff always does.
+  \correctchoice Under a quota, the government does not automatically receive
+                 revenue; the benefit may accrue to importers as quota rents.
+  \choice        A tariff affects domestic producers; a quota does not.
+  \choice        Quotas are always more efficient than tariffs.
+\end{choices}
+\begin{solution}
+  Both instruments restrict imports to the same level and produce the same
+  market price. The difference is in \textbf{who captures the rents}: with a
+  tariff, the government captures the revenue. With a quota, importers who
+  receive licences keep the rents (the gap between world price and domestic
+  price times the quota volume). If quotas are auctioned, the equivalence to
+  tariffs is restored.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Free Trade and Welfare}
+From the perspective of economic theory, free trade is:
+\begin{choices}
+  \choice        Always bad for small countries.
+  \choice        Only beneficial if both trading partners are equally productive.
+  \correctchoice Welfare-maximising in the aggregate, even though distributional
+                 effects create losers within each country.
+  \choice        Only beneficial when there are no trade deficits.
+\end{choices}
+\begin{solution}
+  Theory shows that free trade maximises aggregate global welfare. Trade
+  restrictions (tariffs, quotas, subsidies) create deadweight losses. However,
+  the gains and losses are unevenly distributed, which generates political
+  pressure for protectionism. Compensation mechanisms (redistribution) can
+  in principle make everyone better off, but this rarely happens in practice.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Effect of a Tariff on a Small Country}
+A small country imposing an import tariff cannot influence the world price;
+it only raises the domestic price, so all welfare losses fall on domestic
+consumers and the deadweight loss is borne entirely domestically.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} A small country is a price taker: its tariff does not shift
+  world supply and hence does not affect the world price. The tariff drives a
+  wedge between the world price and the domestic price. Domestic consumers lose,
+  domestic producers gain, the government gains revenue, but the net effect is a
+  domestic deadweight loss. A large country can theoretically use an
+  ``optimum tariff'' to extract rents from foreign exporters.
+\end{solution}
+\end{question}
+
+\begin{question}[type=tf]{Export Subsidy as a Trade Policy Tool}
+An export subsidy makes domestic products cheaper for foreign buyers,
+increases domestic production, but reduces welfare in the subsidising country
+because the cost of the subsidy exceeds the welfare gain.
+\truefalse[true]
+\begin{solution}
+  \textbf{True.} An export subsidy shifts the supply curve down (or
+  equivalently, the export supply curve). More is exported at a lower price for
+  foreign buyers. Domestic consumers face a higher domestic price (since
+  producers prefer to export). The net welfare effect in the subsidising country
+  is negative: the subsidy cost is borne by taxpayers and exceeds the gain in
+  producer surplus. Trading partners typically retaliate or challenge such
+  subsidies under WTO rules.
+\end{solution}
+\end{question}
+
+\begin{question}[type=open]{Why Do Countries Use Protectionist Policies Despite the
+  Theoretical Case for Free Trade?}
+Outline the main theoretical arguments for free trade. Then explain why
+governments still resort to tariffs, quotas, and subsidies, using the
+concepts of distributional effects, political economy, and the Prisoner's
+Dilemma.
+
+\answerlines[8]
+
+\begin{solution}
+  \textbf{The case for free trade:} Based on comparative advantage, trade
+  expands the combined production frontier and raises aggregate welfare in all
+  participating countries. Any tariff or quota creates a domestic deadweight
+  loss, and retaliatory tariffs reduce welfare further for all.
+
+  \textbf{Why protectionism persists:}
+  \begin{enumerate}
+    \item \textbf{Distributional effects}: Trade creates winners (competitive
+      exporters) and losers (import-competing industries). Losers are often
+      geographically concentrated and politically organised; winners are
+      diffuse. This asymmetry creates lobbying pressure.
+
+    \item \textbf{Political economy}: Governments face pressure from
+      concentrated interest groups. Tariffs are visible, targeted transfers to
+      specific industries. Subsidies serve similar functions.
+
+    \item \textbf{Prisoner's Dilemma}: Each country has a short-term incentive
+      to defect from free trade, even though mutual free trade is the
+      cooperative optimum. Without binding international agreements (WTO), the
+      Nash equilibrium is mutual tariffs — a trade war.
+  \end{enumerate}
+
+  \textbf{Conclusion:} International trade agreements, by making commitments
+  credible, help countries overcome the Prisoner's Dilemma and sustain
+  the cooperative (free-trade) equilibrium.
+\end{solution}
+\end{question}
+
+\end{document}

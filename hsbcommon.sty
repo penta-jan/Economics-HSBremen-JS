@@ -1,0 +1,450 @@
+%% hsbcommon.sty
+%% ─────────────────────────────────────────────────────────────────────────────
+%% Shared preamble for both main.tex (Beamer) and main_whitecover.tex (article).
+%% Handles: colours, TikZ libraries, step-visibility system, \showmytikz,
+%%          \showmybitmap, \mytable, \mycomment, \mytext, \mylonglist,
+%%          payoff matrix style, clock command, \mycurrency.
+%%
+%% Usage:
+%%   In hsbslides.sty:   \RequirePackage{hsbcommon}
+%%   In hsbarticle.sty:  \RequirePackage{hsbcommon}
+%% ─────────────────────────────────────────────────────────────────────────────
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hsbcommon}[2025/01/01 v1.0 HSB shared preamble]
+
+% ── Detect Beamer ─────────────────────────────────────────────────────────────
+\newif\if@hsbbeamer
+\@hsbbeamerfalse
+\@ifclassloaded{beamer}{\@hsbbeamertrue}{}
+
+% ── Colours ───────────────────────────────────────────────────────────────────
+\RequirePackage[dvipsnames]{xcolor}
+\definecolor{HSBblau}{RGB}{10,85,140}
+\definecolor{blue}{RGB}{10,85,140}
+\definecolor{HSBtuerk}{RGB}{50,180,200}
+\definecolor{HSBgruen}{RGB}{0,145,90}
+\definecolor{green}{RGB}{0,145,90}
+\definecolor{HSBhellgruen}{RGB}{110,165,60}
+\definecolor{HSBgelb}{RGB}{250,190,0}
+\definecolor{HSBorange}{RGB}{240,120,35}
+\definecolor{HSBrot}{RGB}{195,5,50}
+\definecolor{red}{RGB}{195,5,50}
+\definecolor{HSBviolett}{RGB}{120,100,165}
+
+% ── General packages ──────────────────────────────────────────────────────────
+\RequirePackage{standalone}
+\RequirePackage{pdfpages}
+\RequirePackage{customdice}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{fontawesome5}
+\RequirePackage{multirow}
+\RequirePackage{rotating}
+\newcommand\given{\;\middle|\;}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{adjustbox}
+\RequirePackage{pgfgantt}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\RequirePackage[edges]{forest}
+\RequirePackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+\newcommand{\noun}[1]{\textsc{#1}}
+
+% ── TikZ ──────────────────────────────────────────────────────────────────────
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.symbols}
+\usetikzlibrary{positioning,intersections}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{calc,matrix,decorations.markings,decorations.pathreplacing}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,
+    decorations.pathreplacing,decorations.pathmorphing,shapes,
+    matrix,shapes.symbols}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{patterns}
+\RequirePackage{tikzpeople}
+\usetikzlibrary{matrix}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{tikzmark}
+\usepgfplotslibrary{fillbetween}
+
+
+\newcommand{\mycurrency}{Euro}
+
+%% Payoff matrix new
+\newcommand{\bdice}[1]{%
+    \Large
+    \def\temparg{#1}%
+    \ifx\temparg\empty
+        \textdice[blue!20,black]{\faSkull}%
+    \else
+        \ifnum#1=0
+            \textdice[blue!20,black]{$-$}%
+        \else
+            \dice[blue!20,black]{#1}%
+        \fi
+    \fi
+}
+\newcommand{\rdice}[1]{%
+    \Large
+    \def\temparg{#1}%
+    \ifx\temparg\empty
+        \textdice[red!20,black]{\faSkull}%
+    \else
+        \ifnum#1=0
+            \textdice[red!20,black]{$-$}%
+        \else
+            \dice[red!20,black]{#1}%
+        \fi
+    \fi
+}
+
+
+\newcounter{pcell}
+\newcommand{\payoff}[2]{%
+    \stepcounter{pcell}%
+    \edef\cname{\ifcase\value{pcell}%
+        \or AA\or AB\or BA\or BB\fi}%
+    \begin{tikzpicture}[baseline=(current bounding box.center),
+                        remember picture]
+        \node[draw, minimum width=5em, minimum height=5em, 
+              inner sep=0pt] (box) {};
+        \node[anchor=north east, text=blue, inner sep=0pt,
+              name=\cname-al] at ([xshift=-7pt, yshift=-7pt]box.north east) {#1};
+        \node[anchor=south west, text=red, inner sep=0pt,
+              name=\cname-bo] at ([xshift=7pt, yshift=7pt]box.south west) {#2};
+    \end{tikzpicture}%
+}
+
+
+
+
+
+% ── Payoff matrix TikZ style OLD ──────────────────────────────────────────────────
+
+% prepping nameing of nodes 
+
+
+
+\tikzset{payoff matrix/.style={%
+        matrix of nodes,
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth,
+        nodes={/utils/exec=\ifnum\the\pgfmatrixcurrentrow>1
+            \ifnum\the\pgfmatrixcurrentcolumn>1
+            \tikzset{text height=1.2em,text width=6em,draw}
+            \fi \fi,
+             align=right,
+             anchor=center},
+        column 1/.style={text width=6em},
+        row 1/.style={text depth=0.3em},
+        execute at end matrix={%
+            \path (\tikzmatrixname-2-2.west) -- (\tikzmatrixname-2-\the\pgfmatrixcurrentcolumn.east)
+            coordinate[midway] (aux)
+            node[anchor=south,draw=none] at (\tikzmatrixname.north-|aux){\pgfkeysvalueof{/tikz/payoff matrix/player 1}};
+            \path (\tikzmatrixname-2-2.north) -- (\tikzmatrixname-\the\pgfmatrixcurrentrow-2.south)  coordinate[midway] (aux) node[anchor=south,draw=none,rotate=90] at (aux-|\tikzmatrixname.west){\pgfkeysvalueof{/tikz/payoff  matrix/player 2}};}
+        },
+    payoff matrix/.cd,player 1/.initial={Alice},player 2/.initial={Bob}
+    }
+
+% ── Clock command ─────────────────────────────────────────────────────────────
+\newcommand\clock[4][2]{%
+\begin{tikzpicture}[scale=#1,line cap=round,line width=#1*3pt]
+\filldraw [fill=gray!20] (0,0) circle (2cm);
+\foreach \angle / \label in
+{0/3, 30/2, 60/1, 90/12, 120/11, 150/10, 180/9,
+210/8, 240/7, 270/6, 300/5, 330/4}
+{
+\draw[line width=#1*1pt] (\angle:1.8cm) -- (\angle:2cm);
+\draw (\angle:1.4cm) node[scale=#1]{\textsf{\label}};
+}
+\foreach \angle in {0,90,180,270}
+\draw[line width=#1*2pt] (\angle:1.6cm) -- (\angle:2cm);
+\draw[rotate=90,line width=#1*2pt] (0,0) -- (-#2*30-#3*30/60:0.7cm);
+\draw[rotate=90,line width=#1*1.5pt] (0,0) -- (-#3*6:1cm);
+\draw[rotate=90,line width=#1*.6pt,red] (0,0) -- (-#4*6:1.2cm);
+\path [fill=black] (0,0) circle (3pt);
+\path [fill=red] (0,0) circle (1.5pt);
+\end{tikzpicture}%
+}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  STEP VISIBILITY SYSTEM
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\RequirePackage{xkeyval}
+\RequirePackage{xstring}
+\RequirePackage{etoolbox}
+\RequirePackage{trimspaces}
+\RequirePackage{ifthen}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  STEP VISIBILITY SYSTEM — set-based
+%
+%  \showmytikz[1,2,3]{file.tex}       show exactly steps 1, 2, 3
+%  \showmytikz[2,3,6]{file.tex}       show exactly steps 2, 3, 6
+%  \showmytikz[]{file.tex}            show nothing (empty set)
+%
+%  Inside diagram files:
+%  \ifstep{N}{content}                show content if N is in the active set
+%
+%  Word aliases still accepted for single steps: eins=1, zwei=2, etc.
+%  (Useful for a quick \showmytikz[eins]{...} shorthand.)
+% ═══════════════════════════════════════════════════════════════════════════════
+
+% ── Active step set: stored as ,1,2,3, (with surrounding commas for matching) ─
+\def\@stepset{,,}%  default: empty set
+
+% ── Word → number: resolves a single token to its digit string ────────────────
+% Used only for single-word shorthands. Returns the digit in \@ts@num.
+\newcommand{\@resolveword}[1]{%
+  \IfStrEqCase{#1}{%
+    {null}{\def\@ts@num{}}%
+    {eins}{\def\@ts@num{1}}%
+    {zwei}{\def\@ts@num{2}}%
+    {drei}{\def\@ts@num{3}}%
+    {vier}{\def\@ts@num{4}}%
+    {fuenf}{\def\@ts@num{5}}%
+    {sechs}{\def\@ts@num{6}}%
+    {sieben}{\def\@ts@num{7}}%
+    {acht}{\def\@ts@num{8}}%
+    {neun}{\def\@ts@num{9}}%
+    {zehn}{\def\@ts@num{10}}%
+    {one}{\def\@ts@num{1}}%
+    {two}{\def\@ts@num{2}}%
+    {three}{\def\@ts@num{3}}%
+    {four}{\def\@ts@num{4}}%
+    {five}{\def\@ts@num{5}}%
+    {six}{\def\@ts@num{6}}%
+    {seven}{\def\@ts@num{7}}%
+    {eight}{\def\@ts@num{8}}%
+    {nine}{\def\@ts@num{9}}%
+    {ten}{\def\@ts@num{10}}%
+  }[\def\@ts@num{#1}]% fallback: already a number
+}
+
+% ── Build \@stepset from a comma-separated list (words or numbers) ────────────
+\newcommand{\@buildstepset}[1]{%
+  \gdef\@stepset{,}%
+  \forcsvlist{\@addtostepset}{#1}%
+}
+\newcommand{\@addtostepset}[1]{%
+  \def\@trimmed{#1}%
+  \trim@spaces@in\@trimmed
+  \@resolveword{\@trimmed}%
+  \ifx\@ts@num\empty\else
+    \expandafter\xdef\expandafter\@stepset\expandafter{\@stepset\@ts@num,}%
+  \fi
+}
+
+% ── \ifstep{N}{content} — show content if N is in the active set ─────────────
+% Uses \IfSubStr from xstring (already loaded). No @ internals at point of use.
+\newcommand{\ifstep}[2]{%
+  \IfSubStr{\@stepset}{,#1,}{#2}{}%
+}
+
+
+% ── \ifsteponly{N}{suppress-if-any}{content} ─────────────────────────────────
+% Like \ifstep{N}{content} but suppresses content if ANY of the steps listed
+% in suppress-if-any are also active.
+%
+% Example: \ifsteponly{3}{5,6}{content}
+%   Shows content if step 3 is active AND steps 5 and 6 are NOT active.
+%
+% Use this when a later step replaces rather than adds to an earlier step.
+\newif\if@hsb@suppressed
+\newcommand{\@hsb@checksuppress}[1]{%
+  \IfSubStr{\@stepset}{,#1,}{\@hsb@suppressedtrue}{}%
+}
+\newcommand{\ifsteponly}[3]{%
+  \ifstep{#1}{%
+    \@hsb@suppressedfalse
+    \forcsvlist{\@hsb@checksuppress}{#2}%
+    \if@hsb@suppressed\else #3\fi
+  }{}%
+}
+
+% ── Keys for \showmytikz ──────────────────────────────────────────────────────
+\define@key{showmytikz}{step}{\def\@ts@step{#1}}
+\define@key{showmytikz}{caption}{\def\@ts@caption{#1}}
+\define@key{showmytikz}{label}{\def\@ts@label{#1}}
+
+% ── \showmytikz[1,2,3]{file.tex}  or  \showmytikz[step=drei]{file.tex} ────────
+\newcommand{\showmytikz}[2][]{%
+  \begingroup
+  \def\@ts@step{}%
+  \def\@ts@caption{}%
+  \def\@ts@label{}%
+  % Save the current stepset so nested calls don't clobber it
+  \let\@stepset@saved\@stepset
+  % Parse arguments and build new stepset
+  \IfSubStr{#1}{=}{%
+    \setkeys{showmytikz}{#1}%
+    \@buildstepset{\@ts@step}%
+  }{%
+    \@buildstepset{#1}%
+  }%
+  \if@hsbbeamer
+    \@hsb@tikz@beamer{#2}%
+  \else
+    \@hsb@tikz@article{#2}%
+  \fi
+  % Restore the previous stepset (xdef made it global, so restore globally too)
+  \global\let\@stepset\@stepset@saved
+  \endgroup
+}
+
+% ── Beamer: fit into slide ────────────────────────────────────────────────────
+% \begingroup scopes coordinate \def's; resetting \tikz@intersect@namedpaths
+% clears the named-path registry so path names don't leak between diagrams.
+\newcommand{\@hsb@tikz@beamer}[1]{%
+  \begin{adjustbox}{max width=200pt, max totalheight=0.8\textheight}%
+    \IfFileExists{#1}{\input{#1}}{{\color{red}FILE NOT FOUND: #1}}%
+  \end{adjustbox}%
+}
+
+% ── Article: wrap in figure with auto caption/label ──────────────────────────
+\newcommand{\@hsb@tikz@article}[1]{%
+  \IfFileExists{#1}{%
+    \let\myoldfighandle\myfighandle
+    \global\let\myfighandle\mysechandle
+    \ifthenelse{\equal{\myoldfighandle}{\myfighandle}}{%
+      \stepcounter{mysubfigure}%
+    }{%
+      \setcounter{mysubfigure}{0}%
+    }%
+      \ifdefempty{\@ts@caption}{%
+        \textbf{Fig.~\ref{fig:\myfighandle\themysubfigure}}%
+      }{%
+        \ifdefempty{\@ts@label}{}{\textbf{Fig.~\ref{\@ts@label}}}%
+      }%    
+    \begin{figure}[ht!]%
+      \centering%
+          \begin{adjustbox}{max width=\linewidth}%
+            \IfFileExists{#1}{\input{#1}}{{\color{red}FILE NOT FOUND: #1}}%
+          \end{adjustbox}%
+      \ifdefempty{\@ts@caption}{%
+        \caption{\mysechandle~\themysubfigure}%
+        \label{fig:\myfighandle\themysubfigure}%
+      }{%
+        \caption{\@ts@caption}%
+        \ifdefempty{\@ts@label}{}{\label{\@ts@label}}%
+      }%
+    \end{figure}%
+  }{{\color{red}FILE NOT FOUND: #1}}%
+}
+
+% ── \showmybitmap[url]{file} ──────────────────────────────────────────────────
+\newcommand{\showmybitmap}[2][]{%
+  \IfFileExists{#2}{%
+    \if@hsbbeamer
+      \href{#1}{\adjustimage{max size={200pt}{150pt}}{#2}}%
+    \else
+      \let\myoldfighandle\myfighandle
+      \global\let\myfighandle\mysechandle
+      \ifthenelse{\equal{\myoldfighandle}{\myfighandle}}{%
+        \stepcounter{mysubfigure}%
+      }{%
+        \setcounter{mysubfigure}{0}%
+      }%
+      \textbf{Fig.~\ref{fig:\myfighandle\themysubfigure}}%
+      \begin{figure}[ht!]%
+        \centering%
+        \adjustimage{max size=\linewidth}{#2}%
+        \caption{\mysechandle~\themysubfigure}\label{fig:\myfighandle\themysubfigure}%
+      \end{figure}%
+    \fi
+  }{\color{red}FILE NOT FOUND: #2}%
+}
+
+% ── \mytable ──────────────────────────────────────────────────────────────────
+\newcommand{\mytable}[2][]{%
+  \if@hsbbeamer
+    #2%
+  \else
+    \let\myoldtabhandle\mytabhandle
+    \global\let\mytabhandle\mysechandle
+    \ifthenelse{\equal{\myoldtabhandle}{\mytabhandle}}{%
+      \stepcounter{mysubtab}%
+    }{%
+      \setcounter{mysubtab}{0}%
+    }%
+    \textbf{Tab.~\ref{tab:\mytabhandle\themysubtab}}%
+    \begin{table}[ht!]%
+      \centering%
+      #2%
+      \caption{\mysechandle~\themysubtab}\label{tab:\mytabhandle\themysubtab}%
+    \end{table}%
+  \fi
+}
+
+% ── Text helpers ──────────────────────────────────────────────────────────────
+\newcommand{\mycomment}[2][]{%
+  \if@hsbbeamer
+    \begin{textblock*}{120pt}(230pt,50pt)\tiny #2\end{textblock*}%
+  \else
+    #2\par%
+  \fi
+}
+
+\newcommand{\mytext}[2][]{%
+  \if@hsbbeamer
+    \begin{textblock*}{200pt}(20pt,50pt){\footnotesize #2}\end{textblock*}%
+  \else
+    #2\par%
+  \fi
+}
+
+\newcommand{\mylonglist}[2][]{%
+  \begin{multicols}{2}#2\end{multicols}%
+}
+
+
+
+% ── \myblock: small coloured progress/fill bar ───────────────────────────────
+\newcommand{\myblock}[2][0.1ex]{%
+  \begin{tikzpicture}[x=#1, y=1ex]
+    \draw[fill=HSBgruen!50] (0,0) rectangle (#2,1);
+  \end{tikzpicture}%
+}
+
+% ── Article-only handle infrastructure (no-ops in Beamer) ────────────────────
+\if@hsbbeamer\else
+  \def\myfighandle{}
+  \newcounter{mysubfigure}
+  \renewcommand{\themysubfigure}{%
+    \ifcase\value{mysubfigure}\or(ii)\or(iii)\or(iv)\or(v)\or(vi)\or(vii)\else?\fi%
+  }
+  \def\myoldfighandle{}
+
+  \def\mytabhandle{}
+  \newcounter{mysubtab}
+  \renewcommand{\themysubtab}{%
+    \ifcase\value{mysubtab}\or(ii)\or(iii)\or(iv)\or(v)\or(vi)\or(vii)\else?\fi%
+  }
+  \def\myoldtabhandle{}
+
+  \def\mysechandle{}
+  \newcounter{mysubsec}
+  \renewcommand{\themysubsec}{%
+    \ifcase\value{mysubsec}\or(ii)\or(iii)\or(iv)\or(v)\or(vi)\else?\fi%
+  }
+  \def\myoldsechandle{}
+
+  \renewenvironment{frame}[2][]{%
+    \let\myoldsechandle\mysechandle
+    \gdef\mysechandle{#2}%
+    \ifthenelse{\equal{\myoldsechandle}{\mysechandle}}{%
+      \faHandPointRight %%%% new slide but not new secion
+    }{%
+      \subsection*{#2}% %%%%% slide with different title, hence new section
+      \faHandPointRight
+    }%
+  }{}
+\fi

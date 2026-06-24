@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    %% dimensions
+    
+    \def\palheight{1}
+    \def\palwidth{8}
+    \def\pallength{12}
+
+
+
+    \tikzset{
+        every path/.style={
+            <->,>=latex, 
+            shorten >=5pt, 
+            shorten <=5pt
+            },
+        every node/.style={
+            fill=white,
+            font=\scriptsize
+            }
+        }
+
+\foreach [count=\i] \ebene in {0,125}
+{  
+    \begin{scope}[xshift=\ebene,yshift=\ebene]
+        
+        \coordinate (A\i 1) at (0,0);
+        \coordinate (A\i 2) at (\palwidth,0);
+        \coordinate (A\i 3) at (\palwidth,\palheight);
+        \coordinate (A\i 4) at (0,\palheight);
+    
+        \foreach \punkt in {1,2,3,4}
+            \filldraw (A\i \punkt) circle (1pt);
+    
+        \draw (A\i 1) -- node {\palwidth0cm} (A\i 2) ;
+        \draw (A\i 2) -- node  {\palheight0cm} (A\i 3) ;
+        \draw (A\i 3) -- node {\palwidth0cm} (A\i 4) ;
+        \draw (A\i 4) -- node  {\palheight0cm} (A\i 1) ;
+    
+    \end{scope}
+}
+
+        \foreach \punkt in {1,2,3,4}
+            \draw (A1\punkt) -- node  {\pallength0cm} (A2\punkt); 
+
+
+\end{tikzpicture}
+\end{document}

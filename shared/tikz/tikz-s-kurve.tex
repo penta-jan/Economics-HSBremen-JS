@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right] (Q) {$Q$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node[above] (P) {$R$};
+
+        \clip (-1,-1) rectangle (8,8);
+        
+        \draw[domain=0:8,name path=scurve] plot ({\x},{7/(1+exp(-(\x-3)))});
+
+        \node[above left] at (5,{7/(1+exp(-(5-3)))}) {
+            $ f(x) = -\frac{1}{1+e^{-x}}$
+        };
+        
+    \end{tikzpicture}
+\end{document}

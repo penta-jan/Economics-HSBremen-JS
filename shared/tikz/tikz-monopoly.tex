@@ -1,0 +1,115 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,5,6}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}[remember picture]
+    \draw[->] (0,0) node[below] {\phantom{$Q_x$}} -- (8,0) node[right] {$Q$};
+    \draw[->] (0,0) node[left] {\phantom{$P_x$}} -- (0,8) node[above] {$P$};
+    
+
+    %% ── All coordinates unconditional ────────────────────────────────────────
+    \coordinate (A) at (0,7);   % demand top
+    \coordinate (F) at (7,1);   % demand bottom
+    \coordinate (G) at (0,2);   % MC left
+    \coordinate (L) at (7,3);   % MC right
+    \coordinate (M) at (0,0);   % revenue parabola start
+    \coordinate (N) at (2.5,8); % revenue parabola top
+    \coordinate (O) at (5,0);   % revenue parabola end
+    \coordinate (Q) at (3.25,1);% MR endpoint
+
+    %% ── All named paths ──────────────────────────────────────────────────────
+    \draw [name path global=demand] plot [smooth] coordinates {(A)(F)};
+    \draw [name path global=supply] plot [smooth] coordinates {(G)(L)};
+    \path [name path global=mr]     plot [smooth] coordinates {(A)(Q)};
+
+    %% vertical at MR=MC intersection for monopoly quantity
+    \path [name intersections={of=mr and supply, by=Y}];
+    \path [name path global=mono] (Y |-,0) -- (Y |-,8);
+
+    %% ── All intersections pre-computed ───────────────────────────────────────
+    \path [name intersections={of=demand and supply, by=X}];  % competition eq.
+    \path [name intersections={of=mono and demand,   by=Z}];  % monopoly price
+
+    %% ── Curve labels (always visible) ────────────────────────────────────────
+    \node[right] at (F) {$DD$};
+    \node[right] at (L) {$MC$};
+
+    %% ── Step 1: competitive equilibrium, CS and PS ───────────────────────────
+    \ifstep{1}{
+        \filldraw (X) circle (2pt) node[above right] {$E_C$};
+        \draw[dashed] (X |-,0) node[below] {$Q_C$} -- (X |-,8);
+        \draw[dotted] (X) -- (0,|- X) node[left] {$P_C$};
+        \begin{scope}[on background layer]
+            \draw[fill=blue!10] (X) -- (0,|- X) -- (A) node[below=20pt,right] {$CS$};
+            \draw[fill=red!10]  (X) -- (0,|- X) -- node[right] {$PS$} (G);
+        \end{scope}
+    }
+
+    %% ── Step 2: price discrimination PS areas ────────────────────────────────
+    \ifstep{2}{
+        \foreach [count=\i] \myvalue/\mycolor in {0.5/red, 0.18/blue}{
+            \coordinate (M\i) at ($(A)!\myvalue!(F)$);
+            \path[name path=m1] (0,|- M\i) -- (M\i) -- (M\i |-,0);
+            \path [name intersections={of=m1 and supply, by=myy}];
+            \filldraw[\mycolor] (M\i) node[below left] {\scriptsize $P_\i$} circle (1.5pt);
+            \draw[thick,\mycolor] (M\i) -- ([yshift=\i pt]myy)
+                -- ([xshift=\i pt,yshift=\i pt]G)
+                -- ([xshift=\i pt]0,|- M\i) node[below right] {$PS_\i$} -- cycle;
+        }
+    }
+
+    %% ── Step 3: revenue parabola R(x) ────────────────────────────────────────
+    \ifstep{3}{
+        \draw[dashed] (M) plot [smooth,tension=1] coordinates {(M)(N)(O)};
+        \node[right=10pt] at (N) {$R(x)$};
+        \draw[dotted] plot [smooth,tension=1] coordinates {(0,0)(4,8)(8,0)};
+        \node at (6,7) {\scriptsize $p(x)\cdot x$};
+    }
+
+    %% ── Step 4: MR curve, Cournot point, restore CS/PS ───────────────────────
+    \ifstep{4}{
+        \begin{scope}[color=red]
+            
+        %% cover price-discrimination dots
+        %% restore demand curve and CS/PS on top
+        % \draw[name path global=demand] plot [smooth] coordinates {(A)(F)};
+        % \draw[fill=blue!10] (X) -- (0,|- X) -- (A) node[below=20pt,right] {$CS$};
+        % \draw[fill=red!10]  (X) -- (0,|- X) -- node[right] {$PS$} (G);
+        %% revenue parabola and p(x)*x
+        % \draw[dashed] (M) plot [smooth,tension=1] coordinates {(M)(N)(O)};
+        %% MR curve and Cournot point
+        \draw[name path global=mr] plot [smooth] coordinates {(A)(Q)};
+        \node[right] at (Q) {$MR$};
+        \filldraw (Y) circle (2pt) node[below left] {$CP$};
+        \draw (Y |-,0) node[below] {$Q_M$} -- (Y |-,8);
+        \end{scope}
+    }
+
+    %% ── Step 5: monopoly quantity and price ──────────────────────────────────
+    \ifstep{5}{
+        \begin{scope}[color=red]
+            \draw (Y |-,0) node[below] {$Q_M$} -- (Y |-,8);
+            \filldraw (Z) circle (2pt) node[above right] {\textit{mon.}};
+            \draw (Z) -- (0,|- Z) node[left] {$P_M$};
+        \end{scope}
+    }
+
+    %% ── Step 6: welfare comparison ───────────────────────────────────────────
+    \ifstep{6}{
+        \draw[green,dashed,ultra thick,fill opacity=0.6,fill=white] (X) -- (Z) -- node[right,yshift=-0.5cm] {\scriptsize\textit{welfare loss}} (Y) -- cycle;
+        \draw[dashed,blue] (0,0) rectangle (Y);
+        \draw[fill=blue!10] (Z) -- (0,|- Z) node[above right] {$CS_m$} -- (A) -- cycle;
+        \draw[fill=red!10]  (0,|- Z) node[below right] {$PS_m$}
+            -- (Z) -- (Y) -- (G) -- cycle;
+        \draw[name path global=mr] plot [smooth] coordinates {(A)(Q)};
+        \filldraw       (X) circle (2pt);
+        \filldraw[red]  (Z) circle (2pt) node[above right] {\textit{mon.}};
+        \filldraw[red]  (Y) circle (2pt);
+        % \draw[dashed] (M) plot [smooth,tension=1] coordinates {(M)(N)(O)};
+    }
+
+\end{tikzpicture}
+\end{document}

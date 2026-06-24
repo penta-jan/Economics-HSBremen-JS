@@ -1,0 +1,88 @@
+\documentclass[t,10pt,leqno,aspectratio=43]{beamer}
+\usepackage{hsbcommon}
+\usepackage{cprotect}
+\usetheme{HSB}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+\setbeamertemplate{itemize items}[triangle]
+\setlength{\leftmargini}{3ex}
+\setlength{\leftmarginii}{0.5cm}
+
+\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 13th\or
+    April 20th\or
+    April 27th\or
+    April 27th\or
+    May 4th\or
+    May 18th\or
+    June 1st\or
+    June 8th\or
+    June 15th\or
+    June 22nd\or
+    June 29th\or
+    July 6th\or
+    \else
+  \fi
+}
+
+%%% TOC MANIPULATION
+\input{../beamerpagenumbers}
+
+\makeatletter
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip-3pt}
+  {}
+  {}
+
+\AtBeginSection[]
+{
+    \subtitle{%
+    Session \thesection\ -- \secname\ % -- \mysession{\thesection}
+    }
+    \titleframe
+
+    \begin{frame}{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\makeatother
+
+%%%
+
+\title[HSBCommon, HSBremen \the\year]{HSBCommon}
+\author[Jan Suchanek]{Jan Suchanek}
+\date{Summer Semester \the\year}
+\institute{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}}
+
+\setlength{\parskip}{1ex}
+
+\begin{document}
+
+\onehalfspacing
+
+% \frame{\titlepage}
+\titleframe
+
+\include{package_hsbcommen/hsbcommon-input}
+ 
+
+\end{document}

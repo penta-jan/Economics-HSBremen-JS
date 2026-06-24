@@ -1,0 +1,147 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{hsbcommon}
+\begin{document}
+\definecolor{bluecolor}{RGB}{50,102,173}
+\definecolor{slategray}{RGB}{100,100,95}
+\definecolor{bglight}{RGB}{248,248,246}
+\begin{tikzpicture}
+\begin{axis}[
+  width=16cm,
+  height=12cm,
+  axis background/.style={fill=bglight},
+  xmin=0.5, xmax=12.5,
+  ymin=1.20, ymax=2.05,
+  xtick={1,2,3,4,5,6,7,8,9,10,11,12},
+  xticklabels={
+    Feb~17,
+    Feb~24,
+    Mar~3,
+    Mar~10,
+    Mar~17,
+    Mar~24,
+    Mar~31,
+    Apr~7,
+    Apr~14,
+    Apr~21,
+    Apr~28,
+    May~5
+  },
+  xticklabel style={rotate=45, anchor=east, font=\small},
+  ytick={1.20,1.30,1.40,1.50,1.60,1.70,1.80,1.90,2.00},
+  yticklabel={\$\pgfmathprintnumber[fixed,precision=2]{\tick}},
+  yticklabel style={font=\small},
+  ymajorgrids=true,
+  xmajorgrids=true,
+  grid style={line width=0.3pt, color=white},
+  axis line style={line width=0.6pt, color=gray!60},
+  tick style={color=gray!60, line width=0.4pt},
+  title style={font=\large\bfseries, yshift=6pt},
+  title={Canadian Gasoline Prices --- February to May 2026},
+  ylabel={Price in CAD/litre (regular unleaded)},
+  ylabel style={font=\small, yshift=-4pt},
+  legend style={
+    at={(0.02,0.97)},
+    anchor=north west,
+    font=\small,
+    fill=white,
+    fill opacity=0.9,
+    draw=gray!40,
+    row sep=2pt
+  },
+  clip=false,
+]
+%% --- National average (solid, blue) ---
+\addplot[
+  color=bluecolor,
+  line width=2.4pt,
+  mark=*,
+  mark size=2.5pt,
+  mark options={fill=bluecolor, draw=bluecolor}
+] coordinates {
+  (1,  1.355)
+  (2,  1.375)
+  (3,  1.418)
+  (4,  1.500)
+  (5,  1.580)
+  (6,  1.660)
+  (7,  1.829)
+  (8,  1.840)
+  (9,  1.820)
+  (10, 1.750)
+  (11, 1.740)
+  (12, 1.870)
+};
+\addlegendentry{National average}
+%% ---- Province range band (shaded) ----
+\addplot[
+  name path=upper,
+  draw=none,
+  forget plot
+] coordinates {
+  (1,  1.542) (2,  1.560) (3,  1.620) (4,  1.700) (5,  1.780)
+  (6,  1.860) (7,  2.000) (8,  2.020) (9,  1.980) (10, 1.900)
+  (11, 1.900) (12, 2.040)
+};
+\addplot[
+  name path=lower,
+  draw=none,
+  forget plot
+] coordinates {
+  (1,  1.191) (2,  1.210) (3,  1.260) (4,  1.330) (5,  1.390)
+  (6,  1.450) (7,  1.574) (8,  1.660) (9,  1.640) (10, 1.590)
+  (11, 1.580) (12, 1.780)
+};
+\addplot[
+  fill=bluecolor,
+  fill opacity=0.08,
+  draw=none
+] fill between[of=upper and lower];
+\addlegendentry{Provincial range}
+% %% ---- Annotation: Hormuz blockade ----
+% \draw[slategray, line width=0.8pt, dashed]
+%   (axis cs:7.5, 1.710) -- (axis cs:7.5, 1.97);
+% \node[
+%   anchor=south,
+%   font=\footnotesize,
+%   text=slategray,
+%   align=center,
+%   fill=white
+% ] at (axis cs:7.5, 1.97) {Hormuz strait\\blockade (late Mar)};
+%% ---- Annotation: peak week Apr 7 ----
+\node[
+  anchor=south west,
+  font=\footnotesize,
+  text=bluecolor,
+  align=center
+] at (axis cs:8.1, 1.840) {2026 peak\\Apr~7};
+%% ---- Annotation: Federal Fuel Excise Tax suspension Apr 20 ----
+\draw[bluecolor!60!black, line width=1.2pt, dashed]
+  (axis cs:9.5, 1.580) -- (axis cs:9.5, 1.96);
+
+\draw[red, line width=5pt,]
+  (axis cs:9.5, 1.79) -- node[left] {10\textcent} (axis cs:9.5, 1.69);
+\node[
+  anchor=south,
+  font=\footnotesize,
+  text=bluecolor!80!black,
+  align=center,
+  fill=white
+] at (axis cs:9.5, 1.96) {Fed.\ excise tax\\suspended (Apr\ 20)\\$-$10\textcent/l};
+%% ---- Annotation: May 5 jump ----
+\node[
+  anchor=south east,
+  font=\footnotesize,
+  text=bluecolor,
+  align=right
+] at (axis cs:11.9, 1.870) {+13\textcent/l\\May~5};
+%% ---- Source note ----
+\node[
+  anchor=south west,
+  font=\tiny,
+  text=gray
+] at (axis cs:0.5, 1.20)
+  {Sources: Finder/Kalibrate, Natural Resources Canada, CFS Fuel Price Update (Feb 2026)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

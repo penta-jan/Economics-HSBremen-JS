@@ -1,0 +1,84 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{0,2}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+    \begin{document}
+    \begin{tikzpicture}
+
+    %%%%% Fundamental
+s: always visible
+        
+        \draw[->] (0,0) node[left] {\phantom{$X_mi$}} -- (8,0) node (Y) [right] {$x$};
+        \draw[->] (0,0) node[below] {\phantom{$Y_mi$}} -- (0,8) node (i) [above] {$p$};
+
+
+        \coordinate (A) at (0,7);
+        \coordinate (B) at (7,0);
+ 
+        \draw [gray, name path=lineardemand] plot coordinates {(A) (B)};        
+        \node[gray, above right] at (B) {$DD$};
+        
+        \coordinate (C) at (0,1);
+        \coordinate (D) at (7,7);
+        
+        \draw[name path global=supply] (C) -- (D) node[above right] {$SS$};
+
+        \path [name intersections={of=lineardemand and supply,by=EL}];
+        \filldraw (EL) node[right] {$E_1$} circle (2pt);
+
+
+         \def\mytopy{5}
+            \def\mytopx{2.5}
+            \def\mydrop{3}
+            \def\mylong{2}
+            \coordinate (A2) at (0,\mytopy);
+            \coordinate (B2) at (\mytopx-0.5,\mytopy-0.5);
+            \coordinate (C2) at (\mytopx,\mytopy-\mydrop);
+            \coordinate (D2) at (\mytopx,\mytopy-\mydrop);
+            \coordinate (E2) at (\mytopx+\mylong,\mytopy-\mydrop-0.5);
+            \coordinate (F2) at (\mytopx+\mylong+1,0);
+
+        \draw[draw,name path=demand,rounded corners] plot  coordinates {(A2)(B2)(C2)(D2)(E2)(F2)} ;
+        
+
+        \path [name intersections={of=demand and supply,by=E}];
+        \coordinate (PE) at (0, |- E);
+
+        \draw[dashed] (0, |- E) node[left] {$p_1$} -- (E) --  (E |-, 0) node[below] {$x_1$};
+
+
+        \filldraw (E) node[right] {$E_2$} circle (2pt);
+
+    %%%%% Step one: surpluses at E2
+
+        \ifstep{1}{
+        \begin{scope}[on background layer]
+            \filldraw[red!10] (A2) -- (B2) -- (E) -- (PE) -- cycle;
+            \filldraw[blue!10] (C) -- (E) -- (PE) -- cycle;
+        \end{scope}
+        \path (C) -- node[right] {$PS$} (PE);
+        }
+
+    %%%% Step two: surpluses at B2/C
+    
+        \ifstep{2}{
+        \filldraw (B2) node[above right] {$C$} circle (2pt);
+        \draw[dashed,name path=situation] (0, |- B2) node[left] {$p^*$} -- (B2) --  (B2 |-, 0) node[below] {$x^*$};
+        \path [name intersections={of=supply and situation, by=MY}];
+        
+        % \filldraw (D2) node[above right] {$D$} circle (2pt);
+        
+        \begin{scope}[on background layer]
+            \filldraw[red!10] (A2) -- (B2) -- (0, |- B2) -- cycle;
+            \draw[fill=blue!20] (0, |- B2) -- (B2) -- (B2 |-, |- MY) --  (C) -- cycle;
+        \end{scope}
+        \path (MY) -- node {$PS^*$} (0, |- B2);
+        }
+
+
+
+    
+    \end{tikzpicture}
+\end{document}

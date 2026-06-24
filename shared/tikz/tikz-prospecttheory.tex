@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[name path=abscissa,<->,>=latex] (-5,0) node[left] {loss} -- (5,0) node[right] {gain};
+        \draw[name path=ordinate,<->,>=latex] (0,-5) node[below] {neg. value} -- (0,5) node [above] {pos. value};
+
+        \draw[domain=0:5] plot ({\x},{sqrt(\x)});
+    
+        \coordinate (A) at (3,{sqrt(3)});
+        \filldraw (A) circle (2pt);
+        \draw[dashed] (A |-,0) node[below] {$10$} -- (A) -- (0, |-A) node[left] {$V(10)$};
+
+        \ifstep{1}{
+\begin{scope}[color=red]
+
+            \draw[domain=-5:0] plot ({\x},{-2*sqrt(-\x)});
+            \coordinate (B) at (-3,{-2*sqrt(3)});
+            \filldraw (B) circle (2pt);
+            \draw[dashed] (B |-,0) node[above] {$-10$} -- (B) -- (0, |-B) node[right] {$V(-10)$};
+        \end{scope}
+}
+
+        
+    \end{tikzpicture}
+\end{document}

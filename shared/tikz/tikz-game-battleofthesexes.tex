@@ -1,0 +1,64 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{0,1,2}}\makeatother
+
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}[remember picture]
+
+    \setcounter{pcell}{0}
+    \matrix (M) [
+        matrix of nodes,
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth,
+        nodes={anchor=center, draw=none, inner sep=0pt},
+        column 1/.style={nodes={minimum width=5em, align=right}},
+        row 1/.style={nodes={minimum height=2em, align=center}},
+    ]{
+             & \strut opera              & \strut boxing            \\
+    opera     & \payoff{2}{5}   & \payoff{1}{1}   \\
+    boxing     & \payoff{1}{1}     & \payoff{5}{2}   \\
+    };
+
+
+    % Alice: centered between column 2 and 3 header cells, above row 1
+    \node[anchor=south,blue] at ($(M-1-2)!0.5!(M-1-3)$) [yshift=1em] {Alice};
+    
+    % Bob: rotated, centered between row 2 and 3, left of column 1  
+    \node[anchor=south, rotate=90,red] at ($(M-2-1)!0.5!(M-3-1)$) [yshift=3em] {Bob};
+    
+    
+    % % Now address any number directly:
+    % \draw[thick] (AA-al) circle (10pt);   % circle Alice's 10
+    % \draw[->]    (AB-al) -- (AA-al);     
+
+
+    \ifstep{1}{
+        \draw[->,>=latex,thick]    (AB-al) -- (AA-al);     
+        % \draw[->,>=latex]    (AB-al) -- (BB-al);      
+        % \draw[->,>=latex]    (BA-al) -- (AA-al);      
+        \draw[->,>=latex,thick]    (BA-al) -- (BB-al);      
+    }
+   
+   \ifstep{2}{
+        % \draw[->,>=latex,thick]    (AB-al) -- (AA-al);     
+        \draw[->,>=latex,thick,red]    (AB-bo) -- (BB-bo);      
+        \draw[->,>=latex,thick,red]    (BA-bo) -- (AA-bo);      
+        % \draw[->,>=latex,thick]    (BA-al) -- (BB-al);      
+    }
+   
+
+  \ifstep{3}{
+    \begin{scope}[on background layer]
+        \fill[green!10] (M-2-2.north west) rectangle (M-2-2.south east);
+        \fill[green!10] (M-3-3.north west) rectangle (M-3-3.south east);
+    \end{scope}
+    }
+
+
+
+
+
+
+\end{tikzpicture}
+\end{document}

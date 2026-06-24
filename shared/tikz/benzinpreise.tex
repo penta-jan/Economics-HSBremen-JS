@@ -1,0 +1,156 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{eurosym}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\usepackage{hsbcommon}
+\begin{document}
+
+\definecolor{bluecolor}{RGB}{50,102,173}
+\definecolor{graycolor}{RGB}{136,135,128}
+\definecolor{redcolor}{RGB}{192,57,43}
+\definecolor{bglight}{RGB}{248,248,246}
+\definecolor{annotcolor}{RGB}{100,100,95}
+
+\begin{tikzpicture}
+
+\begin{axis}[
+  width=16cm,
+  height=12cm,
+  axis background/.style={fill=bglight},
+  xmin=0.5, xmax=14.5,
+  ymin=1.58, ymax=2.60,
+  xtick={1,2,3,4,5,6,7,8,9,10,11,12,13,14},
+  xticklabels={
+    Feb~15,
+    Feb~22,
+    Feb~28,
+    Mar~2,
+    Mar~9,
+    Mar~16,
+    Mar~23,
+    Mar~30,
+    Apr~6,
+    Apr~13,
+    Apr~20,
+    Apr~27,
+    May~1,
+    May~5
+  },
+  xticklabel style={rotate=45, anchor=east, font=\small},
+  ytick={1.60,1.70,1.80,1.90,2.00,2.10,2.20,2.30,2.40,2.50},
+  yticklabel={\pgfmathprintnumber[fixed,precision=2]{\tick}\,€},
+  yticklabel style={font=\small},
+  ymajorgrids=true,
+  xmajorgrids=true,
+  grid style={line width=0.3pt, color=white},
+  axis line style={line width=0.6pt, color=gray!60},
+  tick style={color=gray!60, line width=0.4pt},
+  title style={font=\large\bfseries, yshift=6pt},
+  title={Petrol Prices in Germany---Mid February to May 2026},
+  ylabel={Price in \euro{}/liter},
+  ylabel style={font=\small, yshift=-4pt},
+  legend style={
+    at={(0.02,0.97)},
+    anchor=north west,
+    font=\small,
+    fill=white,
+    fill opacity=0.9,
+    draw=gray!40,
+    row sep=2pt
+  },
+  clip=false,
+]
+
+% --- Diesel (dashed, gray) ---
+\addplot[
+  color=graycolor,
+  line width=1.8pt,
+  mark=*,
+  mark size=2.5pt,
+  mark options={fill=graycolor, draw=graycolor}
+] coordinates {
+  (1,  1.715)
+  (2,  1.722)
+  (3,  1.754)
+  (4,  1.790)
+  (5,  1.830)
+  (6,  1.900)
+  (7,  1.990)
+  (8,  2.100)
+  (9,  2.380)
+  (10, 2.330)
+  (11, 2.230)
+  (12, 2.250)
+  (13, 2.150)
+  (14, 2.101)
+};
+\addlegendentry{Diesel}
+
+% --- Super E10 (solid, blue) ---
+\addplot[
+  color=bluecolor,
+  line width=2.2pt,
+  mark=*,
+  mark size=2.5pt,
+  mark options={fill=bluecolor, draw=bluecolor}
+] coordinates {
+  (1,  1.755)
+  (2,  1.760)
+  (3,  1.789)
+  (4,  1.810)
+  (5,  1.836)
+  (6,  1.875)
+  (7,  1.920)
+  (8,  1.980)
+  (9,  2.192)
+  (10, 2.150)
+  (11, 2.100)
+  (12, 2.108)
+  (13, 2.069)
+  (14, 2.019)
+};
+\addlegendentry{Super E10}
+
+% ---- Annotation: Irankrieg (x=3, i.e. 28. Feb) ----
+\draw[redcolor, line width=0.8pt, dashed]
+  (axis cs:3, 1.789) -- (axis cs:3, 2.52);
+\node[
+  anchor=south,
+  font=\footnotesize,
+  text=redcolor,
+  align=center,fill=white
+] at (axis cs:3, 2.2) {War in Iran \\begins};
+
+
+
+% ---- Annotation: Allzeithoch Diesel (x=9) ----
+\node[
+  anchor=south west,
+  font=\footnotesize,
+  text=graycolor
+] at (axis cs:9.1, 2.380) {All time high diesel\,2,45\,€};
+
+% ---- Annotation: Tankrabatt (x=13) ----
+\draw[bluecolor!70!black, line width=0.8pt, dashed]
+  (axis cs:13, 2.069) -- (axis cs:13, 2.44);
+\draw[red, line width=5pt]
+  (axis cs:13, 1.90) -- node[left] {17ct} (axis cs:13, 2.07);
+\node[
+  anchor=south,
+  font=\footnotesize,
+  text=bluecolor!80!black,
+  align=center
+] at (axis cs:13, 2.44) {Tankrabatt\\$-$17\,ct/l\,(May 1st)};
+
+% ---- Source note ----
+\node[
+  anchor=south west,
+  font=\tiny,
+  text=gray
+] at (axis cs:0.5, 1.58) {Source: ADAC Kraftstoffmarktberichte 2026 | Weekly average values};
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

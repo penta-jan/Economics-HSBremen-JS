@@ -1,0 +1,91 @@
+\documentclass[paper=a5,listof=totoc]{scrartcl}
+\usepackage{xcolor}
+\usepackage{cprotect}
+\usepackage{hsbcommon}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{multicol}
+
+\usepackage[scale=3,colorspec=0.96,text=internal~use~only]{draftwatermark}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 13th\or
+    April 20th\or
+    May 4th\or
+    May 11th\or
+    May 18th\or
+    June 1st\or
+    June 8th\or
+    June 15th\or
+    June 22nd\or
+    June 26th (Friday)\or
+    June 29th\or
+    July 6th\or
+    \else
+  \fi
+}
+
+\title{HSBCommon}
+\author{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}\\Jan Suchanek}
+\date{Summer Semester \the\year\\\today}
+
+\automark{section}
+\pagestyle{scrheadings}
+\ihead{\leftmark}
+   \chead{}
+   \ohead{Microeconomics}
+
+\setlength{\parskip}{1ex}
+
+\begin{document}
+
+\onehalfspacing
+
+\maketitle
+
+\begin{abstract}
+    Kurze Erläuterung von HSBCommon.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\clearpage
+
+\include{package_hsbcommen/hsbcommon-input}
+
+\clearpage
+
+\listoffigures
+ 
+\listoftables
+
+\newpage
+
+   \nocite{*}
+    \printbibliography
+
+    \clearpage
+    \thispagestyle{empty}
+    
+    ~
+    
+    % \cleardoublepage
+    % \phantomsection
+    % \addcontentsline{toc}{section}{Control Questions}
+    % \includepdf[pages=-]{microeconomics/questionbank/ME_QuestionPool.pdf}
+
+\end{document}

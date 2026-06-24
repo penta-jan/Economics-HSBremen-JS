@@ -1,0 +1,112 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7,8}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (8,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,8) node[above] {$p$};
+
+    %% ── All coordinates unconditional ────────────────────────────────────────
+    \coordinate (A) at (0,7);   % DD top
+    \coordinate (B) at (7,0);   % DD bottom
+    \coordinate (E) at (0,1);   % SS left
+    \coordinate (F) at (7,7);   % SS right
+
+    %% ── All named paths ──────────────────────────────────────────────────────
+    \draw[name path global=demand] plot [smooth] coordinates {(A)(B)};
+    \draw[name path global=supply] plot [smooth] coordinates {(E)(F)};
+    \draw[name path global=worldprice,  draw=none] (0,2) -- (8,2);
+    \draw[name path global=tariffprice, draw=none] (0,3) -- (8,3);
+
+    %% ── All intersections pre-computed ───────────────────────────────────────
+    \path [name intersections={of=demand and supply,     by=X}];  % domestic eq.
+    \path [name intersections={of=demand and worldprice, by=Y}];  % demand @ world price
+    \path [name intersections={of=supply and worldprice, by=Z}];  % supply @ world price
+    \path [name intersections={of=demand and tariffprice,by=Y2}]; % demand @ tariff price
+    \path [name intersections={of=supply and tariffprice,by=Z2}]; % supply @ tariff price
+
+    %% ── Always visible: curves, domestic equilibrium ─────────────────────────
+    \node[above right] at (B) {$DD_{\text{dom.}}$};
+    \node[above]       at (F) {$SS_{\text{dom.}}$};
+
+    \filldraw (X) node[right] {$E_1$} circle (2pt);
+    \draw[dashed] (0,|- X) node[left] {$p^*$} -- (X) -- (X |-,0) node[below] {$x^*$};
+
+    %% ── Step 1: domestic CS and PS ───────────────────────────────────────────
+    \ifstep{1}{
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A) -- (X) -- (0,|- X) -- node[right] {$CS$}  cycle;
+            \draw[fill=blue!10] (E) -- (X) -- (0,|- X) -- node[right] {$PS$}  cycle;
+        \end{scope}
+    }
+
+    %% ── Step 2: world price line, import quantity ────────────────────────────
+    \ifstep{2}{
+        \draw[red] (0,2) node[left] {$p_w$} -- (6,2) node[right] {world price};
+        \draw[dashed] (Y |-,0) node[below] {$x^{\text{free}}_{\text{total}}$}      -- (Y);
+        \draw[dashed] (Z |-,0) node[below] {$x_{\text{dom.}}^{\text{free}}$} -- (Z);
+        \draw[ultra thick,<->,>=latex]
+            (Z |-,1) -- node[below] {\footnotesize free trade import} (Y |-,1);
+        \filldraw[red] (Y) node[above right] {$E_F$} circle (2pt);
+        \filldraw      (Z) node[below right] {$S_2$} circle (2pt);
+    }
+
+    
+    %% ── Step 3: CS and PS at world price ─────────────────────────────────────
+    \ifsteponly{3}{5,6}{
+        \draw[ultra thick] (E) -- (Z) -- (6,2) node[below] {\textbf{$SS_t$}};
+        \draw[thick] (0,2) node[left] {$p_w$} -- (6,2);
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A) -- (Y) -- (0,|- Y) -- node[right] {$CS'$} cycle;
+            \draw[fill=blue!10] (E) -- (Z) -- (0,|- Z) -- node[right] {$PS'$} cycle;
+        \end{scope}
+
+    }
+
+    %% ── Step 4: tariffed world price line ────────────────────────────────────
+    \ifstep{4}{
+        \draw[thick] (0,2) node[left] {$p_w$} -- (6,2);
+        \draw[thick,red] (0,3) node[left] {$p_t$} -- (6,3) node[right] {wp+tariff};
+        \draw[dashed] (Y2 |-,0) node[below] {$x^{\text{tariff}}_{\text{total}}$}             -- (Y2);
+        \draw[dashed] (Z2 |-,0) node[below] {$x_{\text{dom.}}^{\text{tariff}}$} -- (Z2);
+        \draw[ultra thick,<->,>=latex]
+            (Z2 |-,1.5) -- node[below] {\footnotesize rest import} (Y2 |-,1.5);
+        \filldraw      (Y2) node[above right] {$E_T$} circle (2pt);
+        \filldraw      (Z2) node[below right] {$S_3$} circle (2pt);
+    }
+
+    %% ── Step 5: CS and PS at tariffed price ──────────────────────────────────
+    \ifstep{5}{
+        \draw[ultra thick] (E) -- (Z2) -- (6,3) node[below] {$SS_{tt}$};
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A)  -- (Y2) -- (0,|- Y2) -- node[right] {$CS''$} cycle;
+            \draw[fill=blue!10] (E)  -- (Z2) -- (0,|- Z2) -- node[right] {$PS''$} cycle;
+        \end{scope}
+    }
+
+    %% ── Step 6: government revenue rectangle ─────────────────────────────────
+    \ifstep{6}{
+        % \draw[thick]     (0,2) node[left] {$p_w$} -- (6,2);
+        % \draw[thick,red] (0,3) node[left] {$p_t$} -- (6,3) node[right] {tariffed};
+        \begin{scope}[on background layer]
+            \fill[yellow!20] (Z) -- (Z2) -- (Y2) -- (Y) -- cycle;
+            \fill[green!20] (Z2) -- (Y2) -- (Y2 |-,2) -- (Z2 |-,2) -- cycle;
+        \end{scope}
+        \node[green!60!black] at ($(Z2)!0.5!(Y2 |-,2)$) {$GR$};
+
+    }
+
+
+    %% ── Step 7: import values                       ─────────────────────────────────
+    \ifstep{7}{
+        \draw[red,dashed,ultra thick] (Z) rectangle (Y |-,0);
+        \draw[green,dashed,ultra thick] (Z2) rectangle (Y2 |-,0);
+    }
+    
+
+\end{tikzpicture}
+\end{document}

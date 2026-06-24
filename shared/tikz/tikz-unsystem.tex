@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[edges]{forest}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{hsbcommon}
+
+\renewcommand\familydefault{\sfdefault}
+\begin{document}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [United Nations 
+        [UN Proper
+            [General Assembly
+                [G7] [G20] [...]
+            ]
+            [Security Council]
+        ]
+        [Specialised Agencies
+            [IMF - International Monetary Funds]
+            [World Bank]
+            [FAO - Food and Agriculture Organisation]
+            [WHO - World Health Organisation]
+            [IMO - International Maritime Organisation]
+            [ILO - International Labour Organisation]
+            [...]
+        ]
+        [Other Entities and Bodies
+            [UNHCR - United Nations High Comissioner on Refugees]
+            [UNU - United National University]
+            [UNOPS - United Nationa Office for Project Services]
+            [...]
+        ]
+        [Related Organisations
+            [WTO - World Trade Organisation]
+            [IAEA - International Atomic Energy Agency]
+            [ICC - International Criminal Court]
+            [ITC - International Trade Center]
+            [UNCTAD - United Nations Conference on Trade and Development]
+            [UNIDO - United Nations Industrial Development Organisation]
+            [...]
+        ]
+    ]
+    \end{forest}
+
+ 
+
+    
+\end{document}

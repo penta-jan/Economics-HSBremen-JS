@@ -1,0 +1,122 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{2,3,4,5,6}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [right] {$x$};
+    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [above] {$p$};
+
+    %% ── All coordinates defined unconditionally ──────────────────────────────
+    %% Step 1: original supply SS1 — straight line E to F1
+    \coordinate (A)  at (0,7);
+    \coordinate (B)  at (4,0);
+    \coordinate (E)  at (0,1);
+    \coordinate (F1) at (6,2);   % SS1 endpoint (straight line)
+
+    %% Step 2: kinked supply SS2 — follows SS1 to E1, then turns up to F2
+    \coordinate (E1) at ($(E) + (1.5, 0.25)$);
+    \coordinate (F2) at ($(E1) + (2, 5)$);
+
+    %% Step 4: tax shifts SS2 down by 1 to SS3
+    \coordinate (E2)  at ($(E)  + (0,-1)$);
+    \coordinate (E12) at ($(E1) + (0,-1)$);
+    \coordinate (F3)  at ($(F2) + (0,-1)$);
+
+    %% ── Named paths ──────────────────────────────────────────────────────────
+    \draw[name path global=demand]    plot [smooth] coordinates {(A)(B)};
+    \draw[name path global=oldsupply] plot [smooth] coordinates {(E)(F1)};
+    \path[name path global=supply2]   plot coordinates {(E)(E1)(F2)};
+    \path[name path global=supply3]   plot coordinates {(E2)(E12)(F3)};
+
+    %% Pre-compute all intersections
+    \path [name intersections={of=demand and oldsupply, by=X1}];
+    \path [name intersections={of=demand and supply2,   by=X2}];
+    \path [name intersections={of=demand and supply3,   by=X3}];
+    \path [name intersections={of=oldsupply and supply3, by=LA}];
+
+    %% ── Step 1: competitive equilibrium ─────────────────────────────────────
+        \draw[name path global=oldsupply] plot [smooth] coordinates {(E)(F1)};
+        \node[above] at (F1) {$SS_1$};
+        \node[above right] at (B) {$DD$};
+
+        \draw[dashed] (0,|- X1) node [left] {$p_1$} -- (X1) -- (X1 |-,0) node [below] {$x_1$};
+        \filldraw (X1) node[above right] {$E_1$} circle (2pt);
+    \ifstep{1}{
+        \begin{scope}[on background layer]
+            \fill[fill=red!10]  (A)  -- (X1) -- (0,|- X1) -- node[below right] {\parbox{13ex}{CS}} cycle;
+            \fill[fill=blue!10] (E)  -- (X1) -- (0,|- X1) -- node[above right] {\parbox{13ex}{PS}} cycle;
+        \end{scope}
+    }
+
+    %% ── Step 2: supply shock SS2 ─────────────────────────────────────────────
+    \ifstep{2}{
+        % \draw[color=black,fill=white] (A) -- (X1) -- (0,|- X1) -- cycle;
+        % \draw[color=black,fill=white] (E) -- (X1) -- (0,|- X1) -- cycle;
+        \filldraw[black] (X1) node[above right] {$E_1$} circle (2pt);
+
+        \begin{scope}[draw=red]
+            \draw[name path global=supply2, thick] plot coordinates {(E)(E1)(F2)};
+            \node[above] at (F2) {$SS_2$};
+            \node[above right] at (B) {$DD$};
+
+            \draw[dashed] (0,|- X2) node [left] {$p_2$} -- (X2) -- (X2 |-,0) node [below] {$x_2$};
+            \filldraw (X2) node[right] {$E_2$} circle (2pt);
+        \end{scope}
+    }
+    \ifstep{3}{
+            \begin{scope}[on background layer]
+            
+                \fill[fill=red!10]  (A)  -- (X2) -- (0,|- X2) -- node[below right] {\parbox{13ex}{CS}} cycle;
+                \fill[fill=blue!10] (E) -- (E1) -- (X2) -- (0,|- X2) -- node[above right] {\parbox{13ex}{PS}} cycle;
+            \end{scope}
+    }
+
+    %% ── Step 3: deadweight loss triangle ─────────────────────────────────────
+    \ifstep{3}{
+        \begin{scope}[color=green]
+            \draw (X1) -- (X2) -- (E1) -- cycle;
+            \node[above left] at (X1) {\scriptsize $\Delta$DWL};
+            \draw[color=red, name path global=supply2, thick] plot coordinates {(E)(E1)(F2)};
+        \end{scope}
+    }
+
+    %% ── Step 4: tax shifts supply to SS3 ────────────────────────────────────
+    \ifstep{4}{
+        \begin{scope}[color=blue]
+            \draw[->,>=latex,shorten >=2pt,shorten <=2pt,thick,dotted]
+                (E) ++ (-0.2,0) -- node[left] {\scriptsize $\Delta t$} ++ (0,-1);
+
+            \draw[name path global=supply3, thick] plot coordinates {(E2)(E12)(F3)};
+            \node[above right] at (F3) {$SS_3$};
+
+            \draw[dashed] (0,|- X3) node [left] {$p_3$} -- (X3) -- (X3 |-,0) node [below right] {$x_3$};
+            \filldraw (X3) node[right] {$E_3$} circle (2pt);
+        \end{scope}
+    }
+
+    %% ── Step 5: welfare areas after tax ─────────────────────────────────────
+    \ifstep{5}{
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A)  -- (X3) -- (0,|- X3) -- node[below right] {\parbox{13ex}{CS}} cycle;
+            \draw[fill=blue!10] (E2) -- (E12) -- (X3) -- (0,|- X3) -- node[above right] {\parbox{13ex}{PS}} cycle;
+        \end{scope}
+
+        \draw[name path global=supply3, thick] plot coordinates {(E2)(E12)(F3)};
+        \filldraw (X3) circle (2pt);
+        \filldraw (X2) circle (2pt);
+        \draw[dashed] plot [smooth] coordinates {(E)(F1)};
+
+    }
+    \ifstep{6}{
+        \draw[dashed,green,ultra thick,opacity=0.2,fill=green] (0,0) rectangle node[opacity=1] {\scriptsize $\Delta GR$} (X2 |-,1);
+        \draw[dashed,color=green,thick] (X2) -- (X3) -- (LA) -- (E1) -- node[right=-5pt]{\scriptsize $\Delta\!$W} cycle;
+    
+    }
+
+\end{tikzpicture}
+\end{document}

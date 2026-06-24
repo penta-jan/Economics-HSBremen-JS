@@ -1,0 +1,104 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{0,2,3,4,5}}\makeatother
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\usetikzlibrary{patterns,intersections,calc}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [right] {$x$};
+    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [above] {$p$};
+
+    %% ── All coordinates unconditional ────────────────────────────────────────
+    \coordinate (A)  at (0,7);
+    \coordinate (B)  at (7,0);
+    \coordinate (E)  at (0,1);
+    \coordinate (F)  at (7,7);
+    \coordinate (G2) at (0,1);   % SS2 left
+    \coordinate (H2) at (3,8);   % SS2 right
+    \coordinate (G3) at (1,0);   % SS3 left
+    \coordinate (H3) at (4,7);   % SS3 right
+
+    %% ── Named paths ──────────────────────────────────────────────────────────
+    \draw[name path global=demand]  plot [smooth] coordinates {(A)(B)};
+    \draw[name path global=supply]  plot [smooth] coordinates {(E)(F)};
+    \path[name path global=supply2] plot [smooth] coordinates {(G2)(H2)};
+    \path[name path global=supply3] plot [smooth] coordinates {(G3)(H3)};
+
+    %% ── All intersections pre-computed ───────────────────────────────────────
+    \path [name intersections={of=demand and supply,  by=X}];
+    \path [name intersections={of=demand and supply2, by=Y}];
+    \path [name intersections={of=demand and supply3, by=Y3}];
+    \path [name path global=etwoline] (Y |-,0) -- (Y |-,8);
+    \path [name intersections={of=etwoline and supply3, by=T}];
+
+    %% ── Always visible: axes, curves, equilibrium point and price/quantity ───
+    \node[above right] at (A) {$DD$};
+    \node[above]       at (F) {$SS$};
+    \filldraw (X) node[right] {$E_1$} circle (2pt);
+    \draw[dashed] (0,|- X) node [left] {$p^*$} -- (X) -- (X |-,0) node [below] {$x^*$};
+
+    %% ── Step 1: free-market welfare CS1 and PS1 ─────────────────────────────
+    \ifstep{1}{
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A) -- (X) -- (0,|- X) -- node[right] {$CS_1$} cycle;
+            \draw[fill=blue!10] (E) -- (X) -- (0,|- X) -- node[right] {$PS_1$} cycle;
+        \end{scope}
+    }
+
+    %% ── Step 2: supply shock SS2, new equilibrium E2 ─────────────────────────
+    \ifstep{2}{
+        \begin{scope}[color=red]
+            \draw[name path global=supply2] plot [smooth] coordinates {(G2)(H2)};
+            \node[above] at (H2) {$SS_2$};
+            \filldraw (Y) node[right] {$E_2$} circle (2pt);
+            \draw[dashed] (0,|- Y) node [left] {$p^t$} -- (Y) -- (Y |-,0) node [below] {$x^t$};
+            \coordinate (Lss)  at ($(E)!0.7!(F)$);
+            \coordinate (Mss2) at ($(G2)!0.85!(H2)$);
+            \draw[->,>=latex,bend right=20] (Lss) to node[above right] {$S$} (Mss2);
+        \end{scope}
+    }
+
+    %% ── Step 3: welfare areas after shock ────────────────────────────────────
+    \ifstep{3}{
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A) -- (Y) -- (0,|- Y) -- node[right] {$CS_2$} cycle;
+            \draw[fill=blue!10] (E) -- (Y) -- (0,|- Y) -- node[right] {$PS_2$} cycle;
+        \end{scope}
+        \draw[dashed,black] (0,|- X) node [left] {$p^*$} -- (X) -- (X |-,0) node [below] {$x^*$};
+        \draw[dashed,red]   (0,|- Y) node [left] {$p^t$} -- (Y) -- (Y |-,0) node [below] {$x^t$};
+        \filldraw (X) node[right] {$E_1$} circle (2pt);
+        \filldraw (Y) node[right] {$E_2$} circle (2pt);
+    }
+
+    %% ── Step 4: partial recovery SS3, new equilibrium E3 ────────────────────
+    \ifstep{4}{
+        \begin{scope}[color=green]
+            \draw[name path global=supply3] plot [smooth] coordinates {(G3)(H3)};
+            \node[above] at (H3) {$SS_3$};
+            \filldraw (Y3) node[right] {$E_3$} circle (2pt);
+            \draw[dashed] (0,|- Y3) node [left] {$p^s$} -- (Y3) -- (Y3 |-,0) node [below] {$x^s$};
+        \end{scope}
+    }
+
+    %% ── Step 5: welfare comparison with government expenditure ───────────────
+    \ifstep{5}{
+        \begin{scope}[on background layer]
+            \draw[fill=yellow] (Y) -- (T) -- (0,|- T) node[left] {$p^u$}
+                -- node[fill=white,right] {$-GE$} (0,|- Y) -- cycle;
+            \draw[dashed, ultra thick, red]
+                (A) -- (Y3) -- (0,|- Y3) -- node[right] {$CS_3$} cycle;
+            \draw[dashed, ultra thick, blue]
+                (0,0) -- (1,0) -- (Y3) -- (0,|- Y3) -- node[right] {$PS_3$} cycle;
+        \end{scope}
+        \draw[dashed,black] (0,|- X)  -- (X)  -- (X  |-,0) node [below] {$x^*$};
+        \draw[dashed,red]   (0,|- Y3) -- (Y3) -- (Y3 |-,0);
+        \draw[thick] (3,0) -- (7,3) node[above] {$SS_0$};
+        \filldraw (Y)  circle (2pt);
+        \filldraw (Y3) circle (2pt);
+        \filldraw (T)  circle (2pt);
+    }
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,11 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+        \begin{tikzpicture}[scale=0.5]
+        \draw[very thick] (1,0) -- (4,-1) -- (7,0) -- (7,-4) to [out=-90,in=180] (8,-5) -- (23,-5) -- (24,-6.5) --  (23,-8) -- (20,-8) to [out=180,in=0] (15,-10) -- (15,-10) (14,-10) -- (10,-10) to [out=0, in=90] (14,-14) -- (14,-8) to [out=90,in=0] (13,-7) -- (11,-7);
+        \draw[very thick] (15,-7) to [out=0,in=180] (20,-6) -- (11,-6) -- (13,-6) to [out=0,in=90] (15,-8) to (15,-20) -- (13.5,-21) -- (12,-20) to (12,-14) to [out=90,in=0] (11,-13) -- (5,-13) to [out=180,in=-90] (1,-9) to (1,0);
+        \draw[very thick] (4,-4) to [out=-90, in=180] (8,-8) -- (14,-8) (15,-8) -- (16,-8) to [out=0,in=180] (20,-7) to [out=180, in=0] (15,-9) (14,-9) -- (6,-9) to [out=180,in=-90] (4,-7) -- (4,-4);
+        \draw[very thick] (2,-6) to (2,-7) to [out=-90,in=180] (6,-11) -- (10,-11) to [out=0,in=90] (13,-14) -- (13,-14) to [out=90,in=0] (11,-12) -- (5,-12) to [out=180,in=-90] (2,-9) -- (2,-7);
+        \end{tikzpicture}
+\end{document}

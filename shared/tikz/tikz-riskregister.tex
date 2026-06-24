@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\scriptsize low}-- (5,0) node[right] {likelihood} node[below] {\scriptsize high};
+        \draw[->] (0,0) node[left] {\scriptsize low} -- (0,5) node[above] {impact} node[left] {\scriptsize high};
+        \foreach \x in {1,2,3,4} {
+        \draw[dotted] (0,\x) -- (5,\x);
+        \draw[dotted] (\x,0) -- (\x,5);
+        };
+        \node[draw] (a) at (2.5,3.5) {Nr. 1};
+        \node[draw] (a) at (1.5,1.5) {Nr. 2}; 
+    \end{tikzpicture}
+\end{document}

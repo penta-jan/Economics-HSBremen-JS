@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right] (Q) {$Q$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node[above] (P) {$P$};
+
+        \coordinate (A) at (4,7);
+        \coordinate (F) at (7,1.7);
+
+        
+        \coordinate (C) at ($(A)!0.3!(F)$);
+        \coordinate (D) at ($(A)!0.8!(F)$);
+
+ 
+
+        \ifstep{1}{
+\begin{scope}[color=red]
+
+            \filldraw (C) circle (2pt) node[below left] {$B$};
+            \filldraw (D) circle (2pt) node[below left] {$A$};
+
+            \draw[dashed]  (0, |- C) node [left] {$P_2$} -- (C) -- (C |-,0) node [below] {$Q_2$};
+            \draw[dashed]  (0, |- D) node [left] {$P_1$}  -- (D) -- (D |-,0) node [below] {$Q_1$};
+
+            \draw[thick, <->,xshift=3pt] (0, |- C) -- node [right] {$\Delta P=50\%$} (0, |- D);
+            \draw[thick] ([xshift=-3pt]0, |- C) -- ([xshift=-3pt]0,0);
+            
+            \draw[thick, <->,yshift=3pt] (C |-,0) -- node [above] {$\Delta Q=20\%$} (D |-,0) ;
+            \draw[thick] ([yshift=-2pt]0,0) -- ([yshift=-2pt]D |-,0);
+
+            \draw[thick, shorten >=2pt, ,shorten <=2pt,<->, >=latex,] ([xshift=2pt,yshift=2pt]C) -- node [above right] {$\eta=-0.4$ inelastic} ([xshift=2pt,yshift=2pt]D);
+            
+        \end{scope}
+}
+
+        
+        \draw [name path=demand] plot  coordinates {(A)  (F)};
+        \node[right] at (F) {$DD$};
+
+        % \node at (5,8) {\parbox{20ex}{between $A$ and $B$: inelastic demand}};
+        
+
+        
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \tikzset{
+        every node/.style={draw,rounded corners},
+        >=latex
+    }
+    \node (inter) at (8,1) {intermediate wares};
+    \node (manu) at (8,0) {manufactured wares};
+    \foreach [count=\i] \ii in {1,2}
+    {
+        \node (raw\i) at (0,-\i) {raw material};
+        \node [above right=of raw\i] (ref\i) {refined commodity};
+        \draw[->] (raw\i.east) -- (ref\i.west) ;
+        \draw[->]  (ref\i.east) -- (inter.west);
+    }
+        \draw[->,double] (inter.south) -- (manu.north);
+        \node (bran) at (8,-2)  {branded wares};
+        \draw[->,double] (manu.south) -- (bran);
+        \node (whole) at (8,-3)  {wholesale};
+        \node (ret) at (8,-4)  {retail};
+        \draw[->,double] (bran) -- (whole);
+        \draw[->,double] (whole) -- (ret);
+    
+    \begin{scope}[green]
+        \node [fit=(raw1) (raw2), pin=mining]   (mining) {};
+    \end{scope}
+    
+    \begin{scope}[blue]
+        \node [fit=(ref1) (ref2), pin=refining]  (refining)  {};
+    \end{scope}
+
+    \begin{scope}[red]
+        \node [fit=(inter) (manu), pin=producing] (producing) {};
+    \end{scope}
+
+    \begin{scope}[red]
+        \node [fit=(mining) (refining), pin=-90:upstream] {};
+        \node [fit=(bran) (whole) (ret), pin=-90:{downstream} ] {};
+    \end{scope}
+    
+\end{tikzpicture}
+\end{document}

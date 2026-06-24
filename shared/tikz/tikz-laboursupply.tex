@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+
+    \tikzset{
+        >=latex
+    }
+    %% axis
+
+    \draw[->] (0,0) -- (8,0) node[below] {$L/hrs$};
+    \draw[->] (0,0) -- (0,6) node[above] {$w$};
+
+    \draw (7,0) -- (7,-0.1) node[below] {40?};
+
+    \coordinate (A) at (1,0.5);
+    \coordinate (B) at (6,1);
+    \coordinate (C) at (6.5,1.8);
+    \coordinate (D) at (7,3);
+    \coordinate (E) at (7,4.5);
+    \coordinate (F) at (6,5.5);
+
+    \foreach \i in {A,B,C,F} \filldraw (\i) node[above left] {\i} circle (2pt);
+    \foreach \i in {D,E} \filldraw (\i) node[above right] {\i} circle (2pt);
+
+    \draw plot[smooth] coordinates {(B)(C)(D)(E)(F)};
+
+    \draw[dashed] (0,|-B) -- node[above]{\scriptsize subsistence wage} (8,|-B) ;
+
+    \draw[->,red] (A|-,1.7) -- node[above] {\scriptsize substitution effect} (5,1.7);
+    \draw[->,red] (6.5,4.5) -- node[above] {\scriptsize income effect} (4,4.5);
+    
+\end{tikzpicture}
+\end{document}

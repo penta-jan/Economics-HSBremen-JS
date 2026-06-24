@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc,patterns}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->,>=latex,name path=abscissa] (0,0) -- (7,0) node[right] {x};
+        \draw[->,>=latex,name path=ordinate] (0,0) -- (0,7) node[above] {p};
+
+        
+        \draw[name path=redline] plot [smooth,domain=-4:3] ({\x+4},{-2*(0.1*\x^3-0.4*\x^2-0.2*\x+1)+6});
+
+        \ifstep{1}{
+\begin{scope}[color=red]
+
+            \draw[name path global=restleft] (2,0) node[below] {$A_0$} -- (2,7) node[above] {\footnotesize s.t. $A>A_0$}; 
+            \draw[name path global=restright] (6,0) node[below] {$A_1$} -- (6,7) node[above] {\footnotesize s.t. $A<A_1$}; ; 
+        \end{scope}
+}
+
+        \ifstep{2}{
+\begin{scope}[color=blue]
+
+            \path [name intersections={of=restleft and redline,by=leftpoint}];
+            \filldraw (leftpoint) circle (2pt) node[below right] {A};
+
+            \path [name intersections={of=restright and redline,by=rightpoint}];
+            \filldraw (rightpoint) circle (2pt) node[below right] {B};
+
+            \draw[dashed] (rightpoint) -- (0, |- rightpoint) node[left] {$p_{max}$};
+            
+            \draw[dashed] (leftpoint) -- (0, |- leftpoint) node[left] {$p_{min}$};
+        \end{scope}
+}
+
+            
+        
+    \end{tikzpicture}
+\end{document}

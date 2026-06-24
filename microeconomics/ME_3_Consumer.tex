@@ -1,0 +1,408 @@
+
+\section{The Consumer}
+
+
+\begin{frame}{Homo Economicus}
+    \mycomment{
+    These assumptions can be translated into simple mathematical models.
+
+    For example, `more is better than less' can be expressed as a utility function that is continuously rising:
+
+    \begin{equation}
+        \frac{%
+            dU\left(x\right) 
+        }{%
+            dx
+        }
+        >0        
+    \end{equation}
+    And the most simple curve fulfilling this would be a linear function:
+    \begin{equation}
+        U\left(x\right) = ax + b
+    \end{equation}
+    But a logarithmic function is more realistic, since it caters for diminishing returns:
+    \begin{equation}
+        U\left(x\right) = ln\left(x\right)
+    \end{equation}
+
+    }
+    \mytext{
+        \begin{itemize}
+            \item (so-called) rational behaviour
+            \item self-interest (first and foremost)
+            \item more is better than less
+            \item marginal utility/returns diminishing
+            \item tries to spend as little as possible
+            \item tries to make as much as possible
+            \item maximisation of \textbf{utility}
+        \end{itemize}
+    }
+\end{frame}
+
+% \section{Utility and Budget Constraints}
+
+\begin{frame}{Activities}
+    \mycomment{Economics is concerned with economic activities only. So breathing, enjoyment of arts, etc. are not of our (core) concern - which does not mean we should be indifferent to this.
+
+    The assumption of `rational behaviour' does not mean that everyone at every time makes the best decision in an economic sense. It rather implies that in the long run, and in competition with many others, actors will make these best decisions. Otherwise, they will be priced out of the market (and learn to decide better).
+
+    The state, however, is under different pressure than the ordinary economic actors, and may not be subject to the same optimisation rules. We shall return to this topic later.
+    }
+    \mytext{
+        \begin{itemize}
+            \item Consumption (buying stuff)
+            \item Saving: for later (consumption)
+            \item Investing: to produce stuff (with capital)
+            \item Producing: to sell stuff (exchange)
+            \item Working: selling labour
+            \item Trading: buying and selling (markets)
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Simplifications}
+    \mycomment{
+    Economics in its pure form abstracts from many things, so we will be working with highly simplified models. This is similar to physics, where the laws of gravity can be best explained abstracting from air resistance. 
+    
+    That does of course not mean that these things do not exist. Indeed, looking at the restrictions and assumptions (rather than forgetting them) is rigorously important. Just like a feather falls slower than a rock in physics due to air resistance.
+    }
+    \mytext{
+    \begin{itemize}
+        \item no transaction costs
+        \item no barriers to entry
+        \item perfect information
+        \item perfect ignorance
+        \item no information costs
+        \item no time-lags
+        \item no (or little) coordinated behaviour
+        \item no money or irrelevant currencies
+        \item only economic transactions
+        \item ...
+    \end{itemize}
+    }
+\end{frame}
+
+
+\begin{frame}{Diminishing Returns}
+    \showmytikz{../shared/tikz/tikz-diminishingreturns.tex}
+    \mycomment{
+        Generally, more of something will be better than less of something.
+
+        (Otherwise the `less of something' can be expressed as `more of the opposite'.)
+
+        In Economics `happieness' is expressed as `utility'. The more we have of something, the more utility we will have.
+
+        It is considered that the wants of humans are generally insatiable: typically, everyone would like some more.
+
+        There may be an area of want and shortcoming, where not having something may actually have negative utility. 
+        
+        Even if the 100th car is not as exiting as the first one was: it still is nice to have. Only in very exceptional cases will more bear negative utility.
+        
+        This is called the law of diminishing returns, or Gossen's First Law.
+    }
+\end{frame}
+
+\begin{frame}{Diminishing Returns}
+    \showmytikz[1]{../shared/tikz/tikz-diminishingreturns.tex}
+    \mycomment{
+        The marginal utility - how much more utility we gain per unit - will tendentially go down: we enjoy the first car more than the second car. And the second beer might taste better than the first. 
+
+        And eventually marginal utility may even become negative. That is - unless I can sell all those extra cars, in which case... I have more of something else.
+
+    }
+\end{frame}
+
+\begin{frame}{Diminishing Returns}
+    \showmytikz[2]{../shared/tikz/tikz-diminishingreturns.tex}
+    \mycomment{
+        In economic modelling, we often simply take a root function:
+        \begin{equation}
+            U\left(x,y\right)=ax^\alpha \quad \text{with}\quad 0<\alpha<1
+        \end{equation}
+        So when looking at multiple goods at the same time, we can express them in this form:
+        \begin{equation}
+            U\left(x,y\right) = ax^\alpha \cdot by^\beta
+        \end{equation}
+        These functions are of course much more easy to handle:
+        \begin{equation}
+            \log  U\left(x,y\right) = \alpha \log ax + \beta \log  by
+        \end{equation}
+    }
+\end{frame}
+
+\begin{frame}{Diminishing Returns}
+    \showmytikz{../shared/tikz/tikz-s-kurve.tex}
+    \mycomment{
+    Another common assumption for diminishing returns is the so-called `logistic function' of the following form:
+    \begin{equation}
+        f(x) = \frac{L}{1+e^{-k(x-x_0)}}
+    \end{equation}
+
+    Any single growth is typically limited (even if growth in total may be unlimited, as time is unlimited). Trees don't grow into the sky. No many will ever own the whole world. 
+    
+    Improvements may make a product lighter, but to achieve even a small reduction in weight for an already sophisticated, ripe product takes much effort. Having an extra 10 Euro income yields less and less extra utilities as you become wealthy.
+    
+    }
+\end{frame}
+
+\begin{frame}{Prospect Theory: Asymmetric Evaluation}
+    \showmytikz[]{../shared/tikz/tikz-prospecttheory.tex}
+    \mycomment{
+        Consumers typically value gains and losses asymmetrically.
+        We enjoy an extra 10~\mycurrency\ not as much as we loathe to loose 10~\mycurrency.
+
+        We would also often only sell something for no less than 10~\mycurrency\ but would only buy it new if it cost less than that.
+    }
+\end{frame}
+
+\begin{frame}{Prospect Theory: Asymmetric Evaluation}
+    \showmytikz[1]{../shared/tikz/tikz-prospecttheory.tex}
+    \mycomment{
+        $|V(+X)| < |V(-X)|$ seems not rational.
+
+        \begin{itemize}
+            \item endowment effect
+            \item disposition effect
+            \item lock-in effect
+        \end{itemize}
+
+        There may also be an asymmetry between how much we remember gains and losses, and how much we expect gains and losses. 
+
+        This result is \textbf{risk averse} behaviour: we prefer a lower, but sure outcome over a risky outcome with the same expectancy.
+
+        There are many other examples for irrational behaviour: escalation of commitment, sunk costs fallacy (`throw good money after bad money'), cognitive dissonances, akrasia, hyperbolic discounting...
+    }
+\end{frame}
+
+\begin{frame}{Time Preferences and Interest Rates}
+    \showmytikz{../shared/tikz/tikz-discounting.tex}
+    \mycomment{
+        I will typically value a good that I have today more than the same thing tomorrow. That is because today is safe, and tomorrow is risky.
+
+        How much exactly is a matter of the actual and perceived risk and risk aversion. We are \textbf{discounting} the future.
+        
+        In economics and for business purposes, we usually apply the (current or expected) interest rate.
+
+        It follows that at high interest rates, the future is worth `less' then at low interest rates. We live more in the present - and disregard the future more.
+
+        Whether or not this is wise - or indeed rational - is another, difficult, question. The origin of the interest rate is a debated topic in Economics.
+
+ %       See the \href{https://www.tradingview.com/symbols/NYMEX-CL1!/forward-curve/}{futures curve Crude Oil} (external link).
+    }
+\end{frame}
+
+\begin{frame}{Allocation, Exchange and Utility Curves}
+    \showmytikz{../shared/tikz/tikz-utilitycurves.tex}
+    \mycomment{
+        In a simple model, we can only choose to have a combination of $A$ or $B$. 
+        
+        Typically, we want both, and as much of both as possible: more is better than less.
+
+        Because less is only better if it allows for more of something else (less income may only be good if you have more spare time). 
+
+        The `level of happiness' is called utility. There are combinations of $A$ an $B$ that give me the same utility. Thus, I may be willing to work a little more (gaining income) and have a little less spare time. 
+    }    
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Budget Restrictions}
+    \showmytikz[]{../shared/tikz/tikz-budgetgerade.tex}
+    \mycomment{
+        Since `more is better than less':
+        
+        If I have the choice to spend my budget on $A$ or $B$, I am likely to choose a combination of the two.
+
+        Note that the price of $A,B$ does not change as I spend more on $A$ or $B$.
+
+        There is a point $S_1$ where the combination of $A,B$ maximises my utility. At this point a little more or a little less of either will not affect me much: I am indifferent. At any other point, I would rather have less of one in exchange for the other. 
+
+        The slope is the marginal rate of exchange. 
+    }
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Budget Restrictions}
+    \showmytikz[1]{../shared/tikz/tikz-budgetgerade.tex}
+    \mycomment{
+        If my budget goes down, I will likely - but not necessarily -  spend less on both $A$ and $B$.
+    
+        How I share my budget between $A$ and $B$ will depend on my preferences, and these may be different between people.
+    }
+\end{frame}
+
+\begin{frame}{Consumer Theory}
+    \showmytikz[]{../shared/tikz/tikz-consumer.tex}
+    \mycomment{
+    A consumer facing a price vector $(p_1,p_2)$ will split his/her budget between the two options so that her/his utility is the greatest he/she can have. He or she is unlikely to spend it all on one of the two goods only. 
+    
+    The result is that budget is spent on a particular combination of $A$ and $B$. 
+    
+    This point is where the marginal utilities for both uses of the money are equal. That is called Gossen's Second Law. When I am indifferent where to spend that extra Euro, my budget is perfectly balanced. 
+    }
+\end{frame}
+
+\begin{frame}{Consumer Theory}
+    \showmytikz[1]{../shared/tikz/tikz-consumer.tex}
+    \mycomment{
+    If the price for $A$ goes up (here: doubles), the budget can buy less of $A$. 
+
+    But the consumer is not just to buy half as much $A$ as before: Point $S_2$ is not an equilibrium. Our consumer can be better off by spending even less on $A$ but spending more on $B$ instead.
+    }
+\end{frame}
+
+\begin{frame}{Consumer Theory}
+    \showmytikz[1,2]{../shared/tikz/tikz-consumer.tex}
+    \mycomment{Point $S3$ is tangential to an indifference curve. Here, the consumer reaches a new utility maximum spending the new budget on a new combination of both goods.}
+\end{frame}
+
+\begin{frame}{Consumer Theory}
+    \showmytikz[1,2,3]{../shared/tikz/tikz-consumer.tex}
+    \mycomment{
+    We conclude:
+    \begin{itemize}
+        \item the rise of any price makes you poorer: this is the \textbf{income effect} of a price change.
+        \item the change of the relation between prices will induce a change in how the budget is spent: the result is a \textbf{substitution effect}.
+    \end{itemize}
+
+    This works in the other direction just as well: if the price of something goes down, you gain income. You will buy more of the now cheaper good, but you will also have more money to spend on the other good. You may also substitute more of the now relatively more expensive good buy buying even more of the cheaper alternative. Imagine petrol prices and rail tickets!
+    }
+\end{frame}
+
+\begin{frame}{Relative Price Change}
+    \showmytikz[1,2,4]{../shared/tikz/tikz-consumer.tex}
+    \mycomment{
+        Consider the case where one of the prices goes down rather than up. Again, the change of one price has an income and a substitution effect. 
+        
+        The Baumol effect states that if e.g. the price of manufactured goods go down (due to technological advantages), consumers will spend more budget on services (such as haircuts) which will relatively go up in price. 
+
+        This can be perceived as inflation, but it is not: the consumer is all over more wealthy than before.
+
+        Think about the effect of AI, which promises large efficiency gains for certain activities, but not for others.  
+    }   
+\end{frame}
+
+\begin{frame}{Utility Curves (Cobb-Douglas)}
+    \showmytikz[]{../shared/tikz/tikz-hicks.tex}
+    \mycomment{
+        The shape of utility indifference curves depends on the (cross-price-)elasticities of the goods. 
+
+        There are perfect substitutes, perfect complements and anything in between.
+
+        The `normal' in-between case assumes a shape more or less in this form:
+
+        \begin{equation}
+            U={X}^\alpha\cdot{Y}^\beta \quad \mid   \alpha+\beta=1
+        \end{equation}
+        with $\alpha+\beta=1$. This has been introduced in production theory and is there known as \noun{Cobb-Douglas} production function. 
+
+        Given a budget $B_1$ I will choose a certain combination of $X$ and $Y$.
+   
+    }
+\end{frame}
+
+\begin{frame}{Utility Curves (Cobb-Douglas)}
+    \showmytikz{../shared/tikz/tikz-3dfunction.tex}
+    \mycomment{
+    It is possible to represent such functions in three dimensions, and possible to build more complex models that evade visualisation.
+
+    Note that the empirical studies typically validate the assumptions of the model: diminishing returns, diminishing marginal rates of substitution. Thus, whatever the actual function, some truths we derive from looking at the general case hold in most real cases.
+    
+    }
+\end{frame}
+
+\begin{frame}{New Equilibrium}
+    \showmytikz[1]{../shared/tikz/tikz-hicks.tex}
+    \mycomment{
+        Now assume the price of $Y$ doubles. My budget line turns. I will again think about my budget. I want to be indifferent between $X$ and $Y$.
+        
+        I will likely buy only half as much $Y$ as before. But there is also an effect on how much $B$ I will buy, depending on how well $X$ can serve as a substitute for $Y$. 
+
+        To see this, we can isolate the \textbf{income effect} (that is: rising price of $Y$ making me poorer) and the \textbf{substitution effect}, that is the effect of the  change of the relation of the prices.
+
+        We do this by asking: imagine only the relation of the prices had changed and my real income (i.e. utility) remained the same; what mix of $X$ and $Y$ would I then buy?
+    }
+\end{frame}
+
+\begin{frame}{Hicks Decomposition}
+    \showmytikz[2]{../shared/tikz/tikz-hicks.tex}
+    \mycomment{
+        Graphically, we can shift the \textbf{new} budget line $B_2$ outwards until we meet the \textbf{old} indifference curve (where our real income i.e. utility would be the same as before). 
+
+        So given the same real income, I would rather prefer to change the composition of my demand of $X$ and $Y$ to ${X_2}', {Y_2}'$.
+
+        Note that in this example the marginal rate of substitution is constant $\sigma=1$, as $X_1/X'_2 = Y_1/Y'_2$. This is not necessarily so. The curves here guarantee a constant elasticity of substitution (CES).
+    }
+\end{frame}
+
+\begin{frame}{Income and Substitution Effect}
+    \showmytikz[1,2,3]{../shared/tikz/tikz-hicks.tex}
+    \mycomment{
+        We now see that the change on demand can be decomposed into the income effect and the substitution effect.
+
+        In this example, due to the shape of the indifference curves, the two effects cancel each other (almost) out for good $X$. I would like to substitute more of $Y$ by buying more of $X$; but since I got poorer, this is not really an option.
+
+        Think about goods $X,Y$ as petrol price and cinema tickets. If the petrol price doubles, I would \textit{like} to save on petrol, stay at home more and go to the cinema. Unfortunately, I have to use my car still every day to go to work. In that case, I would even go to the cinema less - to still be able to afford the petrol that I cannot substitute.
+    }
+\end{frame}
+
+\begin{frame}{Income and Substitution Effect: Perfect Complements}
+    \showmytikz[]{../shared/tikz/tikz-complements.tex}
+    \mycomment{
+        If $X,Y$ are perfect complements, a reduction in $X$ will always be accompanied by a similar reduction in $Y$. 
+
+        
+        \begin{equation}
+            U(x,y) = min (ax,by)  \quad \mid a,b >0
+        \end{equation}
+
+    }
+\end{frame}
+
+\begin{frame}{Income and Substitution Effect: Perfect Complements}
+    \showmytikz[1,2,3]{../shared/tikz/tikz-complements.tex}
+    \mycomment{
+        There is no substitution effect. The higher price vor $Y$ implies that I can make use of less of $X$ as well. I only suffer an income loss. The marginal rate of substitution is everywhere $\sigma=0$.
+
+        Note that perfect complements are typically already sold as a bundle. Imagine the government increasing the price of every left shoe... 
+    }
+\end{frame}
+
+\begin{frame}{Income and Substitution Effect: Perfect Substitutes}
+    \showmytikz[]{../shared/tikz/tikz-substitutes.tex}
+    \mycomment{
+        When $X,Y$ are prefect substitutes, will there be an income effect?
+       
+        \begin{equation}
+            U(x,y) = ax+by \quad \mid a,b >0
+        \end{equation}
+
+        Imagine you live just between two fish and chips shops. You sometimes eat in one and sometimes in the other.
+        
+        If now the price of fish and chips doubles in on shop, but not the other...
+    }
+\end{frame}
+
+\begin{frame}{Income and Substitution Effect: Perfect Substitutes}
+    \showmytikz[1,2,3]{../shared/tikz/tikz-substitutes.tex}
+    \mycomment{
+        As both are perfect substitutes, a rise of the price of one will only lead to substitution. If The price of $Y$ rises, I will simply only buy the perfect substitute $X$ at $S_2$.
+        
+        My utility - and hence my real income - will remain the same: you can now simply buy only the fish and chips from one of the shops. The marginal rate of substitution is everywhere $\sigma=\infty$.
+    }
+\end{frame}
+
+\begin{frame}{Engel Curves}
+    \showmytikz[1]{../shared/tikz/tikz-engelcurve.tex}
+    \mycomment{
+        Consumers will expand their consumption along a path called the Engel curve. Typically, the larger the income, the more of both goods ($X,Y$) will be consumed.
+
+        However, the consumer may not prefer the exact same bundle of goods (just in a larger quantity) at all income levels. For example, when I get rich one day, I will not buy more rice than today.
+    }
+\end{frame}
+
+\begin{frame}{Engel Curves}
+    \showmytikz[1,2]{../shared/tikz/tikz-engelcurve.tex}
+    \mycomment{
+        Note that with growing income, most goods are consumed more. However, some goods - inferior goods - may not be consumed any more after a certain income is reached. An example is rental housing. Other goods may only become available after a certain income is reached (yachts), or be demanded much more with a higher income (superior goods).
+
+        Often, we assume linear Engel curves. Then the proportion of how much $Q,Y$ is consumed depends only on the relative prices of the two goods, and not on the income level. This makes sense in a larger picture, where we look at price shocks, but not so much at an overall increase of wealth in the society. That is because the latter typically comes together with technological change, which in itself changes the demand for many goods.
+    }
+\end{frame}

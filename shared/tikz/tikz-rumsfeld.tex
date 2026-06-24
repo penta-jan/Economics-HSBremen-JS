@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \newcommand{\pft}[2]{{\hfill$#1$ \\ $#2$\hfill\mbox{}}}
+
+        \matrix [payoff matrix,
+            payoff matrix/player 1={do we know that we know?},
+            payoff matrix/player 2={do we know?}
+        ]{
+                    & know & don't know \\
+            know & known \textbf{knowns} & unknown \textbf{knowns}  \\
+        don't know & known \mbox{\textbf{unknowns}} & unknown \textbf{unknowns}  \\
+        };
+
+    \end{tikzpicture}
+\end{document}

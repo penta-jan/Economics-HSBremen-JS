@@ -1,0 +1,332 @@
+\section{Game Theory and Duopolies}
+
+\begin{frame}{Game Theory: Extensive Form}
+    \showmytikz{../shared/tikz/tikz-game-extensiveform}
+    \mycomment{
+    "Games" are models of strategic interactions. Each "player" makes choices, and the game ends with a payoff. 
+
+    There are two main ways of visualising this. One is called the extensive form, which takes the form of a decision tree.
+
+    In our example, Alice choses left or right, and then Bob chooses left or right; they then receive some payoff.
+    }
+\end{frame}
+
+
+\begin{frame}{Game Theory: Payoff Matrix}
+    \showmytikz{../shared/tikz/tikz-game-payoff.tex}
+    \mycomment{
+        A good way to analyse such interactions (or situations) is a payoff matrix. Here, players $A,B$ (conventionally: Alice and Bob) can both choose \textit{left} or \textit{right}.
+
+        Their payoffs depend on the combination of their choices. The payoff for Bob is in the lower left corner, the payoff for Alice in the upper right.
+
+        Our example is symmetrical; this is not always so, but we will only look at symmetrical cases here.
+
+    }
+\end{frame}
+
+\begin{frame}{Game Theory: Payoff Matrix}
+    \showmytikz{../shared/tikz/tikz-game-payoff-dice.tex}
+    \mycomment{
+        For easier visualisation, we will represent the payouts by dice. This does not mean that these outcomes are perchance. It is simply because it is easier to see which number is greater.
+
+        Payoff matrices abstract from the sequenciality of the game, that is in which order Alice and Bobs make their moves. The actual result of a game might depend on this information.
+
+    }
+\end{frame}
+
+\begin{frame}{Game Theory: Payoff Matrix}
+    \showmytikz[1]{../shared/tikz/tikz-game-payoff-dice.tex}
+    \mycomment{
+        In any situation, a player faced the choice to change their decision. So some strategies dominate other strategies.
+
+        Here, Alice would always choose \textit{left} over \textit{right}, no matter what Bob does. 
+
+        And in any case, she would be better off if Bob also chooses \textit{left} over \textit{right}.
+
+        The game is symmetrical, so the same applies for Bob. It follows that it does not matter here who moves first in this case. 
+    }
+\end{frame}
+
+\begin{frame}{Game Theory: Payoff Matrix}
+    \showmytikz[1,2]{../shared/tikz/tikz-game-payoff-dice.tex}
+    \mycomment{
+        Fortunate for both, their incentives are compatible. Bob will also always prefer \textit{left} over \textit{right} in any case. 
+    }
+\end{frame}
+
+\begin{frame}{Game Theory: Nash Equilibrium, Pareto Optimum}
+    \showmytikz[3]{../shared/tikz/tikz-game-payoff-dice.tex}
+    \mycomment{
+        In this case, the solution is easy to see. Both will choose $A$, and that is best for both. Nobody can improve by defecting.
+       
+        A situation where no player can improve unilaterally by defecting is called a Nash equilibrium.
+
+        Not all games have a Nash equilibrium; some games have multiple Nash equilibria.
+
+        The best outcomes, which are the Pareto optimum, where no player can be better off without anyone else being made worse off, is not always a Nash equilibrium.
+
+        Here you see that Alice will always choose \textit{left} over \textit{right}, no matter what Bob does. And Bob will then prefer \textit{left} over \textit{right}. Cell (\textit{left,left}), which maximises total welfare, is a Pareto optimum, and a Nash equilibrium.
+    }
+\end{frame}
+
+\begin{frame}{Stag Hunt}
+    \showmytikz{../shared/tikz/tikz-game-staghunt-dice.tex}
+    \mycomment{
+    The `stag hunt' game illustrates the difficulty - and importance - of commitment. It goes all the way down to \noun{Rousseau}.
+
+    They can best catch the stag (deer) if they cooperate. Hunting stag yields better results when done together, and almost none when done alone. 
+    
+    Hunting hare (rabbit) is different. If you hunt hares together, you are less likely to catch than when you do it alone.
+
+    }
+\end{frame}
+
+\begin{frame}{Stag Hunt}
+    \showmytikz[1,2]{../shared/tikz/tikz-game-staghunt-dice.tex}
+    \mycomment{
+   
+    So if both hunt stags, payoffs are best. But if one shows up and the other doesn't but hunts hare instead, the let-down hunter is fooled.
+
+    So here, it does matter if they can observe each others behaviour or not. If they can, they will hunt stag. 
+    
+    But if she opts for hare, she will have at least a payoff of 3, maybe a payoff of five. If she believes that the chance of Bob to show off is 50\%, her expected value for "hare" is $E_H=(5+3)/2=4$; her expected value for "stag" is only $E_S=6/2=3$. It is a reminder of the adage: one bird in the hand is better than two in the bush.
+    }
+\end{frame}
+
+\begin{frame}{Stag Hunt}
+    \showmytikz[3]{../shared/tikz/tikz-game-staghunt-dice.tex}
+    \mycomment{
+    In the Stag Hunt Game (or Commitment Game), two outcome are stable, Nash equilibria: both commit, or both defect.
+
+    How can they create commitment?
+    }
+\end{frame}
+
+\begin{frame}{Prisoner's Dilemma}
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-game-prisonersdilemmaoriginal.tex}
+    \mycomment{
+    This classic example involves two prisoners interrogated. If they hold tight, they receive a light sentence. If one blames the other, the other gets a hefty fine, while the defector walks free. If both defect, both get fined, but not as hard. 
+    
+    If both cooperate, the outcome is best. But there is a clear and strong incentive not to cooperate. 
+    }
+\end{frame}
+
+% \begin{frame}{Prisoner's Dilemma}
+%     \showmytikz{../shared/tikz/tikz-game-prisonersdilemmapositive-dice.tex}
+%     \mycomment{
+%     }
+% \end{frame}
+
+\begin{frame}{Prisoner's Dilemma}
+    \showmytikz[1,2]{../shared/tikz/tikz-game-prisonersdilemmapositive-dice.tex}
+    \mycomment{
+    The prisoner's dilemma can be expressed with positive payoffs. An example be two gangsters exchanging jewels for cash. Both could betray and hand over fake jewels or fake cash.
+    
+    The problem here is that the Pareto optimum situation (both cooperate) is not a Nash equilibrium. Both Alice and Bob have an incentive to defect, making themselves better off to the detriment of the other.
+    }
+\end{frame}
+
+\begin{frame}{Prisoner's Dilemma}
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-game-prisonersdilemmapositive-dice.tex}
+    \mycomment{
+    And since both defect, the Nash equilibrium is the bottom right corner, while the Pareto optimum in the upper left corner is instable.
+
+    This has been much discussed and tested. Most importantly, people do not always behave this "rational". Trust can happen.
+
+    The most important strategy is to play more than once. 
+    
+    There are multiple strategies for repeated play. The most efficient is \textbf{tit for tat}, where you start with cooperation, and then always mirror your opponent.
+    }
+\end{frame}
+
+\begin{frame}{Prisoner's Dilemma}
+    \showmytikz{../shared/tikz/tikz-game-prisonersdilemmaextensiveform.tex}
+    \mycomment{
+        Another way to illustrate games is the so-called \textbf{extensive form.}
+        
+        Here $R$ is the reward, $T$ the temptation, $P$ the punishment, and $S$ the `sucker' payoff.
+
+        It turns out that there are always just four different payoffs needed; at that there are 78 games of this form in total.
+        }
+\end{frame}
+
+\begin{frame}{Battle of the Sexes}
+    \showmytikz{../shared/tikz/tikz-game-battleofthesexes-dice}
+    \mycomment{
+         Alice and Bob both want to spend the evening together. Alice would per se prefer a boxing match, while Bob prefers opera. 
+    }
+\end{frame}
+
+\begin{frame}{Battle of the Sexes}
+    \showmytikz[1,2]{../shared/tikz/tikz-game-battleofthesexes-dice}
+    \mycomment{
+         But both prefer to spend the evening together. So each has an incentive to follow the other's lead.
+    }
+\end{frame}
+
+\begin{frame}{Battle of the Sexes}
+    \showmytikz[1,2,3]{../shared/tikz/tikz-game-battleofthesexes-dice}
+    \mycomment{
+        So this game has two Nash equilibria.
+        None of the solutions dominates. 
+        
+        In repeated play, you may expect that they go to the opera and boxing matches alternately. 
+        
+        But that is not necessarily clear. It could be that it is always one of them to take the first decision. If Alice always buys boxing tickets, Bob will always follow.
+    }
+    
+\end{frame}
+
+\begin{frame}{Chicken Game}
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-game-chicken-dice}
+    \mycomment{
+    The game of "chicken" goes as follows: two cars are driving at each other with the drivers trying to see who "chickens first".
+
+    This is a typical situation where brinkmanship can happen: participants wait to the very last possible moment in the hope that the other party will blink first.
+    }
+    
+\end{frame}
+
+% \begin{frame}{Price Discrimination}
+%     \showmytikz[1]{../shared/tikz/tikz-demandblocks}
+%     \mycomment{
+%         If the seller knows the maximum everyone is willing to spend and can charge prices individually, no consumer would have a surplus. All surplus goes to the seller(s).
+
+%         This can be approximated by differentiating prices in different brackets, by two-part pricing (membership, access fees), tie-in sales and pricing (think printer cartridges), bundling, etc. 
+
+%         Many such policies are simultaneously means to gather information about the customer and their spending behaviour.
+
+%         In times of big data this is a lesson that must be remembered. Personal pricing, smart meters, cookies etc. can all be used for price discrimination.
+%     }
+% \end{frame}
+ 
+\begin{frame}{Stackelberg Leadership}
+    \showmytikz[0]{../shared/tikz/tikz-residualdemand.tex}
+    \mycomment{
+        Consider the duopoly case. Two firms only serve the market - almost a monopoly. 
+
+        One, the Stackelberg leader, sets a quantity and a price; the other follows.
+
+        Assume the leader choses the profit maximising monopolist solution where marginal revenue equals marginal costs $MR=MC$. He thus brings a quantity of $Q_1$ to the market that he expects to satisfy this condition.
+    }
+\end{frame}
+
+\begin{frame}{Residual Demand}
+    \showmytikz[1]{../shared/tikz/tikz-residualdemand.tex}
+    \mycomment{
+        The follower faces a demand curve that is only residual, i.e. that part of the market the first mover has decided not to serve.
+        
+        As follower, firm two sets its price as a de-facto-monopolist over the residual demand. 
+        
+        It will serve the remainder of the market at a price lower than the one the first mover had offered; but still higher than the competitive outcome.
+
+    }
+\end{frame}
+
+\begin{frame}{Residual Demand}
+    \showmytikz[1,2]{../shared/tikz/tikz-residualdemand.tex}
+    \mycomment{
+        The result: the leader has served a part of the market choosing the monopoly quantity, then the follower has treated the remainder of the market as his own partial monopoly. 
+
+        The new quantity $M_{1+2}$ is still. smaller than the competitive outcome.
+    }
+\end{frame}
+
+\begin{frame}{Duopolies and Cartels}
+    \showmytikz[1]{../shared/tikz/tikz-duopoly.tex}
+    \mycomment{
+        If both serve the whole market at marginal costs, they realise the middle of the market capacity curve at point $P$, which would be the Pareto optimum.
+
+    }
+\end{frame}
+
+\begin{frame}{Duopolies and Cartels}
+    \showmytikz[1,2]{../shared/tikz/tikz-duopoly.tex}
+    \mycomment{
+        
+        If both firms simultaneously plan their quantities and prices taking each others optimal strategy into account, we derive response curves.
+
+        At point $A$, $B$ serves the whole market, so nothing is left for $A$. The less $B$ serves, the more is left for $A$.
+
+        If $A$ does not sell anything, $B$ will choose the monopoly quantity $Q_B^S$  at point $B$. $B$ acts as Stackelberg leader, and it leaves a part of the market unserved.
+    }
+\end{frame}
+
+\begin{frame}{Duopolies and Cartels}
+    \showmytikz[1,2,3]{../shared/tikz/tikz-duopoly.tex}
+    \mycomment{
+        As follower, $A$ will choose $Q_A^S$ as the answer, treating the remainder of the market as a monopoly. 
+        
+        The solution at $S_A$ shows how the two now serve a part of the market, and that this result is inferior to point $P$.
+
+        But this result is likely not stable, as now $B$ will react to the action of $A$. They will approach each other until they reach an equilibrium that is on both of their optimum response curves.
+    }
+\end{frame}
+\begin{frame}{Duopolies and Cartels}
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-duopoly.tex}
+    \mycomment{
+        If finally both firms simultaneously plan their quantities and prices taking each others optimal strategy into account, they will settle at point $CN$, which is the Cournot-Nash equilibrium.
+
+        At this point each of them reacts perfectly to the reaction curve of the other. This is the stable duopoly result with any negotiation.
+
+        As the number of firms increase, the Cournot-Nash equilibrium approaches $P$. Typically, "four is few and six are many" (\noun{Selten}) \cite{selten1994}.
+    }
+\end{frame}
+
+\begin{frame}{Duopolies and Cartels}
+    \showmytikz[1,2,3,4,5]{../shared/tikz/tikz-duopoly.tex}
+    \mycomment{
+        But they should realise that they could form a cartel, that is a joint monopoly, and share the monopoly profits. That would realise the point $M$, offering again less quantity.
+        \begin{equation}
+            Q_M<Q_{CN}<Q_P
+        \end{equation}
+
+        Forming monopolies is typically illegal. A monopoly without explicit contracts is called tacit collusion, which is also illegal.
+
+        Because $M$ is not on the optimum reaction curves, both parties have an incentive to defect from that point; $M$ is not a Nash equilibrium.
+
+
+    }
+\end{frame}
+
+\begin{frame}{Predatory Pricing} %%% bains model of limit pricing
+    \mytext{
+        \begin{itemize}
+            \item undercutting so that competitor can't survive
+            \item barriers to entry: change is permanent
+            \item monopoly rent afterwards allows to recoup losses
+            \item often seen after new entry
+            \item mostly illegal
+            \item question of available capital
+            \item state subsidies / global trade?
+        \end{itemize}
+    }
+    \mycomment{
+        Predatory pricing shifts the concurrent competition to a direct, interactive `game play': rather than to truly concentrate on one's own business and the customer, the actions of the \textbf{incumbent} or the \textbf{entrant} focuses on the effect on the other competitor(s).
+    }
+\end{frame}
+
+% \begin{frame}{State Monopolies}
+%     \mytext{
+%         \begin{itemize}
+%             \item State may be able to do what others can't
+%             \item Infrastructure
+%             \item expropriation
+%             \item drawbacks: under-investment
+%             \item privatisation
+%             \item re-communalisation
+%             \item Socialism
+%         \end{itemize}
+%     }
+%     \mycomment{
+%         So, if monopolies are bad, should we not have the state own them?
+        
+%         This is much debated. From an economic point of view, intelligent regulation will always beat communalisation, because the real incentive structure for all, including managers and / or politicians, must be taken into account. 
+
+%         It is unclear why the state would behave better than any other monopolist. An intelligent checks-and-balances system with regulatory oversight and sophisticated incentive mechanisms will certainly beat outright state ownership.
+%     }
+% \end{frame}
+
+
+
+

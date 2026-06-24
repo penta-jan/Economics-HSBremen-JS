@@ -1,0 +1,148 @@
+\documentclass[t,10pt,leqno,aspectratio=43]{beamer}
+\usepackage{hsbcommon}
+\usetheme{HSB}
+
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+\setbeamertemplate{itemize items}[triangle]
+\setlength{\leftmargini}{3ex}
+\setlength{\leftmarginii}{0.5cm}
+
+\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 13th\or
+    April 20th\or
+    April 27th\or
+    April 27th\or
+    May 4th\or
+    May 18th\or
+    June 1st\or
+    June 8th\or
+    June 15th\or
+    June 22nd\or
+    June 29th\or
+    July 6th\or
+    \else
+  \fi
+}
+
+%%% TOC MANIPULATION
+\input{../beamerpagenumbers}
+
+\makeatletter
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip-3pt}
+  {}
+  {}
+
+\AtBeginSection[]
+{
+    \subtitle{%
+    Session \thesection\ -- \secname\ % -- \mysession{\thesection}
+    }
+    \titleframe
+
+    \begin{frame}{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\makeatother
+
+%%%
+
+\title[Microeconomics, HSBremen \the\year]{Micro-Economics}
+\author[Jan Suchanek]{Jan Suchanek}
+\date{Summer Semester \the\year}
+\institute{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}}
+
+\setlength{\parskip}{1ex}
+
+\begin{document}
+
+\onehalfspacing
+
+% \frame{\titlepage}
+\titleframe
+
+
+
+
+% \begin{frame}[plain]{}
+%     \begin{center}
+%         \large
+%         ~\par\vspace{3cm}
+%         Welcome!
+
+%         And today's topic is...
+%     \end{center}
+% \end{frame}
+
+% \include{ME_1_Organisation_and_Module_Walkthrough}
+
+\include{ME_2_Types_of_Goods_and_Markets}
+
+\include{ME_3_Consumer}
+
+\include{ME_4_Demand_and_Supply}
+
+\include{ME_5_Equilibrium_and_Welfare}
+
+\include{ME_6_Disruptions}
+
+\include{microeconomics/ME_8_Fuel_Crisis_and_Tax_Cut}
+
+\include{ME_7_Monopolies_The_Cournot_Model}
+
+\include{ME_7b_Students_Present_I}
+
+\input{microeconomics/ME_9_Imperfections}
+
+\include{microeconomics/ME_10_State}
+
+\input{microeconomics/ME_12_Game_Theory_Oligopolies}
+
+
+\include{ME_13_Trade_Theory}  %% Next semester: shorten dramatically (remove circular model)
+
+\include{microeconomics/ME_14_Protectionism}
+
+\begin{frame}{Recap Session}
+    Bremen, Fr 26th, D107, 9:00-12:00
+\end{frame}
+
+\input{microeconomics/ME_11_Students_Present_II}
+
+% \include{microeconomics/ME_15_Outlook_Marcroeconomics}
+
+\begin{frame}[plain]{}
+    \begin{center}
+    \Large
+    ~\par\vspace{3cm}
+    Thank you!
+    \end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Literature and Links}
+   \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}

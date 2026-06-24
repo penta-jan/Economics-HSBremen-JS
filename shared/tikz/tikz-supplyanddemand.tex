@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+
+    
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right] (Q) {$Q$};
+        \draw[->] (0,0) -- (0,8) node[above] (P) {$P$};
+
+            \coordinate (G) at (1,1);
+            \coordinate (H) at (2,3);
+            \coordinate (I) at (3,3.5);
+            \coordinate (J) at (5,4);
+            \coordinate (K) at (6,4.5);
+            \coordinate (L) at (7,7);
+            
+            \draw [name path=supply] plot [smooth] coordinates {(G) (H) (I) (J) (K) (L)};
+            \node[right] at (L) {$SS$};
+            
+        \ifstep{1}{
+\begin{scope}[color=red]
+
+            
+
+            \coordinate (A) at (1,7);
+            \coordinate (B) at (2,6);
+            \coordinate (C) at (3,4);
+            \coordinate (D) at (4,3);
+            \coordinate (E) at (5,2);
+            \coordinate (F) at (6,1);
+     
+            \draw [name path=demand] plot [smooth] coordinates {(A) (B) (C) (D) (E) (F)};
+            \node[right] at (F) {$DD$};
+            \path [name intersections={of=supply and demand,by=X}];
+    
+            \filldraw (X) circle (2pt) node [above right] {$E$};
+    
+            \draw[dashed, red] (X |-,0) node[below] {$Q^*$} -- (X) -- (0, |- X) node [left] {$P^*$};
+    
+            
+
+        \end{scope}
+}
+
+        
+    \end{tikzpicture}
+\end{document}

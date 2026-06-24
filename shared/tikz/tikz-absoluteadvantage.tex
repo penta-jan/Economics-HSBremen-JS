@@ -1,0 +1,88 @@
+\documentclass{standalone}
+
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+  
+
+\begin{document}
+\begin{tikzpicture}% [scale=0.6]
+    %Axis
+    \draw [<-,>=latex] (0,7.8) node [above] {$Y$} -- (0,0);
+    \draw[->,>=latex] (0,0) -- (8.9,0) node [right] {$X$};
+
+    \path[name path=pfred] (0,6) -- (3,0);
+    \path[name path=pfblue] (0,3) -- (6,0);
+
+    \path[name intersections={of=pfred and pfblue,by=Z}];
+    % \filldraw (Z) circle (2pt);
+
+    % Production frontiers
+    
+    
+    % Red
+
+    \ifstep{1}{
+    \begin{scope}[color=red]
+
+        
+    \draw(0,6) -- (3,0);
+    
+    \coordinate (rx) at (1,4);
+        \draw[red] (0.5,7) 
+            to [out=-90, in=110] (rx) 
+            to [out=-60, in=170] (5,1.5) node[right] {$U_a$};
+            ;
+        \draw[red,dashed] (0,4) -- (rx);
+        \draw[red,dashed] (rx) -- (1,0);
+
+        \filldraw (rx) circle (2pt) node[below left] {$A$};
+
+    % \draw[black,ultra thick] (0,3) -- (3,0);
+
+    \end{scope}
+}
+
+    \ifstep{2}{
+        \begin{scope}[color=blue]
+            
+        \draw (0,3) -- (6,0);
+        \coordinate (bx) at (4,1);
+            \draw  (7,0.5)  node[right] {$U_b$}
+                to [in=-20, out=170] (bx) 
+                to [out=150, in=-80] (1.5,5)
+                ;
+            \draw[dashed] (4,0) -- (bx);
+            \draw[dashed] (bx) -- (0,1);
+    
+            \filldraw (bx) circle (2pt) node[below left] {$B$};
+        % \draw[black,ultra thick] (0,3) -- (3,0);
+        \end{scope}
+    }
+
+    \ifstep{3}{
+        \coordinate (sx) at (3,3);
+            \draw (7,2)  node[right] {$U_{\text{trade}}$}
+                to [in=-30, out=175] (sx) 
+                to [out=130, in=-85] (2,7)
+                ;
+            \draw[dashed] (3,0) -- (sx);
+            \draw[dashed] (sx) -- (0,3);
+    
+        \filldraw (sx) circle (2pt) node[above right] {$T$};
+        \draw[black,thick] (0,6) -- (6,0) ;
+    }
+
+    %% demonstrate another way of combining both production frontiers
+    \ifstep{4}{
+        \begin{scope}[green]
+            \draw[ultra thick] (0,6) -- (Z) -- (6,0);
+            \draw (0, |-Z) -- (Z) -- (Z|-,0);
+            \filldraw (Z) circle (2pt);
+        \end{scope}
+    }
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,213 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{hsbcommon}
+
+\begin{document}
+
+\definecolor{bluecolor}{RGB}{50,102,173}
+\definecolor{graycolor}{RGB}{136,135,128}
+\definecolor{canadared}{RGB}{198,12,48}
+\definecolor{bglight}{RGB}{248,248,246}
+\definecolor{annotcolor}{RGB}{100,100,95}
+
+\begin{tikzpicture}
+
+%% ── LEFT AXIS (EUR, Germany) ──────────────────────────────────────────────
+\begin{axis}[
+  name=mainax,
+  width=16cm,
+  height=12cm,
+  axis background/.style={fill=bglight},
+  xmin=-3, xmax=82,
+  ymin=1.05, ymax=2.65,
+  xtick={2,9,16,23,30,37,44,51,58,65,72,79},
+  xticklabels={
+    Feb~17,
+    Feb~24,
+    Mar~3,
+    Mar~10,
+    Mar~17,
+    Mar~24,
+    Mar~31,
+    Apr~7,
+    Apr~14,
+    Apr~21,
+    Apr~28,
+    May~5
+  },
+  xticklabel style={rotate=45, anchor=east, font=\small},
+  ytick={1.10,1.20,1.30,1.40,1.50,1.60,1.70,1.80,1.90,2.00,2.10,2.20,2.30,2.40,2.50,2.60},
+  yticklabel={\pgfmathprintnumber[fixed,precision=2]{\tick}\,€},
+  yticklabel style={font=\small},
+  ylabel={Germany (EUR/litre)},
+  ylabel style={font=\small},
+  ymajorgrids=true,
+  xmajorgrids=true,
+  grid style={line width=0.3pt, color=white},
+  axis line style={line width=0.6pt, color=gray!60},
+  tick style={color=gray!60, line width=0.4pt},
+  axis y line*=left,
+  axis x line*=bottom,
+  title style={font=\bfseries, yshift=6pt},
+  title={Petrol/Gasoline Prices --- Germany \& Canada, Spring 2026},
+  legend style={
+    at={(0.02,0.97)},
+    anchor=north west,
+    font=\small,
+    fill=white,
+    fill opacity=0.9,
+    draw=gray!40,
+    row sep=2pt
+  },
+  clip=false,
+]
+
+%% --- DE Diesel (dashed, gray) ---
+\addplot[
+  color=graycolor,
+  line width=1.8pt,
+  mark=*,
+  mark size=2pt,
+  mark options={fill=graycolor, draw=graycolor}
+] coordinates {
+  (0,1.715)(7,1.722)(13,1.754)(15,1.790)
+  (22,1.830)(29,1.900)(36,1.990)(43,2.100)
+  (50,2.380)(57,2.330)(64,2.230)(71,2.250)
+  (75,2.150)(79,2.101)
+};
+\addlegendentry{Germany, diesel}
+
+%% --- DE Super E10 (solid, blue) ---
+\addplot[
+  color=bluecolor,
+  line width=2.2pt,
+  mark=*,
+  mark size=2.5pt,
+  mark options={fill=bluecolor, draw=bluecolor}
+] coordinates {
+  (0,1.755)(7,1.760)(13,1.789)(15,1.810)
+  (22,1.836)(29,1.875)(36,1.920)(43,1.980)
+  (50,2.192)(57,2.150)(64,2.100)(71,2.108)
+  (75,2.069)(79,2.019)
+};
+\addlegendentry{Germany, petrol (E10)}
+
+%% ---- DE Tankrabatt bar hangs from E10 at x=75 (2.069 EUR), 17 ct down ----
+\draw[red, line width=5pt]
+  (axis cs:75, 2.069) -- node[left, font=\footnotesize] {17\,ct} (axis cs:75, 1.899);
+
+%% ---- DE Tankrabatt annotation ----
+\draw[bluecolor!50!black, line width=0.8pt, dashed]
+  (axis cs:75, 2.069) -- (axis cs:75, 2.43);
+\node[
+  anchor=south,
+  font=\footnotesize,
+  text=bluecolor!80!black,
+  align=center,
+  fill=white
+] at (axis cs:75, 2.43) {Fuel tax rebate\\(May~1, DE)};
+
+%% ---- War outbreak annotation ----
+\draw[annotcolor, line width=0.8pt, dashed]
+  (axis cs:13, 1.789) -- (axis cs:13, 2.1);
+\node[
+  anchor=south,
+  font=\footnotesize,
+  text=annotcolor,
+  align=center
+] at (axis cs:13, 2.1) {War\\outbreak};
+
+%% ---- Source note ----
+\node[
+  anchor=south west,
+  font=\tiny,
+  text=gray
+] at (axis cs:-3, 1.05)
+  {Sources (DE): ADAC. Sources (CA): Finder/Kalibrate, Natural Resources Canada. Exchange rate: 1\,CAD\,=\,0.85\,EUR};
+
+\end{axis}
+
+%% ── RIGHT AXIS (CAD, Canada) — y scaled so 1 CAD = 0.85 EUR ─────────────
+%% Left EUR range 1.05–2.65 corresponds to CAD 1.235–3.118
+\begin{axis}[
+  width=16cm,
+  height=12cm,
+  xmin=-3, xmax=82,
+  ymin=1.2353, ymax=3.1176,
+  xtick=\empty,
+  ytick={1.4,1.5,1.6,1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.1},
+  yticklabel={\$\pgfmathprintnumber[fixed,precision=2]{\tick}},
+  yticklabel style={font=\small},
+  ylabel={Canada (CAD/litre)},
+  ylabel style={font=\small, yshift=4pt},
+  axis y line*=right,
+  axis x line=none,
+  tick style={color=gray!60, line width=0.4pt},
+  legend style={
+    at={(0.02,0.82)},
+    anchor=north west,
+    font=\small,
+    fill=white,
+    fill opacity=0.9,
+    draw=gray!40,
+    row sep=2pt
+  },
+  clip=false,
+]
+
+%% --- CA provincial range band (forget plot so it doesn't enter legend) ---
+\addplot[name path=upper, draw=none, forget plot] coordinates {
+  (2,1.542)(9,1.560)(16,1.620)(23,1.700)(30,1.780)
+  (37,1.860)(44,2.000)(51,2.020)(58,1.980)(65,1.900)
+  (72,1.900)(79,2.040)
+};
+\addplot[name path=lower, draw=none, forget plot] coordinates {
+  (2,1.191)(9,1.210)(16,1.260)(23,1.330)(30,1.390)
+  (37,1.450)(44,1.574)(51,1.660)(58,1.640)(65,1.590)
+  (72,1.580)(79,1.780)
+};
+\addplot[fill=canadared, fill opacity=0.06, draw=none, forget plot]
+  fill between[of=upper and lower];
+
+%% --- CA national average (solid, red) ---
+\addplot[
+  color=canadared,
+  line width=2.2pt,
+  mark=*,
+  mark size=2.5pt,
+  mark options={fill=canadared, draw=canadared}
+] coordinates {
+  (2,1.355)(9,1.375)(16,1.418)(23,1.500)
+  (30,1.580)(37,1.660)(44,1.829)(51,1.840)
+  (58,1.820)(65,1.750)(72,1.740)(79,1.870)
+};
+\addlegendentry{Canada, gasoline}
+
+%% ---- CA excise tax bar hangs from CA curve at x=65 (Apr 21, 1.750 CAD), 10 ct down ----
+\draw[green!60!black, line width=5pt]
+  (axis cs:65, 1.750) -- node[right, font=\footnotesize] {10\,ct} (axis cs:65, 1.650);
+
+%% ---- CA excise annotation ----
+\draw[canadared!50!black, line width=0.8pt, dashed]
+  (axis cs:65, 1.750) -- (axis cs:65, 1.95);
+\node[
+  anchor=south,
+  font=\footnotesize,
+  text=canadared!80!black,
+  align=center,
+  fill=white
+] at (axis cs:65, 1.95) {Excise tax\\suspended\\(Apr~20, CA)};
+
+%% ---- CA peak annotation ----
+\node[
+  anchor=south west,
+  font=\footnotesize,
+  text=canadared,
+  align=center
+] at (axis cs:52, 1.840) {CA peak\\Apr~7};
+
+\end{axis}
+
+\end{tikzpicture}
+
+\end{document}

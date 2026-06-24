@@ -1,0 +1,94 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+
+%% Steps — call cumulatively: [1], [1,2], [1,2,3]
+%%
+%%   1 — CS and PS at world price (free trade baseline)
+%%   2 — subsidy: SS_sub curve, Z2 and Y2, import-with-subsidy arrow
+%%   3 — PS breakdown: PS, PS_transfer, DWL  ← replaces step 1 CS/PS fills
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (8,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,8) node[above] {$p$};
+
+    %% ── All coordinates unconditional ────────────────────────────────────────
+    \coordinate (A) at (0,7);
+    \coordinate (B) at (7,0);
+    \coordinate (E) at (0,1);
+    \coordinate (F) at (7,7);
+
+    %% ── All named paths ──────────────────────────────────────────────────────
+    \draw[name path global=demand] plot [smooth] coordinates {(A)(B)};
+    \draw[name path global=supply] plot [smooth] coordinates {(E)(F)};
+    \draw[name path global=worldprice, draw=none] (0,2) -- (8,2);
+    \draw[name path global=sssub,      draw=none] (0,0) -- (7,6);
+
+    %% ── All intersections pre-computed ───────────────────────────────────────
+    \path [name intersections={of=demand and supply,     by=X}];
+    \path [name intersections={of=demand and worldprice, by=Y}];
+    \path [name intersections={of=supply and worldprice, by=Z}];
+    \path [name intersections={of=sssub  and worldprice, by=Z2}];
+    \draw [name path global=vertZ2, draw=none] (Z2 |-,0) -- (Z2 |-,8);
+    \path [name intersections={of=supply and vertZ2,     by=Y2}];
+
+    %% ── Always visible: curves, labels, domestic equilibrium ─────────────────
+    \node[above right] at (B) {$DD_{\text{dom.}}$};
+    \node[above]       at (F) {$SS_{\text{dom.}}$};
+    \draw[thick] (0,2) node[left] {$p_w$} -- (6,2) node[right] {world price};
+    \filldraw (X)  node[right]       {$D_1$} circle (2pt);
+    \filldraw (Z)  node[below right] {$S_2$} circle (2pt);
+    \filldraw (Y)  node[above right] {$D_2$} circle (2pt);
+    \draw[dashed] (0,|- X) node[left] {$p^*$} -- (X) -- (X |-,0) node[below] {$x^*$};
+    \draw[dashed] (Y |-,0) node[below] {$x_{\text{free}}$}               -- (Y);
+    \draw[dashed] (Z |-,0) node[below] {$x_{\text{dom.}}^{\text{free}}$} -- (Z);
+    \draw[ultra thick,<->,>=latex]
+        ([yshift=-0.5cm]Y |-,1) -- node[below] {\footnotesize free trade import} ([yshift=-0.5cm]Z |-,1);
+
+    %% ── Step 1: CS and PS at world price ─────────────────────────────────────
+    \ifsteponly{1}{3}{%
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A) -- (Y) -- (0,|- Y) -- node[right] {$CS$}  cycle;
+            \draw[fill=blue!10] (E) -- (Z) -- (0,|- Z) -- node[right] {$PS$}  cycle;
+        \end{scope}
+    }
+
+    %% ── Step 2: subsidy — SS_sub, Z2, Y2, import arrow ───────────────────────
+    \ifstep{2}{%
+        \draw[blue] (0,0) -- (7,6) node[right] {$SS_{\text{subs.}}$};
+        \draw[dashed] (Z2 |-,0) node[below] {$x_{\text{dom.}}^{\text{sub}}$} -- (Z2);
+        \draw[dashed] (Y2 |-,0) -- (Y2);
+        \draw[ultra thick,<->,>=latex]
+            (Y |-,1.5) -- node[below] {\footnotesize import with sub.} (Z2 |-,1.5);
+        \filldraw (Z2) node[below right] {$S_3$}   circle (2pt);
+        \filldraw (Y2) node[below right] {$S_3^*$} circle (2pt);
+        \draw[ultra thick] (0,0) -- (Z2) -- (6,2) node[below] {$SS_{sub}$};
+    }
+
+    %% ── Step 3: PS and CS with subsidy ─────────────────────────
+    \ifstep{3}{%
+        \begin{scope}[on background layer]
+            \draw[fill=red!10]  (A) -- (Y) -- (0,|- Y) -- node[right] {$CS$}  cycle;
+            \draw[fill=blue!10] (0,0)   -- (Z2)  -- (0,|- Z2)  -- node[right] {$PS$}           cycle;
+        \end{scope}
+
+    }
+
+    %% -- Step 4: Government Transfer, DWL
+
+    \ifstep{4}{
+    \begin{scope}[on background layer]
+            \draw[dashed,ultra thick, draw=green,fill=blue!10,opacity=0.6]  (0,2) -- (Z2)  -- (Y2) -- (0,|- Y2) -- node[below right] {$PS_{\text{transf.}}$} cycle;
+            \fill[white]        (Z)   -- (Y2) -- (Z2) -- cycle;
+            \node[above left] at (Z2) {\scriptsize DWL};
+        
+    \end{scope}
+    }
+
+\end{tikzpicture}
+\end{document}

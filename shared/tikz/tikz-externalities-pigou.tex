@@ -1,0 +1,111 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{0,1,2,3,4}}\makeatother
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}[remember picture]
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[right] (Q) {$Q$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node[above] (P) {$P$};
+
+        %% Demand Curve
+
+        \coordinate (A) at (0,7);
+        \coordinate (F) at (7,1);
+ 
+        \draw [name path=demand] plot [smooth] coordinates {(A) (F)};
+        \node[right] at (F) {$DD$};
+
+        % Supply Surve Ppivate
+
+        \coordinate (G) at (0,2);
+        \coordinate (L) at (7,3);
+
+        \draw [name path=supply] plot [smooth] coordinates {(G) (L)};
+        \node[right] at (L) {$MC_{private}$};
+        
+            % Supply Surve Social
+    
+        \coordinate (H) at (0,4);
+        \coordinate (K) at (7,7);
+
+        \path [name path=socialsupply] plot  coordinates {(H) (K)};
+
+
+        \path [name intersections={of=demand and socialsupply, by=Z}];
+        \path [name intersections={of=demand and supply,by=X}];
+        \path  [name path=qprivate ] (X |-, 0) node[below] {$Q_P$}-- (X |-, 8);
+
+        \path [name intersections={of=demand and socialsupply, by=Z}];
+        \path [name intersections={of=socialsupply and qprivate, by=P}];
+
+        %% PRIVATE MAX BENEFIT
+            
+        \draw [dashed] (X |-, 0) node[below] {$Q_P$}-- (X |-, 8);
+        \draw[dashed] (X) -- (0, |- X) node[left] {$P_P$};
+        \filldraw (X) circle (2pt) node[above right] {\textit{private}};
+        
+
+    \ifsteponly{1}{4}{
+        \begin{scope}[on background layer]
+            \draw [fill=blue!10] (X) -- (0, |- X) -- node [right] {$CS_P$}   (A);
+            \draw [fill=red!10] (X) -- (0, |- X) -- node [right] {$PS_P$}  (G);
+        \end{scope}
+    }
+
+    
+
+
+    \ifstep{2}{
+    
+            \draw   plot  coordinates {(H) (K)};
+            \node[right] at (K) {$MC_{social}$};
+
+            \filldraw (P) node[below right] {\textit{social}} circle (2pt);
+
+            \draw[dashed] (0, |- P) -- (P) -- (P |-, 0) ;
+            
+    
+        %% SOCIAL MAX BENEFIT
+    }
+
+    \ifsteponly{3}{4}{
+        \begin{scope}[on background layer]
+            \draw[fill=green!10] (Z) -- (P) -- node[left] {\parbox{10ex}{\flushright excess costs}} (X) -- cycle;
+            \draw[dashed, ultra thick, green] (H) node[below right] {\textbf{social costs}} -- (P) -- (X) -- (G) -- cycle;
+        \end{scope}
+    
+    }
+        \ifstep{4}{
+        
+        \begin{scope}[color=red]
+
+    
+            %% PRIVATE MAX BENEFIT
+                
+                % \path [name intersections={of=demand and socialsupply,by=Y}];
+        
+                % \filldraw (Y) circle (2pt) node[above right] {\textit{social}};
+        
+                % \draw[dashed, red] (0,0) rectangle (X);
+                
+                % \draw [dashed,red,name path=newq] (Y |-, 0) node[below] {$Q_S$}-- (Y |-, 8);
+                \filldraw (Z) circle (2pt);
+                \draw [name path=pigou]   (0, |- Z) node[left] {$P_S$} -- (Z) -- (Z |-,0) node[below] {$Q_S$};
+
+                \begin{scope}[on background layer]
+                    \draw [fill=blue!10] (Z) -- (0, |- Z) -- node [right] {$CS_S$}   (A);
+                    \draw [fill=red!10] (Z) -- (0, |- Z) -- node [right] {$PS_S$}  (H);
+                    \path [name intersections={of=pigou and supply,by=Pi}];
+                    \draw[green, dashed, ultra thick] (Z) --  (Pi) --  (G) -- node[right] {\scriptsize Pigouvian tax?} (H) --  cycle;
+
+                \end{scope}
+  
+        \end{scope}
+
+
+}
+
+        
+
+        
+    \end{tikzpicture}
+\end{document}

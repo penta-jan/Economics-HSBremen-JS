@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+
+    \foreach [count=\i] \fta/\thickness in {
+        free trade agreement/10,
+        customs union/30,
+        common market/50,
+        economic union/70,
+        currency union/90   
+    }
+    {
+        \node[
+            draw=black, 
+            fill=yellow!\thickness, 
+            rounded corners, 
+            inner sep=7pt, 
+            line width=\i pt,
+            minimum width=25ex] 
+            at (0,1.2*\i) {\fta};
+    }
+
+
+\end{tikzpicture}
+\end{document}

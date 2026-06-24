@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{
+\usepackage{hsbcommon}
+decorations.pathmorphing, 
+}
+
+\begin{document}
+\begin{tikzpicture}%
+  \draw[decorate,decoration={coil,aspect=0}] (0,4)  -- (8,4);
+  \draw (0,0) -- (8,0);
+    \pgfmathsetseed{1}
+    \foreach [count=\i] \ii in {1,2,...,100}
+    {
+        \pgfmathsetmacro\myx{rnd*(7.7)+0.2}
+        \pgfmathsetmacro\myy{rnd*(3.7)+0.2}
+        \coordinate (M\i) at (\myx,\myy);
+        \draw (M\i) circle (1pt);
+    }
+    \draw[thick] (0,4) -- (0,0) -- (8,0) -- (8,4);
+
+    \draw[dashed] (4,0) -- (4,4);
+
+        \node[draw,circle,fill=white] at (2,0) {A};
+        \node[draw,circle,fill=white] at (6,0) {B};
+    
+    \ifstep{1}{
+\begin{scope}[color=red]
+    
+        \node[draw,circle,gray!50,fill=white] at (2,0) {A};
+        \node[draw,circle,fill=white] at (3.5,0) {A};
+    \end{scope}
+}
+
+  
+    \ifstep{2}{
+\begin{scope}[color=blue]
+    
+        \node[draw,circle,gray!50,fill=white] at (6,0) {B};
+        \node[draw,circle,fill=white] at (4.5,0) {B};
+    \end{scope}
+}
+
+  
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture} 
+        \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node[draw=none,right]  {$A$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node[draw=none,above]  {$B$};
+
+        \pgfmathsetseed{1}
+
+    \coordinate (O) at (0,7.9);
+    \coordinate (A) at (1,7);
+    \coordinate (B) at (2,6.6);
+    \coordinate (C) at (3,5.9);
+    \coordinate (D) at (4,4);
+    \coordinate (E) at (5,3.5);
+    \coordinate (F) at (6,3.3);
+    \coordinate (G) at (7,1);
+    \coordinate (H) at (8,0.1);
+
+    \filldraw (O) circle (2pt) node[above right] {};
+    \filldraw (A) circle (2pt) node[above right] {$A$};
+    \filldraw (B) circle (2pt) node[above right] {$B$};
+    \filldraw (C) circle (2pt) node[above right] {$C$};
+    \filldraw (D) circle (2pt) node[above right] {$D$};
+    \filldraw (E) circle (2pt) node[above right] {$E$};
+    \filldraw (F) circle (2pt) node[above right] {$F$};
+    \filldraw (G) circle (2pt) node[above right] {};
+    
+    \draw plot coordinates {(O) (A) (B) (C) (D) (E) (F) (G) (H)};
+
+    \clip (O) -- (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (G) -- (H) -- (0,0) --cycle;
+    \foreach [count=\i] \ii in {1,2,...,33}
+    {
+        \pgfmathsetmacro\myx{rnd*(7.7)+0.2}
+        \pgfmathsetmacro\myy{rnd*(7.7)+0.2}
+        \coordinate (M\i) at (\myx,\myy);
+        \filldraw (M\i) circle (2pt);
+    }
+
+ 
+    \end{tikzpicture}
+\end{document}

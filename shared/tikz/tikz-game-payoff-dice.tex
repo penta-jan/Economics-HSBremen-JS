@@ -1,0 +1,60 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}[remember picture]
+
+    \setcounter{pcell}{0}
+    \matrix (M) [
+        matrix of nodes,
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth,
+        nodes={anchor=center, draw=none, inner sep=0pt},
+        column 1/.style={nodes={minimum width=5em, align=right,color=red}},
+        row 1/.style={nodes={minimum height=2em, align=center}},
+    ]{
+             & left              & right            \\
+    left     & \payoff{\bdice{3}}{\rdice{3}}   & \payoff{\bdice{2}}{\rdice{2}}   \\
+    right     & \payoff{\bdice{2}}{\rdice{2}}     & \payoff{\bdice{1}}{\rdice{1}}   \\
+    };
+
+
+    % Alice: centered between column 2 and 3 header cells, above row 1
+    \node[anchor=south,blue] at ($(M-1-2)!0.5!(M-1-3)$) [yshift=1em] {Alice};
+    
+    % Bob: rotated, centered between row 2 and 3, left of column 1  
+    \node[anchor=south, rotate=90,red] at ($(M-2-1)!0.5!(M-3-1)$) [yshift=3em] {Bob};
+    
+    
+    % % Now address any number directly:
+    % \draw[thick] (AA-al) circle (10pt);   % circle Alice's 10
+    % \draw[->]    (AB-al) -- (AA-al);      
+
+
+    \ifstep{1}{
+        \draw[->,>=latex,thick]    (AB-al) -- (AA-al);      
+        % \draw[->,>=latex]    (BB-al) -- (AB-al);      
+        % \draw[->,>=latex]    (BA-al) -- (AA-al);      
+        \draw[->,>=latex,thick]    (BB-al) -- (BA-al);          
+    }
+ 
+
+    \ifstep{2}{
+        \begin{scope}[red]            
+            % \draw[->,>=latex]    (AB-bo) -- (AA-bo);      
+            \draw[->,>=latex,thick]    (BB-bo) -- (AB-bo);      
+            \draw[->,>=latex,thick]    (BA-bo) -- (AA-bo);      
+            % \draw[->,>=latex]    (BB-bo) -- (BA-bo);          
+        \end{scope}
+    }
+
+    \ifstep{3}{
+    \begin{scope}[on background layer]
+        \fill[green!10] (M-2-2.north west) rectangle (M-2-2.south east);
+    \end{scope}
+    }
+        
+\end{tikzpicture}
+\end{document}

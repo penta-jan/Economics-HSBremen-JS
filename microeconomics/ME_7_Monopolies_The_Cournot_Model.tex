@@ -1,0 +1,264 @@
+
+\section{Monopolies: The Cournot Model}
+
+% \begin{frame}{Competition}
+%     \mytext{
+%     \begin{itemize}
+%         \item \textit{competere }lat. \textit{to strive together}
+%         \item \textit{concurrere} lat. \textit{to run together}
+%         \item not a zero-sum game
+%         \item think of a race (rather than combat)
+%         \item market entry barriers
+%         \item few participants: more combative 
+%         \item many participants: much intelligence
+%         \item property structures
+%     \end{itemize}
+%     }
+%     \mycomment{
+%     Not only does competition result in the largest possible quantities and the lowest possible price, it also incentivises sellers to strive for productivity increase, that is: to lower their costs. 
+
+%     However, perfect competition, as assumed in many models, is rare. There are typically barriers to entry.
+%     }
+% \end{frame}
+
+\begin{frame}{Market Forms}
+ 
+        {
+    \renewcommand{\arraystretch}{2}
+        \begin{tabular}{l||l|l|l|}
+                    &   one seller  & few sellers   & many sellers \\\hline\hline                
+        one buyer   &               & oligopsony     & monopsony     \\\hline
+        many buyers &   monopoly    & oligopoly     & competition \\\hline
+        \end{tabular}
+        }
+
+\end{frame}
+
+\begin{frame}{Market Forms}
+
+    \mycomment{
+        Most markets have multiple buyers and multiple sellers. The resulting price is set as by an `invisible hand'. 
+        
+        Sometimes, like on stock exchanges, the price is indeed set by a central authority, and in a way that guarantees the largest possible number of transactions.
+
+        Sometimes, however, there are few buyers and sellers, or some buyers and sellers with more power than others. These can then rake up welfare and manipulate quantities and price to their benefit.
+    }
+    \mytext{
+        duopoly: two sellers 
+
+        `four are few and six are many' (Reinhard \noun{Selten})
+
+        \textbf{collusion}
+
+        quota cartels
+
+        antitrust measures, antitrust institutions
+
+        Walrasian outcome, Nash coutcome, Cournot
+    }    
+\end{frame}
+
+\begin{frame}{Monopolies}
+    \mytext{
+    \begin{itemize}
+        \item natural monopolies (e.g. networks)
+        \item setting up monopolies (illegal in Europe)
+        \item having a monopoly (illegal in the US)
+        \item monopoly world wide or only at home?
+        \item market entry?
+        \item how to determine a monopoly?
+        \item advantages of a monopoly?
+        \item state monopoly, state run monopolies
+        \item regulation, antitrust enforcement
+    \end{itemize}    
+    }
+    \mycomment{
+    Examples for natural monopolies are: port authorities, railway or energy system operators. However, questions remain. In particular, the monopolist can extend their market power to adjacent markets (e.g. Edison also selling light bulbs and only accepting their own light bulbs to be connected). 
+    }
+\end{frame}
+
+\begin{frame}{Cournot Model}
+    \showmytikz[]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+        In the competition case, more suppliers will enter the market until the \textbf{price equals marginal costs.}  
+        
+        Everyone is a \textbf{price taker.} The market determines price and volume. 
+
+        What's not to love?
+    }
+\end{frame}
+
+\begin{frame}{Cournot Model}
+    \showmytikz[1]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+        The result is a \textbf{low price,} a \textbf{large quantity,} a \textbf{large consumer surplus} and \textbf{no profits.} Total welfare is as large as it can get.
+
+        (To be precise: Whether there is a producer surplus depends on the interpretation of the cost curve as composed by individual costs or uniform for all sellers. If it is uniform, there are indeed no profits. If there are some sellers who manage to have lower costs than others, they may make a profit. Then, the sum of all these profits is $PS$.)
+        )
+    }
+\end{frame}
+% \begin{frame}{Recap: Optimisation}
+%         \showmytikz[4]{../shared/tikz/tikz-optimisation.tex}
+%         \mycomment{
+%         If, however, the producer(s) could choose any price they like, they would choose so that their producer surplus be maximum.
+
+%         Remember that revenue is price times quantity. If you don't have any costs, you would maximise revenue. If you do have cost, however, you maximise the difference between total revenue and total costs.
+%         }
+% \end{frame}
+\begin{frame}{Cournot Model}
+    \mycomment{
+    In the case of a monopoly, where there is only one seller, this seller is not a price taker. Rather than competition determining the price, the monopolist can freely choose his price.
+
+    Consider him choosing $P_1$; then his producer surplus  would be $PS_1$. If he chooses $P_2$, his producer surplus  would be $PS_2$.
+
+    The question is: which price will a rational, profit maximising monopolist set?
+    }
+    \showmytikz[2]{../shared/tikz/tikz-monopoly.tex}
+\end{frame}  
+
+\begin{frame}{Cournot Model}
+    \mycomment{
+        A monopolist can choose any price. And he will set the price so that his profit is maximum. Profit is revenue minus costs:
+
+        $$ \Pi(x) = R(x) - C(x)$$
+
+        Where turnover is price times quantity:
+
+        $$ R(x) = p(x)\cdot x $$
+
+        While costs are marginal costs times quantity:
+
+        $$ C(x) = c(x) \cdot x $$
+
+        Marginal costs are the supply curve $MC$. 
+
+    }
+    \showmytikz[2,3]{../shared/tikz/tikz-monopoly.tex}
+\end{frame}   
+
+\begin{frame}{Cournot Model}
+    \showmytikz[3,4]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+        To find the maximum, let us do some algebra:
+
+        $$ \Pi(x) = R(x) - C(x)  \rightarrow max$$
+
+        $$ 0 = \frac{dR(x)}{dx} - \frac{dC(x)}{dx} $$
+
+        $$ 0 = MR - MC$$
+        $$ MR = MC $$
+
+        % which is here, in this linear case with DD(x) = p(x):
+
+        % $$MR = \frac{dp(x)\cdot x}{dx} = \frac{p(x)}{2}$$
+
+
+        }
+\end{frame}
+
+\begin{frame}{Cournot Model}
+    \showmytikz[4,5]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+        The profits of the monopolist are at a maximum where \textbf{marginal revenue equals marginal cost.}
+        
+        The point $CMP$ is called \textbf{Cournot point.}
+
+        In our case, where the demand curve is linear, the monopolist will provide roughly half the volume a competitive situation would realise. The price he would charge is roughly twice as high as the competitive price.
+
+        But keep in mind: the maximisation criterium for the monopolist is that \textbf{marginal revenue equals marginal cost.} Thus, the exact point will depend on the exact shape of cost and revenue curves.
+        
+        }
+\end{frame}
+
+\begin{frame}{Cournot Model}
+    \showmytikz[5,6]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+        If we now look at the welfare effect of the monopoly, we find:
+    
+        Welfare in the monopoly case is (much) lower than in the competition case. In particular, consumer surplus is much lower, while a large part of the surplus now is the producer surplus, i.e. profit for the monopolist.
+
+        What's not to love? Can you think of arguments why monopolist profits could be a good or necessary thing?
+
+
+    }
+\end{frame}
+
+\begin{frame}{Cournot Model}
+    \showmytikz[1]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+        Looking back at the competitive situation:
+        
+        
+    }
+\end{frame}
+
+\begin{frame}{Cournot Model}
+    \showmytikz[1,5,6]{../shared/tikz/tikz-monopoly.tex}
+    \mycomment{
+    A monopoly results in
+        \begin{itemize}
+            \item higher price
+            \item lower quantity
+            \item significant loss of welfare
+            \item larger producer surplus
+            \item smaller consumer surplus
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Pro and Contra Monopolies}
+    \mytext{
+    Pro:
+    \begin{itemize}
+        \item be unavoidable 
+        \item be necessary to invest in infrastructure
+        \item create "national champions" to compete internationally
+    \end{itemize}
+    Contra:
+    \begin{itemize}
+        \item perform less efficient
+        \item reduce welfare
+        \item extract rents
+        \item produce corruption
+    \end{itemize}
+    }
+    \mycomment{
+    Economists don't like monopolies. When they are unavoidable, we speak of natural monopolies. Some infrastructure are natural monopolies. The question how to administer or regulate these are difficult to answer. Some speak for nationalisation, but it seems questionable that change of ownership (towards the state) must result in better outcomes. Regulation, such as a limit on profits, seems more adequate (Jean \noun{Tirole}).
+    }
+\end{frame}
+
+\begin{frame}{Price Discrimination}
+    \showmytikz[2]{../shared/tikz/tikz-demandblocks}
+    \mycomment{
+    If the seller can charge everyone their reserve price, that is: the maximum price that person is willing to pay---
+    \begin{itemize}
+        \item there would be no consumer surplus
+        \item all surplus would go to the producer
+    \end{itemize}
+    This is sometimes called `first degree price discrimination'. But this only works if 
+    \begin{itemize}
+        \item the producer has information about the willingness to spend
+        \item buyers cannot trade between themselves
+        \item there is no competition
+    \end{itemize}
+    Companies would love to have more information about you... for a reason. In extremo, this would become \textit{surveillance pricing.}
+    }
+\end{frame}
+
+\begin{frame}{Is there a Monopoly?}
+    \mycomment{
+    To actually determine if a monopoly exists is not an easy exercise, in particular because of legal consequences. 
+
+    And if we have detected a monopoly, the questions comes up: how shall we deal with it? Can we break it up, can we tax it, can we regulate it, should the state take it over?
+    }
+    \mytext{
+        \begin{itemize}
+            \item Cross-Price Elasticity
+            \item SSNIP Small but Significant Non-Transitory Increase of Price 
+            \item HHI Herfindahl-Index
+            $$ H := \sum_{i=1}^N a^2_i$$ with $a_i$ market share of participant $i$
+            % \item Cellophane Fallacy (U.S. vs. DuPont)
+            \item Network effects, natural monopoly
+        \end{itemize}
+    }
+\end{frame}

@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}[every node/.style={font=\scriptsize}]
+    \draw[->,>=latex] (0,0) -- (10,0) node[right] {$time$};
+    \draw[->,>=latex] (0,0) -- (0,5) node[right] {$payments$};
+
+    \draw[fill=blue!10,smooth] plot coordinates {(0,0) (1,0.4) (2,1.5) (3,0)} -- cycle;
+    \node[above] at (1.75,0.25) {DEVEX} ;
+
+    \draw[fill=red!10,smooth] plot coordinates {(2.5,0) (3,5) (3.75,5) (4,0)} --  cycle;
+    \node[above] at (3.25,1) {CAPEX} ;
+    
+    \draw[fill=green!10,smooth] plot coordinates {(4,0) (5,1.25) (8,1.25) (9,0)} --  cycle;
+    \node[above] at (6.25,0.6) {CAPEX repayment} ;
+
+    \draw[fill=yellow!10,smooth] plot coordinates {(5,0) (6,0.5) (8,0.5) (9.5,0)} --  cycle;
+    \node[above] at (7,0) {OPEX} ;
+    
+    \draw[dashed] (2.5,0) -- (2.5,4) node [above,draw, rounded corners] {final investment decision (FD)};
+    
+    \draw[dashed] (4,0) -- (4,3) node [above,draw, rounded corners] {commissioning};
+    
+\end{tikzpicture}
+\end{document}

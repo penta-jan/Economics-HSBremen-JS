@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \newcommand{\pft}[2]{{\hfill$#1$ \\ $#2$\hfill\mbox{}}}
+
+        \matrix [payoff matrix,
+            payoff matrix/player 1={Alice},
+            payoff matrix/player 2={Bob}
+        ]{
+        & concert & football \\
+        concert  & \pft{3}{1} & \pft{0}{0} \\
+        football & \pft{0}{0} & \pft{1}{3} \\
+        };
+
+    \end{tikzpicture}
+\end{document}

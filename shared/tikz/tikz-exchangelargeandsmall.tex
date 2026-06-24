@@ -1,0 +1,77 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \tikzset{
+        fishernode/.style={draw, rounded corners, fill=green!10},
+        planternode/.style={draw, rounded corners, fill=orange!10},
+        objectnode/.style={draw, rounded corners, fill=white},
+        moneynode/.style={draw, color=black, rounded corners, fill=orange!10}
+    }
+
+    %% always: ocean squiggles
+    \begin{scope}[color=blue]
+        \draw[decorate,decoration={coil,aspect=0}] (-1.5,8) -- (1.7,8);
+        \draw[decorate,decoration={coil,aspect=0}] (-2,6)   -- (-1,6);
+        \draw[decorate,decoration={coil,aspect=0}] (-2,2)   -- (-1,2);
+        \draw[decorate,decoration={coil,aspect=0}] (-2,0.5) -- (0,0.5);
+        \draw[decorate,decoration={coil,aspect=0}] (-1,-0.5)-- (1,-0.5);
+    \end{scope}
+
+    %% always: continent + island, base nodes
+    \draw[rounded corners, fill=gray!20]
+        (-7.5,9) node[below right] {\textbf{continent}} rectangle (-2.5,-1.5);
+    \node[fishernode,  minimum height=4cm, minimum width=4cm] (fl) at (-5,1) {fish};
+    \node[planternode, minimum height=4cm, minimum width=4cm] (pl) at (-5,6) {fruit};
+    \draw[<->,>=latex] (fl) -- node[draw,fill=white] {$1:1$} (pl);
+
+    \begin{scope}[xshift=-4cm,yshift=2.5cm]
+        \draw[rounded corners, fill=yellow!20]
+            (3.5,4.5) node[below right] {\textbf{island}} rectangle (6.5,-1);
+        \node[fishernode,  minimum height=2cm, minimum width=2cm] (fr) at (5,0.5) {fish};
+        \node[planternode, minimum height=1cm, minimum width=1cm] (pr) at (5,3.5) {fruit};
+        \draw[<->,>=latex] (fr) -- node[draw,fill=white] {$1:4$} (pr);
+    \end{scope}
+
+    %% step 2: trade arrow
+    \ifstep{2}{
+        \begin{scope}[color=red]
+            \draw[<->,>=latex,thick] (fr) -- node[draw,rounded corners,fill=white] {trade} (pl);
+            \node[fill=orange!10] at (pr) {(out)};
+        \end{scope}
+    }
+
+    %% step 3: erase trade arrow, redraw continent with specialisation
+    \ifstep{3}{
+        \begin{scope}[color=black]
+            \draw[rounded corners, fill=gray!20]
+                (-7.5,9) node[below right] {\textbf{continent}} rectangle (-2.5,-1.5);
+            \draw[<->,>=latex,thick,color=white] (fr) -- node[draw,rounded corners,fill=white] {trade} (pl);
+            \draw[yellow!20,<->,>=latex] (fr) -- node[draw,fill=yellow!20] {$1:4$} (pr);
+        \end{scope}
+        \begin{scope}[color=red]
+            \begin{scope}
+                % \draw[<->,>=latex] (fl) -- node[draw,color=gray!20,fill=gray!20] {1:1.05} (pl);
+                \node[fishernode,fill=none,dashed,minimum height=4cm,minimum width=4cm] (fl) at (-5,1) {};
+                \node[fishernode,minimum height=3.7cm,minimum width=3.7cm] (fl) at (-5,1) {fish};
+                \node[planternode,minimum height=4.3cm,minimum width=4.3cm] (pl) at (-5,6) {};
+                \node[planternode,dashed,fill=none,minimum height=4cm,minimum width=4cm] (pl) at (-5,6) {fruit};
+                \draw[<->,>=latex] (fl) -- node[draw,fill=white] {$1:0.95$} (pl);
+                \begin{scope}[xshift=-4cm,yshift=2.5cm]
+                    \draw[rounded corners,draw=black,fill=yellow!20]
+                        (3.5,4.5) node[below right] {\textbf{island}} rectangle (6.5,-1);
+                    \node[fishernode,minimum height=2.3cm,minimum width=2.3cm] (fr) at (5,0.5) {fish};
+                    \node[fishernode,fill=none,dashed,minimum height=2cm,minimum width=2cm] (fr) at (5,0.5) {};
+                    \node[planternode,dashed,fill=yellow!20,minimum height=1cm,minimum width=1cm] (pr) at (5,3.5) {fruit};
+                \end{scope}
+                \draw[->,>=latex] (fl.north east) [bend right=25] to node[right] {workers} (pl.south east);
+                \draw[<-,>=latex] (fr.north east) [bend right=25] to node[left]  {workers} (pr.south east);
+            \end{scope}
+            \draw[<->,>=latex,thick,color=black] (fr) -- node[draw,rounded corners,fill=white] {trade} (pl);
+        \end{scope}
+    }
+
+\end{tikzpicture}
+\end{document}

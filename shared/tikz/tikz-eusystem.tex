@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[edges]{forest}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{hsbcommon}
+
+\renewcommand\familydefault{\sfdefault}
+\begin{document}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [EU
+        [Decision making organs
+            [European Parliament]
+            [European Council (of heads of states or governments)]
+            [Council of the European Union - of state ministers]
+            [European Commission]
+        ]
+        [Other organs
+            [CJEU - Court of Justice of the European Union
+                [Court of Justice]
+                [General Court]
+            ]
+            [European Central Bank]
+            [European Court of Auditors]
+        ]
+        [Agencies
+            [EFSA - European Food Safety Authority]
+            [EFCA - European Fischeries Control Agency]
+            [ACER - Agency for the Cooperation of Energy Regulators]
+            [EDA - European Defence Agency]
+            [EBA - European Banking Authority]
+            [...]
+        ]
+    ]
+    \end{forest}
+
+ 
+
+    
+\end{document}

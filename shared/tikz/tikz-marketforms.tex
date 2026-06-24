@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+
+        \coordinate (Z) at (-3,0);
+        \coordinate (A) at ( 0,0);
+        \coordinate (B) at ( 3,0);
+        \coordinate (C) at ( 6,0);
+        \coordinate (D) at ( 9,0);
+
+    \foreach \i in {Z,A,B,C,D}
+        \draw (\i) -- (\i |-, -12);
+        
+    \draw (-3, -3) -- (9, -3);
+    \draw (-3, -6) -- (9, -6);
+    \draw (-3, -9) -- (9, -9);
+    \draw (-3, -12) -- (9, -12);
+
+    \node at (
+
+
+
+\end{tikzpicture}
+\end{document}

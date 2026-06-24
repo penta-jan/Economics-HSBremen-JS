@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \newcommand{\pft}[2]{{\hfill$#1$ \\ $#2$\hfill\mbox{}}}
+
+        \matrix [payoff matrix,
+            payoff matrix/player 1={Alice},
+            payoff matrix/player 2={Bob}
+        ]{
+        & cooperate & defect \\
+        cooperate & \pft{-1}{-1}  & \pft{0}{-10} \\
+        defect    & \pft{-10}{0}  & \pft{-5}{-5} \\
+        };
+
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1}}\makeatother
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \newcommand{\pft}[2]{{\hfill$#1$ \\ $#2$\hfill\mbox{}}}
+
+        \matrix (M) [payoff matrix,
+            payoff matrix/player 1={Alice},
+            payoff matrix/player 2={Bob}
+        ]{
+        & A & B \\
+        A & \pft{2}{12} & \pft{3}{2}  \\
+        B & \pft{-1}{0} & \pft{0}{0}  \\
+        };
+
+
+
+        \tikzset{
+            horstart/.style={
+                xshift=-2.5ex,
+                yshift=-3ex
+            },
+            horend/.style={
+                xshift=-0.5ex,
+                yshift=-3ex
+            },
+            verstart/.style={
+                xshift=-1.5ex,
+                yshift=-1ex
+            },
+            verend/.style={
+                xshift=-1.5ex,
+                yshift=-4.5ex
+            }
+        }
+ 
+    \ifstep{1}{  %%% alices incentives
+        \begin{scope}[red]
+            
+        \draw[->,>=latex]
+            ([horend]M-2-2.north east)
+            to
+            ([horstart]M-2-3.north east)   
+            ;  
+
+        \draw[->,>=latex]
+            ([horend]M-3-2.north east)
+            to
+            ([horstart]M-3-3.north east)   
+            ;    
+            
+        \draw[->,>=latex]
+            ([verstart]M-3-3.north east)    
+            to
+            ([verend]M-2-3.north east);       
+
+        \draw[->,>=latex]
+            ([verstart]M-3-2.north east)    
+            to
+            ([verend]M-2-2.north east);       
+        \end{scope}
+    }
+        
+
+
+    \end{tikzpicture}
+\end{document}

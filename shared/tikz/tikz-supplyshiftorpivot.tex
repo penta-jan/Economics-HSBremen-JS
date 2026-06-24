@@ -1,0 +1,68 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+    \begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$X_mi$}} -- (8,0) node (Y) [right] {$x$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node (i) [above] {$p$};
+        
+        \coordinate (A) at (0,7);
+        \coordinate (B) at (7,0);
+        \coordinate (E) at (0,1);
+        \coordinate (F) at (7,7);
+        
+        \draw[name path=demand] plot [smooth] coordinates {(A) (B) };
+        \node[above right] at (A) {$DD$};
+        
+        \draw[name path=supply] plot [smooth] coordinates {(E) (F)};
+        \node[above] at (F) {$SS$};
+           
+       \path [name intersections={of=demand and supply,by=Y}];
+        \filldraw (Y) node[right] {$E_1 $} circle (2pt);          
+
+        \coordinate (L) at ($(E)!0.7!(F)$);
+
+        \ifstep{2}{
+\begin{scope}[color=red]
+
+            \coordinate (G) at (0,1);
+            \coordinate (H) at (3,8);
+            \draw[name path=supplysub] plot [smooth] coordinates {(G) (H)};
+            \node[above] at (H) {$SS_2$};
+            \path [name intersections={of=demand and supplysub,by=Y}];
+            \filldraw (Y) node[right] {$E_2$} circle (2pt);                
+
+            \coordinate (M) at ($(G)!0.85!(H)$);
+            \draw[->,>=latex, bend right=20] (L)  to  (M) node[above right] {\scriptsize ad valorem};
+            
+        \end{scope}
+}
+
+         \ifstep{3}{
+\begin{scope}[color=green]
+
+        \coordinate (E) at (0,1);
+        \coordinate (F) at (7,7);
+
+            \draw[->,>=latex] (L) -- node[above right] {\scriptsize per unit} ++ (0,2.65)
+            ;
+
+            \draw[]  (Y) -- ++ (3.5,3) node [right] {$SS_3$};
+            \draw[]  (Y) -- ++ (-1.75,-1.5);
+            \filldraw[black] (Y) node[right] {$\phantom{E_2}=E_3$} circle (2pt);                
+           
+            
+        \end{scope}
+}
+
+ 
+%%%%%
+   
+     
+            
+    \end{tikzpicture}
+\end{document}

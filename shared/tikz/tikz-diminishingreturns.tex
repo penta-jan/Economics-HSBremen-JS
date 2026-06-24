@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+    \begin{document}
+\begin{tikzpicture}
+        \draw[->,>=latex] (0,0) -- (8,0) node[right]  {$X$};
+        \draw[->,>=latex] (0,0) -- (0,8) node[above]  {$U$};
+
+        % \draw (0,1) node [left] {0} -- (8,1);
+
+    \coordinate (A) at (0,-1);
+    \coordinate (B) at (1,0);
+    \coordinate (C) at (2,3);
+    \coordinate (D) at (4,5);
+    \coordinate (E) at (6,6);
+    \coordinate (F) at (8,5.9);
+
+    \node[below right] at (F) {$U(X)$};
+
+    \foreach \i in {A,B,C,D,E,F} 
+        {\filldraw (\i) circle (2pt);
+            \node [above left] at (\i) {\i};
+            \draw[dashed] (\i) -- (\i |-,0);    
+        }
+    \draw [name path=utility] plot [smooth,tension=0.5] coordinates {(A) (B) (C) (D) (E) (F)};
+
+    \ifstep{1}{
+\begin{scope}[color=red]
+
+        \coordinate (P) at (0,3);
+        \coordinate (Q) at (6,0); 
+        \coordinate (R) at (7,-0.5);
+        \draw [name path=utility] plot [smooth] coordinates {(P) (Q) (R)};
+        \node[right] at (R) {$\frac{dU}{dX}$};
+    \end{scope}
+}
+
+    \ifstep{2}{
+\begin{scope}[color=blue]
+
+        \draw[domain=0:8, thick] plot ({\x},{1.8*sqrt(\x)}) node[right] {$U'\left(X\right)=x^{\frac{1}{2}}$};
+    \end{scope}
+}
+
+        
+    \end{tikzpicture}
+\end{document}

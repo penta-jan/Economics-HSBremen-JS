@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \draw[<->] (-1,0) node[left] {left} -- (11,0) node[right] {right};
+    \draw[->] (0,0) -- (0,11) node [above] {opinion};
+    \foreach [count=\i] \ii in {
+        1,
+        2,
+        2.5,
+        3,
+        3.1,
+        4.4,
+        4.5,
+        5,
+        7,
+        7.5%
+    } {
+        \draw [fill=gray!20] (10-\i,0) rectangle (10-\i+1,\ii+3);
+    }
+    \draw[fill=red!10,opacity=0.5] (0,0.2) rectangle node[right, fill=white] {$100\%$} (10,0.8); 
+    \draw[fill=green!10,opacity=0.5] (3,1.2) rectangle node[fill=white] {$50\%$} (8,1.8); 
+    \draw[fill=blue!10,opacity=0.5] (1,2.2) rectangle node[fill=white] {$50\%$} (6,2.8); 
+    \draw[fill=yellow!10,opacity=0.5] (5,3.2) rectangle node[fill=white] {$50\%$} (10,3.8); 
+    \draw[ultra thick, dashed,red] (4.5,0) rectangle (5.5,11);
+    \node[right, fill=white,text=red] at (5,10) {median voter};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6}}\makeatother
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \tikzset{%
+        first/.style={draw, fill=yellow!20, circle, rounded corners,
+            minimum width=15ex, minimum height=15ex},
+        second/.style={draw, circle, minimum width=20ex},
+        conn/.style={draw, rounded corners, fill=white},
+        every path/.style={draw, >=latex}
+    }
+    \node[first] (HH) at (-5,0) {households};
+    \node[first] (BN) at (5,0)  {firms};
+
+    %% Step 1: goods and services market
+    \ifstep{1}{
+        \begin{scope}[color=blue]
+            \draw[->,bend right=7]  (HH) to node[conn] {fees and payments}   (BN);
+            \draw[<-,bend left=7]   (HH) to node[conn] {goods and services}  (BN);
+            \node[conn,fill=blue!10,draw=black] at ($(HH)!0.5!(BN)+(0,4)$) {goods and services market};
+        \end{scope}
+    }
+
+    %% Step 2: labour market
+    \ifstep{2}{
+        \begin{scope}[color=red]
+            \draw[->,bend right=21] (HH) to node[conn] {work and labour}     (BN);
+            \draw[<-,bend left=21]  (HH) to node[conn] {salaries and wages}  (BN);
+            \node[conn,fill=red!10,draw=black] at ($(HH)!0.5!(BN)+(4,4)$)  {labour market};
+        \end{scope}
+    }
+
+    %% Step 3: capital market
+    \ifstep{3}{
+        \begin{scope}[color=black]
+            \draw[->,bend right=35] (HH) to node[conn] {capital and investment}    (BN);
+            \draw[<-,bend left=35]  (HH) to node[conn] {interests and dividends}   (BN);
+            \node[conn,fill=black!10,draw=black] at ($(HH)!0.5!(BN)+(-4,4)$) {capital market};
+        \end{scope}
+    }
+
+    %% Step 4: state
+    \ifstep{4}{
+        \begin{scope}[color=blue]
+            \node[first] at (0,-6) (ST) {state};
+            \draw[->,bend right=30] (HH) to node[conn,name=taxone] {income taxes}  (ST);
+            \draw[->,bend right=30] (ST) to node[conn] {expenditure}    (BN);
+            \draw[<->] (ST) -- node[conn,name=taxtwo] {taxes, regulations, money} (ST |-, -2.5);
+            % \node[conn,fill=blue!10,draw=black] at (3,-6) {fiscal and regulatory policy};
+        \end{scope}
+    }
+
+    
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,205 @@
+%% beamerouterthemeHSB.sty
+%% HSB Beamer theme matching the official PowerPoint template:
+%%   - Normal slides: white background + narrow gradient header strip (~9%)
+%%   - Title/section slides: full gradient background
+%%   - Pure TikZ shadings — no PNG background files needed
+
+\RequirePackage{tikz}
+\usetikzlibrary{shadings}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=6mm, text margin right=6mm}
+
+% ── Helper: full-slide diagonal gradient (matching PPT template) ──────────────
+% Structure: two horizontal gradients (top/bottom half) +
+%            dark semi-transparent triangle top-left
+% This faithfully reproduces the diagonal layered gradient of the HSB PPT.
+\newcommand{\HSBfullgradient}{%
+  \begin{tikzpicture}
+    % Top half: horizontal gradient (darker teal range)
+    \shade[left color=HSBbgTL, right color=HSBbgTR]
+      (0, 0.5\paperheight) rectangle (\paperwidth, \paperheight);
+    % Bottom half: horizontal gradient (lighter teal range)
+    \shade[left color=HSBbgBL, right color=HSBbgBR]
+      (0, 0) rectangle (\paperwidth, 0.5\paperheight);
+    % Dark triangle overlay top-left — creates the diagonal effect
+    \begin{scope}
+      \clip (0, 0.25\paperheight) --
+            (0, \paperheight) --
+            (0.63\paperwidth, \paperheight) -- cycle;
+      \fill[HSBbgTL, opacity=0.45]
+            (0, 0.25\paperheight) --
+            (0, \paperheight) --
+            (0.63\paperwidth, \paperheight) -- cycle;
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+% ── Normal slide background: white + gradient strip ───────────────────────────
+\setbeamertemplate{background}{%
+  \begin{tikzpicture}
+    \fill[white] (0,0) rectangle (\paperwidth,\paperheight);
+    \shade[left color=HSBhlL, right color=HSBhlR]
+      (0,\paperheight) rectangle (\paperwidth, 0.91\paperheight);
+  \end{tikzpicture}%
+}
+
+% ── Headline: logo in strip + reserve space ───────────────────────────────────
+\setbeamertemplate{headline}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[below left, inner sep=3pt] at (current page.north east)
+      {\includegraphics[height=0.075\paperheight]{\OfficeLogoPath}};
+  \end{tikzpicture}%
+  \vspace{0.09\paperheight}%
+}
+
+% ── Frame title ───────────────────────────────────────────────────────────────
+\setbeamertemplate{frametitle}{%
+  \vspace{0.5ex}%
+  \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle%
+}
+
+% ── Footline ──────────────────────────────────────────────────────────────────
+\setbeamertemplate{footline}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south west, inner sep=0pt,
+          xshift=6mm, yshift=2mm] at (current page.south west)
+      {\textcolor{HSB-blau}{\tiny\inserttitle\ —\ \insertauthor\ —\ \insertsectionhead}};
+    \node[anchor=south east, inner sep=0pt,
+          xshift=-6mm, yshift=2mm] at (current page.south east)
+      {\textcolor{HSB-blau}{\tiny\insertdate\quad\insertframenumber}};
+  \end{tikzpicture}%
+  \vspace{5mm}%
+}
+
+% ── \titleframe: PPT-faithful title slide ────────────────────────────────────
+%
+%  Layout (matching official HSB PPT template):
+%  ┌────────────────────────────────────────────────────┐
+%  │  Dark gradient strip (top 21%)   [logo zone]       │
+%  ├────────────────────────────────────────────────────┤  ← white line at 21%
+%  │                                                    │
+%  │  [ZusatzLogo left]    [OfficeLogo right]           │  28–54%
+%  │                                                    │
+%  │  Title text (large, white)                         │  54–68%
+%  │  Subtitle text (white)                             │  70–75%
+%  │  Date (white)                                      │  76–80%
+%  │                                                    │
+%  ├────────────────────────────────────────────────────┤  ← white line at 91%
+%  │  Footer zone                                       │
+%  └────────────────────────────────────────────────────┘
+%  Decorative: small white tick marks at top/bottom edges
+
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    %% ── Dark top strip (21% height) with its own gradient ────────────────
+    \shade[left color=HSBbgTL, right color=HSBhlR]
+      (current page.north west)
+      rectangle
+      ([yshift=-0.21\paperheight]current page.north east);
+
+    %% ── White horizontal dividing lines ──────────────────────────────────
+    \draw[white, line width=0.4pt]
+      ([yshift=-0.21\paperheight]current page.north west) --
+      ([yshift=-0.21\paperheight]current page.north east);
+    \draw[white, line width=0.4pt]
+      ([yshift= 0.09\paperheight]current page.south west) --
+      ([yshift= 0.09\paperheight]current page.south east);
+
+    %% ── Decorative tick marks at top and bottom edges ─────────────────────
+    \foreach \xfrac in {0.017, 0.478, 0.501, 0.962}{
+      \draw[white, line width=0.8pt]
+        ([xshift=\xfrac\paperwidth]current page.north west) --
+        ([xshift=\xfrac\paperwidth, yshift=-0.012\paperheight]current page.north west);
+      \draw[white, line width=0.8pt]
+        ([xshift=\xfrac\paperwidth]current page.south west) --
+        ([xshift=\xfrac\paperwidth, yshift= 0.012\paperheight]current page.south west);
+    }
+    %% Left/right edge ticks
+    \draw[white, line width=0.8pt]
+      ([yshift=-0.213\paperheight]current page.north west) --
+      ([xshift= 0.012\paperwidth, yshift=-0.213\paperheight]current page.north west);
+    \draw[white, line width=0.8pt]
+      ([yshift=-0.906\paperheight]current page.north west) --
+      ([xshift= 0.012\paperwidth, yshift=-0.906\paperheight]current page.north west);
+    \draw[white, line width=0.8pt]
+      ([yshift=-0.213\paperheight]current page.north east) --
+      ([xshift=-0.012\paperwidth, yshift=-0.213\paperheight]current page.north east);
+    \draw[white, line width=0.8pt]
+      ([yshift=-0.906\paperheight]current page.north east) --
+      ([xshift=-0.012\paperwidth, yshift=-0.906\paperheight]current page.north east);
+
+    %% ── Logos (at 28% from top, in the middle zone) ──────────────────────
+    \node[above right, inner sep=0pt,
+          xshift=0.008\paperwidth, yshift=-0.28\paperheight]
+      at (current page.north west)
+      {\includegraphics[height=0.16\paperheight]{\ZusatzLogoPath}};
+    \node[above left, inner sep=0pt,
+          xshift=-0.008\paperwidth, yshift=-0.28\paperheight]
+      at (current page.north east)
+      {\includegraphics[height=0.16\paperheight]{\OfficeLogoPath}};
+
+    %% ── Title, subtitle, date ─────────────────────────────────────────────
+    \node[below right, inner sep=0pt,
+          xshift=0.027\paperwidth, yshift=-0.537\paperheight]
+      at (current page.north west)
+      {\parbox{0.93\paperwidth}{%
+        \textcolor{white}{\usebeamerfont{title}\inserttitle}
+      }};
+    \node[below right, inner sep=0pt,
+          xshift=0.027\paperwidth, yshift=-0.703\paperheight]
+      at (current page.north west)
+      {\parbox{0.93\paperwidth}{%
+        \textcolor{white}{\usebeamerfont{subtitle}\insertsubtitle}
+      }};
+    \node[below right, inner sep=0pt,
+          xshift=0.027\paperwidth, yshift=-0.77\paperheight]
+      at (current page.north west)
+      {\textcolor{white!80!HSBbgBR}{\small\insertdate}};
+  \end{tikzpicture}%
+}
+
+\newcommand{\titleframe}{%
+  {%
+    \setbeamertemplate{background}{}%
+    \usebackgroundtemplate{\HSBfullgradient}%
+    \setbeamertemplate{headline}{}%
+    \setbeamertemplate{footline}{}%
+    \frame{\titlepage}%
+  }%
+}
+
+% ── Section slides (Kapitel) ──────────────────────────────────────────────────
+\newenvironment{kapitel}{%
+  \usebackgroundtemplate{\HSBfullgradient}%
+  \setbeamertemplate{headline}{}%
+  \setbeamertemplate{frametitle}{%
+    \begin{tikzpicture}[remember picture, overlay]
+      \node[right, inner sep=0pt, yshift=1.1cm] at (current page.west)
+        {\hspace{6mm}\Large\textcolor{white}{\insertframetitle}};
+    \end{tikzpicture}%
+  }%
+}{%
+  \setbeamertemplate{background}{}%
+  \setbeamertemplate{headline}{}%
+  \setbeamertemplate{frametitle}{}%
+}
+
+% ── Table of contents (Inhaltsverzeichnis) ────────────────────────────────────
+\newenvironment{inhaltsverzeichnis}{%
+  \usebackgroundtemplate{\HSBfullgradient}%
+  \setbeamertemplate{headline}{}%
+  \setbeamertemplate{frametitle}{%
+    \begin{beamercolorbox}{frametitle}
+      \vspace{0.5cm}\\
+      \Large\textcolor{white}{\insertframetitle}
+    \end{beamercolorbox}%
+  }%
+}{%
+  \setbeamertemplate{background}{}%
+  \setbeamertemplate{headline}{}%
+  \setbeamertemplate{frametitle}{}%
+}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]

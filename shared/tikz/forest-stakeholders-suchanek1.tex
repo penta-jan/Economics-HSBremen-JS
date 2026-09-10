@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\begin{document}
+    \begin{forest}
+    for tree={
+        font=\footnotesize,
+        grow' = east,
+        parent anchor = east,
+        child anchor = west,
+        forked edge,
+        inner sep=0pt,
+        anchor=base west
+            }
+    [\parbox{20ex}{\centering Project: \\ Move office}
+        [\textbf{Initiators} 
+            [Internal
+                [{Facility management}, name={fm}]
+                [HR]
+                [Top level management, name={tl}]
+                [...]
+            ]
+            [External
+                [Authorities]
+                [Pressure group, name=pgin]
+                [...]
+            ]
+        ]
+        [\textbf{Executors}
+            [PM
+                [Internal
+                    [PMO]                
+                    [Facility Management]
+                    [Accounting]
+                    [IT]
+                    [HR]
+                    [...]
+                ]
+                [External
+                    [Old premises landlord]
+                    [Moving company]
+                    [New premises landlord]
+                    [Public services]
+                    [...]
+                ]
+            ]
+        ]
+        [\textbf{Affected}
+            [Internal
+                [Users - Everyone in the office, name=us]
+                [Everyone in all other offices]
+                [...]
+            ]
+            [External
+                [Customers]
+                [Suppliers]
+                [Institutions]
+                [Banks]
+                [Pressure group, name=pgaf]
+                [Competitors]
+                [...]
+            ]
+        ]
+    ]
+    \end{forest}
+\end{document}

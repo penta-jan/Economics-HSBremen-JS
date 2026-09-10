@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \draw (0,0) node [below] {\phantom{$x_1$}} node[left] {\phantom{$x_1$}} ;
+
+                
+   \draw[->,>=latex] (0,0)  -- (8,0) node[below left]  {free time};
+   \draw[->,>=latex] (0,0) -- (0,8) node[above]  {income};
+
+    \coordinate (O) at (0,7);
+    \coordinate (C) at (6,0);
+    
+    \filldraw (O) node [left] {$O$} circle (2pt); 
+    \filldraw (C) node [below] {$h_{max}$} circle (2pt); 
+
+    \draw[ultra thick,red,->,>=latex] (C) -- node[above] {labour} ($(C)-(2,0)$);
+
+    \coordinate (A) at ($(O)!0.5!(C)$);
+    \coordinate (B) at (C|-,|-A);
+
+    \coordinate (D) at ($(O)!0.5!(A)$);
+    
+    \filldraw (D) node[below left] {$D$} circle (2pt);
+    
+    \filldraw (A) node[below left] {$A$} circle (2pt);
+
+    \draw[dashed] (A) -- (C) ;
+    \draw[dotted] (A) -- (A|-,0) node[below] {\scriptsize threshold} ;
+    \draw[dotted] (A) -- (0,|-A) node[left] {\scriptsize benefit} ;
+
+    \filldraw (B) node[above right] {B} circle (2pt);
+    
+    \draw[thick] (O) -- (A) -- (B) -- (C) ;
+
+        \draw[red] plot[smooth] coordinates {($(D)+(5.5,-3)$) ($(D)+(2.5,-1.8)$) (D) ($(D)+(-1,2)$)} node[above] {$U_1$};       
+        \draw[red] plot[smooth] coordinates {($(B)+(1,-0.5)$) (B) ($(B)+(-2,2)$) ($(B)+(-3,4)$)} node[above] {$U_2$};       
+    
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hsbcommon}
+\makeatletter\AtBeginDocument{\@buildstepset{7,8}}\makeatother
+
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+\pgfmathdeclarefunction{kitchin}{1}{\pgfmathparse{sin(deg(#1*4))*100}}  
+\pgfmathdeclarefunction{juglar}{1}{\pgfmathparse{sin(deg(#1*2))*100}}  
+\pgfmathdeclarefunction{kuznets}{1}{\pgfmathparse{sin(deg(#1*1))*100}}  
+\pgfmathdeclarefunction{kondratiev}{1}{\pgfmathparse{sin(deg(#1*0.5))*100}}  
+
+\begin{tikzpicture}[every path/.style={smooth}]
+
+\tikzset{
+    sum/.style={red,thick},
+    randomwalk/.style={green,thick}
+    }
+
+        % \draw[->] (0,0) -- (8,0) node[draw=none,right]  {$A$};
+        % \draw[->] (0,-4) -- (0,4) node[draw=none,above]  {$B$};
+
+        
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = $t$,
+        ylabel = {},
+        ymin=-102, ymax=102,
+        xmin=-0.5, xmax=7,
+        domain=0:2*pi,
+        samples=100,
+        width=8cm,
+        height=6cm,
+        yticklabel=\empty,
+        xticklabel=\empty
+    ]
+
+    % \path[domain=0:8] plot ({\x},{kitchin(\x)});
+    
+    \ifstep{1}{
+    \draw[domain=0:8] plot ({\x},{kitchin(\x)});
+    }
+    
+    \ifstep{2}{
+        \draw[green,domain=0:8] plot ({\x},{juglar(\x)});
+    }
+    \ifstep{3}{
+        \draw[sum,domain=0:8] plot ({\x},{(juglar(\x)+kitchin(\x))/2});
+    }    
+    
+    \ifstep{4}{
+    \draw[blue, domain=0:8] plot ({\x},{kuznets(\x)});
+    }
+
+    \ifstep{5}{
+        \draw[sum, domain=0:8] plot ({\x},{(juglar(\x)+kitchin(\x)+kuznets(\x))/3});
+    
+    }
+    
+    \ifstep{6}{
+    \draw[green,domain=0:8] plot ({\x},{kondratiev(\x)});
+    }
+
+    \ifstep{7}{
+    \draw[sum,domain=0:8] plot ({\x},{(juglar(\x)+kitchin(\x)+kuznets(\x)+kondratiev(\x))/4});
+    }
+
+    \ifstep{8}{
+        \pgfmathsetseed{42}
+        \pgfmathsetmacro{\N}{60}         % number of steps — more = rougher, less = smoother
+        \pgfmathsetmacro{\stepscale}{50}  % tune this to match the visual amplitude of step 7
+        \pgfmathsetmacro{\y}{0}
+        \edef\walkpoints{(0,0)}
+        \foreach \i in {1,...,16}{
+            \pgfmathsetmacro{\y}{\y+(rand)*\stepscale}
+            \pgfmathsetmacro{\xval}{25*\i/\N}
+            \xdef\walkpoints{\walkpoints (\xval,\y)}
+        }
+        \draw[randomwalk,green] plot coordinates {\walkpoints};
+    }
+    
+    \end{axis}
+
+        
+
+\end{tikzpicture}
+\end{document}

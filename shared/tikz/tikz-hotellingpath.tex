@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+
+\usepackage{hsbcommon}
+% https://archive.nytimes.com/krugman.blogs.nytimes.com/2011/03/16/the-answer-my-friend-2/
+% https://www.jstor.org/stable/2534202
+\begin{document}
+\begin{tikzpicture}
+    \draw[->,>=latex] (0,0) node[below] {\phantom{$x_0$}} -- (8,0) node[right] {$t$};
+    \draw[->,>=latex] (0,0) node[left] {\phantom{$y_0$}} -- (0,8) node[above] {$p$};
+
+    \draw (0,2) -- node[below] {conventional oil}       (3,2);
+    \draw (3,2) --                         (3,4);
+    \draw (3,4) -- node[below] {shale oil} (6,4);
+    \draw (6,4) --                         (6,6);
+    \draw (6,6) -- node[below,text width=2cm,align=center] (alt) {synthetic alternatives} (8,6);
+
+    \ifstep{1}
+    {
+    
+    \begin{scope}[red]
+        \draw plot [smooth] coordinates {(0,2.5) (1.75,3) (3,4.5)};
+        \draw  plot [smooth] coordinates {(3,4.5) (4.75,5) (6,6)};
+        \node[above left]  at (3,4.5) {\scriptsize Hotelling path};
+
+        \draw[<->] (1.75,3) -- node[right,fill=white] {\scriptsize scarcitiy rent} (1.75,2);
+        
+    \end{scope}
+    }
+
+    \ifstep{2}{
+        \draw[->] (alt) -- ($(alt)+(0,-1)$) node[below] {?};
+    }
+    
+    
+\end{tikzpicture}
+\end{document}

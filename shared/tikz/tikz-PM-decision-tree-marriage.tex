@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \tikzstyle{block1}    = [rectangle, rounded corners,  minimum width=2cm, minimum height=1cm, text centered, draw, fill=blue!20, text width=2cm]
+    \tikzstyle{block2}    = [rectangle, rounded corners,  minimum width=2cm, minimum height=1cm, text centered, draw, fill=blue!20, text width=2cm]
+    \tikzstyle{decision}  = [diamond, minimum width=2cm, minimum height=1cm, text centered, draw, fill=blue!20, text width=2cm] % node distance=3cm, inner sep=0pt
+    \tikzstyle{line}      = [draw, -latex']
+    \begin{tikzpicture}[node distance=1cm]
+            \node[decision] (0) {want to marry?};
+            \node[block2,below right=of 0] (3) {look at candidates};
+            \node[decision,below=of 3] (4) {propose};
+            \node[decision, below left=of 4] (5) {A};
+            \node[decision, below right=of 4] (6) {B};
+            \node[block2, below=of 5] (7) {Marry A};
+            \node[block2, below=of 6] (8) {Marry B};
+            \node[block2, left=of 7] (9) {remain alone};
+            \node[decision, below=of 4] (10) {sad};
+            \draw[->] (0) -- node[above] {yes} (3);
+            \draw[->] (0) to [out=225, in=90] node[above left] {no} (9);
+            \draw[->] (0) -- node[above] {yes} (3);
+            \draw[->] (3) -- node[right,color=red] {?} (4);
+            \draw[->] (4) -- (5);
+            \draw[->] (4) -- (6);
+            \draw[->] (5) -- (10);
+            \draw[->] (5) -- (7);
+            \draw[->] (6) -- (10);
+            \draw[->] (6) -- (8);
+            \draw[->] (6) -- (8);
+            \draw[->,dashed] (10) to [out=180,in=90] node[above, color=red] {?} (9);
+            \draw[->] (10) to [out=0,in=0,looseness=1.5]  (0);   % at (a |- b)
+        \end{tikzpicture}
+
+\end{document}

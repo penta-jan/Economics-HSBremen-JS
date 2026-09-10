@@ -7,8 +7,9 @@
 \usepackage{hsbcommon}
 \begin{document}
 \begin{tikzpicture}
-    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [right] {$x$};
-    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [above] {$p$};
+    % \tikzset{every node/.style={opacity=0},>=latex}
+    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [opacity=1,right] {$x$};
+    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [opacity=1,above] {$p$};
 
     %% ── All coordinates unconditional ────────────────────────────────────────
     \coordinate (A) at (0,7);

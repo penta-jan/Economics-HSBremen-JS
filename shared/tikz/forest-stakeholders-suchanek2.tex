@@ -1,0 +1,69 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\begin{document}
+% \begin{tikzpicture}
+  
+    \begin{forest}
+    for tree={
+        font=\footnotesize,
+        grow' = east,
+        parent anchor = east,
+        child anchor = west,
+        forked edge,
+        inner sep=2pt,
+        anchor=base west
+            }
+    [\parbox{20ex}{\centering Project: \\ Move office}
+        [\textbf{Initiators} 
+            [Internal
+                [{Facility management}, name={fm}]
+                [HR]
+                [Top level management, name={tl}]
+                [...]
+            ]
+            [External
+                [Authorities]
+                [Pressure group, name=pgin]
+                [...]
+            ]
+        ]
+        [\textbf{Executors}
+            [PM
+                [Internal
+                    [PMO]
+                    [Facility Management]
+                    [Accounting]
+                    [IT]
+                    [HR]
+                    [...]
+                ]
+                [External
+                    [Old premises landlord]
+                    [Moving company]
+                    [New premises landlord]
+                    [Public services]
+                    [...]
+                ]
+            ]
+        ]
+        [\textbf{Affected}
+            [Internal
+                [Users - Everyone in the office, name=us]
+                [Everyone in all other offices]
+                [...]
+            ]
+            [External
+                [Customers, name=cus]
+                [Suppliers]
+                [Institutions]
+                [Banks]
+                [Pressure group, name=pgaf]
+                [...]
+            ]
+        ]
+    ]
+    \draw (tl.east) to[bend left=90] (us.east);
+     \draw (tl.east) to[bend left=90] (cus.east);
+    \draw (pgin.east) to[bend left=90] (pgaf.east);    
+    \end{forest}
+\end{document}

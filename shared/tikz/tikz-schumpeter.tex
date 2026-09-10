@@ -1,0 +1,69 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+
+\begin{document}
+\definecolor{oldtech}{HTML}{D85A30}
+\definecolor{newtech}{HTML}{1D9E75}
+\definecolor{totalout}{HTML}{888780}
+
+\pgfmathdeclarefunction{oldtech}{1}{\pgfmathparse{30*(1-sin(deg(#1-pi/2)))}}
+\pgfmathdeclarefunction{newtech}{1}{\pgfmathparse{65*(1+sin(deg(#1-pi/2)))}}
+
+
+% Analytic intersection: oldtech(t)=newtech(t)
+% => 50 - 50 sin(t-pi/2) = 65 + 65 sin(t-pi/2)
+% => sin(t-pi/2) = -3/23
+\pgfmathsetmacro{\sinval}{-3/23}
+
+\pgfmathsetmacro{\angledeg}{asin(\sinval)}      % pgfmath asin returns degrees
+\pgfmathsetmacro{\thetarad}{\angledeg*pi/180}   % convert to radians
+\pgfmathsetmacro{\tstar}{pi/2+\thetarad}
+\pgfmathsetmacro{\ystar}{50*(1-\sinval)}
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = $t$,
+    ylabel = {},
+    ymin=-10, ymax=145,
+    xmin=-0.3, xmax=3.6,
+    domain=0:pi,
+    samples=100,
+    width=8cm,
+    height=6cm,
+    yticklabel=\empty,
+    xticklabel=\empty,
+    clip=false,
+]
+
+    % \draw[densely dashed, gray!60] (axis cs:\tstar,-10) -- (axis cs:\tstar,145);
+    % \node[font=\scriptsize, align=center, anchor=south] at (axis cs:\tstar,147) {new tech overtakes old};
+
+    \draw[dashed, thick, domain=0:pi] plot ({\x},{(oldtech(\x)+newtech(\x))/2});
+
+    \draw[oldtech, thick, domain=0:pi,name path=oldtech] plot ({\x},{oldtech(\x)});
+
+    \draw[newtech, thick, domain=0:pi,name path=newtech] plot ({\x},{newtech(\x)});
+
+    \path [name intersections={of=oldtech and newtech,by=E}];
+
+    \filldraw (E) circle (2pt);
+    % \draw[dashed] (E) -- (E,0);
+    
+
+\end{axis}
+
+% \fill[oldtech] (0,-0.9) rectangle (0.3,-0.75);
+% \node[anchor=west, font=\scriptsize] at (0.35,-0.825) {old tech declining};
+
+% \fill[newtech] (3.0,-0.9) rectangle (3.3,-0.75);
+% \node[anchor=west, font=\scriptsize] at (3.35,-0.825) {new tech emerging};
+
+% \draw[totalout, dashed, thick] (6.0,-0.825) -- (6.3,-0.825);
+% \node[anchor=west, font=\scriptsize] at (6.35,-0.825) {total output};
+
+\end{tikzpicture}
+\end{document}

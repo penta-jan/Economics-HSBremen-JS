@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.6cm,
+    Milenew/.style={milestone/.append style={fill=red}}]{1}{12}
+      \gantttitlelist{1,...,12}{1} \\
+      \ganttgroup{Planning Loft Bed I}{1}{6}\\
+      \ganttbar[name=sketch]{Make a sketch}{1}{4} \\
+      \ganttbar[name=plan]{Make exact plan}{5}{6} \\
+      \ganttmilestone[name=order]{Order material}{6}\\
+      \ganttlink[]{sketch}{plan}
+      \ganttlink[]{sketch}{order}
+      \ganttmilestone[name=receive]{Receive material}{7}\\
+      \ganttlink[]{order}{receive}
+      \ganttgroup{Woodwork}{8}{12}
+      \ganttlink[]{receive}{woodwork}
+    \end{ganttchart}
+
+\end{document}

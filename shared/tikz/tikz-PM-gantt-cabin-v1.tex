@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.5cm]{1}{9}
+      \gantttitlelist{1,...,9}{1} \\
+      \ganttgroup{Project cabin}{1}{9} \\
+      \ganttbar{Plan the cabin (2)}{1}{2} \\
+      \ganttbar{Construct (3)}{3}{5} \\
+      \ganttmilestone{Topping Out}{5} \\
+      \ganttbar{Utilities (2) }{6}{7}\\
+      \ganttbar{Equip (2)}{8}{9}\\
+      \ganttmilestone{Inaug.}{9} 
+    \end{ganttchart}
+
+\end{document}

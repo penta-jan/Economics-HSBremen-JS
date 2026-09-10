@@ -38,6 +38,7 @@
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
 \RequirePackage{array}
+\RequirePackage{ragged2e} 
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -45,6 +46,10 @@
 \RequirePackage{fontawesome5}
 \RequirePackage{multirow}
 \RequirePackage{rotating}
+\RequirePackage{makeidx}
+\RequirePackage{csquotes}
+\RequirePackage{framed}
+\RequirePackage{easygantt}  %%% custom! 
 \newcommand\given{\;\middle|\;}
 
 \RequirePackage[utf8]{inputenc}
@@ -74,6 +79,10 @@
 \usetikzlibrary{tikzmark}
 \usepgfplotslibrary{fillbetween}
 
+\tikzset{
+    every node/.style={font=\sffamily},
+    >=latex
+}
 
 \newcommand{\mycurrency}{Euro}
 
@@ -193,6 +202,8 @@
 %
 %  Inside diagram files:
 %  \ifstep{N}{content}                show content if N is in the active set
+%  \ifstep{N1,N2}{content}            show content if N1 OR N2 is in the active set
+%  \ifstep{N1 OR N2}{content}         same as above ("OR" and "," are interchangeable)
 %
 %  Word aliases still accepted for single steps: eins=1, zwei=2, etc.
 %  (Useful for a quick \showmytikz[eins]{...} shorthand.)
@@ -243,12 +254,50 @@
   \fi
 }
 
-% ── \ifstep{N}{content} — show content if N is in the active set ─────────────
-% Uses \IfSubStr from xstring (already loaded). No @ internals at point of use.
-\newcommand{\ifstep}[2]{%
-  \IfSubStr{\@stepset}{,#1,}{#2}{}%
+% ═══════════════════════════════════════════════════════════════════════════════
+%  \ifstep / \ifnotstep — now accept multiple steps combined with "," or "OR"
+%
+%  \ifstep{1}{foo}          — foo shown if step 1 is active
+%  \ifstep{1,3}{foo}        — foo shown if step 1 OR step 3 is active
+%  \ifstep{1 OR 3}{foo}     — same as above; "OR" and "," are interchangeable
+%  \ifstep{1, 3 OR 5}{foo}  — mixing separators is fine too
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\newif\if@hsb@stepor@found
+
+% Test one (trimmed) candidate against the active step set
+\newcommand{\@hsb@stepor@test}[1]{%
+  \def\@hsb@trimmed{#1}%
+  \trim@spaces@in\@hsb@trimmed
+  \IfSubStr{\@stepset}{,\@hsb@trimmed,}{\@hsb@stepor@foundtrue}{}%
 }
 
+% Helper that takes the (already fully-expanded) list as a real argument,
+% so forcsvlist actually sees the literal comma-separated text.
+\newcommand{\@hsb@stepor@dolist}[1]{\forcsvlist{\@hsb@stepor@test}{#1}}
+
+\newcommand{\@hsb@stepor@check}[1]{%
+  \@hsb@stepor@foundfalse
+  \def\@hsb@stepor@arg{#1}%
+  % Normalize "OR" to "," so "1 OR 3", "1,3", and "1, 3 OR 5" all behave the same
+  \StrSubstitute{\@hsb@stepor@arg}{OR}{,}[\@hsb@stepor@arg]%
+  % Force-expand \@hsb@stepor@arg into literal text before forcsvlist sees it --
+  % passing a macro *name* to forcsvlist does NOT auto-expand it, it would be
+  % treated as a single opaque list item.
+  \expandafter\@hsb@stepor@dolist\expandafter{\@hsb@stepor@arg}%
+}
+
+% ── \ifstep{N}{content} — show content if any listed N is in the active set ──
+\newcommand{\ifstep}[2]{%
+  \@hsb@stepor@check{#1}%
+  \if@hsb@stepor@found #2\fi
+}
+
+% ── \ifnotstep{N}{content} — show content if NONE of the listed N are active ─
+\newcommand{\ifnotstep}[2]{%
+  \@hsb@stepor@check{#1}%
+  \if@hsb@stepor@found\else #2\fi
+}
 
 % ── \ifsteponly{N}{suppress-if-any}{content} ─────────────────────────────────
 % Like \ifstep{N}{content} but suppresses content if ANY of the steps listed
@@ -304,9 +353,13 @@
 % \begingroup scopes coordinate \def's; resetting \tikz@intersect@namedpaths
 % clears the named-path registry so path names don't leak between diagrams.
 \newcommand{\@hsb@tikz@beamer}[1]{%
+  {\singlespacing
   \begin{adjustbox}{max width=200pt, max totalheight=0.8\textheight}%
-    \IfFileExists{#1}{\input{#1}}{{\color{red}FILE NOT FOUND: #1}}%
+    \IfFileExists{#1}{%
+        \input{#1}
+        }{{\color{red}FILE NOT FOUND: #1}}%
   \end{adjustbox}%
+  }
 }
 
 % ── Article: wrap in figure with auto caption/label ──────────────────────────
@@ -326,9 +379,13 @@
       }%    
     \begin{figure}[ht!]%
       \centering%
+          \singlespacing
           \begin{adjustbox}{max width=\linewidth}%
-            \IfFileExists{#1}{\input{#1}}{{\color{red}FILE NOT FOUND: #1}}%
+            \IfFileExists{#1}{
+            \input{#1}
+            }{{\color{red}FILE NOT FOUND: #1}}%
           \end{adjustbox}%
+            % \onehalfspacing
       \ifdefempty{\@ts@caption}{%
         \caption{\mysechandle~\themysubfigure}%
         \label{fig:\myfighandle\themysubfigure}%
@@ -395,7 +452,7 @@
 
 \newcommand{\mytext}[2][]{%
   \if@hsbbeamer
-    \begin{textblock*}{200pt}(20pt,50pt){\footnotesize #2}\end{textblock*}%
+    \begin{textblock*}{200pt}(20pt,50pt){\footnotesize #2\par}\end{textblock*}%
   \else
     #2\par%
   \fi
@@ -419,7 +476,7 @@
   \def\myfighandle{}
   \newcounter{mysubfigure}
   \renewcommand{\themysubfigure}{%
-    \ifcase\value{mysubfigure}\or(ii)\or(iii)\or(iv)\or(v)\or(vi)\or(vii)\else?\fi%
+    \ifcase\value{mysubfigure}\or(ii)\or(iii)\or(iv)\or(v)\or(vi)\or(vii)\or(viii)\or(ix)\or(x)\else?\fi%
   }
   \def\myoldfighandle{}
 
@@ -444,7 +501,404 @@
       \faHandPointRight %%%% new slide but not new secion
     }{%
       \subsection*{#2}% %%%%% slide with different title, hence new section
+      \index{#2}
       \faHandPointRight
     }%
   }{}
 \fi
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  FOREST TREE STEP-VISIBILITY — \showmytree, true removal + auto-collapse
+%
+%  Forest's own bracket parser cannot tolerate \ifstep (or any conditional
+%  macro) inside its tree source. So instead of trying to make forest skip
+%  branches at draw time, \showmytree filters the RAW TEXT of the tree file
+%  before forest ever sees it, in two passes:
+%
+%   Stage 1 (step filtering): lines wrapped in %STEPBEGIN{...}/%STEPEND are
+%   kept or physically deleted based on whether the spec matches the active
+%   step set (same syntax as \ifstep: "1", "1,3", "1 OR 3", etc.), nestable.
+%
+%   Stage 2 (auto-collapse): any node that ends up with exactly ONE
+%   surviving child is cropped away and that child is promoted in its
+%   place -- recursively, all the way up if needed. A node with 2+
+%   surviving children is left untouched. The true root is never removed
+%   outright (it falls back to a bare, childless label if literally
+%   everything else is gone), so forest is never handed an empty tree.
+%
+%  This means: tag ONLY the actual leaf/content lines with %STEPBEGIN --
+%  never the container brackets. Isolating a single branch automatically
+%  drops every now-pointless ancestor wrapper along the way.
+%
+%    \begin{forest}
+%    [Root
+%      [BranchA
+%      %STEPBEGIN{1}
+%        [Leaf1]
+%        [Leaf2]
+%      %STEPEND
+%      ]
+%      [BranchB
+%      %STEPBEGIN{2}
+%        [Leaf3]
+%      %STEPEND
+%      ]
+%    ]
+%    \end{forest}
+%
+%  \showmytree[1]{tree-foo.tex}  -- behaves exactly like \showmytikz:
+%    * same [step=...] / [caption=...] / [label=...] keys
+%    * same FILE NOT FOUND handling
+%    * same adjustbox resizing
+%    * same figure/caption/label wrapping in article mode
+%
+%  Note: the annotated file must contain its own \begin{forest}/\end{forest}
+%  (do not wrap the input in a *separate* forest environment --
+%  \begin{forest}\input{bare-fragment}\end{forest} reliably breaks forest's
+%  parser, independent of anything in this mechanism).
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\RequirePackage{expl3}
+
+\ExplSyntaxOn
+
+\seq_new:N  \g_hsb_visstack_seq   % stack of 1/0 = active/inactive per open marker
+\int_new:N  \g_hsb_hidedepth_int  % >0 while inside an inactive region
+\ior_new:N  \g_hsb_tree_ior
+\iow_new:N  \g_hsb_tree_iow
+
+\cs_new_protected:Npn \hsb_tree_filterfile:nn #1#2
+  {
+    \seq_gclear:N \g_hsb_visstack_seq
+    \int_gzero:N  \g_hsb_hidedepth_int
+    \ior_open:Nn \g_hsb_tree_ior {#1}
+    \iow_open:Nn \g_hsb_tree_iow {#2}
+    \ior_str_map_inline:Nn \g_hsb_tree_ior
+      {
+        \regex_extract_once:nnN { \%STEPBEGIN\{(.*?)\} } {##1} \l_hsb_match_seq
+        \seq_if_empty:NTF \l_hsb_match_seq
+          {
+            \regex_match:nnTF { \%STEPEND } {##1}
+              {
+                \seq_pop_right:NN \g_hsb_visstack_seq \l_hsb_popped_tl
+                \int_compare:nNnT { \l_hsb_popped_tl } = { 0 }
+                  { \int_gdecr:N \g_hsb_hidedepth_int }
+              }
+              {
+                \int_compare:nNnT { \g_hsb_hidedepth_int } = { 0 }
+                  { \iow_now:Nx \g_hsb_tree_iow {##1} }
+              }
+          }
+          {
+            \seq_pop_right:NN \l_hsb_match_seq \l_hsb_spec_tl
+            \exp_args:Nx \@hsb@stepor@check {\l_hsb_spec_tl}
+            \if@hsb@stepor@found
+              \seq_gput_right:Nn \g_hsb_visstack_seq {1}
+            \else
+              \seq_gput_right:Nn \g_hsb_visstack_seq {0}
+              \int_gincr:N \g_hsb_hidedepth_int
+            \fi
+          }
+      }
+    \ior_close:N \g_hsb_tree_ior
+    \iow_close:N \g_hsb_tree_iow
+  }
+
+\tl_new:N  \l_hsb_trimmed_tl
+\ior_new:N \l_hsb_prune_ior
+\iow_new:N \l_hsb_prune_iow
+\int_new:N \l_hsb_depth_int
+\int_new:N \l_hsb_net_int
+\int_new:N \l_hsb_opencount_int
+\int_new:N \l_hsb_closecount_int
+\int_new:N \l_hsb_nchild_int
+\tl_new:N  \l_hsb_soleblock_tl
+\tl_new:N  \l_hsb_assembled_tl
+\tl_new:N  \l_hsb_buf_zero_tl
+\tl_new:N  \l_hsb_rootlabel_tl
+\seq_new:N \l_hsb_rootlabel_seq
+\seq_new:N \l_hsb_rootsplit_seq
+\tl_new:N  \l_hsb_rootbefore_tl
+\tl_new:N  \l_hsb_rootafter_tl
+\tl_new:N  \l_hsb_rootrecenter_tl
+
+\cs_new_protected:Npn \hsb_tree_collapse:nn #1#2
+  {
+    \int_zero:N \l_hsb_depth_int
+    \tl_clear:N \l_hsb_buf_zero_tl
+    \ior_open:Nn \l_hsb_prune_ior {#1}
+    \iow_open:Nn \l_hsb_prune_iow {#2}
+    \ior_str_map_inline:Nn \l_hsb_prune_ior
+      { \hsb_tree_collapse_line:n {##1} }
+    \ior_close:N \l_hsb_prune_ior
+    \hsb_tree_recenter_root:
+    \iow_now:Nx \l_hsb_prune_iow { \l_hsb_buf_zero_tl }
+    \iow_close:N \l_hsb_prune_iow
+  }
+
+% Whatever node ends up as the tree's root (the true original root, or a
+% descendant promoted into its place by the collapsing above), force it to
+% carry "rotate=90" AND recentre its label on the true vertical midpoint of
+% the whole rendered tree (forest's own default only centres a parent between
+% its first and last immediate child's own position, not the full subtree
+% extent, which looks badly off-centre for lopsided trees). This is done by:
+%  1. blanking the root's own content (it still anchors the children's edges)
+%  2. after the tree is drawn, reading pgf's own tracked bounding box
+%     (\pgf@picminy/\pgf@picmaxy) to get the true vertical extent
+%  3. drawing the real label, rotated, at that computed centre, with a short
+%     connector back to the original anchor point.
+\cs_new_protected:Npn \hsb_tree_recenter_root:
+  {
+    % strip any existing rotate=<N> the root's own bracket might carry
+    \regex_replace_once:nnN { ,\s*rotate\s*=\s*[0-9]+ } { } \l_hsb_buf_zero_tl
+    % capture the root's label text
+    \exp_args:Nnx \regex_extract_once:nnN { \[([^,\n\]]*) } { \l_hsb_buf_zero_tl } \l_hsb_rootlabel_seq
+    \seq_pop_right:NN \l_hsb_rootlabel_seq \l_hsb_rootlabel_tl
+    % blank the root's own content, give it a fixed reserved name
+    \regex_replace_once:nnN { \[([^,\n\]]*) } { [{},name=hsbautoroot,content=} \l_hsb_buf_zero_tl
+    % split the buffer around the closing "\end{forest}" (search only --
+    % regex replacement text is not safe for splicing in arbitrary literal
+    % text: l3regex's replacement parser silently mangles both backslashes
+    % and spaces, treating "\" as its own backreference-escape marker. So
+    % every splice-in below uses plain token-list concatenation instead.)
+    \exp_args:Nnx \regex_split:nnN { \\end\{forest\} } { \l_hsb_buf_zero_tl } \l_hsb_rootsplit_seq
+    \seq_pop_left:NN \l_hsb_rootsplit_seq \l_hsb_rootbefore_tl
+    \seq_pop_left:NN \l_hsb_rootsplit_seq \l_hsb_rootafter_tl
+    % splice the real label into a COPY of the (immutable) template -- never
+    % modify \l_hsb_rootrecenter_tl itself, since it must stay reusable
+    % (with its placeholder intact) across every \showmytree call in the
+    % same document, not just the first one.
+    \exp_args:Nnx \regex_split:nnN { HSBLABELPLACEHOLDER } { \l_hsb_rootrecenter_tl } \l_hsb_rootrecentersplit_seq
+    \seq_pop_left:NN \l_hsb_rootrecentersplit_seq \l_hsb_rootrecenterbefore_tl
+    \seq_pop_left:NN \l_hsb_rootrecentersplit_seq \l_hsb_rootrecenterafter_tl
+    \tl_set:Nx \l_hsb_rootrecenterfinal_tl
+      { \l_hsb_rootrecenterbefore_tl \l_hsb_rootlabel_tl \l_hsb_rootrecenterafter_tl }
+    % \makeatletter must wrap the ENTIRE forest environment from before
+    % \begin{forest} to after \end{forest} -- forest's own \NewEnviron-based
+    % body capture tokenizes the WHOLE environment content upfront as a
+    % single delimited argument, so a \makeatletter placed only *inside* the
+    % environment (e.g. right before \end{forest}) has already missed its
+    % chance: the @ in \pgf@picminy etc. was already tokenized under
+    % whatever catcode was active when \begin{forest} was first read.
+    \tl_set:Nx \l_hsb_buf_zero_tl
+      {
+        \c_backslash_str makeatletter
+        \l_hsb_rootbefore_tl \l_hsb_rootrecenterfinal_tl
+        \c_backslash_str end \c_left_brace_str forest \c_right_brace_str
+        \l_hsb_rootafter_tl
+        \c_backslash_str makeatother
+      }
+  }
+
+\ExplSyntaxOff
+\newdimen\hsbautorootx
+\ExplSyntaxOn
+\seq_new:N \l_hsb_rootrecentersplit_seq
+\tl_new:N  \l_hsb_rootrecenterbefore_tl
+\tl_new:N  \l_hsb_rootrecenterafter_tl
+\tl_new:N  \l_hsb_rootrecenterfinal_tl
+\tl_set:Nn \l_hsb_rootrecenter_tl
+  {
+    \detokenize{
+      \pgfextractx{\hsbautorootx}{\pgfpointanchor{hsbautoroot}{center}}
+      \pgfmathsetmacro{\hsbautorootmidy}{(\pgf@picminy+\pgf@picmaxy)/2}
+      \draw(hsbautoroot.center)--(\hsbautorootx,\hsbautorootmidy pt);
+      \node[rotate=90,anchor=south]at(\hsbautorootx,\hsbautorootmidy pt){HSBLABELPLACEHOLDER};
+    }
+  }
+
+% classify one line
+\cs_new_protected:Npn \hsb_tree_collapse_line:n #1
+  {
+    \tl_set:Nx \l_hsb_trimmed_tl { \tl_trim_spaces:n {#1} }
+    \tl_if_eq:NnTF \l_hsb_trimmed_tl { ] }
+      { \hsb_tree_collapse_close: }
+      {
+        \regex_count:nnN { \[ } {#1} \l_hsb_opencount_int
+        \regex_count:nnN { \] } {#1} \l_hsb_closecount_int
+        \int_set:Nn \l_hsb_net_int { \l_hsb_opencount_int - \l_hsb_closecount_int }
+        \int_compare:nNnTF { \l_hsb_net_int } > { 0 }
+          { \hsb_tree_collapse_open:n {#1} }
+          {
+            \int_compare:nNnTF { \l_hsb_net_int } < { 0 }
+              { \hsb_tree_collapse_close: }
+              {
+                \int_compare:nNnTF { \l_hsb_opencount_int } > { 0 }
+                  { \hsb_tree_collapse_leaf:n {#1} }
+                  { \hsb_tree_collapse_pass:n {#1} }
+              }
+          }
+      }
+  }
+
+% open a new node: push a fresh child-sequence, remember its opening line
+\cs_new_protected:Npn \hsb_tree_collapse_open:n #1
+  {
+    \int_incr:N \l_hsb_depth_int
+    \seq_clear_new:c { hsb_children_ \int_use:N \l_hsb_depth_int }
+    \tl_clear_new:c  { hsb_open_ \int_use:N \l_hsb_depth_int }
+    \tl_set:cn { hsb_open_ \int_use:N \l_hsb_depth_int } {#1}
+  }
+
+% a self-contained leaf line: becomes one child-block of the current depth
+\cs_new_protected:Npn \hsb_tree_collapse_leaf:n #1
+  { \hsb_tree_collapse_addchild:n {#1} }
+
+% a passthrough line (blank, config, \begin{forest}, etc.):
+%  at depth 0, goes straight to the top buffer; at depth >=1, stays glued to
+%  this node's own opening line (so it travels with it if kept, and is
+%  correctly discarded if this node gets removed/collapsed away)
+\cs_new_protected:Npn \hsb_tree_collapse_pass:n #1
+  {
+    \int_compare:nNnTF { \l_hsb_depth_int } = { 0 }
+      { \tl_put_right:Nx \l_hsb_buf_zero_tl { #1 ^^J } }
+      { \tl_put_right:cx { hsb_open_ \int_use:N \l_hsb_depth_int } { ^^J #1 } }
+  }
+
+% register one finished child-block text under the CURRENT depth
+\cs_new_protected:Npn \hsb_tree_collapse_addchild:n #1
+  { \seq_put_right:cn { hsb_children_ \int_use:N \l_hsb_depth_int } {#1} }
+
+% close the current node: decide keep-empty / promote-sole-child / keep-as-is,
+% then hand the result up to the parent depth (or the depth-0 buffer)
+\cs_new_protected:Npn \hsb_tree_collapse_close:
+  {
+    \int_set:Nn \l_hsb_nchild_int { \seq_count:c { hsb_children_ \int_use:N \l_hsb_depth_int } }
+    \int_compare:nNnTF { \l_hsb_nchild_int } = { 0 }
+      {
+        % no surviving children: in normal mode, keep this node as a bare,
+        % childless label; in "only" mode, drop it entirely (cascading up),
+        % except the very top-level root, which always falls back to bare
+        % rather than leaving forest with a totally empty tree.
+        \if@hsb@tree@onlymode
+          \int_compare:nNnTF { \l_hsb_depth_int } = { 1 }
+            {
+              \hsb_tree_collapse_emit:n
+                { \tl_use:c { hsb_open_1 } ^^J ] }
+            }
+            { }
+        \else
+          \hsb_tree_collapse_emit:n
+            { \tl_use:c { hsb_open_ \int_use:N \l_hsb_depth_int } ^^J ] }
+        \fi
+      }
+      {
+        \int_compare:nNnTF { \l_hsb_nchild_int } = { 1 }
+          {
+            % exactly one surviving child: this node is cropped away,
+            % its child is promoted in its place
+            \seq_pop_right:cN { hsb_children_ \int_use:N \l_hsb_depth_int } \l_hsb_soleblock_tl
+            \hsb_tree_collapse_emit:n { \l_hsb_soleblock_tl }
+          }
+          {
+            % 2+ surviving children: keep this node, wrapping all of them
+            \tl_set:Nx \l_hsb_assembled_tl
+              {
+                \tl_use:c { hsb_open_ \int_use:N \l_hsb_depth_int } ^^J
+                \seq_use:cn { hsb_children_ \int_use:N \l_hsb_depth_int } { ^^J }
+                ^^J ]
+              }
+            \hsb_tree_collapse_emit:n { \l_hsb_assembled_tl }
+          }
+      }
+    \int_decr:N \l_hsb_depth_int
+  }
+
+% hand a finished block up: to the parent's child-sequence, or to the
+% depth-0 flat buffer if we just closed the original top-level root
+\cs_new_protected:Npn \hsb_tree_collapse_emit:n #1
+  {
+    \int_compare:nNnTF { \l_hsb_depth_int } = { 1 }
+      { \tl_put_right:Nx \l_hsb_buf_zero_tl { #1 ^^J } }
+      { \seq_put_right:cx { hsb_children_ \int_eval:n { \l_hsb_depth_int - 1 } } {#1} }
+  }
+
+\ExplSyntaxOff
+
+% Plain-TeX-callable wrappers (usable outside \ExplSyntaxOn ... \ExplSyntaxOff)
+\ExplSyntaxOn
+\cs_new_eq:NN \hsbTreeFilterFile \hsb_tree_filterfile:nn
+\cs_new_eq:NN \hsbTreePruneFile  \hsb_tree_collapse:nn
+
+\ExplSyntaxOff
+
+% Build "\jobname-<flattened file name>-treetmp.tex" and the matching
+% "...-pruned.tex" name, so multiple \showmytree calls on different source
+% files never collide.
+\newcommand{\@hsb@tree@tempname}[1]{%
+  \def\@hsb@tree@raw{#1}%
+  \StrSubstitute{\@hsb@tree@raw}{/}{-}[\@hsb@tree@raw]%
+  \edef\@hsb@tree@tmp{\jobname-\@hsb@tree@raw-treetmp.tex}%
+  \edef\@hsb@tree@tmp@pruned{\jobname-\@hsb@tree@raw-treetmp-pruned.tex}%
+}
+
+% ── "only" mode ────────────────────────────────────────────────────────────────
+%  \showmytree[only 4]{file.tex}: isolate branch 4 completely -- show it and
+%  its immediate container, but drop every sibling branch and every ancestor
+%  above that container entirely (rather than leaving them as bare, childless
+%  labels, which is what plain \showmytree[4]{file.tex} does).
+\newif\if@hsb@tree@onlymode
+\newcommand{\@hsb@tree@checkonly}[1]{%
+  \IfBeginWith{#1}{only}{%
+    \@hsb@tree@onlymodetrue
+    \StrGobbleLeft{#1}{4}[\@hsb@tree@stepspec]%
+    \trim@spaces@in\@hsb@tree@stepspec
+  }{%
+    \@hsb@tree@onlymodefalse
+    \def\@hsb@tree@stepspec{#1}%
+  }%
+}
+
+% ── \showmytree[1,2,3]{file.tex}  or  \showmytree[step=drei]{file.tex}
+%    or  \showmytree[only 4]{file.tex} ─────────────────────────────────────────
+\newcommand{\showmytree}[2][]{%
+  \begingroup
+  \def\@ts@step{}%
+  \def\@ts@caption{}%
+  \def\@ts@label{}%
+  \let\@stepset@saved\@stepset
+  \@hsb@tree@checkonly{#1}%
+  \IfSubStr{\@hsb@tree@stepspec}{=}{%
+    \setkeys{showmytikz}{\@hsb@tree@stepspec}%
+    \@buildstepset{\@ts@step}%
+  }{%
+    \@buildstepset{\@hsb@tree@stepspec}%
+  }%
+  \IfFileExists{#2}{%
+    \@hsb@tree@tempname{#2}%
+    \hsbTreeFilterFile{#2}{\@hsb@tree@tmp}%
+    \hsbTreePruneFile{\@hsb@tree@tmp}{\@hsb@tree@tmp@pruned}%
+    \if@hsbbeamer
+      \@hsb@tikz@beamer{\@hsb@tree@tmp@pruned}%
+    \else
+      \@hsb@tikz@article{\@hsb@tree@tmp@pruned}%
+    \fi
+  }{%
+    \if@hsbbeamer
+      \@hsb@tikz@beamer{#2}%
+    \else
+      \@hsb@tikz@article{#2}%
+    \fi
+  }%
+  \global\let\@stepset\@stepset@saved
+  \endgroup
+}
+
+% ── \showmytreeraw[1,2]{file.tex} ──────────────────────────────────────────────
+%  Like \showmytree, but filters + \input's the result directly with NO figure/
+%  caption/adjustbox wrapping. Intended for standalone-class preview compiles
+%  of a forest tree file (mirrors how a bare \begin{tikzpicture}...\end{tikzpicture}
+%  is used directly in a standalone TikZ preview file, without \showmytikz).
+\newcommand{\showmytreeraw}[2][]{%
+  \begingroup
+  \let\@stepset@saved\@stepset
+  \@hsb@tree@checkonly{#1}%
+  \@buildstepset{\@hsb@tree@stepspec}%
+  \@hsb@tree@tempname{#2}%
+  \hsbTreeFilterFile{#2}{\@hsb@tree@tmp}%
+  \hsbTreePruneFile{\@hsb@tree@tmp}{\@hsb@tree@tmp@pruned}%
+  \input{\@hsb@tree@tmp@pruned}%
+  \global\let\@stepset\@stepset@saved
+  \endgroup
+}

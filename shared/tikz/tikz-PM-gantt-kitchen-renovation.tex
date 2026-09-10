@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.6cm,
+    Milenew/.style={milestone/.append style={fill=red}}]{1}{12}
+      \gantttitlelist{1,...,12}{1} \\
+      \ganttgroup{Planning I}{1}{6}\\
+      \ganttbar[name=sketch]{Plan and prepare}{1}{4} \\
+      \ganttmilestone[name=sketchr]{Plan ready}{4}\\
+      \ganttbar[name=plan]{Emptry room}{5}{6} \\
+      \ganttmilestone[name=haveexact]{Room empty}{6}\\
+      \ganttlink[]{plan}{haveexact}
+      \ganttmilestone[name=order]{Order material}{4}\\
+       \ganttlink[]{sketch}{sketchr}
+      \draw[->,>=latex] (sketchr) -- (order);
+      \ganttgroup{Work}{7}{11}\\
+      \ganttmilestone[name=receive]{Receive Delivery}{5}\\
+      \ganttlink[]{order}{receive}
+      \ganttbar[name=woodwork]{Installation}{7}{11}
+      \ganttlink[]{receive}{woodwork}
+      \draw[->,>=latex] (haveexact) -- (woodwork.west);
+    \end{ganttchart}
+
+\end{document}

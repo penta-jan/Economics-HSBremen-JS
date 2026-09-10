@@ -1,0 +1,112 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+    \begin{document}
+    \begin{tikzpicture}
+        \tikzset{>=latex}
+        
+        \draw[->] (0,0) node[below] {\phantom{$X_mi$}} -- (8,0) node (Y) [right] {$x$};
+        \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node (i) [above] {$p$};
+
+        \def\myburden{0.7}
+
+        %% demand
+        \coordinate (A) at (0,7.5);
+        \coordinate (B) at (3,0);
+
+
+        \coordinate (A2) at ($(A) + (0,-\myburden)$);
+        \coordinate (B2) at ($(B) + (0,-\myburden)$);
+
+        \path[name path=demand] (A) -- (B);
+        \path[name path=demand2] (A2) -- (B2);
+
+        \phantom{\draw (0,0) -- (0,-\myburden);} %% enlarge to the bottom 
+
+        %% supply
+        
+        \coordinate (E) at (0,1);
+        \coordinate (F) at (7,3);
+
+        \coordinate (E2) at ($(E)+(0,\myburden)$);
+        \coordinate (F2) at ($(F)+(0,\myburden)$);
+        
+        \path[name path=supply] (E) -- (F);
+        \path[name path=supply2] (E2) -- (F2);       
+        
+        
+        \draw (A) -- (B);
+        \node[above right] at (B) {$DD_1$};
+        
+        \draw (E) -- (F);
+        \node[above] at (F) {$SS_1$};
+            
+        \path [name intersections={of=demand and supply,by=X}];
+
+        \path [name intersections={of=demand2 and supply2,by=X2}];
+
+        \draw[dashed] (0, |- X) node [left] {$p_1$} -- (X) -- (X |-, 0)  node [below] {$x_1$}; 
+        
+        \filldraw (X) node[below right] {$E_1$} circle (2pt);
+
+
+%%% original welfare
+
+\ifstep{2}{
+    \begin{scope}[on background layer]
+        \draw[fill=red!10] (A) --  (X) --   (0, |- X) -- node[below right] {\parbox{13ex}{$CS_1$}} cycle;
+        \draw[fill=blue!10] (E) --  (X) --   (0, |- X) -- node[above right] {\parbox{13ex}{$PS_1$}} cycle;
+    \end{scope}
+}
+
+
+%% taxing supply
+
+    \ifstep{3}{
+    \begin{scope}[color=red]
+            \draw[dashed,->,>=latex] ($(E)!0.5!(F)$) -- node[right] {$\Delta s$} ++ (0,\myburden);
+            
+            \draw   (E2) --  (F2);
+            \node[above] at (F2) {$SS_2$};
+            
+    \end{scope}
+}
+
+
+%% taxing demand
+
+    \ifstep{4}{
+        \begin{scope}[color=green]
+            \draw (A2) -- (B2) ;
+            \node[above right] at (B2) {$DD_2$};  
+
+            \draw[dashed,<-,>=latex] ($(A2)!0.5!(B2)$) -- node[right] {$\Delta d$} ++ (0,\myburden);
+
+            \draw[dashed] (0,|-X2) node[left] {$p_2$} -- (X2) -- (X2|-,0) node[below] {$x_2$};
+            \filldraw (X2) circle (2pt);
+            \node[below] at (X2) {$E_2$};
+            
+        \end{scope}
+    }
+
+%% new welfare
+
+    \ifstep{5}{
+        \begin{scope}[on background layer]
+
+        \draw[fill=white, opacity=0.7] (A) --  (X) --  (E) -- cycle;
+
+        
+        
+        \draw[fill=red!10] (A2) --  (X2) --   (0, |- X2) -- node[below right] {\parbox{13ex}{$CS_2$}} cycle;
+        \draw[fill=blue!10] (E2) --  (X2) --   (0, |- X2) -- node[above right] {\parbox{13ex}{$PS_2$}} cycle;
+        \end{scope}
+    }
+
+     
+            
+    \end{tikzpicture}
+\end{document}

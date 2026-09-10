@@ -1,0 +1,105 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \tikzset{
+            node distance=0.5cm,
+            >=latex,
+            every node/.style={
+                font=\sffamily, 
+                anchor=west,
+                rounded corners
+                },
+            factor/.style={
+                draw,
+                minimum width=2.5cm,
+                minimum height=1cm
+                },
+            product/.style={
+                draw,
+                minimum width=4cm,
+                minimum height=4cm
+                }
+        }
+        \node[factor] (m1) at (0,0.8)  {raw materials};
+        \node[factor] (m2) at (0,-0.8)  {pre-products};
+        
+        \node[factor] (m3) at (1,2.5)  {labour};
+        \node[factor] (m4) at (1,-2.5)  {energy};
+
+        \node[factor] (m5) at (4,3) {tools};
+        \node[factor] (m6) at (4,-3) {know-how};
+
+        \node[product] (p) at (4,0) {product};
+
+        \node[factor,dashed] (va) at (4.75,1.25) {value added};
+
+        \foreach \i in {1,2,3,4,5,6} 
+            \draw[->] (m\i) -- (p);
+
+
+\newcommand{\mymarkets}{
+
+        \node[right=of p] (ma) {market};
+
+        \draw[->] (p) -- (ma);
+
+        \foreach \i in {1,2,3,4}
+            {
+            \node[left=of m\i] (ma\i) {market};
+            \draw[->] (ma\i) -- (m\i);
+            }
+            \node[left=of m5.north west] (ma5) {market};
+            \draw[->] (ma5) -- (m5);
+            \node[left=of m6.south west] (ma6) {market};
+            \draw[->] (ma6) -- (m6);
+}
+
+    \phantom{\mymarkets}
+
+    \ifstep{2}{
+        \begin{scope}[color=red]
+            \mymarkets
+        \end{scope}
+    }
+
+    \ifstep{3}{
+    \begin{scope}[red,thick]
+
+        \node[factor] (m1) at (0,0.8)  {raw materials};
+        \node[factor] (m2) at (0,-0.8)  {pre-products};
+        \node[factor] (m4) at (1,-2.5)  {energy};
+
+        \foreach \i in {1,2,4} 
+            \draw[<-] (m\i) -- (p);
+
+
+    \end{scope}
+    }
+    
+  \ifstep{4}{
+    \begin{scope}[red,thick]
+        
+        \node[factor] (m3) at (1,2.5)  {labour};
+        \draw[<-] (m3) -- (p);
+    \end{scope}
+    }
+
+    \ifstep{5}{
+    \begin{scope}[red,thick]
+
+        \node[factor] (m5) at (4,3) {tools};
+        \node[factor] (m6) at (4,-3) {know-how};
+        \foreach \i in {5,6} 
+            \draw[<-] (m\i) -- (p);
+
+        
+    \end{scope}
+    }
+
+    
+        
+    \end{tikzpicture}
+\end{document}

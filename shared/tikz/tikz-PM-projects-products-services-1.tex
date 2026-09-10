@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+    \tikzset{every node/.style={minimum height=4ex}}
+        \node[draw] (pj) {Projects};
+        \node[draw, right=of pj] (pd) {Products};
+        %\node[draw, right=of pd] (go) {Goods};
+        \node[draw, below=of pd] (sv) {Services};
+        %\node[draw, below=of go] (ch) {Changes};
+        \draw[->] (pj) -- (pd);
+        %\draw[->] (pd) -- (go);
+        \draw[->] (pj) -- (sv);
+        %\draw[->] (sv) -- (ch);
+        \draw[double,<->] (pd) -- (sv);
+        %\draw[->] (go) -- (ch);
+        %\draw[->] (go) -- (sv);
+    \end{tikzpicture}
+
+\end{document}

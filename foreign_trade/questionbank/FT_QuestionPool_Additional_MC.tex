@@ -1,0 +1,693 @@
+%% FT_QuestionPool_Additional_MC.tex
+%% ─────────────────────────────────────────────────────────────────────────────
+%% ADDITIONAL CONTROL QUESTIONS (Single Choice / type=mc)
+%% Foreign Trade and International Organisations, Jan Suchanek, Hochschule
+%% Bremen, Summer Semester 2026
+%%
+%% This file is a SUPPLEMENT to FT_QuestionPool.tex. It contains only new
+%% \begin{question}[type=mc]{...}...\end{question} blocks, grouped under the
+%% same chapter headings as the master file, so each block can be copy-pasted
+%% straight into the matching \section{...} of the main question pool.
+%%
+%% New material drawn from the script that was not yet covered by the existing
+%% pool: cross-price elasticity, the fundamental equation of macroeconomics,
+%% and trade-openness indicators (Ch.1); TEU/FCL-LCL, VAT vs. excise, and
+%% Rana Plaza/CSDDD (Ch.2); Dutch Disease, the rentier state, and the elephant
+%% curve (Ch.3); the gravity model of trade and Thünen's rings (Ch.4); the
+%% median voter theorem and the branches/levels of the state (Ch.5); embargoes
+%% & sanctions and tariff retaliation (Ch.6); the concentration ratio and
+%% Porter's Six Forces (Ch.7); UNCLOS/exclusive economic zones and the
+%% freedom of the seas (Ch.8); the Phillips curve/NAIRU and the US dollar's
+%% reserve-currency role (Ch.9); purchasing power parity, the Marshall-Lerner
+%% condition, and the Mundell-Fleming model (Ch.10).
+%%
+%% To compile this file standalone for proofreading, use the same preamble as
+%% FT_QuestionPool.tex (hsbquestions.sty, hsbcommon.sty must be present).
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[paper=a5]{scrartcl}
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{hsbquestions}
+\showanswerstrue                 %% ANSWER KEY view for proofreading — set to
+                                  %% \showanswersfalse before distributing.
+
+\title{Foreign Trade and International Organisations}
+\subtitle{Additional Control Questions (Single Choice) — Supplement}
+\author{Claude (Anthropic) using the Script of Jan \noun{Suchanek}}
+
+\begin{document}
+\onehalfspacing
+\maketitle
+\clearpage
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 1 — The World Economy and National Accounts}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Cross-Price Elasticity of Demand}
+The cross-price elasticity of demand between two goods $x$ and $y$ is
+defined as $XED_{x,y} = \frac{dx/x}{dp_y/p_y}$. A \emph{negative} value of
+$XED_{x,y}$ indicates that:
+\begin{choices}
+  \choice        $x$ and $y$ are complements.
+  \correctchoice $x$ and $y$ are substitutes.
+  \choice        $x$ is a Giffen good.
+  \choice        $y$ is a public good.
+\end{choices}
+\begin{solution}
+  If the price of $y$ rises and the quantity demanded of $x$ \emph{falls}
+  ($XED_{x,y} < 0$), the two goods must be \textbf{complements} --- they tend
+  to be consumed together, so less $y$ means less demand for $x$ too. If a
+  price rise in $y$ instead \emph{increases} demand for $x$ ($XED_{x,y}>0$),
+  the goods are \textbf{substitutes}: buyers switch away from the
+  now-more-expensive $y$ toward $x$. Examples in the script: copper and
+  aluminium are substitutes; copper and copper wire are complements.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Fundamental Equation of Macroeconomics}
+The expenditure approach to GDP is expressed as $Y = C + I + Ex - Im + G$.
+Which of the following correctly interprets this identity?
+\begin{choices}
+  \choice        Imports must always equal exports for the equation to hold.
+  \correctchoice Everything produced in a country ($Y$) is either consumed,
+                 invested, exported, or represents state expenditure, net of
+                 what was imported rather than produced domestically.
+  \choice        Government spending $G$ is a subset of investment $I$.
+  \choice        The equation only holds for closed economies.
+\end{choices}
+\begin{solution}
+  This account-based identity says that everything produced domestically
+  ($Y$) is used up somewhere: it is \textbf{consumed} ($C$), \textbf{invested}
+  ($I$, which equals savings $S+\Delta K$), \textbf{exported} ($Ex$), or
+  represents \textbf{government expenditure} ($G$); \textbf{imports} ($Im$)
+  are subtracted because they are demand satisfied by goods \emph{not}
+  produced domestically. It holds for any open economy, not just the closed
+  (world) economy, precisely because $Ex$ and $Im$ are included as separate
+  terms.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Trade Openness, Import Penetration, and Dependency}
+A country's \emph{Trade Openness} is calculated as $(|EX|+|IM|)/Y$, while
+its \emph{Import Penetration Rate} for a specific good is $IM/Y$. What is
+the key limitation of the Trade Openness measure that the Import Penetration
+and Dependency Rate try to address?
+\begin{choices}
+  \choice        Trade Openness cannot be calculated for small countries.
+  \correctchoice Trade Openness treats all trade alike and double-counts
+                 cross-border flows, without revealing what specific goods
+                 are traded or how dependent the country is on particular
+                 imports.
+  \choice        Trade Openness always equals exactly 100\,\% for large
+                 economies.
+  \choice        Import Penetration measures only the volume of exports, not
+                 imports.
+\end{choices}
+\begin{solution}
+  \textbf{Trade Openness} ($TO = (|EX|+|IM|)/Y$) counts every cross-border
+  transaction twice (once as an export somewhere, once as an import
+  elsewhere) and says nothing about \emph{what} is traded or with whom.
+  Large economies are naturally ``less open'' than small ones simply because
+  a bigger share of their output is consumed domestically --- this reveals
+  nothing about trade policy. The \textbf{Import Penetration Rate} and the
+  good-specific \textbf{Dependency Rate} ($DR_X = IM_X/C_X$) instead show how
+  reliant a country is on imports of a particular good (e.g.\ energy or a
+  critical raw material).
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 2 — Freight and Transport}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{TEU and Container Loads}
+In shipping terminology, ``TEU'' and the distinction between ``FCL'' and
+``LCL'' refer to:
+\begin{choices}
+  \choice        TEU is a customs code; FCL/LCL describe insurance categories.
+  \correctchoice TEU (Twenty-foot Equivalent Unit) is the standard unit for
+                 measuring container-ship capacity; FCL (Full Container Load)
+                 means one shipper fills an entire container, while LCL (Less
+                 than Container Load) means several shippers' goods are
+                 grouped (groupage) into one container.
+  \choice        TEU measures deadweight tonnage; FCL/LCL describe whether a
+                 ship is a liner or a tramp vessel.
+  \choice        TEU is only used for bulk liquid cargo such as LNG.
+\end{choices}
+\begin{solution}
+  \textbf{TEU} (Twenty-foot Equivalent Unit) standardises container-ship
+  capacity so vessels of different sizes can be compared. \textbf{FCL} means
+  a single consignor's cargo fills the whole container; \textbf{LCL} means
+  multiple smaller shipments are consolidated (groupage) into a shared
+  container. \textbf{DWT} (deadweight tonnage) is a separate measure of how
+  much weight a ship can carry.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{VAT vs.\ Excise Duty}
+When goods cross a border, they may be subject to both VAT and an excise
+duty. What is the key difference between the two?
+\begin{choices}
+  \choice        VAT applies only to services, excise duty only to goods.
+  \correctchoice VAT is a general tax levied on the value of (almost) all
+                 goods, while excise duties are special taxes levied only on
+                 particular goods, such as tobacco, alcohol, or fuel.
+  \choice        Excise duty is refundable, while VAT is never refundable.
+  \choice        VAT is levied only within the EU, excise duty only outside
+                 the EU.
+\end{choices}
+\begin{solution}
+  \textbf{VAT} (value added tax) is a broad-based tax on the value of
+  virtually all goods and services. \textbf{Excise duties}
+  (\emph{Verbrauchssteuer}) are narrow, targeted taxes on specific goods such
+  as tobacco, alcohol, and mineral oil. VAT already paid in the exporting
+  country may sometimes be deducted, whereas the buyer may still owe VAT in
+  the importing country --- whether VAT is due at the border is a
+  complicated, jurisdiction-specific question.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Rana Plaza and Corporate Due Diligence}
+The 2013 collapse of the Rana Plaza textile factory in Bangladesh, in which
+over 1,000 workers died, is used in the script to illustrate:
+\begin{choices}
+  \choice        The success of self-regulation by multinational retailers.
+  \correctchoice How international trade separates consumers from producers,
+                 motivating supply-chain due diligence laws such as the
+                 German \emph{Lieferkettensorgfaltspflichtengesetz} (LkSG)
+                 and the EU's CSDDD.
+  \choice        The advantages of vertical integration in the textile
+                 industry.
+  \choice        A case in which the WTO imposed binding sanctions on
+                 Bangladesh.
+\end{choices}
+\begin{solution}
+  Because global trade separates the point of consumption from the point of
+  production, buyers often have little visibility into working conditions
+  and safety standards deep in their supply chain. Rana Plaza (like the 1984
+  Bhopal disaster) galvanised support for \textbf{supply-chain due diligence}
+  legislation: Germany's \textbf{LkSG} (applying to companies with over
+  1,000 employees), the EU's \textbf{Corporate Sustainability Due Diligence
+  Directive (CSDDD)}, and the \textbf{Corporate Sustainability Reporting
+  Directive (CSRD)}.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 3 — Terms of Trade and the Effects of Trade}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Dutch Disease}
+``Dutch Disease'' describes a situation in which a natural-resource boom
+(e.g.\ a new gas field) harms the rest of the economy because:
+\begin{choices}
+  \choice        The government is forced to nationalise the resource sector.
+  \correctchoice Resource export revenues appreciate the domestic currency,
+                 making other (``lagging'') export sectors less competitive
+                 internationally.
+  \choice        Resource extraction always causes hyperinflation within a
+                 year.
+  \choice        It refers to the depletion of the resource itself, not to
+                 any currency effect.
+\end{choices}
+\begin{solution}
+  A resource boom brings in large foreign-currency revenues, which
+  \textbf{appreciates the domestic currency}. This makes the country's other
+  exporting industries (manufacturing, agriculture) less price-competitive
+  abroad --- the ``lagging sector''. The term originates from the
+  Netherlands' experience after discovering North Sea gas, and it can also
+  complicate inflation control and exchange-rate stabilisation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Rentier State}
+A ``rentier state'' is characterised by:
+\begin{choices}
+  \choice        Heavy reliance on progressive income taxation.
+  \correctchoice Most government revenue coming from a single sector (such as
+                 mining or oil), largely independent of broader domestic
+                 productivity, often with limited democratic accountability.
+  \choice        A government that primarily rents out public infrastructure
+                 to foreign companies.
+  \choice        An economy with no natural resources at all.
+\end{choices}
+\begin{solution}
+  In a \textbf{rentier state}, the government draws most of its revenue from
+  a single resource sector rather than from taxing the productivity of its
+  citizens. Because this income does not depend on broad-based economic
+  performance, there is less incentive to invest in productivity growth, and
+  such states --- often petrostates --- tend to exhibit weaker democratic
+  participation, since citizens have less leverage as taxpayers.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Elephant Curve}
+The ``elephant curve'' (Lakner-Milanovic curve), plotting global income
+growth by income percentile, is best known for showing that:
+\begin{choices}
+  \choice        Only the poorest 10\,\% of the world's population benefited
+                 from globalisation.
+  \correctchoice Nearly everyone's income grew, but the global upper-middle
+                 class gained the most, while a segment of the (formerly)
+                 rich in high-income countries saw stagnant income growth.
+  \choice        Global inequality, as measured by the Gini coefficient,
+                 fell to zero.
+  \choice        Income growth was identical across all percentiles of the
+                 global distribution.
+\end{choices}
+\begin{solution}
+  The \textbf{elephant curve} shows real income growth across the global
+  income distribution over recent decades. Almost everyone gained, but the
+  \textbf{global middle} (largely emerging-market populations) gained the
+  most proportionally, while a group just below the very top --- often
+  working- and middle-class households in high-income countries --- saw
+  their incomes stagnate. The very top percentile gained substantially again,
+  producing the curve's distinctive ``elephant'' shape.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Non-Tradable Goods}
+Why is a haircut typically far cheaper in a low-wage country than in a
+high-wage country, even though a laptop costs roughly the same everywhere?
+\begin{choices}
+  \choice        Laptops are non-tradable, while haircuts are tradable.
+  \correctchoice A haircut is a non-tradable service tied to local labour
+                 costs, whereas a laptop is a tradable good whose price is
+                 set on world markets and arbitraged across borders.
+  \choice        Haircuts are subject to much higher import tariffs than
+                 laptops.
+  \choice        Labour is highly mobile across borders, which equalises
+                 wages worldwide.
+\end{choices}
+\begin{solution}
+  \textbf{Tradable goods} (laptops, commodities) can be shipped and
+  arbitraged, so the Law of One Price pulls their prices together worldwide.
+  \textbf{Non-tradable} services (haircuts, most personal services) cannot
+  be exported or imported, so their price simply reflects local labour
+  costs. Since international labour migration is small relative to the
+  trade of goods, wage --- and hence non-tradable price --- differences
+  across countries persist.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 4 — Trade Theory}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The Gravity Model of Trade}
+The gravity model of trade predicts the trade volume $T_{ij}$ between two
+countries as $T_{ij} = A \cdot Y_i Y_j / D_{ij}$. This implies that, all else
+equal:
+\begin{choices}
+  \choice        Trade volume is unaffected by the size of either economy.
+  \correctchoice Trade volume rises with the economic size (GDP) of both
+                 trading partners and falls with the distance between them.
+  \choice        Only geographic distance matters; GDP has no effect.
+  \choice        Trade volume is inversely proportional to both countries'
+                 GDP.
+  
+\end{choices}
+\begin{solution}
+  Borrowed from Newton's law of gravity, the model predicts trade volume
+  rises with the product of the two countries' \textbf{GDPs} ($Y_i \cdot
+  Y_j$) --- bigger economies trade more --- and falls with \textbf{distance}
+  ($D_{ij}$), which proxies for transport costs, transaction costs, risk,
+  and trade barriers between them. It is one of the most empirically
+  successful models in international economics.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Thünen's Rings}
+Johann Heinrich von Thünen (1826) observed that agricultural land use forms
+concentric rings around a town. What did he identify as the main driving
+force behind this pattern?
+\begin{choices}
+  \choice        Differences in soil fertility between rings.
+  \correctchoice Transportation costs, which made perishable or bulky goods
+                 uneconomical to grow far from the market town.
+  \choice        Government zoning regulations.
+  \choice        Climate differences within a small radius of a town.
+\end{choices}
+\begin{solution}
+  Thünen explained the rings (market gardens, then firewood, then arable
+  farming, then livestock, moving outward) through \textbf{transport costs}:
+  in his era, perishable or heavy goods were expensive to move by cart over
+  long distances, so land uses with high transport costs per unit value were
+  located closest to the town. This laid the foundation for modern models of
+  economic geography, though modern transport modes (cheap sea freight, fast
+  air freight) can weaken the pattern today --- fresh flowers are now often
+  air-freighted from entirely different climate zones.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 5 — The State, Taxes and Tariffs}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The Median Voter Theorem}
+The Median Voter Theorem states that, in a majority-rule election along a
+single left-right political spectrum:
+\begin{choices}
+  \choice        The most extreme candidate always wins.
+  \correctchoice Any winning majority must include the voter positioned
+                 exactly in the middle of the distribution of opinion --- the
+                 median voter.
+  \choice        Elections always end in a 50:50 tie.
+  \choice        Voter turnout has no effect on the outcome.
+\end{choices}
+\begin{solution}
+  If political opinion can be ordered along a single axis, any coalition
+  that wins a majority must, by definition, include the voter standing
+  exactly at the 50th percentile --- the \textbf{median voter}. This gives
+  candidates a strong incentive to position their platforms near the centre
+  of the distribution of opinion to capture that decisive vote, rather than
+  catering only to their core supporters.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Branches and Levels of the State}
+A typical modern state has three institutional branches. These are:
+\begin{choices}
+  \choice        Federal, regional (L\"ander), and communal government.
+  \correctchoice The executive, the legislative, and the judicative branch.
+  \choice        The central bank, the treasury, and the customs authority.
+  \choice        Public law, private law, and commercial law.
+\end{choices}
+\begin{solution}
+  The three classic branches are the \textbf{executive} (the government and
+  administration), the \textbf{legislative} (parliament), and the
+  \textbf{judicative} (the courts). These are conceptually distinct from the
+  \emph{levels} of government (federal, regional/Länder, communal, social
+  security, supranational/EU) and from the central bank, which sits outside
+  this three-branch structure altogether.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 6 — Subsidies in an Open Economy}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Embargoes and Sanctions}
+Which statement about trade embargoes and sanctions is correct?
+\begin{choices}
+  \choice        Sanctions can only target entire countries, never specific
+                 individuals or organisations.
+  \correctchoice Sanctions and embargoes can target countries, specific
+                 goods, or specific persons/organisations, and typically
+                 redirect trade toward third, neutral countries rather than
+                 eliminating it entirely.
+  \choice        Unilateral sanctions have been shown to have no measurable
+                 effect on the GDP of the targeted country.
+  \choice        All sanctions require United Nations Security Council
+                 authorisation to be legally valid.
+\end{choices}
+\begin{solution}
+  Sanctions regimes vary in scope: they may target \textbf{whole countries},
+  \textbf{specific goods} (e.g.\ arms embargoes), or \textbf{named persons
+  and organisations} (asset freezes, travel bans). Rather than eliminating
+  trade, sanctions typically \textbf{redirect trade flows} toward
+  third/neutral countries. Unlike UN-mandated sanctions, unilateral coercive
+  measures do not require Security Council authorisation, though research
+  cited in the script finds they do tend to reduce the targeted country's
+  GDP growth.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Retaliation and the Optimum Tariff}
+The script contrasts the case of a large country imposing a tariff with that
+of a small country. Why might a \emph{large} country consider an
+``optimum tariff'' even though tariffs are generally inefficient?
+\begin{choices}
+  \choice        Large countries are exempt from WTO tariff-binding
+                 commitments.
+  \correctchoice A large country can influence the world price of the traded
+                 good, so a tariff can shift part of the burden onto foreign
+                 exporters --- an option unavailable to a small,
+                 price-taking country.
+  \choice        Large countries never face retaliation from trading
+                 partners.
+  \choice        An optimum tariff eliminates deadweight loss entirely.
+\end{choices}
+\begin{solution}
+  A \textbf{small} country is a price-taker: its tariff cannot move the
+  world price, so the entire burden falls domestically. A sufficiently
+  \textbf{large} country, however, can affect world demand for the good
+  enough that part of the tariff's cost is effectively shifted onto foreign
+  exporters (a terms-of-trade gain) --- the logic behind the theoretical
+  ``optimum tariff''. This does not eliminate deadweight loss, and it
+  invites \textbf{retaliation}, which can erase the gain in a trade war.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 7 — Multinational Enterprises}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Concentration Ratio vs.\ HHI}
+The Concentration Ratio $CR_n = \sum_{i=1}^n a_i$ (the combined market share
+of the top $n$ firms) differs from the Herfindahl-Hirschman Index mainly in
+that:
+\begin{choices}
+  \choice        $CR_n$ can exceed 100\,\%, while HHI cannot.
+  \correctchoice $CR_n$ only looks at the largest few firms and ignores the
+                 structure of the rest of the market, whereas the HHI
+                 (summing squared market shares of all firms) is considered
+                 scientifically superior because it reflects the entire
+                 distribution of market shares.
+  \choice        HHI can only be computed for regulated industries.
+  \choice        $CR_n$ is used only in the EU, HHI only in the US.
+\end{choices}
+\begin{solution}
+  $CR_n$ simply adds up the market shares of the top $n$ firms (e.g.\
+  $CR_4$), giving a quick but crude picture. The \textbf{HHI}, $\sum_i
+  a_i^2$, weights larger firms more heavily (because shares are squared) and
+  incorporates the shares of \emph{all} firms in the market (often computed
+  for $N=50$ for practical purposes), which is why competition authorities
+  regard it as the scientifically superior measure of concentration.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Porter's Six Forces}
+Porter's original ``Five Forces'' framework for industry analysis is
+sometimes extended to ``Six Forces''. What is typically added as the sixth
+force?
+\begin{choices}
+  \choice        Government regulation.
+  \correctchoice Complementors --- producers of complementary goods or
+                 services that increase demand for the industry's product.
+  \choice        Currency risk.
+  \choice        Corporate social responsibility.
+\end{choices}
+\begin{solution}
+  Porter's classic Five Forces are: rivalry among existing competitors, the
+  threat of new entrants, the threat of substitutes, and the bargaining
+  power of suppliers and of buyers. The commonly added sixth force is
+  \textbf{complementors}: firms whose products increase demand for one's
+  own (e.g.\ app developers for a smartphone platform), recognising that
+  some players make the pie bigger rather than fighting over the existing
+  slice.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 8 — International Law and Governance}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Exclusive Economic Zones under UNCLOS}
+Under the United Nations Convention on the Law of the Sea (UNCLOS), a
+coastal state's Exclusive Economic Zone (EEZ) extends up to:
+\begin{choices}
+  \choice        12 nautical miles from the coastline.
+  \choice        24 nautical miles from the coastline (the contiguous zone).
+  \correctchoice 200 nautical miles from the coastline (or to the end of the
+                 continental shelf, if further).
+  \choice        There is no fixed distance; it is set bilaterally for every
+                 pair of neighbouring states.
+\end{choices}
+\begin{solution}
+  UNCLOS defines several maritime zones: \textbf{territorial waters} extend
+  12 nautical miles (full sovereignty), the \textbf{contiguous zone} extends
+  to 24 nautical miles (limited enforcement rights), and the \textbf{EEZ}
+  extends up to \textbf{200 nautical miles} --- or to the edge of the
+  continental shelf if that extends further --- within which the coastal
+  state has exclusive rights to natural resources (fishing, seabed minerals,
+  pipelines, cables). Disputes over EEZ boundaries are common, especially
+  around small islands that generate outsized maritime claims.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Freedom of the Seas}
+The doctrine of ``mare liberum'' (freedom of the seas), first articulated by
+Hugo Grotius in the 17th century, holds that:
+\begin{choices}
+  \choice        All coastal states may claim unlimited sovereignty over
+                 adjacent waters.
+  \correctchoice The high seas are open to all nations for navigation, and no
+                 state may claim sovereignty over them.
+  \choice        Ships must always sail under the flag of the country where
+                 their cargo originated.
+  \choice        Only signatories to UNCLOS may navigate international
+                 waters.
+  
+\end{choices}
+\begin{solution}
+  Grotius's \textbf{mare liberum} argued that the open sea cannot be owned
+  by any single nation and must remain free for navigation and trade by all.
+  This principle, combined with the later convention that a ship is governed
+  by the law of the state whose flag it flies, underpins the modern law of
+  the sea --- including UNCLOS, which formalised territorial waters,
+  contiguous zones, and exclusive economic zones while preserving freedom of
+  navigation beyond them.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 9 — Monetary Theory}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{The Phillips Curve and NAIRU}
+The original Phillips curve suggested a stable trade-off between inflation
+and unemployment. What historical episode challenged this relationship?
+\begin{choices}
+  \choice        The Great Depression, when both inflation and unemployment
+                 were zero.
+  \correctchoice Stagflation in the 1970s, when high inflation and high
+                 unemployment occurred simultaneously.
+  \choice        The introduction of the euro, which eliminated inflation
+                 entirely.
+  \choice        The 2008 financial crisis, which caused deflation and full
+                 employment simultaneously.
+\end{choices}
+\begin{solution}
+  The classic Phillips curve implied that policymakers could trade off lower
+  unemployment for higher inflation. The 1970s \textbf{stagflation}
+  episode --- driven partly by oil price shocks --- produced simultaneously
+  high inflation \emph{and} high unemployment, contradicting the simple
+  trade-off. This led to the concept of the \textbf{NAIRU} (Non-Accelerating
+  Inflation Rate of Unemployment) and the recognition that supply shocks can
+  shift the curve, making the inflation-unemployment relationship far less
+  stable than originally believed.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The US Dollar's Global Role}
+The script notes that the US dollar's importance in global finance goes
+beyond its role as a reserve currency. What else supports its dominant
+position?
+\begin{choices}
+  \choice        The US dollar is the only currency accepted in
+                 international shipping contracts.
+  \correctchoice The depth and liquidity of USD-denominated asset markets
+                 (such as US Treasuries), which are widely held internationally
+                 alongside dollars themselves.
+  \choice        All countries are legally required to hold a minimum share
+                 of USD in their reserves.
+  \choice        The US dollar is the only currency accepted for oil trades
+                 worldwide.
+\end{choices}
+\begin{solution}
+  The dollar's dominance rests not only on central banks holding it as a
+  \textbf{reserve currency}, but on the vast size and liquidity of
+  \textbf{USD-denominated asset markets} --- above all US Treasury
+  securities (USTs) --- which foreign investors, governments, and
+  institutions hold extensively (alongside comparable assets like UK Gilts
+  or Japanese government bonds). This depth of liquid, trusted assets is a
+  key reason the dollar remains central to the global financial system, even
+  as its dominance faces periodic challenges.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 10 — Macroeconomics in the Open Economy}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Purchasing Power Parity}
+The ``Big Mac Index'' is a popular illustration of Purchasing Power Parity
+(PPP). What does PPP theory predict about exchange rates in the long run?
+\begin{choices}
+  \choice        Exchange rates should be fixed by central banks to prevent
+                 any deviation from PPP.
+  \correctchoice The exchange rate should adjust so that a given basket of
+                 goods costs the same amount in different countries once
+                 converted into a common currency.
+  \choice        PPP applies equally well to tradable and non-tradable goods.
+  \choice        PPP predicts that wages will equalise instantly across
+                 countries.
+\end{choices}
+\begin{solution}
+  PPP theory says that, in the long run and with free trade, the exchange
+  rate should adjust so that the \textbf{same bundle of goods} costs the
+  same amount everywhere once converted into a common currency --- money
+  should have the same purchasing power at home and abroad. In practice, PPP
+  holds much better for \textbf{tradable} goods (arbitraged across borders)
+  than for \textbf{non-tradable} services like haircuts, which instead
+  reflect local labour costs and productivity.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Marshall-Lerner Condition}
+The Marshall-Lerner condition, $M = |\eta_{IM}| + |\eta_{Ex}| > 1$, tells us
+that:
+\begin{choices}
+  \choice        A currency depreciation always worsens the trade balance,
+                 regardless of elasticities.
+  \correctchoice A currency depreciation improves the trade balance only if
+                 the combined absolute elasticities of import and export
+                 demand exceed 1; if they are too low, depreciation may fail
+                 to help or even hurt the trade balance.
+  \choice        The condition only applies to fixed exchange rate regimes.
+  \choice        A depreciation always leads to hyperinflation if $M > 1$.
+\end{choices}
+\begin{solution}
+  If $M > 1$, import and export volumes respond strongly enough to a
+  \textbf{depreciation} that the trade balance improves (the standard, and
+  more common, case). If $M = 1$, depreciation has no effect on the trade
+  balance; if $M < 1$, the exchange market is considered unstable and a
+  depreciation can actually \textbf{worsen} the trade balance, because
+  export and import volumes barely respond to the more favourable prices ---
+  the only visible effect being higher import price inflation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Mundell-Fleming Model}
+The Mundell-Fleming model extends the closed-economy IS-LM model by adding:
+\begin{choices}
+  \choice        A Phillips curve linking inflation to unemployment.
+  \correctchoice A ZZ (Balance-of-Payments) curve, showing combinations of
+                 interest rate and income that keep the balance of payments
+                 in equilibrium, given the degree of international capital
+                 mobility.
+  \choice        A Laffer curve linking tax rates to government revenue.
+  \choice        A production possibility frontier for the traded-goods
+                 sector.
+\end{choices}
+\begin{solution}
+  Mundell-Fleming adds a third curve, the \textbf{ZZ curve} (or BoP curve),
+  to the IS-LM framework: all combinations of interest rate and output at
+  which the balance of payments balances. If capital is perfectly mobile,
+  the domestic interest rate is effectively pinned to the world interest
+  rate. Whether fiscal or monetary policy is more effective then depends
+  critically on whether the \textbf{exchange rate regime} is fixed or
+  flexible --- under perfect capital mobility, monetary policy is powerful
+  under flexible rates but powerless under fixed rates, and vice versa for
+  fiscal policy.
+\end{solution}
+\end{question}
+
+\end{document}

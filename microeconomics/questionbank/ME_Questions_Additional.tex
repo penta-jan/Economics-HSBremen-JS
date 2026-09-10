@@ -1,0 +1,775 @@
+%% ME_QuestionPool_Additional_MC.tex
+%% ─────────────────────────────────────────────────────────────────────────────
+%% ADDITIONAL CONTROL QUESTIONS (Single Choice / type=mc)
+%% Microeconomics, Jan Suchanek, Hochschule Bremen, Summer Semester 2026
+%%
+%% This file is a SUPPLEMENT to ME_QuestionPool_4_.tex. It contains only new
+%% \begin{question}[type=mc]{...}...\end{question} blocks, grouped under the
+%% same chapter headings as the master file, so each block can be copy-pasted
+%% straight into the matching \section{...} of the main question pool.
+%%
+%% New material drawn from the script that was not yet covered by the existing
+%% pool: Veblen goods, value chains, market delimitation, public/private goods
+%% (Ch.1); Homo Economicus & simplifying assumptions (Ch.2); Law of One Price,
+%% Hotelling's Law, economies of scale/DEVEX-CAPEX-OPEX, market forms grid,
+%% PPF shape (Ch.3); prohibitive price & saturation quantity (Ch.4); natural
+%% monopoly & antitrust regimes (Ch.6); the Fuel Crisis & Tax Rebate case study,
+%% which currently has NO control questions at all (new Ch.7 section); patents,
+%% risk vs. uncertainty, auctions (Ch.8); levels of the state, shell model,
+%% government expenditure ratio (Ch.9); Stag Hunt & Chicken Game (Ch.10);
+%% quantitative theory of money, functions of money, gains from trade (Ch.11);
+%% non-tariff barriers (Ch.12).
+%%
+%% To compile this file standalone for proofreading, use the same preamble as
+%% ME_QuestionPool_4_.tex (hsbquestions.sty, hsbcommon.sty must be present).
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[paper=a5]{scrartcl}
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{hsbquestions}
+\showanswerstrue                 %% ANSWER KEY view for proofreading — set to
+                                  %% \showanswersfalse before distributing.
+
+\title{Microeconomics}
+\subtitle{Additional Control Questions (Single Choice) — Supplement}
+\author{Claude (Anthropic) using the Script of Jan \noun{Suchanek}}
+
+\begin{document}
+\onehalfspacing
+\maketitle
+\clearpage
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 1 — Recap and Basics}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Veblen Goods}
+As the price of a luxury watch rises, demand for it \emph{also} rises, because
+buyers value the watch partly as a status symbol. This good is best classified
+as:
+\begin{choices}
+  \choice        A Giffen good.
+  \choice        An inferior good.
+  \correctchoice A Veblen good.
+  \choice        A normal good with unit elasticity.
+\end{choices}
+\begin{solution}
+  A \textbf{Veblen good} shows demand rising as price rises (like a Giffen
+  good), but for a different reason: conspicuous consumption. The good itself
+  is valued more highly \emph{because} it is expensive, e.g.\ luxury watches.
+  A Giffen good rises in demand due to the income effect of a strongly
+  inferior good, not because of status signalling.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Value Chain: Raw Materials to Merchandise}
+Along the value chain from raw material to final product, which sequence is
+correct?
+\begin{choices}
+  \choice        Merchandise $\to$ commodity $\to$ raw material.
+  \correctchoice Raw material $\to$ commodity $\to$ merchandise.
+  \choice        Commodity $\to$ raw material $\to$ merchandise.
+  \choice        There is no fixed sequence; all three terms are synonyms.
+\end{choices}
+\begin{solution}
+  Raw materials (e.g.\ crude oil, iron ore) are mined or grown, then
+  \textbf{refined} into commodities (e.g.\ petrol, steel), which are then
+  \textbf{manufactured} into merchandise. Raw materials are a subset of
+  commodities, and commodities are a subset of merchandise — though this is
+  not a strict legal distinction. Capital and labour are needed at every
+  stage, and trade/logistics connect the stages.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Market Delimitation}
+When economists say a market must be ``delimited'', they mean that one has to
+clarify all of the following \emph{except}:
+\begin{choices}
+  \choice        Spatial delimitation (where the good is traded).
+  \choice        Temporal delimitation (when it is traded).
+  \choice        Substitutability on the buyer and seller side.
+  \correctchoice The nationality of the company's shareholders.
+\end{choices}
+\begin{solution}
+  Delimiting a market means specifying \emph{where} (spatial), \emph{when}
+  (temporal), and \emph{by which characteristics} — in particular
+  substitutability from the buyer's and the seller's perspective — the good
+  or market is defined. Shareholder nationality is not part of market
+  delimitation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Public Goods and the Tragedy of the Commons}
+A public good is defined as being:
+\begin{choices}
+  \choice        Excludable and rival.
+  \correctchoice Non-excludable and non-rival (or, for common-pool resources,
+                 non-excludable but rival).
+  \choice        Always provided efficiently by private markets.
+  \choice        Owned exclusively by the state.
+\end{choices}
+\begin{solution}
+  \textbf{Public goods} (e.g.\ clean air, common knowledge) are
+  \textbf{non-excludable}: nobody can be stopped from using them. Pure public
+  goods are also \textbf{non-rival}. Common-pool resources (e.g.\ fish stocks,
+  forests) are non-excludable but \emph{rival}, which is why they tend to be
+  over-used — the tragedy of the commons. Private goods, by contrast, are
+  excludable and more likely to be allocated efficiently through markets.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 2 — The Consumer}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Homo Economicus and Diminishing Marginal Utility}
+Which utility function best captures the idea that ``more is better than
+less'', while also exhibiting \emph{diminishing} marginal utility?
+\begin{choices}
+  \choice        $U(x) = ax + b$
+  \correctchoice $U(x) = \ln(x)$
+  \choice        $U(x) = -x^2$
+  \choice        $U(x) = \text{constant}$
+\end{choices}
+\begin{solution}
+  A linear utility function $U(x) = ax+b$ satisfies $dU/dx > 0$ but has
+  \emph{constant} marginal utility. A logarithmic function $U(x) = \ln(x)$
+  is still increasing in $x$, but its marginal utility $dU/dx = 1/x$
+  \textbf{falls} as $x$ rises — a more realistic depiction of diminishing
+  returns to consumption.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Rational Behaviour in the Long Run}
+The ``rational behaviour'' assumption of Homo Economicus is best understood
+as meaning that:
+\begin{choices}
+  \choice        Every individual makes the utility-maximising decision at
+                 every single moment.
+  \correctchoice In the long run and under competitive pressure, actors who
+                 do not act in their own best interest tend to be priced out
+                 of the market.
+  \choice        The state is subject to exactly the same competitive
+                 pressures as private households and firms.
+  \choice        Rational behaviour requires perfect foresight about the
+                 future.
+\end{choices}
+\begin{solution}
+  The assumption does not require that every actor is perfectly rational at
+  every instant. Rather, in a competitive market, actors who systematically
+  fail to optimise are gradually driven out (or learn to decide better),
+  so that the surviving pattern of behaviour approximates rational,
+  self-interested optimisation. The state, by contrast, faces different
+  (often weaker) competitive pressure.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Simplifying Assumptions of the Basic Model}
+The basic microeconomic model deliberately abstracts from real-world
+frictions. Which of the following is \emph{not} one of these standard
+simplifying assumptions?
+\begin{choices}
+  \choice        No transaction costs.
+  \choice        No barriers to entry.
+  \choice        Perfect information.
+  \correctchoice A fixed, government-set price for every good.
+\end{choices}
+\begin{solution}
+  The textbook model assumes away frictions such as transaction costs,
+  barriers to entry, information asymmetries and time-lags — much like
+  physics abstracts from air resistance when modelling free fall. A
+  government-set price is not a simplifying assumption of the competitive
+  model; it is itself a market intervention studied separately (price
+  ceilings/floors).
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 3 — Demand and Supply}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Law of One Price}
+The Law of One Price states that identical, mass-produced goods should trade
+at a single price everywhere. If persistent price differences are observed
+for the same good, this indicates:
+\begin{choices}
+  \choice        That demand for the good must be perfectly inelastic.
+  \correctchoice Some form of market failure, such as barriers to arbitrage
+                 or limited market access.
+  \choice        That the good is a Giffen good.
+  \choice        That the good is non-excludable.
+\end{choices}
+\begin{solution}
+  If a price gap existed for an identical good, arbitrageurs would buy where
+  it is cheap and sell where it is dear until the gap disappears. Persistent
+  price differences therefore signal that \textbf{markets are not perfect} —
+  e.g.\ due to transport costs, trade barriers, or limited information —
+  which is a form of \textbf{market failure}.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Hotelling's Law}
+Two ice-cream vendors on a beach choose where to set up. Hotelling's Law
+predicts that competition drives them to:
+\begin{choices}
+  \choice        Locate as far apart as possible to serve different customer
+                 segments.
+  \correctchoice Move toward the centre of the beach and become similar to
+                 one another, both in location and product.
+  \choice        Randomise their location every day.
+  \choice        Merge into a single monopolist.
+\end{choices}
+\begin{solution}
+  In \textbf{Hotelling's Law}, moving toward the centre always captures more
+  of the market for either vendor, so both converge to the middle of the
+  beach. The same logic explains why competitors often converge toward
+  similar products, similar prices, and similar political positions —
+  minimal differentiation rather than maximal differentiation.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{DEVEX, CAPEX, and OPEX}
+In business-administration terminology for large investment projects, the
+cost of constructing and commissioning a new asset (e.g.\ a power plant) is
+called:
+\begin{choices}
+  \choice        DEVEX.
+  \correctchoice CAPEX.
+  \choice        OPEX.
+  \choice        Producer surplus.
+\end{choices}
+\begin{solution}
+  \textbf{DEVEX} (development expenditure) occurs before the final investment
+  decision. \textbf{CAPEX} (capital expenditure) covers construction and
+  commissioning of the asset, plus the cost of capital (interest payments)
+  during repayment. \textbf{OPEX} (operational expenditure) covers ongoing
+  variable costs and maintenance once the asset is running.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Market Forms: Buyers and Sellers}
+A market with \emph{one} seller but \emph{many} buyers is called:
+\begin{choices}
+  \choice        An oligopoly.
+  \correctchoice A monopoly.
+  \choice        A monopsony.
+  \choice        An oligopsony.
+\end{choices}
+\begin{solution}
+  The market-forms grid is defined by the number of sellers (columns: one,
+  few, many) and buyers (rows: one, few, many). One seller and many buyers
+  is a \textbf{monopoly}. One buyer and many sellers would instead be a
+  \textbf{monopsony}; few sellers give an \textbf{oligopoly}, few buyers an
+  \textbf{oligopsony}.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Shape of the Production Possibility Frontier}
+The typical Production Possibility Frontier (PPF), showing the trade-off
+between producing good A and good B, is bowed outward (concave to the
+origin) because:
+\begin{choices}
+  \choice        Factors of production are perfectly substitutable between
+                 the two goods.
+  \correctchoice The opportunity cost of producing more of one good rises as
+                 more resources are shifted into producing it (factors are
+                 not equally well suited to both uses).
+  \choice        Both goods are produced with constant returns to scale and
+                 identical technology.
+  \choice        The firm faces a binding price ceiling.
+\end{choices}
+\begin{solution}
+  As a producer shifts resources from good B to good A, it first reallocates
+  the factors best suited to A. Further units of A require reallocating
+  factors that are progressively less suited to producing A (and better
+  suited to B), so the opportunity cost of each additional unit of A —
+  measured in units of B forgone — \textbf{increases}. This is what gives
+  the PPF its characteristic bowed-out (concave) shape.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 4 — Equilibrium and Welfare}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Prohibitive Price and Saturation Quantity}
+On a standard demand-supply diagram, the ``prohibitive price'' and the
+``saturation quantity'' refer respectively to:
+\begin{choices}
+  \correctchoice The price so high that quantity demanded falls to zero, and
+                 the quantity that would be demanded even at a price of zero.
+  \choice        The equilibrium price and the equilibrium quantity.
+  \choice        The price a monopolist charges, and the quantity it produces.
+  \choice        The government-imposed price ceiling, and the resulting
+                 excess demand.
+  
+\end{choices}
+\begin{solution}
+  The \textbf{prohibitive price} is the price at which the demand curve hits
+  the price axis — nobody is willing to buy at or above it (aside from a few
+  outliers). The \textbf{saturation quantity} is the quantity at which the
+  demand curve hits the quantity axis at a price of zero — the amount buyers
+  would take even if the good were free. Both are properties of the demand
+  curve itself, distinct from the market equilibrium.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 5 — Market Disruptions}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Shift vs.\ Pivot of the Supply Curve}
+A war disrupts a specific raw material, adding a fixed cost per unit to
+production, while an ad valorem import tariff is levied as a percentage of
+value. On the supply-demand diagram, these two shocks:
+\begin{choices}
+  \choice        Both rotate the supply curve around the same point.
+  \correctchoice The unit cost shock shifts the supply curve up in parallel,
+                 while the ad valorem tariff pivots (rotates) it; but for
+                 suitably chosen parameters both can produce the same new
+                 equilibrium.
+  \choice        Only affect the demand curve, not the supply curve.
+  \choice        Cannot be compared, since one is a shock and the other is a
+                 policy.
+\end{choices}
+\begin{solution}
+  A per-unit cost increase shifts supply \textbf{up in parallel} (every unit
+  costs the same amount more). An ad valorem tax/tariff is a percentage of
+  value, so it \textbf{pivots} the supply curve (the mark-up is larger at
+  higher prices). For the right combination of parameters, both can land on
+  the identical new equilibrium price and quantity — meaning all the
+  associated welfare (CS/PS/DWL) results carry over regardless of which
+  instrument was used.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 6 — Monopolies: The Cournot Model}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Natural Monopoly}
+A ``natural monopoly'' (e.g.\ a railway network or an energy grid operator)
+arises when:
+\begin{choices}
+  \choice        The government grants an exclusive licence for prestige
+                 reasons.
+  \correctchoice The fixed costs of the infrastructure are so large that a
+                 single provider can supply the whole market more cheaply
+                 than two or more competing providers.
+  \choice        Consumers have a strong brand preference for a single firm.
+  \choice        Patent protection prevents any competitor from entering.
+\end{choices}
+\begin{solution}
+  Natural monopolies occur where \textbf{very large fixed (infrastructure)
+  costs} make it inefficient to duplicate the network: a single provider's
+  average cost keeps falling over the relevant range of output. Building a
+  second parallel railway or grid would waste resources. This differs from
+  a monopoly created by patents, brand loyalty, or state licensing.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Antitrust Regimes: EU vs.\ US}
+Regarding the treatment of monopolies in competition law, the script notes an
+important contrast:
+\begin{choices}
+  \choice        Both the EU and the US make simply \emph{having} a monopoly
+                 illegal.
+  \correctchoice In Europe, \emph{setting up} (creating) a monopoly is
+                 illegal, whereas in the US, merely \emph{having} a monopoly
+                 position is what antitrust law targets.
+  \choice        Monopolies are legal everywhere as long as they are
+                 domestic, not international.
+  \choice        The EU only regulates monopolies in the energy sector.
+\end{choices}
+\begin{solution}
+  The script highlights a legal-cultural contrast: in Europe, the emphasis is
+  on preventing firms from \textbf{creating} a dominant/monopoly position in
+  the first place (e.g.\ merger control), while in the US, antitrust
+  enforcement can target the mere \textbf{holding} of monopoly power itself,
+  regardless of how it was acquired.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 7 — Case Study: Fuel Crisis and Tax Rebate}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Fuel Tax Rebate: Why the Price Drop Was Smaller Than
+  Expected}
+In spring 2026, Germany cut the fuel tax by 17 cents per litre, and Canada
+cut its fuel excise tax by 10 cents per litre, yet pump prices in both
+countries fell by \emph{less} than the tax cut. Given inelastic demand and
+elastic supply for fuel, what would standard tax-incidence theory have
+predicted?
+\begin{choices}
+  \choice        Prices should not have changed at all.
+  \correctchoice Since demand is inelastic and supply elastic, most of the
+                 tax cut should have been passed through to consumers as a
+                 lower price — nearly the full amount of the rebate.
+  \choice        Prices should have risen instead of falling.
+  \choice        The tax rebate should have been captured entirely by the
+                 government as extra revenue.
+\end{choices}
+\begin{solution}
+  Standard incidence theory says the \textbf{less elastic} side of the market
+  bears (or benefits from) more of a tax change. With demand highly
+  inelastic and supply elastic, theory predicted the price should have
+  fallen by almost the full amount of the rebate. In practice it fell by
+  noticeably less — a sign that other frictions (shipping delays, distorted
+  market structure, incomplete pass-through by retailers) were at work.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Restricted Supply and the Cournot Point}
+The script argues that a world-wide forced reduction in available crude oil
+(as in 2026) tends to push the market outcome:
+\begin{choices}
+  \choice        Toward the competitive equilibrium, since fewer producers
+                 remain in the market.
+  \correctchoice Away from the competitive equilibrium and toward the Cournot
+                 point, where producer surplus is maximised.
+  \choice        Toward a price of zero, since supply becomes scarce.
+  \choice        Toward the saturation quantity.
+\end{choices}
+\begin{solution}
+  When available supply is artificially restricted, remaining producers gain
+  pricing power. The script notes that the resulting quantity/price
+  combination can move away from the fully competitive equilibrium toward
+  the \textbf{Cournot point} (the quantity that maximises producer surplus,
+  as under monopoly) — which is also why some governments consider taxing
+  the resulting windfall profits.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Comparing a Tax Cut's Cost to Its Welfare Benefit}
+When a government drops a unit tax on a good whose supply has become
+restricted, the case study shows that:
+\begin{choices}
+  \choice        The reduction in government revenue is always smaller than
+                 the resulting reduction in deadweight loss.
+  \correctchoice The loss of government revenue is typically \emph{larger}
+                 than the reduction in deadweight loss, even though both
+                 consumers and producers gain something.
+  \choice        Consumer surplus increases by exactly the size of the tax
+                 cut.
+  \choice        Producer surplus always falls when a tax is cut.
+\end{choices}
+\begin{solution}
+  In the case study, cutting the tax reduces the price only a little
+  (because pass-through is incomplete), so consumers gain only modestly,
+  while producer surplus rises more. Crucially, the government simply gives
+  up tax revenue on \emph{every} unit still sold ($\Delta T \cdot x_2$),
+  which exceeds the shrinkage of the deadweight-loss triangle. The exact
+  split between consumers and producers depends, as always, on the ratio of
+  elasticities.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 8 — Market Imperfections}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{What Can Be Patented}
+Which of the following can typically \emph{not} be protected by a patent?
+\begin{choices}
+  \choice        A concrete technical solution to an engineering problem.
+  \correctchoice A purely mathematical insight or an abstract idea.
+  \choice        A newly invented industrial process.
+  \choice        A specific technical device.
+\end{choices}
+\begin{solution}
+  Patents protect concrete \textbf{technical solutions} to technical
+  problems. \textbf{Ideas, mathematical insights, and abstract rules} cannot
+  be patented as such. Note also the EU/Common-Law contrast between
+  copyright (the sellable right to make copies) and the French/German
+  \emph{droit d'auteur}/\emph{Urheberrecht} (an unsellable personal right).
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Risk vs.\ Uncertainty}
+In economic risk analysis, the key distinction between ``risk'' and
+``uncertainty'' is that:
+\begin{choices}
+  \correctchoice Risk refers to situations where probabilities of outcomes
+                 can be estimated; uncertainty refers to situations where
+                 they cannot.
+  \choice        Risk applies only to financial markets, uncertainty only to
+                 insurance markets.
+  \choice        Risk is always smaller in magnitude than uncertainty.
+  \choice        There is no meaningful distinction; the terms are
+                 interchangeable.
+  
+\end{choices}
+\begin{solution}
+  \textbf{Risk} describes situations that can be sorted and quantified by
+  likelihood and impact — probabilities can, in principle, be estimated.
+  \textbf{Uncertainty} (in the stricter, Knightian sense) refers to
+  situations where outcomes are unknown and cannot be assigned meaningful
+  probabilities at all.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Coase Theorem in Practice}
+The Coase Theorem is often cited as an argument against government
+intervention in externalities. The script cautions that this is often
+misapplied because, in practice:
+\begin{choices}
+  \choice        Property rights are always perfectly enforced.
+  \correctchoice Transaction costs are never truly zero, and bargaining power
+                 between the parties is often unequal.
+  \choice        Externalities do not exist in real markets.
+  \choice        The theorem only applies to public goods, not to
+                 externalities.
+\end{choices}
+\begin{solution}
+  The Coase Theorem's efficiency result relies on the assumption of
+  \textbf{zero transaction costs} and well-defined property rights. In
+  reality, negotiating, monitoring, and enforcing agreements is costly, and
+  parties often have unequal bargaining power — which is why Elinor Ostrom's
+  empirical work on real-world commons governance remains important, rather
+  than relying on Coasean bargaining alone.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Procurement and the Winner's Curse}
+In competitive tenders and auctions, if bidders independently estimate an
+uncertain value (e.g.\ the true cost of a construction project) and the
+contract goes to the lowest bidder, economic theory warns of:
+\begin{choices}
+  \choice        Adverse selection, because bidders raise their prices over
+                 time.
+  \correctchoice The winner's curse: the winning bid is likely to be based on
+                 an overly optimistic (unrealistically low) estimate.
+  \choice        The tragedy of the commons, because too many firms bid.
+  \choice        A Pigouvian externality imposed on losing bidders.
+\end{choices}
+\begin{solution}
+  When bidders have independent, imperfect estimates of a common, uncertain
+  value, the bidder who wins is often the one who was \textbf{most
+  optimistic} (i.e.\ underestimated true costs) — the \textbf{winner's
+  curse}. This is why the lowest bid in a tender is not always realistic,
+  and why procurement processes must account for this bias.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 9 — The State}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Branches and Levels of Government}
+A typical modern state has three institutional branches. These are:
+\begin{choices}
+  \choice        Federal, state (L\"ander), and communal.
+  \correctchoice Executive, legislative, and judicative.
+  \choice        Central bank, treasury, and parliament.
+  \choice        Public law, private law, and commercial law.
+\end{choices}
+\begin{solution}
+  The three classic branches of the state are the \textbf{executive}
+  (government/administration), the \textbf{legislative} (parliament), and
+  the \textbf{judicative} (courts). Separately, there are multiple
+  \emph{levels} of government (federal, Länder, communal, supranational/EU)
+  and a distinct central bank, which is not one of the three branches.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Shell Model of Government Finance}
+The ``shell model'', developed within the European System of Accounts (ESA),
+is used to:
+\begin{choices}
+  \choice        Calculate the optimal tax rate on the Laffer curve.
+  \correctchoice Make budgets of different levels of government (federal,
+                 regional, social security, etc.) comparable, even when
+                 governments shift items into or out of extra-budgetary
+                 accounts.
+  \choice        Determine which goods are public vs.\ private goods.
+  \choice        Measure the Herfindahl-Hirschman Index of market
+                 concentration.
+\end{choices}
+\begin{solution}
+  The \textbf{shell model} nests the different levels and institutions of
+  government (federal, state/Länder, communal, social security, government
+  corporations) so that total public-sector activity can be compared across
+  countries, even though governments sometimes move spending into or out of
+  extra (``off-budget'') accounts for cosmetic or practical reasons.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Government Expenditure Ratio}
+The government spending ratio (``state quota''), $SQ = G/Y$, measures:
+\begin{choices}
+  \choice        The share of government revenue raised through tariffs.
+  \correctchoice Total government spending as a percentage of GDP.
+  \choice        The ratio of federal to regional tax revenue.
+  \choice        The elasticity of tax revenue with respect to the tax rate.
+\end{choices}
+\begin{solution}
+  $SQ = G/Y$ expresses \textbf{government spending $G$ as a share of GDP
+  $Y$}. It is a widely used (if imperfect) indicator of how large a role the
+  state plays in an economy, and it varies substantially across countries
+  with different income levels and social models.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 10 — Game Theory and Duopolies}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Stag Hunt Game}
+In the Stag Hunt game, two hunters do best if both commit to hunting stag
+together, but each risks being left worse off if they commit to stag while
+the other hunts hare alone. This game illustrates:
+\begin{choices}
+  \choice        That defection is always a dominant strategy, as in the
+                 Prisoner's Dilemma.
+  \correctchoice That cooperation can be the best outcome for both, but
+                 requires credible commitment or trust, since both ``both
+                 hunt stag'' and ``both hunt hare'' are Nash equilibria.
+  \choice        That there is no Nash equilibrium in pure strategies.
+  \choice        That one player always has an incentive to unilaterally
+                 deviate from mutual cooperation.
+  
+\end{choices}
+\begin{solution}
+  Unlike the Prisoner's Dilemma, in the \textbf{Stag Hunt} mutual cooperation
+  (both hunt stag) \emph{is} a Nash equilibrium — nobody wants to deviate
+  once the other is committed. But ``both hunt hare'' is \emph{also} a Nash
+  equilibrium, and it is individually safer if a hunter cannot be sure the
+  other will show up. The game (going back to Rousseau) illustrates the
+  importance of trust and credible commitment in achieving the
+  better-for-both outcome.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Chicken Game}
+The ``Chicken Game'' (two drivers heading toward each other, each deciding
+whether to swerve) differs from the Prisoner's Dilemma mainly because:
+\begin{choices}
+  \choice        There is only one player in the game.
+  \correctchoice The worst outcome occurs when \emph{both} players choose the
+                 aggressive strategy (not swerving), rather than when both
+                 choose the cooperative one.
+  \choice        Both players always prefer to swerve simultaneously.
+  \choice        It has no Nash equilibrium at all.
+\end{choices}
+\begin{solution}
+  In \textbf{Chicken}, mutual ``defection'' (neither swerves) produces the
+  worst possible outcome (a crash) for both, unlike the Prisoner's Dilemma
+  where mutual defection is merely worse than mutual cooperation but not
+  catastrophic. Chicken has two pure-strategy Nash equilibria (one swerves,
+  the other doesn't) — each player wants to do the opposite of the other,
+  making coordination and reputation (or commitment devices) critical.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 11 — Money and Trade}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{From Barter to Money}
+In the two-good island economy (fishermen and coconut farmers), the
+introduction of sea shells as a medium of exchange is used to illustrate
+that:
+\begin{choices}
+  \choice        Money is only needed once more than 100 traders participate
+                 in a market.
+  \correctchoice As the variety of goods traded expands beyond a simple
+                 barter pair, a common denominator (money) becomes desirable
+                 to facilitate exchange.
+  \choice        Barter is always more efficient than using money.
+  \choice        The value of money depends only on the trust of the central
+                 bank.
+\end{choices}
+\begin{solution}
+  With only two goods (fish and coconut), direct barter can work. But as
+  \textbf{commerce expands beyond a simple pair of goods}, a common medium
+  of exchange (here: shells) becomes desirable so that every good does not
+  need a separate exchange rate against every other good. The value of the
+  medium of exchange then depends on its quantity in circulation and its
+  velocity of circulation — the core idea behind the quantitative theory of
+  money.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{The Four Functions of Money}
+Which of the following is \emph{not} one of the four classic functions of
+money?
+\begin{choices}
+  \choice        Medium of exchange.
+  \choice        Unit of account.
+  \choice        Store of value.
+  \correctchoice Guarantor of full employment.
+\end{choices}
+\begin{solution}
+  The four classic functions of money are: \textbf{medium of exchange},
+  \textbf{unit of account}, \textbf{store of value}, and \textbf{standard of
+  deferred payment}. Guaranteeing full employment is a macroeconomic policy
+  goal, not a function of money itself.
+\end{solution}
+\end{question}
+
+\begin{question}[type=mc]{Why Do Countries Trade at All?}
+Beyond comparative advantage in production costs, the script lists several
+basic reasons why trade happens. Which of the following is \emph{not} one of
+them?
+\begin{choices}
+  \choice        Acquiring goods a country otherwise would not have (due to
+                 climate, resources, or know-how).
+  \choice        Disposing of goods a country has in surplus (e.g.\ excess
+                 capacity, dumping).
+  \correctchoice Ensuring that every country's trade balance is exactly zero.
+  \choice        Selling goods in order to buy other goods (the profit
+                 motive).
+\end{choices}
+\begin{solution}
+  Trade arises because countries want goods they otherwise lack (different
+  climate, resources, know-how), want to get rid of surpluses, and want to
+  sell in order to buy other goods (profit/maximisation motive) — echoing
+  Adam Smith's argument that the wealth of nations rests on the division of
+  labour. A trade balance of exactly zero is not a stated reason for trade
+  and is not required for trade to be beneficial.
+\end{solution}
+\end{question}
+
+
+%% ═════════════════════════════════════════════════════════════════════════════
+\section{Chapter 12 — Protectionism}
+%% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{question}[type=mc]{Non-Tariff Barriers to Trade}
+Which of the following is an example of a \emph{non-tariff} barrier to
+trade?
+\begin{choices}
+  \choice        A 10\,\% import duty on foreign cars.
+  \choice        An ad valorem tax on imported electronics.
+  \correctchoice A technical safety standard that foreign products struggle
+                 to meet, or a lengthy customs inspection delay.
+  \choice        An export subsidy paid to domestic exporters.
+\end{choices}
+\begin{solution}
+  \textbf{Non-tariff barriers} restrict trade without directly taxing it:
+  examples include technical standards, licensing and packaging/labelling
+  requirements, sanitation rules, customs delays, and public-procurement
+  rules that favour domestic suppliers. Tariffs, ad valorem taxes, and
+  export subsidies are all \emph{price-based} instruments, not non-tariff
+  barriers.
+\end{solution}
+\end{question}
+
+\end{document}

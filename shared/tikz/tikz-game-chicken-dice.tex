@@ -1,12 +1,12 @@
 \documentclass{standalone}
 %% Show/hide steps for standalone work — edit this line:
-\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\makeatletter\AtBeginDocument{\@buildstepset{1,2}}\makeatother
 \usepackage{fontawesome5}
 \usepackage{hsbcommon}
 \begin{document}
 \begin{tikzpicture}[remember picture]
 
-    
+        \tikzset{every node/.style={font=\sffamily}}
 
     \setcounter{pcell}{0}
     \matrix (M) [
@@ -15,7 +15,7 @@
         row sep=-\pgflinewidth,
         nodes={anchor=center, draw=none, inner sep=0pt},
         column 1/.style={nodes={minimum width=5em, align=right,color=red}},
-        row 1/.style={nodes={minimum height=2em, align=center}},
+        row 1/.style={nodes={minimum height=2em, align=center,color=blue}},
     ]{
              & \strut swerve              & \strut straight            \\
     swerve     & \payoff{\bdice{2}}{\rdice{2}}   & \payoff{\bdice{6}}{\rdice{1}}   \\
@@ -38,15 +38,15 @@
 
 
     \ifstep{1}{
-        \draw[<-,>=latex,thick]  (AA-al) -- (AB-al) ;      
+        \draw[->,>=latex,thick,blue]  (AA-al) -- (AB-al) ;      
         % \draw[->,>=latex]    (BB-al) -- (AB-al);     
         % \draw[->,>=latex]    (BA-al) -- (AA-al);     
-        \draw[<-,>=latex,thick]    (BA-al) -- (BB-al);     
+        \draw[<-,>=latex,thick,blue]    (BA-al) -- (BB-al);     
   
     }
     \ifstep{2}{
         \draw[<-,>=latex,red,thick]    (AB-bo) -- (BB-bo);     
-        \draw[->,>=latex,red,thick]    (BA-bo) -- (AA-bo);     
+        \draw[<-,>=latex,red,thick]    (BA-bo) -- (AA-bo);     
   
     }
    

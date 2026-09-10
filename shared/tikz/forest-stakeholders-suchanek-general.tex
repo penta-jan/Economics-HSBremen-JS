@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\begin{document}
+    \begin{forest}
+    for tree={
+        font=\footnotesize,
+        grow' = east,
+        parent anchor = east,
+        child anchor = west,
+        forked edge,
+        inner sep=2pt,
+        anchor=base west
+            }
+    [\parbox{20ex}{\centering Project Stakeholders}
+        [\textbf{Initiators} 
+            [Internal
+                [Top level management, name=tl]
+                [Specific department(s)]
+            ]
+            [External
+                [Client or Project Owner, name=cl]
+                [Authorities]
+                [Pressure group(s), name=pgin]
+                [...]
+            ]
+        ]
+        [\textbf{Executors}
+            [PM
+                [Internal
+                    [PMO, name=pmo]
+                    [Accounting]
+                    [IT]
+                    [HR]
+                    [...]
+                ]
+                [External
+                    [Contractors]
+                    [Subject Matter Experts]
+                    [Authorities]
+                ]
+            ]
+        ]
+        [\textbf{Affected}
+            [Internal
+                [Top level management, name=tlaf]
+                [Departments]
+            ]
+            [External
+                [End Users / Customers, name=us]
+                [Suppliers]
+                [Partners
+                    [Banks]
+                    [...]
+                ]
+                [Pressure group, name=pgaf]
+                [Future generations]
+                [...]
+            ]
+        ]
+    ]
+    \draw (cl.east) to[bend left=90] (us.east);
+    \draw (tl.east) to[bend left=90] (cl.east);
+    \end{forest}
+\end{document}

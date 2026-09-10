@@ -1,17 +1,28 @@
 \documentclass{standalone}
-\usepackage{hsbcommon}
+\usepackage{tikz}
 \begin{document}
-    \begin{tikzpicture}
-        \newcommand{\pft}[2]{{\hfill$#1$ \\ $#2$\hfill\mbox{}}}
-
-        \matrix [payoff matrix,
-            payoff matrix/player 1={do we know that we know?},
-            payoff matrix/player 2={do we know?}
-        ]{
-                    & know & don't know \\
-            know & known \textbf{knowns} & unknown \textbf{knowns}  \\
-        don't know & known \mbox{\textbf{unknowns}} & unknown \textbf{unknowns}  \\
-        };
-
-    \end{tikzpicture}
+\begin{tikzpicture}[scale=0.5]
+        \node at (-4,4) {1st order knowledge};
+        \node at (-4,3.3) {\emph{do we know it?}};
+            \node at (-1,2) {no};
+            \node at (-1,6) {yes};
+        \node at (4,-1.5) {2nd order knowledge};
+        \node at (4,-2.2) {\emph{do we know whether we know it?}};
+            \node at (2,-0.5) {yes};
+            \node at (6,-0.5) {no};
+        \draw (0,0) -- (0,8) -- (8,8) -- (8,0) -- (0,0);
+        \draw (4,0) -- (4,8) ; \draw (0,4) -- (8,4);
+        
+        \node at (2,3) {known};
+            \node at (2,2.5) {unknowns};
+            
+        \node at (2,7) {known};
+            \node at (2,6.5) {knowns};
+            
+        \node at (6,3) {unknown};
+            \node at (6,2.5) {unknowns};
+            
+        \node at (6,7) {unknown};
+%             \node at (6,6.5) {knowns};
+\end{tikzpicture}
 \end{document}

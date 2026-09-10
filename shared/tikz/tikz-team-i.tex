@@ -1,0 +1,11 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}
+    \filldraw[gray!20] (-1,-1) rectangle (17,6);
+        \filldraw[fill=white] (1,0) -- (1,4) -- (0,4) -- (0,5) -- (3,5) -- (3,4) -- (2,4) -- (2,0) -- (1,0) -- cycle;
+        \filldraw[fill=white] (4,0) -- (4,5) -- (7,5) -- (7,4) -- (5,4) -- (5,3) -- (6,3) -- (6,2) -- (5,2) -- (5,1) -- (7,1) -- (7,0) -- (4,0) -- cycle;
+        \filldraw[fill=white] (8,0) -- (8,5) -- (11,5) -- (11,0) -- (10,0) -- (10,2) -- (9,2) -- (9,0) -- (8,0) -- cycle; \filldraw[fill=black!70] (9,3) rectangle (10,4); \filldraw[fill=gray!40] (9,0) rectangle (10,2);
+        \filldraw[fill=white] (12,0) -- (12,5) -- (13,5) -- (14,4) -- (15,5) -- (16,5) -- (16,0) -- (15,0) -- (15,3.5) -- (14,2.5) -- (13,3.5) -- (13,0) -- (12,0) -- cycle;
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\begin{document}
+    \begin{tikzpicture}
+       \draw (0,0) rectangle (3,3);
+       \draw (4,0) rectangle (7,3);
+       \draw (2,1) rectangle (2.5,2);
+       \draw (4.5,1) rectangle (5,2);
+       \draw[->] (2.5,1.5) -- (4.5,1.5);
+       \node[draw, diamond,fill=red] at (3.5,1.5) {};
+    \end{tikzpicture}
+\end{document}

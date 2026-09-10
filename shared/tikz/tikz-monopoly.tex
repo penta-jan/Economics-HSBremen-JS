@@ -6,8 +6,9 @@
 \usepackage{hsbcommon}
 \begin{document}
 \begin{tikzpicture}[remember picture]
-    \draw[->] (0,0) node[below] {\phantom{$Q_x$}} -- (8,0) node[right] {$Q$};
-    \draw[->] (0,0) node[left] {\phantom{$P_x$}} -- (0,8) node[above] {$P$};
+    % \tikzset{every node/.style={opacity=0},>=latex}
+    \draw[->] (0,0) node[below] {\phantom{$Q_x$}} -- (8,0) node[opacity=1,right] {$x$};
+    \draw[->] (0,0) node[left] {\phantom{$P_x$}} -- (0,8) node[opacity=1,above] {$p$};
     
 
     %% ── All coordinates unconditional ────────────────────────────────────────

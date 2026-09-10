@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{decorations.pathmorphing}
+\begin{document}
+    \begin{tikzpicture}[scale=0.8]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (-3,-5);
+        \coordinate (C) at (3,-5);
+        \coordinate (X) at (0,-3.35);
+        \draw (A) -- (B) node[midway,above,rotate=60] {Costs};
+        \draw (B) -- (C) node[midway,below] {Quality/Performance/Technology};
+        \draw (C) -- (A) node[midway,above,rotate=-60] {Time};
+        \path[draw=blue, -stealth, rotate=90,
+      postaction={decorate,decoration={text effects along path,
+        text={\ Within good customer relations \ }, text align=center, 
+        text effects/.cd, 
+          text along path, 
+          every character/.style={fill=white, yshift=-0.5ex}}}]
+      (X) circle (4);
+    \end{tikzpicture}
+\end{document}

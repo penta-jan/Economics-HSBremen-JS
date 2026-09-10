@@ -1,0 +1,72 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2}}\makeatother
+\begin{document}
+\begin{tikzpicture}
+
+
+
+    \draw (0,0) node [below] {\phantom{$x_1$}} node[left] {\phantom{$x_1$}} ;
+
+                
+   \draw[->,>=latex] (0,0)  -- (8,0) node[right]  {$y$};
+   \draw[->,>=latex] (0,0) -- (0,8) node[above]  {$y'$};
+
+    \draw[dashed,name path=equal] (0,0) -- (7,7) node[above right] {$y'=y$};
+
+    \coordinate (A) at (0,3);
+    \coordinate (B) at (7,6);
+
+    \filldraw (A) node[left] {A} circle (2pt);
+
+
+    \draw[name path=policy] (A) -- (B) node[right] {\scriptsize policy};
+        
+    \path [name intersections={of=policy and equal,by=X}];    
+    \filldraw (X) node[below right] {$X$} circle (2pt);
+    \draw[dotted] (0,|-X) -- (X) -- (X|-,0);
+
+    \ifstep{1}{
+        \begin{scope}[red]
+    
+            \draw[thick,->] (0,0) -- node[right] {\scriptsize UBI} (A);
+        
+        
+            \path[name path=myline] (2,0) -- (2,8);
+            \draw[dashed] (2,0) -- (2,8);
+        
+            \draw[dashed,name path=UBI] (A) -- ($(A)+(7,0)$);
+            \draw[dashed,name path=newinc] (A) -- ($(A)+(4,4)$)  node[above right] {$y'=y$};
+            \path[name intersections={of=myline and policy,by=C}];
+            % \filldraw (C) node[below right] {$C$} circle (2pt);
+            \path[name intersections={of=myline and UBI,by=D}];
+            % \filldraw (D) node[below right] {$D$} circle (2pt);    
+            \path[name intersections={of=myline and newinc,by=E}];
+            % \filldraw (E) node[below right] {$E$} circle (2pt);
+        
+            \draw[thick,->] (D|-,0) -- node[right] {\scriptsize UBI} (D);
+            \draw[thick,->] (E) -- node[right] {\scriptsize tax} (C);
+        \end{scope}
+    }
+
+    \ifstep{2}{
+    \begin{scope}[blue]
+            \path[name path=belowthr] (4,0) -- (4,8);
+            % \draw[dashed] (4,0) -- (4,8);
+            \path[name intersections={of=belowthr and policy,by=D}];
+            \path[name intersections={of=belowthr and equal,by=E}];
+            \draw[thick,->] (E) -- node[right] {\scriptsize negative tax} (D);
+
+            \path[name path=abovethr] (6.5,0) -- (6.5,8);
+            % \draw[dashed] (6.5,0) -- (6.5,8);
+            \path[name intersections={of=abovethr and policy,by=D}];
+            \path[name intersections={of=abovethr and equal,by=E}];
+            \draw[thick,->] (E) -- node[left] {\scriptsize tax} (D);
+    \end{scope}
+    }
+    
+  
+    
+\end{tikzpicture}
+\end{document}

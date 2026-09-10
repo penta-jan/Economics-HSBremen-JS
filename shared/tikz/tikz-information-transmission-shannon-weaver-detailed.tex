@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc, arrows}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \node (S) at (0,0) {\fbox{Sender}};
+        \node (T) at (2,0) {\fbox{Transmitter}};
+        \node (s1) at (4,-1) {distortion};
+        \node (C) at (4,0) {\fbox{Channel}};
+        \node (R) at (6,0) {\fbox{Receiver}};
+        \node (D) at (8,0) {\fbox{Destination}};
+        \draw[->] (S) -- (T);
+        \draw[->] (T) -- (C);
+        \draw[->] (C) -- (R);
+        \draw[->] (R) -- (D);
+        \draw[->] (s1) -- (C);
+        \draw[->,bend left=45] (D) to node[above] {feedback} (S);
+    \end{tikzpicture}
+\end{document}

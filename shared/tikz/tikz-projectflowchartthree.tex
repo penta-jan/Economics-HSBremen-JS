@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\begin{document}
+    \begin{tikzpicture}
+        \node[draw, minimum width=5cm] (sp) at (0,0) {Sponsor: Goal};
+        \node[draw, minimum width=5cm, below of=sp] (vi) {Vision / Objective};
+        \node[draw, minimum width=5cm, below of=vi] (pmo) {Project Management Office (PMO)};
+        
+        \node[draw, below=of pmo] (ex)  {Project: Execution};
+        \node[below=of ex]{Sub-projects};
+        \node[draw, left=of ex] (pl)  {Project: Plan};
+        \node[below=of pl] {Planning rounds};
+        \node[draw, right=of ex] (pr)  {Project: Product};
+        \node[below=of pr] {Qualities};
+        \draw[->] (sp) -- (vi);
+        \draw[->] (vi) -- (pmo);
+        \draw[->] (pmo) -- (pl);
+        \draw[->] (pl) -- (ex);
+        \draw[->] (ex) -- (pr);
+        \draw[->] (pmo) -- (ex);
+        \draw[dashed, ->] (pr) to [bend right=25] (sp.east);
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+% %% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$0_0$}} -- (8,0) node[below left] {\scriptsize unemployment rate};
+        \draw[->] (0,0) node[left] {\phantom{$0_0$}} -- (0,8) node[above] {\scriptsize job offerings};
+
+        \path [name path=beveridge]  (1,7) .. controls (3,3) .. (7,1); 
+
+        \draw[] (1,7) .. controls (3,3) .. (7,1) node[above,fill=white] {\scriptsize Beveridge Curve}; 
+        
+        \path [name path=search] (0,0) -- (7,7);
+
+        \ifstep{1,jobcreation}{
+            \draw  (0,0) -- (7,7) node[above] {\scriptsize job creation};
+            \draw (1,0) arc (0:45:1);
+            \node at (22.5:0.7) {$\theta$};
+            \path [name intersections={of=beveridge and search,by=E}];
+            \filldraw (E) circle (2pt);
+            \draw[dashed] (0,|-E) node[left] {$j^*$} -- (E)  -- (E|-,0) node[below] {$u^*$};
+            
+        }
+            
+    \end{tikzpicture}
+\end{document}

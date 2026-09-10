@@ -49,6 +49,8 @@
 
 \setlength{\parskip}{1ex}
 
+\makeindex
+
 \begin{document}
 
 \onehalfspacing
@@ -107,5 +109,9 @@
     \addcontentsline{toc}{section}{Control Questions}
     \includepdf[pages=-]{questionbank/FT_QuestionPool.pdf}
 
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Index}
+\printindex
 
 \end{document}

@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}[every node/.style={font={\sffamily}}]
+    \def\mywidth{2cm}\relax
+        \draw (0,-1.1) circle (4);
+        % \node[fill=white] at (0,2.75) {
+        %      \resizebox{2cm}{!}{
+        %         \begin{tikzpicture}
+        %             \node at (0,0) {
+        %                 \rotatebox{0}{QLEE}
+        %             };
+        %         \end{tikzpicture}
+        %     }
+        % };
+        \node[fill=white] at (0,-4) {Partners};
+        \draw[color=red] (0,0.6) node {
+            \parbox{2.5cm}{\centering
+            Initiators\\
+            (Consortium)
+            }
+        } circle (\mywidth);
+        \draw[color=blue] (-1.5,-2) node {
+            \parbox{2.5cm}{\centering
+            Member companies}
+        } circle (\mywidth);
+        \draw[color=green] (1.5,-2) node {
+            \parbox{2cm}{\centering
+            Others, e.g. chambers}
+        } circle (\mywidth);
+        % \draw[fill=white] (0,-1.1) node {
+        %     \parbox{1.4cm}{\centering
+        %     Verbund\-manager}
+        % } circle (0.8cm);
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.5cm]{1}{14}
+      \gantttitlelist{1,...,14}{1} \\
+      \ganttgroup{Project cabin}{1}{14} \\
+      \ganttbar{Plan the cabin (2)}{1}{2} \\
+      \ganttbar{Procure Wood (1)}{3}{3} \\
+      \ganttbar{Construct (3)}{4}{6} \\
+      \ganttbar{Procure Utilities (1)}{7}{7} \\
+      \ganttbar{Utilities (2) }{8}{9}\\
+      \ganttbar{Procure Equip (3)}{10}{12}\\
+      \ganttbar{Equip (2)}{13}{14}
+    \end{ganttchart}
+
+\end{document}

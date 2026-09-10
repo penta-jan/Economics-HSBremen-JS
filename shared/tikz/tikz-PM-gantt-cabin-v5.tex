@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.4cm]{1}{9}
+      \gantttitlelist{1,...,9}{1} \\
+      \ganttgroup{Project cabin}{1}{9} \\
+      \ganttbar{Plan the cabin (4)}{1}{4} \\
+      \ganttbar{Site management}{2}{9} \\
+      \ganttgroup{Carpenters}{2}{5} \\
+      \ganttbar{Procure Wood (1)}{2}{2} \\
+      \ganttbar{Construct (3)}{3}{5} \\
+      \ganttgroup{Utility Guys}{3}{7} \\
+      \ganttbar{Plan Utilities (1)}{3}{4} \\
+      \ganttbar{Procure Utilities (1)}{5}{5} \\
+      \ganttbar{Utilities (2) }{6}{7}\\
+      \ganttgroup{Interior Guys}{4}{9} \\
+      \ganttbar{Plan Equip (1)}{4}{4}\\
+      \ganttbar{Procure Equip (1)}{5}{7}\\
+      \ganttbar{Equip (2)}{8}{9}
+      \ganttvrule{}{4}
+    \end{ganttchart}
+
+\end{document}

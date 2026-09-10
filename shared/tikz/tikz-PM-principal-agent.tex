@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture} 
+        
+        % Add the states         
+        \node[draw]             (s) {$Principal$};         
+        \node[draw, right=of s] (r) {$Agent$ };
+                % Connect the states with arrows         
+        \draw[every loop] 
+              (s) edge[bend right, auto=right]  node {hires} (r) 
+              (r) edge[bend right, auto=right]  node {serves} (s)   
+              (s) edge[loop left]               node {self-interest} (s)     
+              (r) edge[loop right]              node {self-interest} (r);    
+    \end{tikzpicture}
+
+\end{document}

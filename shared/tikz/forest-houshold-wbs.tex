@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\usetikzlibrary{shadows.blur}
+\begin{document}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            % parent anchor = east,
+            % child anchor = west,
+            forked edge,
+            inner sep=2pt,
+            % blur shadow,
+            fill=white,
+            anchor=base west
+                }
+    [Kitchen renovation
+        [Management
+            [Planning]
+            [Oversee work]
+            [Budget and payments]
+        ]
+        [Moving stuff
+            [prepare for move]
+            [move to other room]
+            [move to recycling yard]
+            [move stuff back in]
+        ]
+        [Re-furnishing
+            [source new appliances]
+            [plan new counters etc.]
+            [build new kitchen
+                [planning]
+                [source material]
+                [delivery and stock piling]
+                [construction work]
+                [tidying up etc.]
+            ]
+            [connect appliances]
+            [fill with utensils]
+        ]
+    ]
+    \end{forest}
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+    \tikzset{every node/.style={draw, minimum height=3ex}  }
+        \node (a) {A};
+        \node[right=of a] (b) {B};
+        \node[below right=of a] (c) {R};
+        \draw[->] (a) -- (c);
+        \draw[<->] (b) -- (c);
+        \draw[dashed,->] (a) -- (b);
+        \node[below=of a,dashed] (s) {S};
+        \draw[->] (a) -- (s);
+    \end{tikzpicture}
+
+\end{document}

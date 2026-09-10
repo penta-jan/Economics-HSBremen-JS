@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\usetikzlibrary{shadows.blur}
+\begin{document}
+    \begin{forest}
+        for tree={
+            % font=\footnotesize,
+            grow' = east,
+            % parent anchor = east,
+            % child anchor = west,
+            forked edge,
+            inner sep=2pt,
+            s sep=12pt,            
+            % blur shadow,
+            fill=white
+                }
+    [Projects by owner
+        [public] 
+        [private public partnership]
+        [private 
+            [single owner] 
+            [multiple owners]
+            ]
+    ]
+    \end{forest}
+
+    
+\end{document}

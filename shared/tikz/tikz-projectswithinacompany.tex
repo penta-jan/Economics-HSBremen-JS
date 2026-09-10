@@ -1,0 +1,95 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}[scale=0.8]
+        \coordinate (A) at (-5,0) {};
+        \coordinate (B) at ( 5,0) {};
+        \coordinate (C) at (0,8) {};
+        \draw[name path=AC] (A) -- (C);
+        \draw[name path=BC] (B) -- (C);
+
+\ifstep{1}{
+        
+        \foreach \y/\A in {
+        0/labourers: operations,
+        1/supervisors: scheduling,
+        2/middle management: planning,
+        3/top management: policy} {
+            \path[name path=horiz] (A|-0,\y) -- (B|-0,\y);
+            \draw[name intersections={of=AC and horiz,by=P},
+                  name intersections={of=BC and horiz,by=Q}] (P) -- (Q);
+            \path (P) -- (Q)
+                  node[fill=white,midway,above,align=center] {\A};
+        }
+        
+        \node[anchor=west] at (-6,7) {Management Levels};
+}
+
+        
+
+\ifstep{2}{
+    \begin{scope}[red]
+        
+        \foreach \x/\A in {
+        -3/staffing,
+        -1/finance,
+        1/logistics,
+        3/$\dots$,
+        5/contracting} {
+            \draw[] (\x,0) -- (C);
+            \node[] at (\x-1,-0.5) {\A};
+        }
+        \draw (B) -- (A);
+        \node[anchor=west] at (-6,6) {Departments};
+    \end{scope}
+}
+
+\ifstep{3}{
+        \begin{scope}[blue]
+            
+        \coordinate (A) at (-5,0) {};
+        \coordinate (B) at ( 5,0) {};
+        \coordinate (C) at (0,8) {};
+        \draw[name path=AC] (A) -- (C);
+        \draw[name path=BC] (B) -- (C);
+        \foreach \x in {-5,-3,...,5}
+        {
+        \draw (C) -- (\x,0);
+        }
+        ;
+        \foreach \x/\A in {
+        -3/staffing,
+        -1/finance,
+        1/logistics,
+        3/$\dots$,
+        5/contracting}        
+            \foreach \y in {
+                0,1,2,3} { 
+                    \draw[thick,name path=vert] (\x,0) -- (C);
+                    \path[name path=horiz] (A|-0,\y) -- (B|-0,\y);
+                    \draw[name intersections={of=AC and horiz,by=P},
+                          name intersections={of=BC and horiz,by=Q}] (P) -- (Q)
+                          node[midway,above,align=center,text width=
+                \dimexpr(6em-\y em)*5\relax] {};
+                % \filldraw (P) circle (2pt);
+                \path[%
+                    name intersections={of=vert and horiz,by=R\x\y}%
+                    ];
+                % \node at  (R\x\y) {R\x\y};
+            }
+
+            \filldraw (R-33) -- (R-13) -- (R-12) -- (R-32) -- cycle;
+            \filldraw (R-12) -- (R12) -- (R11) -- (R-11) -- cycle;
+            \filldraw (R33) -- (R53) -- (R52) -- (R32) -- cycle;
+            
+        \node[anchor=west] at (-6,5)  {Operational Islands};
+        \end{scope}
+}
+ %   Source: \cite[p.~4]{KerznerHarold2017Pm:a}
+
+    \end{tikzpicture}
+    \end{document}
+    

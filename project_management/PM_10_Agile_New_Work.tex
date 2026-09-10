@@ -1,0 +1,832 @@
+\section{Agile Projects, New Work, ITC}
+
+
+\begin{frame}{`Stacey'-Matrix}
+       \showmytikz{../shared/tikz/tikz-PM-stacey-matrix-requirements}
+        \end{frame}
+
+\begin{frame}{`Stacey'-Matrix}        
+       \showmytikz{../shared/tikz/tikz-PM-stacey-matrix-stakeholders}
+        
+\end{frame}
+
+\begin{frame}{VUCA}
+    \begin{tabular}{ll}
+    \begin{minipage}{4cm}
+        \begin{description}
+            \item[V]olatility
+            \item[U]ncertainty
+            \item[C]omplexity
+            \item[A]mbiguity
+        \end{description}
+    \end{minipage}
+         &  
+    \begin{minipage}{6cm}
+        \begin{description}
+            \item[V]ision
+            \item[U]nderstanding
+            \item[C]larity
+            \item[A]gility
+        \end{description}
+    \end{minipage}
+\end{tabular}
+    \mytext{
+\medskip
+
+Sources e.g.~\cite{AkkayaBuelent2022AMaV}
+    }
+\end{frame}
+
+
+\begin{frame}{Culture vs. Strategy: Unternehmens`philosophie'}
+    
+    \mytext{
+    \begin{quote}
+        Plans are worthless, but planning is everything.
+        
+        ---Attributed to Dwight D.\ Eisenhower
+    \end{quote}
+    
+    \medskip
+    
+    \begin{quote}
+        `Culture eats strategy for breakfast'
+        
+        ---Attributed to Peter \noun{Decker}
+    \end{quote}
+    
+    \medskip
+    
+    culture $\neq$ civilisation
+    }
+\end{frame}
+
+
+
+\begin{frame}{Waterfall Management}
+    
+    \mytext{
+    \begin{itemize}
+        \item hierarchic
+        \item pre-defined goals
+        \item goals must be known!
+        \item means must be known!
+        \item tight control of subordinates
+        \item inflexible
+    \end{itemize}    
+    Roles:
+    \begin{itemize}
+        \item project sponsor
+        \item project manager
+        \item subordinates
+    \end{itemize}
+    }
+\end{frame}
+
+
+
+
+\begin{frame}{Agility}
+    
+    \mytext{
+    Paradigm shift: \fbox{waterfall, hierachy} $\rightarrow$ \fbox{agile, scrum}
+
+    \medskip
+    
+    Change of business culture and organisation
+    
+    Project manager $\rightarrow$ product owner, scrum master
+    
+    Product backlog, sprints, kanban, daily huddle, scrum...
+    
+    Design Thinking
+    
+    ...
+    
+    }
+\end{frame}
+
+\begin{frame}{Agility}
+    
+    \mytext{
+    
+    \textbf{Agile Manifesto}
+
+    \medskip
+
+    \centering
+    
+    We are uncovering better ways of developing
+    software by doing it and helping others do it.\\
+    Through this work we have come to value:
+    
+    \medskip
+    
+    \textbf{Individuals and interactions} \small{over processes and tools}
+    
+    \textbf{Working software} \small{over comprehensive documentation}
+    
+    \textbf{Customer collaboration} \small{over contract negotiation}
+    
+    \textbf{Responding to change} \small{over following a plan}
+    
+    \medskip
+    
+    That is, while there is value in the items on
+    the right,\\ we value the items on the left more.
+    
+    \vfill
+    
+    \href{https://agilemanifesto.org/}{https://agilemanifesto.org/}
+        
+    }
+\end{frame}
+
+
+
+\begin{frame}{Design Thinking Process - "Rapid prototyping"}
+
+    \showmytikz{../shared/tikz/tikz-PM-design-thinking-wheel}
+
+    % \begin{tikzpicture}[node distance=0.5cm,every node/.style={scale=0.8}]
+    %     \usetikzlibrary{decorations.pathmorphing}
+    %     \node[draw] (e) at (0,0) {empathise};
+    %     \node[draw,right=of e] (d)  {\parbox{2cm}{define}};
+    %     \node[draw,right=of d] (i)  {\parbox{1.1cm}{ideate}};
+    %     \node[draw,right=of i] (p)  {\parbox{1.8cm}{prototype}};
+    %     \node[draw,right=of p] (t)  {test};
+    %     \draw[->] (e) -- (d);
+    %     \draw[->] (d) -- (i);
+    %     \draw[->] (i) -- (p);
+    %     \draw[->] (p) -- (t);
+    %     \draw[->,dashed] (d) to [bend left=45] (e); 
+    %     \draw[->,dashed] (i) to [bend left=45] (d); 
+    %     \draw[->,dashed] (p) to [bend left=45] (i); 
+    %     \draw[->,dashed] (t) to [bend left=45] (p);
+    %     \draw[->,dashed] (t) to [bend right=25] (e); 
+    % \end{tikzpicture}
+    
+    
+    \end{frame}
+
+\begin{frame}{Design Thinking Process - "Rapid prototyping"}
+    
+    \mytext{
+    
+    d.school institute / Standford University
+    
+    \begin{description}
+         \item[empathise] interviews, shadowing, seek to understand, non-judgemental
+         \item[define] personas, role objectives, decisions, challenges, pain points
+         \item[ideate] share ideas, all ideas worthy, diverge/converge, `yes and'-thinking, prioritise
+         \item[prototype] mockups, storyboards, keep it simple, fail fast, iterate quickly
+         \item[test] understand impediments, `what works?', role play, iterate quickly
+    \end{description}
+    }
+\end{frame}
+
+
+\begin{frame}{PDCA-Cylce}
+    \showmytikz[caption={PDCA Cycle (Agile)},label=fig:pdca-cycle-agile]{../shared/tikz/tikz-PM-pdca-wheel-1}
+    \mycomment{
+     Plan - do - check - act/adjust
+     
+    }
+\end{frame}
+
+
+
+\begin{frame}{Agile vs.\ Waterfall / Traditional}
+    
+    \mytext{
+    \begin{itemize}
+        \item agile is \textbf{feature based,} not \textbf{requirement based}
+        \item features are often fulfilled in parallel, while
+        \item milestones / requirements are completed one after another 
+        \item agile focuses on collaboration
+        \item rather than on takeovers
+        \item different information architecture
+        \item \textit{closer }collaboration
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Agile vs.\ Waterfall / Traditional}
+    
+    \mytext{
+    \begin{minipage}{0.7\textwidth}
+        \begin{itemize}
+            \item in agile, \textbf{time and budget often fixed}
+            \item features / requirements not exactly clear
+            \item quality assurance often more important than number of features
+            \item results often measurable by usability, rather than technically
+            \item features described by user stories
+            \item humans more important than specs
+        \end{itemize}
+    \end{minipage}
+    \vfill
+    \cite{rubin2014essential}
+    }
+\end{frame}
+
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    \begin{itemize}
+        \item if you cannot (yet) describe the exact solution:
+        \item describe the problem
+        \item describe the features
+    \end{itemize}
+
+    To find requirements, write \textbf{user stories.}
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+    Not so good: 
+    \par\medskip
+    \begin{quote}
+        Students want affordable shared office space.
+    \end{quote}
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+    Better:\par\medskip
+    \begin{quote}
+        As a [\dots], I want [\dots] to achieve [\dots]
+        \par\medskip    
+        As a student,\\ I want a shared office space\\ to better prepare for my exams.
+    \end{quote}
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+    Even better: concrete stories!
+    \par\medskip
+    Writing user stories helps you understand
+    \begin{itemize}
+        \item requirements
+        \item must-haves and nice-to haves
+        \item \textbf{user journeys!}
+    \end{itemize}
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+
+    Alice is a $\dots$. In the situation $\dots$, she wants $\dots$. First, she hears about the product via $\dots$. Then, she logs into the website. Then $\dots$
+    
+    These are realistic stories, like little novellas.
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    \textbf{Dieter} was born in Heidelberg. He is now a 22 years old student of Civil Engineering in Berlin. He wants to go on vacation. He has little experience or habit regarding his holidays; but he is seeking adventure, new people, and experience culture `from within'.
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+   \textbf{Ana} was born in Florence. She is now a 23 year old student of Comparative Linguistics in Rome. She shares a flat with two other students. In the summer, she regularly returns to Florence to her parents.
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+    \textbf{Jeff} is a 28 year old US-American entrepreneur with some experience with startups. On a back packing trip to Europe, he has met both Dieter and Ana. They wondered if there could be a way to make travelling for people their age easier, more affordable, and more fun than by booking hotel rooms. 
+    
+    }
+\end{frame}
+
+\begin{frame}{Requirements and User Stories}
+    
+    \mytext{
+    
+    \textbf{Carl} is a 64 year old clerk in a bank. (\dots)
+    }
+\end{frame}
+
+
+\begin{frame}{Tasks, Stories, Epics}
+        \showmytikz{../shared/tikz/tikz-tasks-stories-epics.tex}
+    \end{frame}
+
+\begin{frame}{Tasks, Stories, Epics}    
+    \showmytikz{../shared/tikz/forest-themes-tasks-stories-epics}
+        
+\end{frame}
+
+\begin{frame}{Planning Poker}
+    \showmytikz{../shared/tikz/tikz-planningpokercards}
+    \mycomment{
+    "Planning poker" is a tool to identify the complexity\\ (cost, duration, man hours...) of tasks.
+    
+    Every team member gets a set of cards.
+    
+    
+    
+    Team members should be diverse
+    
+    \begin{itemize}
+        \item programmers
+        \item testers
+        \item designers
+        \item users
+    \end{itemize}
+    
+    }
+\end{frame}
+
+\begin{frame}{Planning Poker}
+    
+    \mytext{
+    
+    \begin{itemize}
+        \item Discuss work breakdown, ie. stories / tasks
+        \item How "big" is this task?
+        \item Card points will correspond to costs / time
+        \item Put your card face down
+        \item Outliers explain their reasoning
+        \item Repeat
+        \item Use to plan your progress
+    \end{itemize}
+    
+    
+    }
+\end{frame}
+
+\begin{frame}{Describe Process and Tools Rather Than Milestones}
+    
+    \mytext{
+If you cannot plan milestones precisely,
+
+    \begin{itemize}
+        \item plan your method of working
+        \item PDCA-cycles, agile methods
+        \item bug tracking, ITC tools
+        \item Quality assurance (e.g. pair programming)
+    \end{itemize}
+    }
+\end{frame}
+
+
+
+
+\begin{frame}{Scrum Roles}
+    
+    \mytext{
+    \begin{minipage}{0.7\textwidth}
+        \begin{description}
+            \item[product owner] traditionally project sponsor; a management role; the customer; the customer within the company
+            \item[scrum master] the moderator; in between project sponsor and the team; shields team from project owner direct intervention; a communicator; leads scrums, daily huddles etc.
+            \item[team members] individual workers / coders / researchers; typically working in pairs \textbf{(pair programming)}
+        \end{description}
+    \end{minipage}
+    }
+\end{frame}
+
+
+
+\begin{frame}{Product Backlog}
+    
+    \mytext{
+    The PB is fundamentally a list of (required) features
+    \begin{itemize}
+        \item define required features
+        \item break down into work packages
+        \item prioritise
+        \item list is called \textbf{product backlog}
+    \end{itemize}
+    
+    While requirements may change during development,
+    
+    they should not change during sprint
+    
+    Work packages move to Kanban board
+    
+    }
+\end{frame}
+
+\begin{frame}{Product Backlog}
+    \begin{tabular}{r l l}
+        \toprule
+        & Feature / Slide & assigned to \\
+        \midrule
+        1 & Idea presentation & Alice \& Ellen \\
+        2 & Stakeholders & Bob \& Charlie \\
+        3 & Governance / organisation & Bob \& Charlie \\
+        4 & Users and user requirements & Doreen \\
+        5 & Solution design concept & Alice \& Ellen \\
+        6 & Work breakdown structure & Doreen \& Frank \\
+        7 & Time table / schedule / Gantt diagram & Frank \& Gilles \\
+        8 & Risk register / escalation management &  Gilles \& Herbert \\
+        9 & Core resource requirements, sum up & Herbert \\
+        \bottomrule
+    \end{tabular}
+    \mytext{
+    
+    Example:  \textbf{Project Presentation \& Governing Document}
+    \par\medskip
+    
+    }
+\end{frame}
+
+
+
+\begin{frame}{Kanban Board}
+    \showmytikz{../shared/tikz/tikz-PM-kanban-board-1}\end{frame}
+
+\begin{frame}{Kanban Board}        \showmytikz{../shared/tikz/tikz-PM-kanban-board-2}\end{frame}
+
+\begin{frame}{Kanban Board}        \showmytikz{../shared/tikz/tikz-PM-kanban-board-3}
+\end{frame}
+
+\begin{frame}{Sprints and Scrum}
+    
+    \mytext{
+    \begin{itemize}
+        \item rather than have milestones,
+        \item have regular `meetings' (PDCA-cycles)
+        \item a work period is called `sprint'
+        \item work efficiently
+        \item rather than to (artificial) deadlines
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Sprints and Scrum}
+    
+    \mytext{
+    \begin{itemize}
+        \item determine product backlog
+        \item determine which features to attack first
+        \item choose work packages for a sprint
+        \item during sprint, have daily meetings aka scrums
+        \item transparency (cloud based etc.)
+        \item "definition of done"
+    \end{itemize}
+    }
+\end{frame}
+
+
+\begin{frame}{Sprint Planning}
+    
+    \mytext{
+    \begin{minipage}{0.7\textwidth}
+        \textbf{A sprint} is a \textbf{time-boxed effort}
+        \begin{itemize}
+            \item determine length of sprints 
+            \item Select items from the product backlog to be achieved next
+            \item assign to teams or individuals
+            \item this is the \textbf{sprint backlog}
+            \item e.g. two weeks (or one), one month
+            \item review progress when each sprint is over
+        \end{itemize}
+    \end{minipage}
+    }
+\end{frame}
+
+\begin{frame}{Sprint Planning}
+    \showmytikz{../shared/tikz/tikz-PM-daily-scrum-cycle}
+    \mycomment{
+    
+    During each sprint, have daily scrum
+    \par\medskip
+    
+    
+    }
+\end{frame}
+
+\begin{frame}{Sprint Planning}
+    
+    \mytext{
+    
+    In a daily scrum
+    \begin{itemize}
+        \item `briefly stick your heads together' \textbf{for 15 min only!}
+        \item brief members on progress
+        \item find help to remove impediments
+        \item stand up meetings
+        \item information other teams must have
+        \item no discussion!
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Sprint Planning}
+    \showmytikz{../shared/tikz/tikz-burndownchart}
+    \mycomment{
+    
+    When sprint is over, have 
+    \begin{itemize}
+        \item Sprint review: present results
+        \item Sprint retrospective: review processes
+        \item Refine backlog (to include technical dept)
+    \end{itemize}
+
+    Repeat: next sprint planning
+    \par\medskip
+    Progress can be displayd on a \textbf{burndown chart.}
+    
+    
+    }
+\end{frame}
+
+\begin{frame}{Cyclic Management}
+    
+    \mytext{
+    
+    \begin{itemize}
+        \item circular thinking \textit{en vogue}
+        \item nothing is without consequences
+        \item learning is repetition
+        \item refinement through repetition
+        \item repetitions not identical
+        \item iterative, increments, evolutionary
+    \end{itemize}
+    
+    }
+\end{frame}
+
+\begin{frame}{Cyclic Management}
+    % \resizebox{!}{0.8\textheight}{
+    %     \begin{tikzpicture}
+    %     \draw[->] (180:5) -- (0:5);
+    %     \draw[->] (270:5) -- (90:5);
+    %     \foreach [count=\i] \m in {Analysis, Evaluation, Development, Planning}
+    %     \node at (-\i*90-135:5) {\i. \m};            
+    %         \draw[->] [domain=0:25.5,variable=\t,smooth,samples=75]
+    %     plot ({-\t r}: {0.007*\t*\t});
+    % \end{tikzpicture}
+    % }
+    
+    % \framebreak
+    
+    \showmytikz{../shared/tikz/tikz-PM-cyclic-management-wheel}
+    \end{frame}
+
+\begin{frame}{Cyclic Management}
+    
+    \mytext{
+    
+    \begin{itemize}
+        \item many types of phases
+        \item phases of different lengths
+        \item cycles and sub-cycles
+        \item increments of different sizes
+        \item same resources / people per phase?
+    \end{itemize}
+    
+    }
+\end{frame}
+
+
+\begin{frame}{Google's `Project Aristotle'}
+    
+    \mytext{
+    ...looked at different (Google) teams
+    
+    trying to establish reason(s) for efficiency
+    
+    Findings:
+
+    \begin{itemize}
+        \item Teams work differently
+        \item People work differently
+    \end{itemize}
+    
+    Most important factor:\par
+    \textbf{Psychological safety!}
+    
+    }
+\end{frame}
+
+\begin{frame}{Google's `Project Aristotle'}
+    
+    \mytext{
+    \begin{minipage}{0.65\textwidth}
+        \begin{description}
+            \item[Psychological safety] team members feel safe to take risks and be vulnerable in front of each other
+            \item[Dependability] team members get things done on time and meet (Google's) hight bar for excellence
+            \item[Structure and clarity] team members have clear roles, plans, and goals
+            \item[Meaning]  work is personally important to team members
+            \item[Impact] team members think their work matters and creates change
+        \end{description}
+    \end{minipage}
+    
+     Source: \href{https://rework.withgoogle.com/print/guides/5721312655835136/}{https://rework.withgoogle.com/print/guides/5721312655835136/}    
+        
+    }
+\end{frame}
+
+\begin{frame}{Google's `Project Aristotle'}
+    
+    \mytext{
+    \begin{itemize}
+        \item Teams can be rule bound or chaotic
+        \begin{itemize}
+            \item Rules must fit characters and work types
+            \item Efficiency correlates to psychological safety
+        \end{itemize}
+        \item Avoid a `no bad news' - environment
+        \item Trust must be mutual and substantiated
+        \item Trust is also based on commitment
+    \end{itemize}        
+        
+    }
+\end{frame}
+
+\begin{frame}{Google's `Project Aristotle'}        
+    \showmytikz{../shared/tikz/tikz-PM-project-aristotle-pyramid}
+    
+\end{frame}
+
+
+\begin{frame}{Maslow's Hierarchy of Needs}
+    \showmytikz{../shared/tikz/tikz-PM-maslow-hierarchy}
+    \mycomment{
+    
+    \vfill
+    Source: Maslow (1943) / commons
+    }
+\end{frame}
+
+
+\begin{frame}{Tuckman's Phases of Team Development}
+
+    \showmytikz{../shared/tikz/tikz-PM-tuckman-wheel}
+\end{frame}
+
+\begin{frame}{Tuckman's Phases of Team Development}
+    
+    \mytext{
+  \begin{itemize}
+      \item All stages repeat with each change in scope or team.
+      \item Productive only in "performing" stage
+      \item Accidents happen in "storming"
+      \item Team building is a permanent effort
+  \end{itemize}
+  
+  
+  \vfill
+   
+  \parbox{0.5\linewidth}{
+           Adding manpower to a project that is behind schedule delays it even more. 
+           
+           \flushright \textit{('Brook's Law')}
+  }
+  
+  
+  
+    }
+\end{frame}
+
+\begin{frame}{Team Work and Diversity}
+    
+    \mytext{
+    \begin{itemize}
+        \item `There is no `I' in team
+        \item `\textbf{t}oll, \textbf{e}in \textbf{a}nderer \textbf{m}acht's'
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Team Work and Diversity}
+    \showmytikz{../shared/tikz/tikz-team-i}
+\end{frame}
+
+\begin{frame}{Team Work and Diversity}
+    
+    \mytext{
+    \begin{itemize}
+        \item What exactly is a team?
+        \item Everybody equal, all different?
+        \item Diversity in a team
+        \item Coping with diversity is difficult
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Team Work and Diversity}
+    
+    \mytext{
+    \begin{itemize}
+        \item Don't surround yourself with yes-men 
+        \item Teams should have complimentary qualities
+        \item That is also a source of difficulty
+        \item Different ways to communicate
+        \item Different ways to cope with groups
+        \item Different ways to cope with hierarchy
+        \item ...
+        \item Diversity is a plus!
+    \end{itemize}    
+    }
+\end{frame}
+
+\begin{frame}{Work Culture}
+    
+    \mytext{
+    \begin{itemize}
+        \item Meet online / chat rooms?
+        \item Meet online / audio?
+        \item Meet online / video?
+        \item Meet IRL (in real life) - short
+        \item Work together IRL
+        \item Work together online
+    \end{itemize}
+    
+    }
+\end{frame}
+
+\begin{frame}{PDCA (again)}
+
+\showmytikz{../shared/tikz/tikz-PM-pdca-wheel-2}
+
+
+    
+\end{frame}
+
+% \begin{frame}{Updated Module Plan}
+% %\tikzset{every picture/.style={yscale=0.5}}
+%     \begin{ganttchart}[y unit chart=0.6cm,
+%     Milenew/.style={milestone/.append style={fill=red}}]{10}{17}
+%       %\gantttitle{PM Module}{7} \\
+%       \gantttitlelist{10,...,14}{1}\\
+%       \gantttitlelist{24,...,31}{1} \\
+%       %\ganttgroup{Participation}{7}{14} \\
+%       %\ganttbar{Research existing project}{1}{3} \\
+%       %\ganttmilestone{Presentation}{3} \\
+%       %\ganttgroup{Own Project}{7}{14} \\
+%       \ganttbar{Lectures}{10}{10} \\
+%       \ganttbar[bar/.append style={fill=blue}]{Autonomous Work}{10}{14} \\
+%       %\ganttbar{Identify Project}{7}{8} \\
+%       %\ganttmilestone[Milenew]{One-pager Project Outline}{8} \\ %\ganttnewline 
+%       \ganttbar[bar/.append style={fill=red}]{Prepare Presentations}{10}{14} \ganttnewline
+%       \ganttmilestone{Presentations}{14} \ganttnewline
+%       %\ganttmilestone{}{14} \\ %\ganttnewline 
+%       \ganttbar{Write Documents}{10}{17} \ganttnewline
+%       \ganttmilestone{Hand in Documents}{17}
+%     \ganttvrule{\footnotesize{\textbf{July 14th}}}{14}
+%     \ganttvrule{\footnotesize{Aug 1st}}{17}
+%     \end{ganttchart}
+% \end{frame}
+
+\begin{frame}{Recommendations}
+    
+    \mytext{
+    \begin{itemize}
+        \item Use regular meetups / daily huddle
+        \item Clarify roles / split requirements
+        \item Assign tasks to individuals / \textbf{pairs}
+        \item Agree on time table /dates
+        \item Agree on technology / platform / storage
+        \item Start early, prototype, etc.
+        \item Schedule deadline before actual deadline
+    \end{itemize}
+    }
+\end{frame}
+
+
+
+
+\begingroup
+    \ifdefined\setbeamercolor\setbeamercolor{background canvas}{bg=violet!20}\fi
+    \begin{frame}{TASK}
+    
+    \mytext{
+    \begin{itemize}
+        \item For your proposal, create regular meetings
+        \item Plan the tasks of your final assignement
+    \end{itemize}
+ 
+    
+    }
+\end{frame}
+\endgroup

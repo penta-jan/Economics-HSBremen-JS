@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+\begin{document}
+\newcommand{\mybox}[1]{\parbox[t]{2.5cm}{#1}}
+    \begin{tikzpicture}
+        \tikzset{every node/.style={
+            draw, rounded corners
+        }}
+        \node[anchor=north] (v) at (-0.5,0) {\mybox{The vision}};
+        \node[anchor=north] (s) at (-5,-1) {\mybox{Specialist
+        \footnotesize{
+        \begin{itemize} 
+        \setlength{\itemsep}{-1ex}\setlength{\itemindent}{-1em}
+            \item approach
+            \item compliance
+            \item demonstrated
+            \item resources
+            \item technology
+            \item solution ok
+            \item relationships
+            \item $\dots$
+        \end{itemize}
+        }
+        }};
+        \node[anchor=north] (c) at (-2,-1) {\mybox{Commercial
+        \footnotesize{
+        \begin{itemize}
+        \setlength{\itemsep}{-1ex}\setlength{\itemindent}{-1em}
+            \item business plan
+            \item on time
+            \item in budget
+            \item in quality
+            \item risks mitig.
+            \item profitable
+            \item opportunities
+            \item $\dots$
+        \end{itemize}
+        }
+        }};
+        \node[anchor=north] (u) at (1,-1) {\mybox{User
+        \footnotesize{
+        \begin{itemize}
+        \setlength{\itemsep}{-1ex}\setlength{\itemindent}{-1em}
+            \item needs met
+            \item features
+            \item safety
+            \item speed
+            \item robustness
+            \item desirability
+            \item familiarity
+            \item service
+            \item $\dots$
+        \end{itemize}
+        }
+        }};
+        \node[anchor=north] (d) at (4,-1) {\mybox{$\dots$}};
+        \draw (v) -- (s.north);
+        \draw (v) -- (c.north);
+        \draw (v) -- (u.north);
+        \draw (v) -- (d.north);
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,89 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\showmytreeraw[only 2]{forest-economic-policy.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            forked edge,
+            anchor= base west,
+            inner sep=2pt,
+            s sep=12pt,            
+            % blur shadow,
+            fill=white
+                }
+    [Economic policy, rotate=90
+        [Order policy,rotate=90
+            %STEPBEGIN{1}
+            [Property law]
+            [Competition law]
+            [Legal enforcement]
+            [Mandates]
+            [Requirements]
+            %STEPEND
+        ] 
+        [Process policy,rotate=90
+            [Fiscal policy (budgetary)
+                %STEPBEGIN{2}
+                [Taxes
+                    [direct taxes]
+                    [indirect taxes]
+                    [tax incentives]
+                ]
+                [Subsidies
+                    [production subsidies]
+                    [investment subsidies
+                        [loans
+                            [lost grants]
+                            [grants]
+                            [silent partnership]
+                            [government investment]
+                        ]
+                        [loan guarantees]
+                        [accelerated depreciation]
+                        [investment tax credits]
+                    ]
+                ]
+                [Transfers
+                    [to individuals]
+                    [to institutions]
+                    [to companies]
+                ]
+                [Public procurement
+                    [civilian]
+                    [military]
+                ]
+                [Communalisation
+                    [total]
+                    [partial (government investment)]
+                ]
+                %STEPEND
+            ]
+            [Monetary policy
+                %STEPBEGIN{3}
+                [Interest rates]
+                [Open market policy]
+                [Reserve requirements]
+                %STEPEND
+            ]
+            [Structural policy
+                %STEPBEGIN{3}
+                [Infrastructure]
+                [Site policy and spacial incentives]
+                [Public goods]
+                %STEPEND
+            ]
+            [Other fields
+                %STEPBEGIN{3}
+                [Information]    
+                [Communication]
+                [Foreign Trade Policy]
+                %STEPEND
+            ]
+        ]
+    ]
+    \end{forest}

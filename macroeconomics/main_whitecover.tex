@@ -1,0 +1,135 @@
+\documentclass[paper=a5,listof=totoc]{scrartcl}
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{multicol}
+
+\usepackage[scale=3,colorspec=0.96,text=internal~use~only]{draftwatermark}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 13th\or
+    April 20th\or
+    May 4th\or
+    May 11th\or
+    May 18th\or
+    June 1st\or
+    June 8th\or
+    June 15th\or
+    June 22nd\or
+    June 26th (Friday)\or
+    June 29th\or
+    July 6th\or
+    \else
+  \fi
+}
+
+\title{Macro-Economics}
+\author{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}\\Jan Suchanek}
+\date{Summer Semester \the\year\\\today}
+
+\automark{section}
+\pagestyle{scrheadings}
+\ihead{\leftmark}
+   \chead{}
+   \ohead{Macroeconomics}
+
+\setlength{\parskip}{1ex}
+
+\makeindex
+
+\begin{document}
+
+\onehalfspacing
+
+\maketitle
+
+\begin{abstract}
+    This is the script for the module Macroeconomics / Introduction to Economics, as taught at \noun{Hochschule Bremen}, Summer Semester 2026. It is a $1:1$ white-cover version of the slides. A hand \faHandPointRight\ indicates slide changes.
+
+    The module covers the most important aspects of Macroeconomics, and it does so in a visual manner, with a minimum of algebra.
+
+    AI has not been used for content creation, but for refactoring \LaTeX\ code and to generate the control questions in the annex.
+
+    This is work in progress.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\clearpage
+
+
+
+\include{MA_0_Organisation_and_Module_Walkthrough}
+
+
+\include{MA_1_Fundamentals}
+
+\include{MA_2_International_Order}
+
+\include{MA_3_World_Economy_GDPs}
+
+\include{MA_8_Economic_Policy}
+
+\include{MA_2_Labour_Market}
+
+\include{MA_9_Growth}
+
+\include{MA_10_Cycles}
+
+
+\include{MA_4_Money}
+
+\include{macroeconomics/MA_11_Social_Policy}
+
+% \redsection{Infrastructure and Regional Development}
+
+
+\include{MA_5_General_Equlibrium}
+
+\include{MA_6_ISLM}
+
+\include{MA_7_MudellFleming_GlobalMacro}
+
+
+\clearpage
+
+\listoffigures
+ 
+\listoftables
+
+\newpage
+
+   \nocite{*}
+    \printbibliography
+
+    \clearpage
+    \thispagestyle{empty}
+    
+    ~
+    
+    % \cleardoublepage
+    % \phantomsection
+    % \addcontentsline{toc}{section}{Control Questions}
+    % \includepdf[pages=-]{Macroeconomics/questionbank/ME_QuestionPool.pdf}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Index}
+\printindex
+
+\end{document}

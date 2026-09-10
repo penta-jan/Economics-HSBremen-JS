@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\usetikzlibrary{shadows.blur}
+\begin{document}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow = east,
+            % parent anchor = east,
+            % child anchor = west,
+            forked edge,
+            inner sep=2pt,
+            % blur shadow,
+            fill=white
+                }
+    [Large project
+        [sub-project [sub-sub-project [task][task][task]][sub-sub-project [...]][sub-sub-project [...]]]
+        [sub-project [sub-sub-project [...]][sub-sub-project[task][task]{\draw[->,red] (.south) -- (!s.north);}[task]{\draw[->,red] (.south) -- (!s.north);}][sub-sub-project[...]]]
+        [sub-project [sub-sub-project[...]][sub-sub-project[...]][sub-sub-project[...]]]
+    ]
+    \end{forest}
+\end{document}

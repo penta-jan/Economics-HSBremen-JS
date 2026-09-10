@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \def\mymultiplier{70}
+    \pgfmathtruncatemacro{\myresidual}{100-\mymultiplier}    
+    
+    \def\myvalue{8}
+    \def\mythreshold{1}
+    \foreach [count=\i] \ii in {0,1,2,...,7}
+    {
+        \ifdim\myvalue pt>\mythreshold pt
+        \begin{scope}[on background layer]   
+            \draw [fill=yellow] (\i,0) rectangle (\i+0.8,\myvalue);
+            \pgfmathparse{\myvalue*\mymultiplier/100}
+            \global\let\myvalue\pgfmathresult
+            \draw [fill=orange,opacity=0.4] (\i,0) rectangle (\i+0.8,\myvalue);
+        \end{scope}
+        \node at (\i+0.4,\myvalue-0.2) {\scriptsize \mymultiplier\%} ;
+        \node at (\i+0.4,\myvalue+0.2) {\scriptsize \myresidual\%} ;
+        \draw[->] (\i+0.7,\myvalue-0.2) -- (\i+1.2,\myvalue-0.2);
+        \fi
+    }
+\end{tikzpicture}
+\end{document}

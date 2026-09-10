@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \def\anzahl{4}
+    \def\myraise{1.5}
+    \def\myradius{3}
+    % \def\myinradius{2}
+        \foreach [count=\i] \ii/\farb [evaluate=\u using \i+1] in {
+            Plan/yellow,
+            Do/red,
+            Check/green,
+            Adjust/blue%
+            }{
+           \filldraw[\farb!40,draw=black]
+            (\i*360/\anzahl+360/\anzahl:\myradius-\myraise) arc (\i*360/\anzahl+360/\anzahl:\i*360/\anzahl:\myradius-\myraise)
+            --  (\i*360/\anzahl:\myradius-\myraise)
+           -- (\i*360/\anzahl+5:\myradius-0.5*\myraise)
+           -- (\i*360/\anzahl:\myradius) arc (\i*360/\anzahl:(\i*360/\anzahl+360/\anzahl):\myradius)           
+            -- (\i*360/\anzahl+5+360/\anzahl:\myradius-0.5*\myraise)
+            --    cycle;
+           
+ 
+            \draw
+            [decoration={
+            text along path,
+            text={|\sffamily|\i.},
+            text align={center},
+            raise=18*\myraise},decorate]
+            (\i*360/\anzahl:\myradius) arc (\i*360/\anzahl:\i*360/\anzahl+360/\anzahl:\myradius);            
+            \draw
+            [decoration={
+            text along path,
+            text={|\sffamily|\ii},
+            text align={center},
+            raise=8*\myraise},decorate]
+            (\i*360/\anzahl:\myradius) arc (\i*360/\anzahl:\i*360/\anzahl+360/\anzahl:\myradius);
+        }
+        % \draw[fill=lightgray] (0:0) circle (\myinradius) node {Energiesektor};
+    \end{tikzpicture}
+
+\end{document}

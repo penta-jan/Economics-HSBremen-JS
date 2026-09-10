@@ -1,0 +1,116 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\showmytreeraw[only 3,4]{forest-bop-imf.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [Balance of Payments
+        [Current Account
+            %STEPBEGIN{1}
+            [Goods and Services
+                [Trade in goods
+                    %STEPBEGIN{2}
+                    [Genearal merchanidse]
+                    [Goods for processing]
+                    [Repairs on goods]
+                    [Goods procured in ports by carriers]
+                    [Nonmonetary gold]
+                    %STEPEND
+                ]
+                [Trade in services
+                    %STEPBEGIN{2}
+                    [Transportation]
+                    [Travel]
+                    [Communication services]
+                    [Insurance services]
+                    [Financial services]
+                    [Computer and information services]
+                    [Royalties and license fees]
+                    [Other business services]
+                    [Personal{,} cultural and recreational services]
+                    [Government serives]
+                    %STEPEND
+                ]
+            ]
+            [Income
+                [Compensation of employees]
+                [Investment incomes
+                    %STEPBEGIN{2}
+                    [Direct investment]
+                    [Portfolio investment]
+                    [Other investment]
+                    %STEPEND
+                ]
+            ]
+            [Current transfers
+                [General government
+                    %STEPBEGIN{2}
+                    [taxes]
+                    [social contributions]
+                    [etc...]
+                    %STEPEND
+                ]
+                [Other sectors
+                    %STEPBEGIN{2}
+                    [Workers' remittances]
+                    [Other transfers]
+                    %STEPEND
+                ]
+            ]
+            %STEPEND
+        ]
+        [Capital \& Financial Account
+            %STEPBEGIN{3}
+            [Capital Acc.
+                [Capital transfers
+                    %STEPBEGIN{4}
+                    [General government]
+                    [Other]
+                    %STEPEND
+                ]
+                [$\Delta$ immaterial assets]
+            ]
+            [Financial Acc.
+                [Direct investment]
+                [Portfolio investment
+                    %STEPBEGIN{4}
+                    [Assets]
+                    [Liabilities]
+                    %STEPEND
+                ]
+                [Other investment
+                    %STEPBEGIN{4}
+                    [Assets]
+                    [Liabilities]
+                    %STEPEND
+                ]
+                [\textbf{Reserve assets (Reserve Account)}
+                    %STEPBEGIN{4}
+                    [Monetary gold]
+                    [Special drawing rights]
+                    [Reserve position in the Fund]
+                    [Foreign exchange
+                        [Currency and deposits]
+                        [Securities]
+                    ]
+                    [Other claims]
+                    %STEPEND
+                ]
+            ]
+            %STEPEND
+        ]
+    ]
+    \end{forest}
+
+ 
+
+    

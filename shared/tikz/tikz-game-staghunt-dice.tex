@@ -6,7 +6,7 @@
 \begin{document}
 \begin{tikzpicture}[remember picture]
 
-    
+    \tikzset{every node/.style={font=\sffamily}}
 
     \setcounter{pcell}{0}
     \matrix (M) [
@@ -15,7 +15,7 @@
         row sep=-\pgflinewidth,
         nodes={anchor=center, draw=none, inner sep=0pt},
         column 1/.style={nodes={minimum width=5em, align=right,color=red}},
-        row 1/.style={nodes={minimum height=2em, align=center}},
+        row 1/.style={nodes={minimum height=2em, align=center,color=blue}},
     ]{
              & \strut stag              & \strut hare            \\
     stag     & \payoff{\bdice{6}}{\rdice{6}}   & \payoff{\bdice{5}}{\rdice{0}}   \\
@@ -35,10 +35,10 @@
 
 
     \ifstep{1}{
-        \draw[->,>=latex,thick]    (AB-al) -- (AA-al);      
+        \draw[->,>=latex,thick,blue]    (AB-al) -- (AA-al);      
         % \draw[->,>=latex]    (BB-al) -- (AB-al);     
         % \draw[->,>=latex]    (BA-al) -- (AA-al);     
-        \draw[->,>=latex,thick]    (BA-al) -- (BB-al);     
+        \draw[->,>=latex,thick,blue]    (BA-al) -- (BB-al);     
 
     % \node[below=0.3em of M-3-2, anchor=north] {\scriptsize $3$};
     % \node[below=0.3em of M-3-3, anchor=north] {\scriptsize $4$};

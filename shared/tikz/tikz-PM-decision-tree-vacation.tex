@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \tikzstyle{block1}    = [rectangle, rounded corners,  minimum width=2cm, minimum height=1cm, text centered, draw, fill=blue!20, text width=2cm]
+    \tikzstyle{block2}    = [rectangle, rounded corners,  minimum width=2cm, minimum height=1cm, text centered, draw, fill=blue!20, text width=2cm]
+    \tikzstyle{decision}  = [diamond, minimum width=2cm, minimum height=1cm, text centered, draw, fill=blue!20, text width=2cm] % node distance=3cm, inner sep=0pt
+    \tikzstyle{line}      = [draw, -latex']
+    \begin{tikzpicture}[node distance=1cm]
+            \node[decision] (0) {want/can travel?};
+            \node[block2,below right=of 0] (2) {research};
+            \node[block2,below =of 2] (3) {wrapup};
+            \node[decision,below=of 3] (4) {decide};
+            \node[block2, below left=of 4] (5) {A};
+            \node[block2, below right=of 4] (6) {B};
+            \node[block2, left=of 5] (9) {remain at home};
+            \draw[->] (0) to [out=225, in=90] node[above left] {no} (9);
+            \draw[->] (0) -- node[above] {yes} (2);
+            \draw[->] (2) --  (3);
+            \draw[->] (3) --  (4);
+            \draw[->] (4) -- (5);
+            \draw[->] (4) -- (6);
+            \draw[->] (4) to[out=180, in=90] node[above] {default} (9);
+            \draw[dotted] (-4.5,-3.5) node[left] {deadline} -- (6,-3.5) ;
+            \draw[dotted] (-4.5,-5.5) node[left] {deadline} -- (6,-5.5) ;
+        \end{tikzpicture}
+
+\end{document}

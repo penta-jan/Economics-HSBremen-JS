@@ -1,0 +1,56 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[edges]{forest}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+
+ 
+
+\renewcommand\familydefault{\sfdefault}
+
+
+
+
+
+\begin{document}
+% \bracketset{action character=@} dann mit @\command einfügbarer kram
+\def\myboxwidth{20ex}%
+\begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=6pt,
+            s sep=1pt
+                }
+                % Theme: Wishlist. Source: https://scrumandkanban.co.uk/theme-epic-story-task/
+    [\parbox{\myboxwidth}{
+            Epic: As a customer, I would like to have a wishlist so I can buy things later
+        }
+        [\parbox{\myboxwidth}{
+            Story 1: As a customer, I want to be able to save a product in my wishlist
+        }
+            [\parbox{\myboxwidth}{
+                Task 1: Put "add to wishlist" button on every page
+            }
+            ]
+            [\parbox{\myboxwidth}{
+                Task 2: Create new DB to store wishlist items
+            }
+            ]
+        ]
+        [\parbox{\myboxwidth}{
+            Story 2: As a customer, I want to be able to view my wishlist and transfer into basket}
+           [\parbox{\myboxwidth}{
+                Task 3: Create page to display user's wishlist
+            }
+            ]
+            [\parbox{\myboxwidth}{
+                Task 4: Add "view wishlist" button to homepage
+            }
+            ]      
+        ]
+    ]
+    \end{forest}
+\end{document}

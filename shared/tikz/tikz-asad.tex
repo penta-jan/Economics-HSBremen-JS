@@ -1,0 +1,131 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,2.5,3,4,4.5,5,6,7,8,9,10}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->,>=latex] (0,0) -- (8,0) node (Y) [right] {$Y$};
+        \draw[->,>=latex] (0,0) -- (0,8) node (i) [above] {$P$};
+
+        \node[left] at (0,0) {\phantom{$P_1$}};
+
+        \coordinate (A) at (1,6);
+            % \coordinate (A2) at (2,2);
+        \coordinate (B) at (6,1);
+        
+        \coordinate (C) at (3,1);
+            % \coordinate (C2) at (5,2);
+        \coordinate (D) at (5,7);
+        \path[name path=AD] (A) -- (B);
+        \path[name path=AS] (C) -- (D);
+        % \path[name path=AD] plot[smooth] coordinates {(A) (A2) (B)};
+        % \path[name path=AS] plot[smooth] coordinates {(C) (C2) (D)};
+        \path [name intersections={of=AD and AS, by=E}];
+
+        %% some points out of equilibrium
+            \coordinate (imbal3) at ($(C)!0.2!(D)$);
+            \coordinate (imbal4) at ($(D)!0.2!(C)$);
+            \coordinate (imbal1) at ($(A)!0.2!(B)$);
+            \coordinate (imbal2) at ($(B)!0.2!(A)$);            
+
+        %%  IS Curve
+        \ifstep{1}{
+            \draw  (A) node[above right] {$AD$} -- (B);
+        }
+
+
+        %%  Points on IS
+
+        \ifstep{2}{
+
+            \filldraw (imbal1) node[above right] {$Q_1$} circle (2pt);
+            \filldraw (imbal2) node[above right] {$Q_2$} circle (2pt);
+
+        
+        }
+
+        \ifstep{2.5}{
+            \draw[red,dashed] plot[smooth] coordinates {($(E)+(3,-1)$) (E) ($(E)+(-2,4)$)};            
+        
+        }
+
+
+
+        %% AS Curve, equilibrium
+        \ifstep{3}{
+            \draw (C) -- (D) node[above] {$AS$};
+
+        }
+
+        %% Points on AS
+        \ifstep{4}{
+
+            \filldraw (imbal3) node[below right] {$Q_3$} circle (2pt);
+            \filldraw (imbal4) node[below right] {$Q_4$} circle (2pt);
+
+        }
+
+        \ifstep{4.5}{
+            \draw[red,dashed] plot[smooth] coordinates {($(E)+(-3,-1)$) (E) ($(E)+(2,4)$)};
+        
+        }
+
+        %% Equilibrium
+
+        \ifstep{5}{
+            \filldraw (E) circle (2pt) node[left] {$A$};
+            \draw[dashed] (i |- E) node [left] {$P_1$} -- (E) -- (E |- Y) node [below] {$Y_1$};        
+        }
+
+
+        \ifstep{2}{
+            \ifstep{4}{
+                \begin{scope}[red]
+
+                    \draw[->,>=latex,green,ultra thick] (imbal1) -- (E);
+                    \draw[->,>=latex,green,ultra thick] (imbal2) -- (E);
+                    \draw[->,>=latex,green,ultra thick] (imbal3) -- (E);
+                    \draw[->,>=latex,green,ultra thick] (imbal4) -- (E);
+                    
+                \end{scope}
+            }
+        }
+        
+        %% IS curve shift
+        \ifstep{6}{
+            \begin{scope}[color=red]
+                    \draw[name path=AD2] ($(A)+(1.5,0)$)   node[above right] {$AD'$} -- ($(B)+(1.5,0)$)  ;
+                    \path [name intersections={of=AD2 and AS, by=F1}];
+                    \filldraw (F1) circle (2pt) node[right] {$B$};
+                \draw[dashed] (i |- F1) node [left] {$P_2$} -- (F1) -- (F1 |- Y) node [below] {$Y_2$};
+                \draw[->,>=latex,ultra thick, blue] (E) -- (F1);
+                \draw[->] (1,7.25) -- node[above] {\scriptsize $ISLM$}  (2,7.25) ;
+
+            \end{scope}
+        }
+
+        %% AS curve pivot
+        \ifstep{7}{
+            \begin{scope}[color=green]
+                    \path[name path=AD2] ($(A)+(1.5,0)$) -- ($(B)+(1.5,0)$)  ;            
+                % \draw [->] (6.7,6) -- node[above] {\scriptsize $\Delta M>0$} (7.5,6);
+                \begin{scope}[xshift=1.7cm]
+                    \draw[name path=AS2] ($(E)+(-3,-0.5)$)  -- ($(E)+(3,0.5)$)  node[above right] {$AS'$};
+                    \path [name intersections={of=AD2 and AS2, by=F2}];
+                \end{scope}
+                \ifstep{8}{
+                    \filldraw (F2) circle (2pt) node[above] {$C$};
+                    \draw (F2) -- (i |- F2) node [left] {$P_3$};
+                    \draw (F2) -- (F2 |- Y) node [below] {$Y_3$};
+                    \draw[->,>=latex,ultra thick, blue] (E) -- (F2);
+                }
+                % \draw[->] (5.5,7.25) -- node[above] {\scriptsize $\Delta M^s>0$} (7.5,7.25) ;
+
+            \end{scope}
+        }
+
+    \end{tikzpicture}
+\end{document}

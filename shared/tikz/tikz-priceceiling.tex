@@ -7,8 +7,9 @@
 \usepackage{hsbcommon}
 \begin{document}
 \begin{tikzpicture}
-    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [right] {$x$};
-    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [above] {$p$};
+% \tikzset{>=latex,every node/.style={opacity=0}}
+    \draw[->] (0,0) node[below] {\phantom{$X_i$}} -- (8,0) node [opacity=1,right] {$x$};
+    \draw[->] (0,0) node[left] {\phantom{$Y_mi$}} -- (0,8) node [opacity=1,above] {$p$};
 
     %% ── All coordinates unconditional ────────────────────────────────────────
     \coordinate (A) at (0,7);
@@ -33,8 +34,8 @@
     \path [name intersections={of=demand and quantity, by=R}]; % demand at Q_Z
 
     %% ── Always visible: free-market equilibrium ──────────────────────────────
-    \node[above right] at (A) {$DD$};
-    \node[above]       at (F) {$SS$};
+    \node[opacity=1,above right] at (A) {$DD$};
+    \node[opacity=1,above]       at (F) {$SS$};
 
     \draw[dashed] (0,|- X) node [left] {$p^*$} -- (X) -- (X |-,0) node [below] {$x^*$};
 

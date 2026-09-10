@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.4cm]{1}{9}
+      \gantttitlelist{1,...,9}{1} \\
+      \ganttbar{Support old technology}{1}{8}\\
+      \ganttgroup{Rollout new technology}{1}{9} \\
+    %   \ganttbar[bar/.append style={fill=red}]{Plan the cabin (4)}{1}{4} \\
+      \ganttbar{Find flaws}{1}{2}\\
+      \ganttbar{Develop new technology}{2}{5}\\
+      \ganttbar[bar/.append style={fill=red}]{}{1}{3}
+      \ganttbar{Prepare and train users}{4}{9}\\
+      \ganttbar{Rollout}{6}{9}\\
+      \ganttbar{Fadeout}{6}{8}
+    \end{ganttchart}
+
+\end{document}

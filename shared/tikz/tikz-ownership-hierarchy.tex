@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}
+    \tikzset{every node/.style={minimum height=3ex,draw,rounded corners}}
+        \node  (sponsor) at (0,0) {Project Sponsor};
+        \node[right=of sponsor] (public) {Public Bodies};
+        \node[below of=sponsor] (holder)   {Project Holder (\emph{Projektträger})};
+        \node[right=of holder] (consultants) {Consultants};
+        \node[below of=holder] (pmo)  {Project Management Office(s)};
+        \node[below of=pmo] (contractor)  {Contractors};
+        \node[right=of pmo] (others) {...};
+        \node[right=of contractor] (users) {(Future) Users};
+        \draw[->] (sponsor) -- (holder);
+        \draw[->]  (holder) -- (pmo);
+        \draw[->] (pmo) -- (contractor);
+    \end{tikzpicture}
+\end{document}

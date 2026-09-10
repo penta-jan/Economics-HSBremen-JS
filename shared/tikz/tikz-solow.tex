@@ -1,0 +1,74 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\usepackage{hsbcommon}
+\begin{document}
+
+% Define each curve's function exactly once, so \path and \draw
+% can both call it by name instead of repeating the formula.
+\pgfmathdeclarefunction{fk}{1}{\pgfmathparse{2.8*sqrt(#1)}}      % y = f(k)
+\pgfmathdeclarefunction{deltak}{1}{\pgfmathparse{#1}}            % y = delta*k
+\pgfmathdeclarefunction{ik}{1}{\pgfmathparse{1.8*sqrt(#1)}}      % y = i(k) = s*y
+
+\begin{tikzpicture}[every plot/.style={smooth}]
+        \draw[->,>=latex] (0,0) node[left] {\phantom{$y^*$}} -- (8,0) node[right]  {$k$};
+        \draw[->,>=latex] (0,0)  node[below] {\phantom{$k^*$}}-- (0,8) node[above]  {$y$};
+
+
+%% define all the paths
+
+        \path[domain=0:5.5, name path=k] plot ({\x},{fk(\x)}) ;
+
+        \path[domain=0:5.5, name path=delka] plot ({\x},{deltak(\x)});
+
+        \path[domain=0.1:6, name path=i] plot ({\x},{ik(\x)}) ;
+
+        \path [name intersections={of=i and delka,by=E}];
+
+        \path [name path=kstar] (E|-,0) -- (E|-,8);
+        \path [name intersections={of=k and kstar,by=F}];
+
+        \path[name path=consumption] (E|-,0) -- (E);
+        \path[name path=investment] (E) -- (F);
+
+%% draw steps
+
+\ifstep{1}{
+    \begin{scope} 
+        \draw[domain=0:5.5] plot ({\x},{fk(\x)}) node[right] {$y=f(k)={Ak^*}^\alpha$};
+    \end{scope}
+
+}
+
+\ifstep{2}{
+    \begin{scope}
+        \draw[domain=0:5.5] plot ({\x},{deltak(\x)}) node[right] {$\delta k$};        
+    \end{scope}
+}
+
+\ifstep{3}{
+    \begin{scope}[red]
+        \draw[domain=0.1:6] plot ({\x},{ik(\x)}) node[right] {$i_t=sy_t$};
+        \filldraw (E) node[below right] {E} circle (2pt);
+        \draw[dashed] (0,|-E) node[left] {} -- (E) -- (E|-,0) node[below] {$k^*$};        
+    \end{scope}
+}
+
+\ifstep{4}{
+    \begin{scope}[red]
+        \draw[dashed] (F|-,0) -- (F|-,8);
+        \filldraw (F) node[below right] {F} circle (2pt);
+        \draw[dashed] (F) -- (0,|-F) node[left] {$y^*$};
+    \end{scope}
+}
+
+\ifstep{5}{
+    \begin{scope}[blue]
+        \draw[ultra thick, blue] (E|-,0) -- node[right] {\footnotesize consumption} (E);
+        \draw[ultra thick,green] (E) -- node[right] {\footnotesize investment} (F);
+    \end{scope}
+}
+
+    \end{tikzpicture}
+\end{document}

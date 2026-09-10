@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage[edges]{forest}
+\usetikzlibrary{shadows.blur}
+\begin{document}
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow = east,
+            % parent anchor = east,
+            % child anchor = west,
+            forked edge,
+            inner sep=2pt,
+            % blur shadow,
+            fill=white,
+            anchor=base west
+                }
+    [Project
+        [Main Work Package [Work Package [task][task][task]][Work Package [...]][Work Package [...]]]
+        [Main Work Package [Work Package [...]][Work Package [task][task][task]][Work Package[...]]]
+        [Main Work Package [Work Package[...]][Work Package[...]][Work Package[...]]]
+    ]
+    \end{forest}
+\end{document}

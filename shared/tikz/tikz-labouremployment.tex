@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,0) node[below] {\phantom{$0_0$}} -- (8,0) node[below left] {\scriptsize unemployment rate};
+        \draw[->] (0,0) node[left] {\phantom{$0_0$}} -- (0,8) node[above] {\scriptsize real wage};
+
+        \path [name path=pricesetting] (0,4) -- (7,4) ;
+        \path [name path=wagesetting]  (1,7) .. controls (3,3) .. (7,2); 
+        \path[name intersections={of=pricesetting and wagesetting,by=E}];
+
+        %% price setting
+        
+        \draw (0,4) -- (7,4) node[above] {\scriptsize price setting} node[below] {\scriptsize per markup};
+
+        %% wage setting
+
+        \ifstep{1,wagesetting}{
+            \draw (1,7) .. controls (3,3) .. (7,2) node[below] {\scriptsize wage acceptance}; 
+    
+            \filldraw (E) circle (2pt);
+            \draw[dashed] (0,|- E) -- (E) -- (E|-,0) node[below] {$E^*$};
+        }
+
+        %% shift price setting
+
+        \ifstep{2,shiftpricesetting}{
+            \begin{scope}[red]
+                \path [name path=pricesetting2] (0,5) -- (7,5) ;
+                    \path[name intersections={of=pricesetting2 and wagesetting,by=E2}];
+                    \draw (0,5)  -- (7,5);                
+                \filldraw (E2) circle (2pt);
+                \draw[dashed] (0,|- E2) -- (E2) -- (E2|-,0) node[below] {$E_2$};
+            \end{scope}
+        }
+
+        \ifstep{3,shiftwagesetting}{
+            \begin{scope}[red]
+                \path [name path=wagesetting2]  (1,8) .. controls (3,4) .. (7,3); 
+                \draw (1,8) .. controls (3,4) .. (7,3) ; 
+                \path[name intersections={of=pricesetting and wagesetting2,by=E3}];
+                \filldraw (E3) circle (2pt);
+                \draw[dashed] (0,|- E3) -- (E3) -- (E3|-,0) node[below] {$E_3$};                
+            \end{scope}
+        }
+            
+    \end{tikzpicture}
+\end{document}

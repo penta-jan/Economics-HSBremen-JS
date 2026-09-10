@@ -1,0 +1,101 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+
+\begin{document}
+    \begin{tikzpicture}
+    \def\mydist{1.55}
+    \tikzset{
+        every node/.style={font=\scriptsize\sffamily},
+        team/.style={
+            draw, 
+            rounded corners},
+        box/.style={
+            draw, 
+            rounded corners,
+            text width=1cm,
+            text centered
+            }
+        }
+
+    \node[box] at (5.5,2) {Project Manager};
+
+    %%% PMO
+        
+        \foreach[count=\i] \myfunction in {%
+            Tech,
+            User,
+            Legal,
+            Finance,
+            Comm.,
+            \dots%
+        }
+        {
+
+            \node[box] (L\i) at (\mydist*\i,0) {
+                Head of\\ \strut{\myfunction}
+                };
+            \node[box,draw=none] (T\i) at (\mydist*\i,-1) {\strut{\myfunction}\ Team};
+            \node[draw,rounded corners,
+            fit=(L\i) (T\i)]{};
+        }
+        
+        \begin{scope}[red,thick]
+            \node (PMO) at (5.5,1) {Project Management Office};
+            \node[draw,inner sep=1.5ex,rounded corners,fit=(PMO) (L1) (L2) (L3) (L4) (L5) (L6)] {};
+        \end{scope}
+
+
+    %%% Steering Group
+
+    \ifstep{2}{
+        \begin{scope}[green]
+        \foreach[count=\i] \myfunction in {%
+            Tech,
+            User,
+            Legal,
+            Finance,
+            Comm.,
+            \dots%
+        }
+        {
+
+            \node[box] (R\i) at (\mydist*\i,4) {
+                Repr.~of\\ \strut{?}
+                };
+            % \draw[dashed] (R\i) -- (L\i);
+        }
+        
+            \node (SG) at (5.5,3) {Steering Group};
+            \node[draw,thick,inner sep=1.5ex,rounded corners,fit=(SG) (R1) (R2) (R3) (R4) (R5) (R6)] {};
+        \end{scope}
+    }
+    
+    \ifstep{3}{
+        \begin{scope}[black]
+        \foreach[count=\i] \myfunction in {%
+            Tech,
+            User,
+            Legal,
+            Finance,
+            Comm.,
+            \dots%
+        }
+        {
+
+            \node[box,fill=white] (R\i) at (\mydist*\i,4) {
+                Repr.~of\\ \strut{\myfunction}
+                };
+            \draw[dashed] (R\i) -- (L\i);
+        }
+            \node[green] (SG) at (5.5,3) {Steering Group};
+            \node[draw,thick,green,inner sep=1.5ex,rounded corners,fit=(SG) (R1) (R2) (R3) (R4) (R5) (R6)] {};        
+        \end{scope}
+    }
+    
+        
+    \end{tikzpicture}
+\end{document}
+

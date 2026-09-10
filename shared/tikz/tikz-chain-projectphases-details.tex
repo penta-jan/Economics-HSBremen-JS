@@ -1,0 +1,73 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{hsbcommon}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7}}\makeatother
+
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+\begin{document}
+    \tikzset{
+    >=stealth',
+      punktchain/.style={
+        rectangle, 
+        rounded corners, 
+        % fill=black!10,
+        draw=black, very thick,
+        text width=25em, 
+        minimum height=3em, 
+        text centered, 
+        on chain},
+      line/.style={draw, thick, <-},
+      element/.style={
+        tape,
+        top color=white,
+        bottom color=blue!50!black!60!,
+        minimum width=8em,
+        draw=blue!40!black!90, very thick,
+        text width=10em, 
+        minimum height=3.5em, 
+        text centered, 
+        on chain},
+      every join/.style={->, thick,shorten >=1pt},
+      decoration={brace},
+      tuborg/.style={decorate},
+      tubnode/.style={midway, right=2pt},
+      every node/.style={font=\sffamily}
+    }
+    \begin{tikzpicture}
+     [node distance=.4cm, start chain=going below,]
+     
+     \ifstep{1}{
+     \node[punktchain, join] (idea) {\textbf{Analyse, ideate:} first substantial idea};
+     }
+
+     \ifstep{2}{
+     \node[punktchain, join] (onepage)      {\textbf{Formulate} sketch or proposal (written and presentation)};
+     }
+
+     \ifstep{3}{
+     \node[punktchain, join] (ini)      {\textbf{Identify and engage} core stakeholders, get Letters of Intent (LoIs), permissions};
+     }
+
+     \ifstep{4}{
+     \node[punktchain, join] (plan)      {\textbf{Formulate Project Governance Report:} user requirements, solution design, stakeholders, work breakdown structure, project plan, governance, identity, strategy and controls, risk register};
+     }
+
+     \ifstep{5}{
+     \node[punktchain, join] (chang)      {\textbf{Organisational go-ahead,} incorporation, kick-off;  ground-breaking ceremony; going public, press and website relesase};
+     }
+     
+     \ifstep{6}{
+     \node[punktchain, join] (init)      {\textbf{Execution} with documentation, control loops, reporting, change management, communication, accounting, human resources management etc.};
+     }
+     
+     \ifstep{7}{
+     \node[punktchain, join] (init)      {\textbf{Transformation,} consolidation, compensation, hand-over, closure, review};
+     }
+    %  \draw[->,bend right=90] (chang) to (anal);
+    %  \draw[->,bend right=90] (chang) to (exec);
+    \end{tikzpicture}
+
+    
+\end{document}

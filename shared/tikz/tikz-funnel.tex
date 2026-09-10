@@ -1,0 +1,45 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{0,1,2,3}}\makeatother
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+
+
+    \tikzset{
+        funnelpart/.pic={
+            \draw[ultra thick] (0,1.6) -- (0,0) -- (1,-1) -- (1,-2);
+        }
+    }
+
+    \path (0,0) pic [pic type=funnelpart];
+    \path (3.2,0) pic [pic type=funnelpart,xscale=-1];
+
+
+    \foreach \myx in {1,...,12}
+    \foreach \myy in {1,...,6}
+    {
+        \filldraw (\myx/4,\myy/4) circle (2pt);
+    }
+
+    \foreach \i in {3,...,6}
+    \foreach \myx in {3,...,\i}
+    {
+        \filldraw[red] (1.75-\myx/4,\i/4-1.5) circle (2pt);
+    }
+    \foreach \i in {3,...,6}
+    \foreach \myx in {3,...,\i}
+    {
+        \filldraw[red] (1.5+\myx/4,\i/4-1.5) circle (2pt);
+    }
+
+
+    \foreach \myx in {1,...,4}
+    \foreach \myy in {1,...,9}
+    {
+        \filldraw[blue] (\myx/4+1,\myy/4-2.25) circle (2pt);
+    }
+
+
+\end{tikzpicture}
+\end{document}

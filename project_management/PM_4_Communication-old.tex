@@ -1,0 +1,596 @@
+\section{Communication}
+
+
+\begin{frame}{Project Governance Report}
+    \begin{itemize}
+        \item The `constitution' of a project
+        \item A contract between stakeholders
+        \item The actual plan, typically comprising
+        \begin{itemize}
+            \item user requirements ('need' or reason)
+            \item detailed solution design
+            \item stakeholder analysis
+            \item work breakdown structure 
+            \item definition of work packages and responsibilities
+            \item project plan: network / BPMN plan
+            \item project plan: temporal plan / Gantt diagram
+            \item governance plan: corporation, controls
+            \item identity and roles
+            \item communication strategy 
+            \item documentation, controls and reporting
+            \item risk register
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+
+\newcommand{\mybox}[1]{\fbox{\parbox[t]{2.5cm}{#1}}}
+\begin{frame}{Perspectives on the Vision}  % depends on: forest
+
+    
+    \showmytikz{../shared/tikz/tikz-PM-vision-perspectives}
+    
+ 
+    \vfill
+    Source: following \cite[p.113]{Roberts}
+\end{frame}
+
+\begin{frame}{Communication Strategy}
+    \begin{tabular}{llllll}
+        \toprule
+         Stakeholder & Deliverable & Frequency & Owner & Type & $\dots$ \\
+         \midrule
+         Sponsors       & report & monthly & PM & presentation & $\dots$ \\
+         Tech team 1    & meeting & weekly & PM & coordination & $\dots$ \\
+         Sales team     & update & bi-weekly & PM & key facts & $\dots$ \\
+         Users    & mailout & monthly & sales & briefing & $\dots$ \\
+         $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$ &  $\dots$ \\
+         \bottomrule
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Communication Strategy}        
+    \begin{itemize}
+        \item Strategy per phase differently
+        \item Information `points' into Gantt-diagram
+        \item Schedule communication
+        \item Communication is often \textbf{a milestone}
+        \item Communication \textbf{flows along organisational chart} (?)
+        \item \textbf{Communication is key!}
+        \item Communciation is \textbf{not a one-way task!}
+    \end{itemize}
+    
+\end{frame}
+
+
+
+
+% \newcommand{\mybox}[1]{\fbox{\parbox{2.5cm}{\centering #1}}}
+\begin{frame}{Communication in Project Management}
+    \showmytikz{../shared/tikz/tikz-PM-communication-directions}
+    \par
+    Following \cite[p.~205]{KerznerHarold2017Pm:a}
+\end{frame}
+
+
+\renewcommand{\mybox}[1]{\fbox{
+    \begin{minipage}[t][10ex][t]{2cm}
+        \centering #1
+    \end{minipage}
+}}
+% \begin{frame}{Customer Communciations}
+%     \begin{tikzpicture}[scale=0.7]\small
+%         \def\myx{3}
+%         \def\myy{3.5}
+%         \node       at (-\myx,\myy+5.5cm) {CUSTOMER};
+%         \node       at (\myx,\myy+5.5cm) {CONTRACTOR};
+%         \node (sp1) at (-\myx,\myy) {\mybox{Project Sponsor or Executive}};
+%         \node (pm1) at (-\myx,0) {\mybox{Project Manager or Contracts Officer}};
+%         \node (em1) at (-\myx,-\myy) {\mybox{Employees}};
+        
+%         \node (sp2) at (\myx,\myy) {\mybox{Project Sponsor or Executive}};
+%         \node (pm2) at (\myx,0) {\mybox{Project Manager or Contracts Officer}};
+%         \node (em2) at (\myx,-\myy) {\mybox{Employees}};
+        
+%         \draw[<->] (sp1) -- (pm1);
+%         \draw[<->] (pm1) -- (em1);
+
+%         \draw[<->] (sp2) -- (pm2);
+%         \draw[<->] (pm2) -- (em2);
+        
+%         \draw[<->,dashed] (sp1) -- node[above] {informal} (sp2) ;
+%         \draw[<->] (pm1) -- node[above] {\textbf{formal}} (pm2) ;
+%         \draw[<->,dashed] (em1) -- node[above] {informal} node[below] {\emph{trouble?}} (em2) ;
+%     \end{tikzpicture}
+%     \cite[p.205]{KerznerHarold2017Pm:a}
+% \end{frame}
+
+
+
+
+
+
+% \begin{frame}{Information transmission (Shannon/Weaver)}
+
+%     The most simple view is technial:
+    
+%     \medskip
+
+%     \begin{tikzpicture}
+%         \node (S) at (0,0) {\fbox{Sender}};
+%         \node (I) at (3,0) {\fbox{Information}};
+%         \node (R) at (6,0) {\fbox{Receiver}};
+%         \draw[->] (S) -- (I);
+%         \draw[->] (I) -- (R);
+%     \end{tikzpicture}
+    
+        
+%     \begin{itemize}
+%         \item `Magic Bullet', `Hypodermic needle'
+%         \item `Information Deficit Model':
+%         \item Assumes receiver `needs to know'
+%       %  \item \emph{But: }  who is active? The sender, or the receiver, or both? $\rightarrow$ Uses and gratification theory
+
+%     \end{itemize}   
+%     Source: \cite{ShannonClaudeElwood1964Tmto} etc.
+    
+%     \framebreak
+    
+%     \begin{itemize}
+%         \item Is this \emph{information} or merely \emph{data}?
+%         \item Information can be measured, and this measure is the same as for \emph{entropy}
+%         \item Information cannot be \textbf{compressed}
+%         \item Information is \textbf{data with meaning}
+%         \item But what is \textbf{meaning?}
+%         \item When is communication \textbf{meaningful?}
+%     \end{itemize}
+
+%     \framebreak
+    
+    
+%     \begin{tikzpicture}
+%         \usetikzlibrary{arrows};
+%         \node (S) at (0,0) {\fbox{Sender}};
+%         \node (T) at (2,0) {\fbox{Transmitter}};
+%         \node (s1) at (4,-1) {distortion};
+%         \node (C) at (4,0) {\fbox{Channel}};
+%         \node (R) at (6,0) {\fbox{Receiver}};
+%         \node (D) at (8,0) {\fbox{Destination}};
+%         \draw[->] (S) -- (T);
+%         \draw[->] (T) -- (C);
+%         \draw[->] (C) -- (R);
+%         \draw[->] (R) -- (D);
+%         \draw[->] (s1) -- (C);
+%         \draw[->,bend left=45] (D) to node[above] {feedback} (S);
+%     \end{tikzpicture} 
+    
+%     Source: e.g. \cite{ShannonClaudeElwood1964Tmto} 
+% \end{frame}
+
+
+
+\begin{frame}{Information Economics - Principal-Agent-Problem }
+    \showmytikz{../shared/tikz/tikz-PM-principal-agent}
+    \end{frame}
+
+\begin{frame}{Information Economics - Principal-Agent-Problem }    \begin{minipage}{0.7\textwidth}
+    
+        \begin{itemize}
+            \item The principal needs some external good or service which is beyond her own expertise.
+        
+            \item The agent delivers this good or service, but has far more expertise about the solution, its making, and so forth, than the principal. 
+        
+            \item There is an \textbf{information bias.} The result is \textbf{inefficiency.}
+            
+            \item This results in higher prices and lower volumes.
+        
+        \end{itemize}
+    
+    \end{minipage}
+    \par\medskip
+    Source (example for energy efficiency): \cite{OgdenCharlesKay1985Tmom}
+
+\end{frame}
+
+\begin{frame}{Adverse selection, moral hazard}
+
+    Some examples: 
+    
+    \medskip
+    
+    \begin{minipage}{0.7\textwidth}
+        \begin{enumerate} 
+            \item the home-builder knows less than the architect less than the actual site-manager...
+            \item risk-prone seek insurance, risk-adverse don't
+            \item bad products need advertisement
+        \end{enumerate}
+    \end{minipage}
+    \par\medskip
+    Source (classic): \cite{GeorgeA.Akerlof1970TMfL}
+\end{frame}
+
+    
+% \begin{frame}{Principal-Agent-Problem in the Electricity Sector}
+
+%     \fbox{\parbox{0.4\textwidth}{
+%     Principal: \textbf{The Public}
+%     \begin{itemize}
+%         \item `I want electricity cheap'
+%         \item `I want electricity green'
+%         \item `I want electriciy reliably'
+%     \end{itemize}
+%     }}
+%     $\leftrightarrow$
+%     \fbox{\parbox{0.4\textwidth}{
+%     Agent: \textbf{Energy provider (?)}
+%     \begin{itemize}
+%         \item `Sector coupling...'
+%         \item `Smart meters...'
+%         \item `There is a trade-off between...'
+%     \end{itemize}
+%     }}
+    
+% \end{frame}
+
+
+
+% \subsection{Knowledge Gaps II: Oneself}
+
+
+% \begin{frame}{Difficulties to self-estimate}
+%     \begin{itemize}
+%         \item Information asymmetries exist between people
+%         \item These are difficult to identify
+%         \item Identification requires research (!)
+%         \item Dunning-Kruger effect: inability to judge how complex / complicated something unknown is leads to excessive self-confidence
+%         \begin{itemize}
+%             \item `I drive better than the average driver'
+%             \item `I am not a good guitar player'
+%             \item `everyone can paint something like that'
+%             \item `why is nobody interested in my project?'
+%         \end{itemize}
+%     \end{itemize}
+%     \vfill
+%     Literature tipp: \cite{kahneman2011thinking}
+% \end{frame}
+
+\begin{frame}{Four Stages of Competence}
+    \showmytikz{../shared/tikz/tikz-PM-four-stages-competence}
+    \vfill
+    Source: own design / commons
+\end{frame}
+
+\begin{frame}{'Rumsfeld'-Diagramm}
+    \showmytikz{../shared/tikz/tikz-PM-rumsfeld-matrix}
+    \par\medskip
+    [own design / commons]
+\end{frame}
+
+\begin{frame}{Planning is Information Processing}
+    \begin{itemize}
+        \item You plan something \textbf{novel}
+        \item There are necessarily \textbf{unknowns}
+        \item You must start with \textbf{research}
+        \item Research is \textbf{asking questions}
+        \item You involve \textbf{people}
+        \item You must \textbf{communicate}
+        \item Knowledge is a \textbf{resource}
+        \item People \textbf{must know what they must konw}
+        \item \textbf{How do you know what someone knows?}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Systems communicate}
+%     \begin{tikzpicture}
+%         \draw (0,0) rectangle (2,2) ;
+%         \draw (3,2) rectangle (5,0) ;
+%         \draw[->] (2,0.5) -- (3.2,0.5);
+%         \draw[<-] (2,1.5) -- (3,1.5);
+%         \draw (3.2,0.2) rectangle (4,1);
+%     \end{tikzpicture}
+%     \par
+%     \cite{ParsonsTalcott1951Tss}, \cite{luhmann1984soziale}, \cite{RopohlGunter1979ESdT}
+    
+%     \framebreak
+    
+%     \begin{tikzpicture}[scale=0.5]
+%         \path[fill=blue] (0,-2) -- (0,-3) -- (0.75,-3) -- (0.75,-5) -- (5.25,-5) -- (5.25,-4) -- (6,-4) -- (6,-2) -- (4,-2) -- (4,-4) -- (4.75,-4) -- (4.75,-4.5) -- (1.25,-4.5) -- (1.25,-3) -- (2,-3) -- (2,-2) -- cycle;
+%         \path[draw,thick] (0,-1) -- (0,-3) -- (0.75,-3) -- (0.75,-5) -- (5.25,-5) -- (5.25,-4) -- (6,-4) -- (6,-1);
+%         \path[draw,thick] (4,-1) -- (4,-4) -- (4.75,-4) -- (4.75,-4.5) -- (1.25,-4.5) -- (1.25,-3) -- (2,-3) -- (2,-1);
+%     \end{tikzpicture}
+
+% \end{frame}
+
+
+% \begin{frame}{Planning Communication}
+
+%     \begin{tikzpicture}
+%       \draw (-1,-1.5) rectangle (7,4.5);
+%       \node[draw, diamond,fill=red] (m1) at (1,1.5) {};
+%       \draw (1.5,0) rectangle (3,3);
+%       \node[draw, diamond,fill=red] (m2) at (3.5,1.5) {};
+%       \draw (4,0) rectangle (5.5,3);
+%       \node[draw, diamond,fill=red] (m3) at (6,1.5) {};
+%       \draw[->] (m3) -- (5.5,1.5);
+%       \draw[->] (4,1.5) -- (m2);
+%       \draw[->] (m2) -- (3,1.5);
+%       \draw[->] (1.5,1.5) -- (m1);
+%       \node (def) at (0,4) {definition};
+%       \node (cont) at (3.5,-1) {control};
+%       \draw[->] (def) -| (m2);
+%       \draw[->] (cont) -- (m2);
+%       \draw[->, dashed] (4,3) -- (def);
+%       \draw[->] (def) -- (1.5,3);
+%       \draw[->] (cont) -- (3,0);
+%     \end{tikzpicture}
+    
+%     Definition comes before the milestone,
+    
+%     control after the milestone.
+    
+%     \framebreak
+    
+%     \begin{itemize}
+%         \item You must define milestones
+%         \item You must communicate milestones
+%         \item Milestones are communicated
+%     \end{itemize}
+    
+%     \framebreak
+    
+%     %\begin{adjustbox}{width=\textwidth}
+%         \smartdiagramset{back arrow disabled=true}
+%         \smartdiagram[flow diagram:vertical]{understand, formulate, communicate}
+%     %\end{adjustbox}
+    
+%     \framebreak
+    
+%     PDCA Cycle (Plan - do - check - ajust)
+    
+%     \smartdiagram[circular diagram:clockwise]{Plan,Do,Check,Adjust}
+    
+%     \framebreak
+    
+%     \smartdiagram[flow diagram:vertical]{discuss, agree, communicate}
+    
+% \end{frame}
+
+% \begin{frame}{Making a Decision}
+%     \begin{itemize}
+%         \item Your job is to \textbf{identify} the best solution
+%         \item and to \textbf{commit everyone} to it
+%         \item Modern manager is a \textbf{problem solver}
+%         \item Most problems are information / communication based
+%         \item Formulate s.m.a.r.t.\ goals
+%     \end{itemize}
+% \end{frame}
+
+
+
+\begin{frame}{Planning Communication}
+    \begin{itemize}
+        \item Processes: physical work flows: \textbf{what}
+        \item Financial, material flows: \textbf{with what}
+        \item People: \textbf{who}
+        \item People must \textbf{know and love their roles}
+        \item \textbf{Communication must be planned}
+        \item Give room for communication
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Information in Gantt Diagram}
+      \begin{ganttchart}[y unit chart=0.4cm]{1}{9}
+      \gantttitlelist{1,...,9}{1} \\
+      \ganttgroup{Project cabin}{1}{9} \\
+      \ganttbar[bar/.append style={fill=red}]{Plan the cabin (4)}{1}{4} \\
+      \ganttbar{Site management}{2}{9} \\
+      \ganttgroup{Carpenters}{2}{5} \\
+      \ganttbar{Procure Wood (1)}{2}{2} \\
+      \ganttbar{Construct (3)}{3}{5} \\
+      \ganttgroup{Utility Guys}{3}{7} \\
+      \ganttbar{Plan Utilities (1)}{3}{4} \\
+      \ganttbar{Procure Utilities (1)}{5}{5} \\
+      \ganttbar{Utilities (2) }{6}{7}\\
+      \ganttgroup{Interior Guys}{4}{9} \\
+      \ganttbar{Plan Equip (1)}{4}{4}\\
+      \ganttbar{Procure Equip (1)}{5}{7}\\
+      \ganttbar{Equip (2)}{8}{9}
+      \ganttvrule{}{4}
+    \end{ganttchart}
+    \end{frame}
+
+\begin{frame}{Information in Gantt Diagram}    
+    \begin{ganttchart}[y unit chart=0.4cm]{1}{12}
+      \gantttitlelist{1,...,12}{1} \\
+      \ganttgroup{Project cabin planning}{1}{7} \\
+        \ganttbar{First design}{2}{2} \\
+        \ganttbar{Discuss with architect(s)}{3}{4} \\
+        \ganttbar{Discuss with contractors}{5}{6} \\
+        \ganttbar{Discuss with authorities}{4}{6} \\
+        \ganttbar{Discuss with users}{1}{3} 
+        \ganttbar{Discuss with users}{5}{8} \\
+        \ganttgroup{Execution}{8}{12} \\
+        \ganttbar{Start building}{7}{9} \\
+        \ganttbar{Start equipping}{9}{9}
+        \ganttlink{elem1}{elem2}
+        \ganttlink{elem2}{elem3}
+        \ganttlink{elem3}{elem8}
+        \ganttlink{elem6}{elem9}
+    \end{ganttchart}
+    \end{frame}
+
+\begin{frame}{Information in Gantt Diagram}    
+    \begin{itemize}
+        \item Communication \textbf{is key}
+        \item Communication is \textbf{involvement}
+        \item \textbf{Planning is communication}
+    \end{itemize}
+    
+\end{frame}
+
+% \begin{frame}{Scope Creep}
+%     \begin{itemize}
+%         \item Sponsor realises he wants more
+%         \item Management realises product needs more
+%         \item Milking the sponsor or milking the mananger?
+%         \item What is necessary?
+%         \item How can this all be paid for?
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Product Description}
+%     \begin{itemize}
+%         \item Title
+%         \item Purpose
+%         \item Composition
+%         \item Derivation
+%         \item Format
+%         \item Audience
+%         \item Quality criteria
+%         \item Quality method
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{The Three Constraints}
+%     \begin{tikzpicture}[scale=0.8]
+%         \coordinate (A) at (0,0);
+%         \coordinate (B) at (-3,-5);
+%         \coordinate (C) at (3,-5);
+%         \coordinate (X) at (0,-3.35);
+%         \draw (A) -- (B) node[midway,above,rotate=60] {Costs};
+%         \draw (B) -- (C) node[midway,below] {Quality/Performance/Technology};
+%         \draw (C) -- (A) node[midway,above,rotate=-60] {Time};
+%         \path[draw=blue, -stealth, rotate=90,
+%       postaction={decorate,decoration={text effects along path,
+%         text={\ Within good customer relations \ }, text align=center, 
+%         text effects/.cd, 
+%           text along path, 
+%           every character/.style={fill=white, yshift=-0.5ex}}}]
+%       (X) circle (4);
+%     \end{tikzpicture}
+    
+%     Probably the most important slide.
+% \end{frame}
+
+% \begin{frame}{Scope Freeze Milestones}
+%     \begin{itemize}
+%         \item A date where the scope cannot be altered
+%         \item Typically, specifications are set
+%         \item Also design freeze, customer approval freeze...
+%         \item De-couple sponsor from product
+%         \item De-couple project management from product?
+%         \item There is agile!!
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{MoScCoW - Scheme}
+%     \begin{description}
+%         \item[M] must have: non-negotiable
+%         \item[S] should have: not vital, but adds significant value
+%         \item[C] could have: nice to have but small impact when left out
+%         \item[W] will not have: stuff without priority in the given time frame.
+%     \end{description}    
+% \end{frame}
+
+
+\newcommand{\myax}[1]{
+    \item 
+    \begin{minipage}[t]{0.7\textwidth}
+        #1
+    \end{minipage}
+}
+\begin{frame}{Axioms of Communication (Watzlawick)}
+    \begin{enumerate}
+        \myax{ \textbf{One cannot not communicate;}\par\medskip every behaviour is a form of communication,\par\medskip  including body language and silence.}
+        \end{enumerate}
+\end{frame}
+
+\begin{frame}{Axioms of Communication (Watzlawick)}\begin{enumerate}
+        
+        \myax{Every communication has a \textbf{content} and \textbf{relationship} aspect.\par\medskip The relationship aspect classifies the content aspect (metacommunication).\par\medskip Communication include more information than is present in the meanings of the words.}
+        \end{enumerate}
+\end{frame}
+
+\begin{frame}{Axioms of Communication (Watzlawick)}\begin{enumerate}
+        \myax{The punctuation (breaks, communication frequency) is key for the relationship aspect. \par\medskip
+        Each person in a communication structure their communication flow differently and interprets their own behaviour as simply a reaction to the behaviour of the other person.\par\medskip
+        Each event during a communication is seen as the cause of the next. (Most people are very unaware of their communication.)}
+        \end{enumerate}
+\end{frame}
+
+\begin{frame}{Axioms of Communication (Watzlawick)}\begin{enumerate}
+        
+        \myax{Human communication uses multiple media and channels.\par\medskip (Communication is never a singular act.)}
+        \end{enumerate}
+\end{frame}
+
+\begin{frame}{Axioms of Communication (Watzlawick)}\begin{enumerate}
+        
+        \myax{Communication can be \textbf{symmetric} or \textbf{not.} \par\medskip
+        (Communication has to do with status and power.)
+        }
+    \end{enumerate}
+
+    \vfill
+    Source: \cite{watzlawick2000menschliche}
+\end{frame}
+
+
+
+\begin{frame}{Four-Sides-Model (Schulz von Thun)}
+    \showmytikz{../shared/tikz/tikz-PM-four-sides-model}
+    \vfill
+    Source: \cite{von2013miteinander}
+\end{frame}
+
+\begin{frame}{Framing / "Sandwiching"}
+    Positive - negative - positive
+    
+    \medskip
+    
+    \begin{quote}
+        Dear xy,\\
+        Thank you for... \\
+        Unfortunately...\\
+        We will do our best...\\
+        Yours faithfully...
+    \end{quote}
+    
+    \medskip
+
+    \begin{quote}
+        I like the approach, thank you for your work etc.\\
+        I suggest next time / in additon we...\\
+        Then we will reach perfection...\\
+    \end{quote}
+
+    Positive mindset and attitude! 
+
+\end{frame}
+
+
+\begin{frame}{Overcommunication}
+    \begin{itemize}
+        \item Communication should come to conclusions
+        \item Decision making
+        \item Proper meeting culture
+        \item Talk until everything is said
+        \item Talk more
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Meeting culture}
+    \begin{itemize}
+        \item Have an agenda - in calendar/invitation
+        \item Agree on agenda
+        \item Follow agenda
+        \item Project agenda (onto screen)
+        \item Make a protocol with decisions
+        \item[] - ideally by typing into agenda
+        \item Make agenda for next meeting
+        \item Distribute protocol - in calendar        
+    \end{itemize}
+\end{frame}

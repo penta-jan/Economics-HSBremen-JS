@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \draw (0,0) rectangle (2,2) ;
+        \draw (3,2) rectangle (5,0) ;
+        \draw[->] (2,0.5) -- (3.2,0.5);
+        \draw[<-] (2,1.5) -- (3,1.5);
+        \draw (3.2,0.2) rectangle (4,1);
+    \end{tikzpicture}
+\end{document}

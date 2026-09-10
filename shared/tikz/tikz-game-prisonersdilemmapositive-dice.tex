@@ -1,6 +1,6 @@
 \documentclass{standalone}
 %% Show/hide steps for standalone work — edit this line:
-\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
 
 
 \usepackage{hsbcommon}
@@ -12,7 +12,7 @@
         matrix of nodes,
         column sep=-\pgflinewidth,
         row sep=-\pgflinewidth,
-        nodes={anchor=center, draw=none, inner sep=0pt},
+        nodes={anchor=center, draw=none, inner sep=0pt,color=blue},
         column 1/.style={nodes={minimum width=5em, align=right,color=red}},
         row 1/.style={nodes={minimum height=2em, align=center}},
     ]{
@@ -34,8 +34,8 @@
 
 
     \ifstep{1}{
-        \draw[->,>=latex,thick]    (AA-al) -- (AB-al);      
-        \draw[->,>=latex,thick]    (BA-al) -- (BB-al);      
+        \draw[->,>=latex,thick,blue]    (AA-al) -- (AB-al);      
+        \draw[->,>=latex,thick,blue]    (BA-al) -- (BB-al);      
     
     }
    

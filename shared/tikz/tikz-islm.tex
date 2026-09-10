@@ -1,6 +1,6 @@
 \documentclass{standalone}
 %% Show/hide steps for standalone work — edit this line:
-\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7,8,9,10}}\makeatother
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,2.5,3,4,4.5,5,6,7,8,9,10}}\makeatother
 \usepackage{tikz}
 \usetikzlibrary{intersections,calc}
 \usepackage{amsmath}
@@ -13,11 +13,16 @@
         \node[left] at (0,0) {\phantom{$i_1$}};
 
         \coordinate (A) at (1,6);
+            % \coordinate (A2) at (2,2);
         \coordinate (B) at (6,1);
+        
         \coordinate (C) at (1,2);
+            % \coordinate (C2) at (5,2);
         \coordinate (D) at (6,5);
         \path[name path=is] (A) -- (B);
         \path[name path=lm] (C) -- (D);
+        % \path[name path=is] plot[smooth] coordinates {(A) (A2) (B)};
+        % \path[name path=lm] plot[smooth] coordinates {(C) (C2) (D)};
         \path [name intersections={of=is and lm, by=E}];
 
         %% some points out of equilibrium
@@ -38,7 +43,12 @@
 
             \filldraw (imbal1) node[above right] {$P_1$} circle (2pt);
             \filldraw (imbal2) node[above right] {$P_2$} circle (2pt);
+
         
+        }
+
+        \ifstep{2.5}{
+            \draw[red,dashed] plot[smooth] coordinates {($(E)+(-2,3)$) (E) ($(E)+(3,-1)$)};    
         }
 
 
@@ -54,9 +64,12 @@
 
             \filldraw (imbal3) node[below right] {$P_3$} circle (2pt);
             \filldraw (imbal4) node[below right] {$P_4$} circle (2pt);
-        
+
         }
 
+        \ifstep{4.5}{
+            \draw[red,dashed] plot[smooth] coordinates {($(E)+(-3,-1)$) (E) ($(E)+(2,3)$)};    
+        }
 
         %% Equilibrium
 

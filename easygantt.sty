@@ -1,0 +1,192 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{easygantt}[2022/02/04 Easy Gantt]
+
+\RequirePackage{pgfgantt}  
+\RequirePackage{datatool}
+\RequirePackage{etoolbox} % for ifdefempty
+\RequirePackage{environ}
+
+\newcommand{\oldend}{}
+\newcommand{\schluss}{}
+\newcounter{task}
+\newcounter{oldtask}
+\newcounter{milestone}
+
+
+\NewEnviron{meingantt}[1]{
+    \def\dauer{#1}
+    \pgfmathtruncatemacro\jahre{\dauer}
+    \pgfmathtruncatemacro\quartale{\dauer*4}
+    \pgfmathtruncatemacro\monate{\dauer*12}
+    \def\dauer{\monate}
+    \begin{ganttchart}[
+        y unit chart=0.5cm, 
+        title height=1, 
+        y unit title=0.5cm,
+        Milenew/.style={milestone/.append style={fill=orange}},
+        bar/.append style={fill=lightgray}]
+        {1}{\monate}
+         \foreach \y in {1,...,\jahre}{
+            \gantttitle{Y\y}{12}
+            }\\
+         \foreach \y in {1,...,\jahre}{
+            \foreach \q in {1,...,4}{
+                \gantttitle{Q\q}{3}
+            }
+            }\\
+         \foreach \y in {1,...,\jahre}{
+            \foreach \m in {1,...,12}{
+                \gantttitle{\m}{1}
+            }
+            }\\          
+        \BODY
+    \end{ganttchart}
+}
+
+\NewEnviron{meinganttq}[1]{
+    \def\dauer{#1}
+    \pgfmathtruncatemacro\jahre{\dauer}
+    \pgfmathtruncatemacro\quartale{\dauer*4}
+    \def\dauer{\quartale}
+    \begin{ganttchart}[
+        y unit chart=0.5cm, 
+        title height=1, 
+        y unit title=0.5cm,
+        Milenew/.style={milestone/.append style={fill=orange}},
+        bar/.append style={fill=lightgray}]
+        {1}{\quartale}
+         \foreach \y in {1,...,\jahre}{
+            \gantttitle{Y\y}{4}
+            }\\
+         \foreach \y in {1,...,\jahre}{
+            \foreach \q in {1,...,4}{
+                \gantttitle{Q\q}{1}
+            }
+            }\\
+        \BODY
+    \end{ganttchart}
+}
+
+\NewEnviron{meinganttw}[1]{
+    \def\dauer{#1}
+    \pgfmathtruncatemacro\jahre{\dauer}
+    \pgfmathtruncatemacro\quartale{\dauer*5}
+    \def\dauer{\quartale}
+    \begin{ganttchart}[
+        y unit chart=0.5cm, 
+        title height=1, 
+        y unit title=0.5cm,
+        Milenew/.style={milestone/.append style={fill=orange}},
+        bar/.append style={fill=lightgray}]
+        {1}{\quartale}
+         \foreach \y in {1,...,\jahre}{
+            \gantttitle{W\y}{5
+            }
+            }\\
+         \foreach \y in {1,...,\jahre}{
+            \foreach \q in {1,...,5}{
+                \gantttitle{D\q}{1}
+            }
+            }\\
+        \BODY
+    \end{ganttchart}
+}
+
+\makeatother
+    \NewDocumentCommand{\barmile}{m m m m}{
+            % #1 task
+            % #2 start
+            % #3 duration
+            % #4 milestone name
+        \renewcommand{\oldend}{\myend}
+        \ifdefempty{#2}
+           {
+            \pgfmathtruncatemacro\oend{\oldend+1}
+                \ifdefempty{#3}{
+                    \pgfmathtruncatemacro\myend{\dauer}
+                }{
+                    \pgfmathtruncatemacro\myend{\oldend+#3}
+                }
+             \ganttbar[name=bar\thetask,bar/.append style={fill=lightgray}]{#1}{\oend}{\myend}\\
+             \ganttlink{mile\theoldtask}{bar\thetask}
+          }{
+                \ifdefempty{#3}{
+                    \pgfmathtruncatemacro\myend{\dauer}
+                }{
+                    \pgfmathtruncatemacro\myend{#2+#3-1}
+                }
+            \ganttbar[name=bar\thetask,bar/.append style={fill=yellow}]{#1}{#2}{\myend}\\
+
+          }
+        \ifdefempty{#4}
+        {}{
+        \ganttmilestone[name=mile\thetask]{#4}{\myend}\\
+        \ganttlink{bar\thetask}{mile\thetask}
+        }
+    }
+\makeatletter
+
+\makeatother
+    \NewDocumentCommand{\barmilerule}{m m m}{
+            % #1 denominator
+            % #2 start
+            % #3 duration
+       \renewcommand{\oldend}{\myend}
+       \ifdefempty{#3}{
+           \pgfmathtruncatemacro\myend{\dauer}
+           }{
+           \ifdefempty{#2}
+                {
+            \pgfmathtruncatemacro\myend{\oldend+#3}
+            \ganttvrule[vrule/.append style={orange, solid, thin}]{\footnotesize{#1}}{\myend}           
+                }
+                {
+            \pgfmathtruncatemacro\myend{#2+#3-1}
+            }
+        }
+        \ganttvrule[vrule/.append style={orange, solid, thin}]{\footnotesize{#1}}{\myend}
+    }
+\makeatletter
+
+
+\newcommand{\barmilelink}[2]{
+    \ganttlink{mile#1}{bar#2}
+}
+
+
+
+
+
+\NewDocumentCommand\inserttable{m}{
+    \DTLloaddb{#1}{#1}
+    \DTLforeach{#1}{%
+        \task=task,\start=start,\duration=duration,\milestone=milestone}{%
+            \setcounter{oldtask}{\thetask}
+            \stepcounter{task}
+            \barmile{Task \arabic{task}: \task}{\start}{\duration}{\milestone}
+        }
+     \setcounter{task}{0}
+    % \DTLforeach{#1}{%
+    %          \task=task,\start=start,\duration=duration,\milestone=milestone}{%
+    %          \stepcounter{task}
+    %         \barmilerule{M\arabic{task}}{\start}{\duration}
+    %     }
+} 
+
+\NewDocumentCommand\showmilestones{m}{
+    % \DTLloaddb{#1}{#1}
+    % \DTLforeach{#1}{%
+    %     \task=task,\start=start,\duration=duration,\milestone=milestone}{%
+    %         \setcounter{oldtask}{\thetask}
+    %         \stepcounter{task}
+    %         \barmile{T\arabic{task}. \task}{\start}{\duration}{\milestone}
+    %     }
+    \setcounter{milestone}{0}
+    \DTLforeach{#1}{%
+             \task=task,\start=start,\duration=duration,\milestone=milestone}{%
+             \ifdefempty{\milestone}{}{
+                 \stepcounter{milestone}
+                \barmilerule{M\arabic{milestone}}{\start}{\duration}
+            }
+        }
+} 

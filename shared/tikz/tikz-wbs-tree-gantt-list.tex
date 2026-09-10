@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+    \def\mywidth{20ex}\relax
+    \def\mydist{17ex}\relax
+    \begin{tikzpicture}[
+    every node/.style={draw, circle, text width=0.8*\mywidth, align=center, font={\sffamily}}
+    ]
+        \node[fill=yellow] (wbs) at (0:\mydist) {2.\\ Tree chart (WBS)};
+        \node[fill=green] (tab) at (90:\mydist) {1.\\ Flow chart (BPMN)};
+        \node[fill=lightgray] (lis) at (180:\mydist) {3.\\ List form };
+        \node[fill=red] (gan) at (270:\mydist) {4.\\ Gantt chart};
+    
+        \draw[<->,ultra thick,>=latex] (wbs) -- (tab);
+        \draw[<->,ultra thick,>=latex] (wbs) -- (lis);
+        \draw[<->,ultra thick,>=latex] (wbs) -- (gan);
+        
+        \draw[<->,ultra thick,>=latex] (tab) -- (wbs);
+        \draw[<->,ultra thick,>=latex] (tab) -- (gan);
+        \draw[<->,ultra thick,>=latex] (tab) -- (lis);
+        
+        \draw[<->,ultra thick,>=latex] (lis) -- (gan);
+    
+    \end{tikzpicture}
+    
+\end{document}

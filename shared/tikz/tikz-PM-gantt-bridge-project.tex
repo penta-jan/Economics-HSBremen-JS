@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{ganttchart}[y unit chart=0.4cm]{1}{9}
+      \gantttitlelist{1,...,9}{1} \\
+      \ganttgroup{Project New Bride}{1}{9} \\
+    %   \ganttbar[bar/.append style={fill=red}]{Plan the cabin (4)}{1}{4} \\
+      \ganttbar{Build temporary bridge}{1}{1}\\
+      \ganttmilestone{Divert traffic}{1}\\
+      \ganttgroup{Traffic on temporary bridge}{2}{7}\\
+      \ganttbar{Demolish old bride}{2}{3} \\
+      \ganttbar{Build new bride}{4}{7} \\
+      \ganttmilestone{Inauguration, divert traffic}{7}\\
+      \ganttgroup{Traffic on new bridge}{8}{9}\\
+      \ganttbar{Demolish temporary bridge}{8}{9}
+    \end{ganttchart}
+
+\end{document}

@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \node (S) at (0,0) {\fbox{Sender}};
+        \node (I) at (3,0) {\fbox{Information}};
+        \node (R) at (6,0) {\fbox{Receiver}};
+        \draw[->] (S) -- (I);
+        \draw[->] (I) -- (R);
+    \end{tikzpicture}
+\end{document}

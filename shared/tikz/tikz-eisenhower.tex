@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+            \node[anchor=east] at (-0.5,2) {unimportant};
+            \node[anchor=east] at (-0.5,6) {important};
+            \node at (2,-0.5) {urgent};
+            \node at (6,-0.5) {not urgent};
+        \draw (0,0) -- (0,8) -- (8,8) -- (8,0) -- (0,0);
+        \draw (4,0) -- (4,8) ; \draw (0,4) -- (8,4);
+        
+            \node at (2,2.5) {delegate it};
+            
+            \node at (2,6.5) {do it};
+            
+            \node at (6,2.5) {delete it};
+            
+            \node at (6,6.5) {schedule it};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2}}\makeatother
+\begin{document}
+\begin{tikzpicture}
+
+
+
+    %%% coordinates
+    
+    \draw[->] (0,0) node[below] {\phantom{$0_0$}} -- (8,0) node[right] {$Y$};
+    \draw[->] (0,0) node[below] {\phantom{$0_0$}}
+    -- (0,8) node[above] {$AD$};
+
+    \draw [name path=fourtyfive] (0,0) -- (7,7) node[above right] {$45^{\circ}$};
+
+    \draw[name path=ad,red] (0,2) -- (7,4) node[right] {$AD$};
+
+    \path[name intersections={of=ad and fourtyfive, by=E}];
+
+    \filldraw (E) circle (2pt);
+    \node[below right] at (E) {$AD=Y$};
+
+    \draw[dashed] (E) -- (E|-0,0) node[below] {$Y^*$};
+
+    \ifstep{2}{
+        \begin{scope}
+            
+            \draw[name path=ad2,red] (0,3) -- (7,5) node[right] {$AD_2$};
+        
+            \path[name intersections={of=ad2 and fourtyfive, by=E2}];
+    
+            \draw[->] (0.2,2.2) -- node[right] {$\Delta G$} (0.2,3);
+        
+            \filldraw (E2) circle (2pt);
+            % \node[below right] at (E2) {$AD=Y$};
+        
+            \draw[dashed] (E2) -- (E2|-0,0) node[below] {$Y_2$};
+        \end{scope}
+    
+        
+    }
+
+\end{tikzpicture}
+\end{document}

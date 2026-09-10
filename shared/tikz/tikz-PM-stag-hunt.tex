@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}[scale=0.5]
+        \node at (-3,4) {Alice};
+        \node at (-3,3.5) {};
+            \node at (-1,2) {gather};
+            \node at (-1,6) {hunt};
+        \node at (4,-1.5) {Bob};
+        \node at (4,-2) {};
+            \node at (2,-0.5) {gather};
+            \node at (6,-0.5) {hunt};
+        \draw (0,0) -- (0,8) -- (8,8) -- (8,0) -- (0,0);
+        \draw (4,0) -- (4,8) ; \draw (0,4) -- (8,4);
+        
+            \node at (2,2.5) {2 / 2};
+            
+            \node at (2,6.5) {1 / 2};
+            
+            \node at (6,2.5) {2 / 1};
+            
+            \node at (6,6.5) {5 / 5};
+    \end{tikzpicture}
+
+\end{document}

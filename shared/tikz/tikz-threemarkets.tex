@@ -1,0 +1,228 @@
+\documentclass{standalone}
+
+
+%% This is an interative illustation to: https://web.mit.edu/krugman/www/islm.html
+
+\usepackage{tikz}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{3,6}}\makeatother
+\usepackage{calc}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \tikzset{every node/.style={font=\sffamily},>=latex}
+
+    %% draw axes and phantom labels
+
+    \coordinate (xend) at (8,0);
+    \coordinate (yend) at (0,8);
+    
+    \draw[->] (0,0) -- (xend);
+    \draw[->] (0,0) -- (yend);
+    \phantom{
+        \node[left] at (0,0) {$0_0$};
+        \node[below] at (0,0) {$0_0$};
+        \node[right] at (xend) {Price of Goods};
+        \node[above] at (yend) {Price of Bonds};
+    }
+
+
+    %% coordinates, paths for the 3-good case
+   
+        \coordinate (xorig) at  (1,1);
+        \coordinate (xup) at  (7,5);
+        \coordinate (yorig) at  (1,3);
+        \coordinate (yup) at  (7,2);
+        
+        \coordinate (zdir) at (3,-3);
+
+
+
+    \ifstep{1}{
+        \node[right] at (xend) {Price of X};
+        \node[above] at (yend) {Price of Y};
+
+        %%% X - immer
+        \draw[name path=xiny,red,thick] (xorig) -- ($(xorig)+ (xup)$) node[right] {$X$} ;
+
+            % \ifstep{-1}{
+            %     \coordinate (P) at ($(xorig)+ 0.3*(xup)$);
+            %     \draw[dotted] (0,|-P) -- (P) -- (P|-0,0);
+            %     \filldraw (P) circle (2pt);
+
+            % }
+
+            %%% Y  
+            \ifnotstep{-1}{
+                \draw[name path=yinx,blue,thick] (yorig) -- ($(yorig)+ (yup)$) node[right] {$Y$} ;
+                
+                \path[name intersections={of=xiny and yinx,by=E}];
+                \filldraw (E) circle (2pt);
+        
+                \draw[dotted] (0,|-E) node[left] {$Y^*$} -- (E) -- (E|-,0) node[below] {$X^*$};   
+                
+                \ifnotstep{-2}{
+                \draw[thick, green] ($(E) - (zdir)$) --  ($(E) + (zdir)$) node[right] {$Z$} ;
+                }
+            }
+    }
+
+    \ifsteponly{2}{3}{
+        \begin{scope} 
+            
+            \node[right] at (xend) {Price of Goods};
+            \node[above] at (yend) {Price of Bonds};
+
+            \draw[name path=xiny,red,thick] (xorig) -- ($(xorig)+ (xup)$) node[right] {Goods} ;
+
+            \draw[name path=yinx,blue,thick] (yorig) -- ($(yorig)+ (yup)$) node[right] {Bonds} ;
+            \path[name intersections={of=xiny and yinx,by=E}];
+            \filldraw (E) circle (2pt);
+
+                
+                 \draw[dotted] (0,|-E) node[left] {$Y^*$} -- (E) -- (E|-,0) node[below] {$X^*$};
+                \draw[thick, green] ($(E) - (zdir)$) --  ($(E) + (zdir)$) node[right] {Money} ;        
+            
+        \end{scope}
+    }
+
+
+    %%% With Interest Rate (flipped)
+
+    \ifsteponly{3}{1,2}{
+
+
+        \coordinate (xorig) at  (1,7);
+        \coordinate (xup) at  (7,-5);
+        \coordinate (yorig) at  (1,5);
+        \coordinate (yup) at  (7,-2);
+        
+        \coordinate (zdir) at (3,3);
+        
+        \node[right] at (xend) {Price of Goods};
+        \node[above] at (yend) {Interest Rate};
+
+        \begin{scope}
+            \draw[name path=xiny,thick,red] ($(xorig)$) -- ($(xorig)+ (xup)$) node[right] {Goods$^*$} ;
+    
+            \draw[name path=yinx,thick,blue] (yorig) -- ($(yorig)+ (yup)$) node[right] {Bonds$^*$} ;
+            
+            \path[name intersections={of=xiny and yinx,by=E}];
+            \filldraw (E) circle (2pt);
+            
+            \draw[dotted] (0,|-E) node[left] {$i^*$} -- (E) -- (E|-,0) node[below] {$P^*$};
+        
+            
+            \draw[thick, green] ($(E) - (zdir)$) --  ($(E) + (zdir)$) node[right] {Money$^*$} ;
+        \end{scope}
+    }
+
+    %% change of money and bonds, goods remain stable
+
+    \ifsteponly{4}{1,2}{
+
+        \coordinate (xorig) at  (1,7);
+        \coordinate (xup) at  (7,-5);
+        \coordinate (yorig) at  (1,4.5);
+        \coordinate (yup) at  (7,-2);
+        
+        \coordinate (zdir) at (3,3);    
+
+  
+        
+        \node[right] at (xend) {Price of Goods};
+        \node[above] at (yend) {Interest Rate};
+
+        \begin{scope}[red,dashed]
+            \draw[name path=xiny, solid, ultra thick] ($(xorig)$) -- ($(xorig)+ (xup)$)  ;
+    
+            \draw[name path=yinx,thick] (yorig) -- ($(yorig)+ (yup)$) node[right] {Bonds$_1$} ;
+            
+            \path[name intersections={of=xiny and yinx,by=E}];
+            \filldraw (E) circle (2pt);
+
+            \draw[dotted] (0,|-E) node[left] {$i_1$} -- (E) -- (E|-,0) node[below] {$P_1$};
+                    
+            
+            \draw[thick] ($(E) - (zdir)$) --  ($(E) + (zdir)$) node[left] {Money$_1$} ;
+        \end{scope}
+    }
+
+
+    %% money stable, goods and bonds change 
+    %% (bit of a hack, works only because money is 45 degrees)
+    
+    \ifsteponly{5}{1,2}{
+
+        \draw[ultra thick, green] ($(E) - (zdir)$) --  ($(E) + (zdir)$)  ;
+        
+        % \coordinate (xorig) at  (2,8);
+        % \coordinate (xup) at  (6,-6);
+        % \coordinate (yorig) at  (2,6);
+        % \coordinate (yup) at  (6,-2);
+        
+        % \coordinate (zdir) at (3,3);
+
+        \coordinate (xorig) at  (2,8);
+        \coordinate (xup) at  (7,-5);
+        \coordinate (yorig) at  (2,6);
+        \coordinate (yup) at  (7,-2);
+        
+        \coordinate (zdir) at (3,3);        
+        
+        \node[right] at (xend) {Price of Goods};
+        \node[above] at (yend) {Interest Rate};
+
+        \begin{scope}[green,dashed]
+            \draw[name path=xiny,thick] ($(xorig)$) -- ($(xorig)+ (xup)$) node[right] {Goods$_2$} ;
+    
+            \draw[name path=yinx,thick] (yorig) -- ($(yorig)+ (yup)$) node[right] {Bonds$_2$} ;
+            
+            \path[name intersections={of=xiny and yinx,by=E}];
+            \filldraw (E) circle (2pt);
+            
+            \draw[dotted] (0,|-E) node[left] {$i_2$} -- (E) -- (E|-,0) node[below] {$P_2$};
+            
+        \end{scope}
+    }
+    
+
+        %% bonds stable
+
+    \ifsteponly{6}{1,2}{
+
+        \coordinate (xorig) at  (1,7.5);
+        \coordinate (xup) at  (7,-5);
+        \coordinate (yorig) at  (1,5);
+        \coordinate (yup) at  (7,-2);
+        
+        \coordinate (zdir) at (3,3);
+        
+        \node[right] at (xend) {Price of Goods};
+        \node[above] at (yend) {Interest Rate};
+
+        \begin{scope}[dashed, blue]
+            \draw[name path=xiny,thick] ($(xorig)$) -- ($(xorig)+ (xup)$) node[right] {Goods$_3$} ;
+    
+            \draw[name path=yinx,solid, ultra thick] (yorig) -- ($(yorig)+ (yup)$)  ;
+            
+            \path[name intersections={of=xiny and yinx,by=E}];
+            \filldraw (E) circle (2pt);
+            
+            \draw[dotted] (0,|-E) node[left] {$i^*$} -- (E) -- (E|-,0) node[below] {$P_3$};
+        
+            
+            \draw[thick] ($(E) - (zdir)$) --  ($(E) + (zdir)$) node[right] {Money$_3$} ;
+        \end{scope}
+    }
+        
+    
+
+    
+
+
+
+
+    
+\end{tikzpicture}
+\end{document}

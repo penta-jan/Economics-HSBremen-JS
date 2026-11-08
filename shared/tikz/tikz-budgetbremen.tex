@@ -1,0 +1,56 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+
+\begin{document}
+\begin{tikzpicture}
+
+\wheelchart[
+  at={(-3,0)},
+  radius={1.5}{2.8},
+  start angle=0,
+  counterclockwise,
+  slices style={fill=\WCvarB, draw=black},
+  data=\WCvarC,
+  wheel data=\WCvarA\,\%,
+  wheel data pos=0.5,
+  lines=0.3,
+  anchor xsep=10,
+  anchor ysep=15,
+  data angle pos=\WClistdap,
+  lines angle pos=\WClistdap,
+  WClistdap={0.5,0.5,0.5,0.5,0.5,0.5},
+  middle={6.3 bio Euro}
+]{%
+  17.9/blue!60/Education,
+  17.1/cyan!60/Social,
+  17.1/yellow!60/Central fin.,
+  9.8/green!60/Universities,
+  6.2/red!60/debt service,
+  31.9/white/div.%
+}
+
+\wheelchart[
+  at={(3,0)},
+  radius={1.5}{2.8},
+  start angle=0,
+  counterclockwise,
+  slices style={fill=\WCvarB, draw=black},
+  data=\WCvarC,
+  wheel data=\WCvarA\,\%,
+  wheel data pos=0.5,
+  lines=0.3,
+  anchor xsep=10,
+  anchor ysep=15,
+  data angle pos=\WClistdap,
+  lines angle pos=\WClistdap,
+  WClistdap={0.2,0.5,0.5,0.5},
+  middle={6.3 bio Euro}
+]{%
+  63.5/blue!60/TAXES,
+  14.7/cyan!60/federal aid,
+  4.4/red!60/new debt,
+  17.4/white/div.%
+}
+
+\end{tikzpicture}
+\end{document}

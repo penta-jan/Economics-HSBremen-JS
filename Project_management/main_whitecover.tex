@@ -1,0 +1,123 @@
+\documentclass[paper=a5,listof=totoc,captions=tableheading]{scrartcl}
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{multicol}
+
+\usepackage[scale=3,colorspec=0.96,text=internal~use~only]{draftwatermark}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    Week 1\or
+    Week 2\or
+    Week 3\or
+    Week 4\or
+    Week 5\or
+    Week 6\or
+    Week 7\or
+    Week 8\or
+    Week 9\or
+    Week 10\or
+    Week 11\or
+    Week 12\or
+    Week 13\or
+    Week 14\or
+    \else
+  \fi
+}
+
+\newcommand{\mystudents}[1][, ]{%
+ Agathe#1
+ Alex#1
+ Amaury#1
+ Aurelia~Tiara#1
+ Bintang~Rafi#1
+ Carme#1
+ Ditto~Arya#1
+ Durdona#1
+ Gabriel#1
+ Juul#1
+ Katka~Odelle#1
+ Luca#1
+ Meike#1
+ Sabrina#1
+ Samya
+}
+
+\title{Project Management}
+\author{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}\\Jan Suchanek}
+\date{Winter Semester \the\year\\\today}
+
+\automark{section}
+\pagestyle{scrheadings}
+\ihead{\leftmark}
+   \chead{}
+   \ohead{Project Management}
+
+\setlength{\parskip}{1ex}
+
+\makeindex
+
+\begin{document}
+
+\onehalfspacing
+
+\maketitle
+
+\begin{abstract}
+    This is the script for the module Project Management, as taught at \noun{Hochschule Bremen}, Winter Semester 2026. It is a $1:1$ white-cover version of the slides. A hand \faHandPointRight\ indicates slide changes. All figures are our own design, unless stated otherwise.
+
+    AI has only been used for proof reading and code refactoring. 
+
+    This is work in progress.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\clearpage
+
+\input{main-input}
+
+
+
+\clearpage
+
+\listoffigures
+ 
+\listoftables
+
+\newpage
+
+   \nocite{*}
+    \printbibliography[heading=bibintoc]
+
+    \clearpage
+    \thispagestyle{empty}
+    
+    ~
+    
+    % \cleardoublepage
+    % \phantomsection
+    % \addcontentsline{toc}{section}{Control Questions}
+    % \includepdf[pages=-]{microeconomics/questionbank/ME_QuestionPool.pdf}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Index}
+\printindex
+
+\end{document}

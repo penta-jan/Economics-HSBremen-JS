@@ -46,7 +46,7 @@
 
 \ifstep{1}{
     
-    \node at (1.5,6.5) {Origin};
+    \node[fill=orange!40] at (1.5,6.5) {Origin/Production};
     \outerbox{0}{0}{3}{6}{
         \innerbox{Gross Value Added (GVA) in products, various sectors}
         \innerbox{GVA in services, various sectors}
@@ -62,14 +62,14 @@
 }
     
 \ifstep{2}{
-    \node at (5.5,6.5) {Distribution};
+    \node[fill=blue!40] at (5.5,6.5) {Distribution};
     \outerbox{4}{0}{3}{6}{
         \innerbox{wages, salaries}
         \innerbox{rents, interest}
         \innerbox{profits}
-        \innerbox{net taxes\\ on income}
+        \innerbox{net taxes\\ on production}
+        \innerbox{net taxes\\ on imports}
         \innerbox{depreciation}
-        \innerbox{foreign income}
         }
 }
 \ifstep{2}{
@@ -80,10 +80,10 @@
 
 \ifstep{3}{
     
-    \node at (9.5,6.5) {Expenditure};
+    \node[fill=green!40] at (9.5,6.5) {Expenditure};
     \outerbox{8}{0}{3}{6}{
         \innerbox{consumption}
-        \innerbox{savings $=$ investment}
+        \innerbox{investment}
         \innerbox{government expenditure}
         \innerbox{net exports}
         }

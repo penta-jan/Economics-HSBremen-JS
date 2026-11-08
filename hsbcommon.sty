@@ -3,22 +3,50 @@
 %% Shared preamble for both main.tex (Beamer) and main_whitecover.tex (article).
 %% Handles: colours, TikZ libraries, step-visibility system, \showmytikz,
 %%          \showmybitmap, \mytable, \mycomment, \mytext, \mylonglist,
-%%          payoff matrix style, clock command, \mycurrency.
+%%          payoff matrix style,  \mycurrency.
 %%
 %% Usage:
 %%   In hsbslides.sty:   \RequirePackage{hsbcommon}
 %%   In hsbarticle.sty:  \RequirePackage{hsbcommon}
 %% ─────────────────────────────────────────────────────────────────────────────
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{hsbcommon}[2025/01/01 v1.0 HSB shared preamble]
+\ProvidesPackage{hsbcommon}[2026/10/27 v1.0 HSB shared preamble]
+
+% ── Package options ───────────────────────────────────────────────────────────
+%  \usepackage[commentwidth=180pt,commentx=200pt,commenty=40pt]{hsbcommon}
+%  Any option left unspecified keeps its original hard-coded default.
+\RequirePackage{xkeyval}   % moved up here so options can use it
+
+\newlength{\hsbCommentWidth}
+\newlength{\hsbCommentX}
+\newlength{\hsbCommentY}
+
+% defaults = current hard-coded behaviour
+\setlength{\hsbCommentWidth}{120pt}
+\setlength{\hsbCommentX}{230pt}
+\setlength{\hsbCommentY}{50pt}
+
+\DeclareOptionX{commentwidth}{\setlength{\hsbCommentWidth}{#1}}
+\DeclareOptionX{commentx}{\setlength{\hsbCommentX}{#1}}
+\DeclareOptionX{commenty}{\setlength{\hsbCommentY}{#1}}
+
+\ProcessOptionsX\relax
+
+
 
 % ── Detect Beamer ─────────────────────────────────────────────────────────────
 \newif\if@hsbbeamer
 \@hsbbeamerfalse
 \@ifclassloaded{beamer}{\@hsbbeamertrue}{}
 
+% ── Public Beamer/article switch for content files (no \makeatletter needed) ──
+%   \ifhsbbeamer ... \else ... \fi      or      \beameronly{...} / \articleonly{...}
+\let\ifhsbbeamer\if@hsbbeamer
+\newcommand{\beameronly}[1]{\if@hsbbeamer#1\fi}
+\newcommand{\articleonly}[1]{\if@hsbbeamer\else#1\fi}
+
 % ── Colours ───────────────────────────────────────────────────────────────────
-\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[dvipsnames,table]{xcolor}
 \definecolor{HSBblau}{RGB}{10,85,140}
 \definecolor{blue}{RGB}{10,85,140}
 \definecolor{HSBtuerk}{RGB}{50,180,200}
@@ -33,6 +61,7 @@
 
 % ── General packages ──────────────────────────────────────────────────────────
 \RequirePackage{standalone}
+\RequirePackage{countrymaps}
 \RequirePackage{pdfpages}
 \RequirePackage{customdice}
 \RequirePackage{tabularx}
@@ -47,18 +76,21 @@
 \RequirePackage{multirow}
 \RequirePackage{rotating}
 \RequirePackage{makeidx}
+\RequirePackage[utf8]{inputenc}
 \RequirePackage{csquotes}
 \RequirePackage{framed}
 \RequirePackage{easygantt}  %%% custom! 
 \newcommand\given{\;\middle|\;}
-
-\RequirePackage[utf8]{inputenc}
+\RequirePackage{marvosym}
+\RequirePackage{eurosym}
 \RequirePackage{adjustbox}
 \RequirePackage{pgfgantt}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \RequirePackage[edges]{forest}
 \RequirePackage{smartdiagram}
+\RequirePackage{pgf-pie}  %% depreciated, use wheelchart
+\RequirePackage{wheelchart}
 \usesmartdiagramlibrary{additions}
 \newcommand{\noun}[1]{\textsc{#1}}
 
@@ -78,6 +110,7 @@
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{tikzmark}
 \usepgfplotslibrary{fillbetween}
+\RequirePackage{varwidth}
 
 \tikzset{
     every node/.style={font=\sffamily},
@@ -161,28 +194,6 @@
         },
     payoff matrix/.cd,player 1/.initial={Alice},player 2/.initial={Bob}
     }
-
-% ── Clock command ─────────────────────────────────────────────────────────────
-\newcommand\clock[4][2]{%
-\begin{tikzpicture}[scale=#1,line cap=round,line width=#1*3pt]
-\filldraw [fill=gray!20] (0,0) circle (2cm);
-\foreach \angle / \label in
-{0/3, 30/2, 60/1, 90/12, 120/11, 150/10, 180/9,
-210/8, 240/7, 270/6, 300/5, 330/4}
-{
-\draw[line width=#1*1pt] (\angle:1.8cm) -- (\angle:2cm);
-\draw (\angle:1.4cm) node[scale=#1]{\textsf{\label}};
-}
-\foreach \angle in {0,90,180,270}
-\draw[line width=#1*2pt] (\angle:1.6cm) -- (\angle:2cm);
-\draw[rotate=90,line width=#1*2pt] (0,0) -- (-#2*30-#3*30/60:0.7cm);
-\draw[rotate=90,line width=#1*1.5pt] (0,0) -- (-#3*6:1cm);
-\draw[rotate=90,line width=#1*.6pt,red] (0,0) -- (-#4*6:1.2cm);
-\path [fill=black] (0,0) circle (3pt);
-\path [fill=red] (0,0) circle (1.5pt);
-\end{tikzpicture}%
-}
-
 % ═══════════════════════════════════════════════════════════════════════════════
 %  STEP VISIBILITY SYSTEM
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -265,11 +276,19 @@
 
 \newif\if@hsb@stepor@found
 
+% Catcode-safe membership test: sets \ifin@
+\newcommand{\@hsb@ifinstepset}[1]{%
+  \edef\@hsb@tmp{\noexpand\in@
+    {,\detokenize{#1},}%
+    {\detokenize\expandafter{\@stepset}}}%
+  \@hsb@tmp
+}
 % Test one (trimmed) candidate against the active step set
 \newcommand{\@hsb@stepor@test}[1]{%
   \def\@hsb@trimmed{#1}%
   \trim@spaces@in\@hsb@trimmed
-  \IfSubStr{\@stepset}{,\@hsb@trimmed,}{\@hsb@stepor@foundtrue}{}%
+  \expandafter\@hsb@ifinstepset\expandafter{\@hsb@trimmed}%
+  \ifin@ \@hsb@stepor@foundtrue \fi
 }
 
 % Helper that takes the (already fully-expanded) list as a real argument,
@@ -309,7 +328,10 @@
 % Use this when a later step replaces rather than adds to an earlier step.
 \newif\if@hsb@suppressed
 \newcommand{\@hsb@checksuppress}[1]{%
-  \IfSubStr{\@stepset}{,#1,}{\@hsb@suppressedtrue}{}%
+  \def\@hsb@trimmed{#1}%
+  \trim@spaces@in\@hsb@trimmed
+  \expandafter\@hsb@ifinstepset\expandafter{\@hsb@trimmed}%
+  \ifin@ \@hsb@suppressedtrue \fi
 }
 \newcommand{\ifsteponly}[3]{%
   \ifstep{#1}{%
@@ -326,12 +348,12 @@
 
 % ── \showmytikz[1,2,3]{file.tex}  or  \showmytikz[step=drei]{file.tex} ────────
 \newcommand{\showmytikz}[2][]{%
-  \begingroup
+  \begingroup%
   \def\@ts@step{}%
   \def\@ts@caption{}%
   \def\@ts@label{}%
   % Save the current stepset so nested calls don't clobber it
-  \let\@stepset@saved\@stepset
+  \let\@stepset@saved\@stepset%
   % Parse arguments and build new stepset
   \IfSubStr{#1}{=}{%
     \setkeys{showmytikz}{#1}%
@@ -341,7 +363,7 @@
   }%
   \if@hsbbeamer
     \@hsb@tikz@beamer{#2}%
-  \else
+  \else%
     \@hsb@tikz@article{#2}%
   \fi
   % Restore the previous stepset (xdef made it global, so restore globally too)
@@ -356,43 +378,106 @@
   {\singlespacing
   \begin{adjustbox}{max width=200pt, max totalheight=0.8\textheight}%
     \IfFileExists{#1}{%
-        \input{#1}
+        \input{#1}%
         }{{\color{red}FILE NOT FOUND: #1}}%
   \end{adjustbox}%
-  }
+  }%
+}
+
+% ── Beamer: more room for one figure (environments hsbfull, hsbfullslide) ─────
+% Applies to \showmytikz, \showmytree and \showmybitmap.
+% \showmytikz and \showmytree fit their picture into
+%   max width=200pt, max totalheight=0.8\textheight       (see above).
+% Inside hsbfull that limit is replaced, for the figures within the environment
+% only (the original is restored at \end{hsbfull}). The optional argument is
+% passed to adjustbox; the default is the whole text area of the frame:
+%     \begin{hsbfull}
+%       \showmytikz[1,2]{file.tex}
+%     \end{hsbfull}
+%     \begin{hsbfull}[max width=0.9\textwidth, max totalheight=0.7\textheight]
+% NOTE: "max ..." only ever SHRINKS: a picture smaller than the limit keeps its
+% natural size (a bitmap: pixels / dpi stored in the file). To scale UP use width:
+%     \begin{hsbfull}[width=\textwidth, max totalheight=\textheight]
+% (a low-resolution bitmap will look blurry when enlarged).
+% The same limit is applied to \showmybitmap (its default is 200pt x 150pt, kept
+% in \@hsb@bitmap@opts). The article build is not affected (its figures already
+% scale to \linewidth).
+\newcommand{\@hsb@bitmap@opts}{max size={200pt}{150pt}}
+\newenvironment{hsbfull}[1][max width=\textwidth, max totalheight=\textheight]{%
+  \renewcommand{\@hsb@bitmap@opts}{#1}%
+  \renewcommand{\@hsb@tikz@beamer}[1]{{\singlespacing
+    \begin{adjustbox}{#1}%
+      \IfFileExists{##1}{\input{##1}}{{\color{red}FILE NOT FOUND: ##1}}%
+    \end{adjustbox}}}%
+}{}
+
+% hsbfullslide: the figure over the WHOLE slide, edge to edge. Use it in a
+% [plain] frame:  \begin{frame}[plain]{Title} ... \end{frame}.  Beamer: an
+% absolutely positioned box the size of the page (needs the textpos package,
+% like \mytext), content centred in it. Article: the normal figure. It takes the
+% same optional argument as hsbfull; the default is the whole page:
+%     \begin{hsbfullslide}[width=\paperwidth, max totalheight=\paperheight]
+\newenvironment{hsbfullslide}[1][max width=\paperwidth, max totalheight=\paperheight]{%
+  \if@hsbbeamer
+    \begin{textblock*}{\paperwidth}(0pt,0pt)%
+    \begin{minipage}[c][\paperheight][c]{\paperwidth}\centering
+    \begin{hsbfull}[#1]%
+  \else
+    \begin{hsbfull}%
+  \fi
+}{%
+  \if@hsbbeamer
+    \end{hsbfull}\end{minipage}\end{textblock*}%
+  \else
+    \end{hsbfull}%
+  \fi
+}
+% ── Automatic label keys ─────────────────────────────────────────────────────
+%  Internal labels are built from running numbers (fig:hsbauto<n>,
+%  tab:hsbauto<n>), NOT from the frame title: titles may contain commands
+%  (\strut, \\, \textbf, ...) that break \ref/\label, and identical titles in
+%  different chapters would produce duplicate labels.
+%  For hand-made cross-references give a stable name with the label= key,
+%  e.g. \showmytikz[step=1,label=fig:bremen-gdp]{...} -> \ref{fig:bremen-gdp}.
+%  label= works with or without caption=.
+\newcount\hsb@figid
+\newcount\hsb@tabid
+% \@hsb@userlabel: set the user's label (if any) next to the automatic one
+\newcommand{\@hsb@userlabel}{%
+  \ifdefined\@ts@label
+    \ifdefempty{\@ts@label}{}{\label{\@ts@label}}%
+  \fi
 }
 
 % ── Article: wrap in figure with auto caption/label ──────────────────────────
 \newcommand{\@hsb@tikz@article}[1]{%
   \IfFileExists{#1}{%
-    \let\myoldfighandle\myfighandle
-    \global\let\myfighandle\mysechandle
+    \let\myoldfighandle\myfighandle%
+    \global\let\myfighandle\mysechandle%
     \ifthenelse{\equal{\myoldfighandle}{\myfighandle}}{%
       \stepcounter{mysubfigure}%
     }{%
       \setcounter{mysubfigure}{0}%
     }%
-      \ifdefempty{\@ts@caption}{%
-        \textbf{Fig.~\ref{fig:\myfighandle\themysubfigure}}%
-      }{%
-        \ifdefempty{\@ts@label}{}{\textbf{Fig.~\ref{\@ts@label}}}%
-      }%    
+    \global\advance\hsb@figid\@ne%
+    \edef\@hsb@figkey{fig:hsbauto\the\hsb@figid}%
+    \ifhmode\unskip\fi\textbf{(Fig.~\ref{\@hsb@figkey})}%
     \begin{figure}[ht!]%
       \centering%
           \singlespacing
           \begin{adjustbox}{max width=\linewidth}%
-            \IfFileExists{#1}{
-            \input{#1}
+            \IfFileExists{#1}{%
+            \input{#1}%
             }{{\color{red}FILE NOT FOUND: #1}}%
           \end{adjustbox}%
             % \onehalfspacing
       \ifdefempty{\@ts@caption}{%
         \caption{\mysechandle~\themysubfigure}%
-        \label{fig:\myfighandle\themysubfigure}%
       }{%
         \caption{\@ts@caption}%
-        \ifdefempty{\@ts@label}{}{\label{\@ts@label}}%
       }%
+      \label{\@hsb@figkey}%
+      \@hsb@userlabel
     \end{figure}%
   }{{\color{red}FILE NOT FOUND: #1}}%
 }
@@ -401,7 +486,7 @@
 \newcommand{\showmybitmap}[2][]{%
   \IfFileExists{#2}{%
     \if@hsbbeamer
-      \href{#1}{\adjustimage{max size={200pt}{150pt}}{#2}}%
+      \href{#1}{\expandafter\adjustimage\expandafter{\@hsb@bitmap@opts}{#2}}%
     \else
       \let\myoldfighandle\myfighandle
       \global\let\myfighandle\mysechandle
@@ -410,18 +495,39 @@
       }{%
         \setcounter{mysubfigure}{0}%
       }%
-      \textbf{Fig.~\ref{fig:\myfighandle\themysubfigure}}%
+      \global\advance\hsb@figid\@ne
+      \edef\@hsb@figkey{fig:hsbauto\the\hsb@figid}%
+      \ifhmode\unskip\fi\textbf{(Fig.~\ref{\@hsb@figkey})}%
       \begin{figure}[ht!]%
         \centering%
-        \adjustimage{max size=\linewidth}{#2}%
-        \caption{\mysechandle~\themysubfigure}\label{fig:\myfighandle\themysubfigure}%
+        \adjustimage{max size=\linewidth}{#2}%                                  % <- article: back to the original
+        \caption{\mysechandle~\themysubfigure}\label{\@hsb@figkey}
       \end{figure}%
     \fi
   }{\color{red}FILE NOT FOUND: #2}%
 }
 
-% ── \mytable ──────────────────────────────────────────────────────────────────
+% ── \mytable[steps]{content} ─────────────────────────────────────────────────
+%  \mytable{...}                        as before (no step change)
+%  \mytable[1]{\input{file.tex}}        show only step 1 of the content
+%  \mytable[1,2]{\input{file.tex}}      show steps 1 and 2
+%  \mytable[step=2,caption=Mexico,label=tab:mex]{\input{file.tex}}
+%  Inside the content/file use \ifstep{N}{...} as in TikZ files.
 \newcommand{\mytable}[2][]{%
+  \begingroup
+  \def\@ts@step{}%
+  \def\@ts@caption{}%
+  \def\@ts@label{}%
+  \let\@stepset@saved\@stepset
+  % Only touch the step set if an option was given -> old calls unchanged
+  \ifx\relax#1\relax\else
+    \IfSubStr{#1}{=}{%
+      \setkeys{showmytikz}{#1}%
+      \ifdefempty{\@ts@step}{}{\@buildstepset{\@ts@step}}%
+    }{%
+      \@buildstepset{#1}%
+    }%
+  \fi
   \if@hsbbeamer
     #2%
   \else
@@ -432,21 +538,46 @@
     }{%
       \setcounter{mysubtab}{0}%
     }%
-    \textbf{Tab.~\ref{tab:\mytabhandle\themysubtab}}%
+    \global\advance\hsb@tabid\@ne
+    \edef\@hsb@tabkey{tab:hsbauto\the\hsb@tabid}%
+     \ifhmode\unskip\fi\textbf{(Tab.~\ref{\@hsb@tabkey})}%
     \begin{table}[ht!]%
       \centering%
+      \ifdefempty{\@ts@caption}{%
+        \caption{\mysechandle~\themysubtab}%
+      }{%
+        \caption{\@ts@caption}%
+      }%
+      \label{\@hsb@tabkey}%
+      \@hsb@userlabel
       #2%
-      \caption{\mysechandle~\themysubtab}\label{tab:\mytabhandle\themysubtab}%
     \end{table}%
   \fi
+  \global\let\@stepset\@stepset@saved
+  \endgroup
+}
+
+% ── \mysource{...}: source line below a comparison table ─────────────────────
+%  Use inside \mytable after the table:
+%    \mytable[4]{\input{tab-economicdata}\mysource{NBS China; ...}}
+%  The box has the width of a {K} table and a FIXED height of two lines, so
+%  tables shown step by step keep exactly the same size.
+%  Keep \hsbTableWidth in sync with the column widths of {K}.
+\newlength{\hsbTableWidth}
+\setlength{\hsbTableWidth}{\dimexpr 2.6cm+3.4cm+3.0cm+1.0cm+8\tabcolsep+\arrayrulewidth\relax}
+\newcommand{\mysource}[1]{%
+  \par\smallskip
+  {\scriptsize
+   \parbox[t][2\baselineskip][t]{\hsbTableWidth}{\raggedright Sources: #1}}%
+  \par
 }
 
 % ── Text helpers ──────────────────────────────────────────────────────────────
 \newcommand{\mycomment}[2][]{%
   \if@hsbbeamer
-    \begin{textblock*}{120pt}(230pt,50pt)\tiny #2\end{textblock*}%
+    \begin{textblock*}{\hsbCommentWidth}(\hsbCommentX,\hsbCommentY)\tiny #2\end{textblock*}%
   \else
-    #2\par%
+    #2%\par%
   \fi
 }
 
@@ -501,11 +632,18 @@
       \faHandPointRight %%%% new slide but not new secion
     }{%
       \subsection*{#2}% %%%%% slide with different title, hence new section
-      \index{#2}
+      \index{#2}%
       \faHandPointRight
     }%
+    \enspace
+    \ignorespaces
   }{}
 \fi
+
+%%% References in Article only, nothing printed in beamer
+
+\newcommand{\myfigref}[1]{\articleonly{(cf.\ Fig.~\ref{#1})}}
+\newcommand{\mytabref}[1]{\articleonly{(cf.\ Tab.~\ref{#1})}}
 
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -572,6 +710,8 @@
   {
     \seq_gclear:N \g_hsb_visstack_seq
     \int_gzero:N  \g_hsb_hidedepth_int
+    \iow_term:x { showmytree:~reading~\file_full_name:n {#1} }
+    \iow_log:x  { showmytree:~reading~\file_full_name:n {#1} }    
     \ior_open:Nn \g_hsb_tree_ior {#1}
     \iow_open:Nn \g_hsb_tree_iow {#2}
     \ior_str_map_inline:Nn \g_hsb_tree_ior
@@ -632,7 +772,16 @@
     \ior_str_map_inline:Nn \l_hsb_prune_ior
       { \hsb_tree_collapse_line:n {##1} }
     \ior_close:N \l_hsb_prune_ior
-    \hsb_tree_recenter_root:
+    % Guard: only post-process if a tree ("[") and "\end{forest}" survived the
+    % filtering. Otherwise \hsb_tree_recenter_root: gets \q_no_value and
+    % loops forever (= compile hangs).
+    \exp_args:NnV \regex_match:nnTF { \\end\{forest\} } \l_hsb_buf_zero_tl
+      {
+        \exp_args:NnV \regex_match:nnTF { \[ } \l_hsb_buf_zero_tl
+          { \hsb_tree_recenter_root: }
+          { \hsb_tree_empty_error:n {#1} }
+      }
+      { \hsb_tree_empty_error:n {#1} }
     \iow_now:Nx \l_hsb_prune_iow { \l_hsb_buf_zero_tl }
     \iow_close:N \l_hsb_prune_iow
   }
@@ -648,6 +797,20 @@
 %     (\pgf@picminy/\pgf@picmaxy) to get the true vertical extent
 %  3. drawing the real label, rotated, at that computed centre, with a short
 %     connector back to the original anchor point.
+\cs_new_protected:Npn \hsb_tree_empty_error:n #1
+  {
+    \msg_error:nne { hsbcommon } { empty-tree } {#1}
+    \tl_set:Nx \l_hsb_buf_zero_tl
+      { \c_backslash_str fbox \c_left_brace_str showmytree:~empty~tree \c_right_brace_str }
+  }
+\msg_new:nnnn { hsbcommon } { empty-tree }
+  { showmytree:~nothing~usable~left~after~filtering~(#1). }
+  {
+    The~filtered~file~contains~no~tree~or~no~end~of~the~forest~environment.~
+    Check~which~source~file~was~read~(line~'showmytree:~reading'~in~the~log)~
+    and~that~every~\c_percent_str STEPBEGIN~has~a~matching~
+    \c_percent_str STEPEND.
+  }
 \cs_new_protected:Npn \hsb_tree_recenter_root:
   {
     % strip any existing rotate=<N> the root's own bracket might carry
@@ -709,9 +872,24 @@
   }
 
 % classify one line
+%  Outside the tree (depth 0: before the root opens or after it has closed)
+%  only a line that STARTS with "[" can be a tree node; everything else
+%  (\begin{scope}[...], \draw ...[...], options) passes through untouched.
 \cs_new_protected:Npn \hsb_tree_collapse_line:n #1
   {
     \tl_set:Nx \l_hsb_trimmed_tl { \tl_trim_spaces:n {#1} }
+    \int_compare:nNnTF { \l_hsb_depth_int } = { 0 }
+      {
+        \str_if_eq:eeTF { \str_head:N \l_hsb_trimmed_tl } { [ }
+          { \hsb_tree_collapse_classify:n {#1} }
+          { \hsb_tree_collapse_pass:n {#1} }
+      }
+      { \hsb_tree_collapse_classify:n {#1} }
+  }
+
+% inside the tree: classify by counting brackets
+\cs_new_protected:Npn \hsb_tree_collapse_classify:n #1
+  {
     \tl_if_eq:NnTF \l_hsb_trimmed_tl { ] }
       { \hsb_tree_collapse_close: }
       {
@@ -741,9 +919,16 @@
     \tl_set:cn { hsb_open_ \int_use:N \l_hsb_depth_int } {#1}
   }
 
-% a self-contained leaf line: becomes one child-block of the current depth
+% a self-contained leaf line: one child-block of the current node.
+% At depth 0 there is no node to attach it to (e.g. a one-line tree
+% "[Root]"), so it passes through as is.
 \cs_new_protected:Npn \hsb_tree_collapse_leaf:n #1
-  { \hsb_tree_collapse_addchild:n {#1} }
+  {
+    \int_compare:nNnTF { \l_hsb_depth_int } = { 0 }
+      { \hsb_tree_collapse_pass:n {#1} }
+      { \hsb_tree_collapse_addchild:n {#1} }
+  }
+
 
 % a passthrough line (blank, config, \begin{forest}, etc.):
 %  at depth 0, goes straight to the top buffer; at depth >=1, stays glued to

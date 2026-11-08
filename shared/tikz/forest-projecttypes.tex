@@ -1,28 +1,33 @@
+%STEPBEGIN{0}
 \documentclass{standalone}
-\usepackage[edges]{forest}
-\usetikzlibrary{shadows.blur}
+\usepackage{hsbcommon}
 \begin{document}
+\showmytreeraw[1]{forest-projecttypes.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
     \begin{forest}
         for tree={
-            % font=\footnotesize,
             grow = east,
-            % parent anchor = east,
-            % child anchor = west,
             forked edge,
-            inner sep=12pt,
-            % blur shadow,
+            inner sep=2pt,
+            s sep=24pt,       % room between siblings for the arrows
             fill=white
                 }
     [Projects
-        [implementation projects 
-            [technical] 
-            [organisational] {\draw[->,red] (.south) -- (!s.north);}
+        [implementation projects, name=impl
+            [technical, name=tech]
+            [organisational, name=org]
         ]
-        [conceptualisation projects] {\draw[->,red] (.south) -- (!s.north);}
-        [research projects] {\draw[->,red] (.south) --  (!s.north);}
+        [conceptualisation projects, name=concept]
+        [research projects, name=research]
     ]
+    %STEPBEGIN{1}
+    % keep the options on ONE line: the step system reads the file line by line
+    % and an unbalanced bracket would be mistaken for a tree node
+    \begin{scope}[red, thick, -{Stealth[length=5pt]}, shorten <=2pt, shorten >=2pt]
+    \draw (research.south) -- (concept.north);
+    \draw (concept.south)  -- (impl.north);
+    \draw (org.south)      -- (tech.north);
+    \end{scope}
+    %STEPEND
     \end{forest}
-    
- 
-    
-\end{document}

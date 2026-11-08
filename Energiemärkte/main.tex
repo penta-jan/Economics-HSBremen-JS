@@ -1,0 +1,129 @@
+\documentclass[t,10pt,leqno,aspectratio=43]{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[commentwidth=100px,commentx=250pt,commenty=50pt]{hsbcommon}
+\usetheme{IBB}
+
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+\setbeamertemplate{itemize items}[triangle]
+\setlength{\leftmargini}{3ex}
+\setlength{\leftmarginii}{0.5cm}
+
+% \setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+% \setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+% %% define the dates
+% \newcommand{\mysession}[1]{%
+%   \ifcase#1\relax\or
+%     Week 1\or
+%     Week 2\or
+%     Week 3\or
+%     Week 4\or
+%     Week 5\or
+%     Week 6\or
+%     Week 7\or
+%     Week 8\or
+%     Week 9\or
+%     Week 10\or
+%     Week 11\or
+%     Week 12\or
+%     Week 13\or
+%     Week 14\or
+%     \else
+%   \fi
+% }
+
+
+%%% TOC MANIPULATION
+\input{../beamerpagenumbers}
+
+\makeatletter
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip-3pt}
+  {}
+  {}
+
+\AtBeginSection[]
+{
+    \subtitle{%
+    \thesection. Veranstaltung -- \secname\ % -- \mysession{\thesection}
+    }
+    \titlepage 
+
+    \begin{frame}{Übersicht}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\makeatother
+
+%%%
+
+\title[Einführung in die Energiemärkte \the\year]{Einführung in die Energiemärkte}
+\author[Jan Suchanek]{Jan Suchanek}
+% \date{Winter Semester \the\year}
+% \institute{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}}
+
+\setlength{\parskip}{1ex}
+
+
+
+\begin{document}
+
+\onehalfspacing
+
+\frame{\titlepage}
+% \titleframe
+
+
+
+
+% \begin{frame}[plain]{}
+%     \begin{center}
+%         \large
+%         ~\par\vspace{3cm}
+%         Welcome!
+
+%         And today's topic is...
+%     \end{center}
+% \end{frame}
+
+% \newcommand{\redsection}[1]{\section{\color{red}#1}}
+
+\include{EM_Einführung}
+
+
+\include{Energiemärkte/EM_Rollen}
+
+\include{Energiemärkte/EM_Produzenten}
+
+\include{Energiemärkte/EM_Merit_Order}
+
+
+\begin{frame}[plain]{}
+    \begin{center}
+    \Large
+    ~\par\vspace{3cm}
+    Vielen Dank!
+    \end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Literatur und Links}
+   \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}

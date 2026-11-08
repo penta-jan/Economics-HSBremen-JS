@@ -2,7 +2,7 @@
 \documentclass{standalone}
 \usepackage{hsbcommon}
 \begin{document}
-\showmytreeraw[only 3,4]{forest-bop-imf.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\showmytreeraw[1]{forest-bop-imf.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
 \end{document}
 %STEPEND
     \begin{forest}
@@ -14,9 +14,9 @@
             inner sep=2pt
                 }
     [Balance of Payments
-        [Current Account
+        [\colorbox{yellow!40}{Current Account}
             %STEPBEGIN{1}
-            [Goods and Services
+            [Goods and Services\\ (Trade Balance),align=left
                 [Trade in goods
                     %STEPBEGIN{2}
                     [Genearal merchanidse]
@@ -68,7 +68,7 @@
             ]
             %STEPEND
         ]
-        [Capital \& Financial Account
+        [\colorbox{green!40}{Capital \& Financial Account}
             %STEPBEGIN{3}
             [Capital Acc.
                 [Capital transfers
@@ -93,7 +93,7 @@
                     [Liabilities]
                     %STEPEND
                 ]
-                [\textbf{Reserve assets (Reserve Account)}
+                [\textbf{Reserve Account}
                     %STEPBEGIN{4}
                     [Monetary gold]
                     [Special drawing rights]

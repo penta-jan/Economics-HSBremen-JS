@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+% %% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\begin{document}
+\begin{tikzpicture}
+    \newcommand{\intenyears}{\the\numexpr\year+10\relax}
+    \tikzset{
+        mybond/.pic={
+        \node[draw,fill=yellow!40,minimum width=1cm,minimum height=1.6cm,align=center]  (iou) {I will\\ pay you\\ \$100\\ in \intenyears};
+        }
+    }
+    % \useasboundingbox (-4,-4) rectangle (4,2);
+    
+    \node[businessman,minimum size=1.6cm] (gov) at (-3.5,0) {Government};
+    \path (0,0) pic{mybond};
+    \draw[->] (gov.east) -- node[above] {issues} node[below] {\the\year} (iou.west);
+
+    \node[alice,minimum size=1.6cm,mirrored] (buyer) at (3.5,0) {Buyer};
+    
+    \draw[->] (buyer.west) -- node[above] {buys} node[below] {\the\year} (iou.east);
+
+    \draw[->] (buyer.south west) -- node[below,text width=2cm,align=center] (pr) {price: \$90} (gov.south east);
+
+    \ifstep{1}{   
+        \begin{scope}[red]
+            \node at (-3,-3) (r1) {\$90 in \the\year};
+            \node at (0,-3) (yi) {yield: 5.56\%};
+            \node at (3,-3) (r2) {\$100 in \intenyears};
+        
+            \draw[<->] (pr) -- (yi);
+            \draw[<->] (pr) -- (r1);
+            \draw[<->] (pr) -- (r2);
+            \draw[<->] (yi) -- (r1);
+            \draw[<->] (yi) -- (r2);
+        \end{scope}
+        \ifstep{2}{
+            \node (pr) at (-3,-4) {$\downarrow$ price};
+            \node (yi) at (0,-4) {$\uparrow$ yield};
+            \draw[<->] (pr) -- (yi);
+        }
+    }
+    
+\end{tikzpicture}
+\end{document}

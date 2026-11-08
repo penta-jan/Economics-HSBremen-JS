@@ -1,0 +1,134 @@
+%%% MA_09_Labour_Market.tex -- reorganised; frames moved from the old MA_xx files (see comments)
+
+\section{The Labour Market and Unemployment}
+
+
+\begin{frame}{Unemployment Quota vs. Employment Quota}
+    \mycomment{
+    The population consists of those who are earning a living, and those who do not. If anyone who can work and wants to work is employed, we speak of full employment.
+
+    The diagram does not show the correct proportions, the sizes of the boxes are made to fit the text. 
+    
+    The actual unemployment rate is typically below 5\%, thus this diagram overstates that block!
+    }
+    \showmytikz[]{../shared/tikz/tikz-redistribution-realistic}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 1]
+\begin{frame}{Unemployment Quota vs. Employment Quota}
+    \mycomment{
+    There are, however, always some people between jobs, or otherwise unemployed while job seeking.
+    
+    The exact duration of such job seeking is also a matching problem. The more specialised the division of labour in a society is, the harder it is to find exact matching jobs. Paradoxically, the more skilled a worker is, the longer the search might take, or it might take re-skilling.
+
+    Transitions, such as closure of an industry or shifts from one to the other, often result in frictions on the labour markets.
+    }
+    \showmytikz[1]{../shared/tikz/tikz-redistribution-realistic}
+\end{frame}
+
+
+%%% TODO (new content): ILO definitions, participation rate; frictional / structural / cyclical unemployment; Okun's law; minimum wage
+
+%%% [moved from MA_2_Labour_Market.tex, frame 8]
+\begin{frame}{Employment}
+    \showmytikz{../shared/tikz/tikz-laboursupply}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 9]
+\begin{frame}{Employment}
+    \showmytikz{../shared/tikz/tikz-labouremployment}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 10]
+\begin{frame}{Employment}
+    \showmytikz[1]{../shared/tikz/tikz-labouremployment}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 11]
+\begin{frame}{Employment}
+    \showmytikz[1,2]{../shared/tikz/tikz-labouremployment}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 12]
+\begin{frame}{Employment}
+    \showmytikz[1,3]{../shared/tikz/tikz-labouremployment}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 13]
+\begin{frame}{Employment}
+    \showmytikz{../shared/tikz/tikz-beveridge}
+    \mycomment{
+    Empirically, the unemployment rate and the number of open positions, as measured by job offerings, relate to each other somewhere near a curve named `Beveridge curve'. 
+
+    This relationship can tell whether the job market is `tight' or not.
+    }
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 14]
+\begin{frame}{Employment}
+    \showmytikz[1]{../shared/tikz/tikz-beveridge}
+    \mycomment{
+        Firms keep posting vacancies as long as the cost to do so equals the marginal revenue of doing so; which is why it is a straight line.
+    }   
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 15]
+\begin{frame}{Secretary Problem: Search Problem}
+    \mycomment{
+    The \enquote{Secretary Problem} describes the challenge to choose the best candidate (or at least a good one), when you don't know how good the candidates are.
+
+    First, you look at a number of applicants, but do not offer any of them a job. Once you feel confident about the range of the applicants' quality, you choose to take the next best one.
+
+    But you may also run out of time at some point, which is when you have to settle with the last candidate.
+
+    This shows also that there is \enquote{temporal unemployment}, just as there are \enquote{temporal vacancies}.
+    }
+    \showmytikz{../shared/tikz/tikz-secretaryproblem}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 16]
+\begin{frame}{Secretary Problem: Search Problem}
+    \mycomment{
+    How long exactly should you explore, and when do you change your strategy to \enquote{select}? What is your optimum strategy?
+
+    This is a surprisingly hard mathematical problem.
+    }
+    \showmytikz[1]{../shared/tikz/tikz-secretaryproblem}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 17]
+\begin{frame}{Secretary Problem: Search Problem}
+    \mycomment{
+        Mathematicians tell us that the searcher should spend about $\frac{1}{e}$ with $e$ Euler's number (2.718...) of the time on searching. 
+    }
+    \showmytikz[2]{../shared/tikz/tikz-secretaryproblem}
+\end{frame}
+
+%%% [moved from MA_2_Labour_Market.tex, frame 18]
+\begin{frame}{Secretary Problem: Search Problem}
+    \showmytikz[3]{../shared/tikz/tikz-secretaryproblem}
+    \mycomment{
+    Interestingly, the chances of the employer to settle on the best candidate are below one. Also the chances of the best candidate to get the job are below one. To be precise, both chances converge again to $\frac{1}{e}$. This may be called the \enquote{$\frac{1}{e}$-law of best choice}. 
+
+    The problem serves as an illustration only, since the assumptions are pretty rigid, and reality as always is even more complicated.
+    
+    Search problems, and problems when to stop searching, play a large role in decision and computer science. 
+    
+    And when you are searching -- a job, a spouse, a parking space, a topic for a thesis paper -- you encounter similar problems. Searching is by no means a trivial activity.
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 40]
+\begin{frame}{Phillips Curve}
+    \showmytikz{../shared/tikz/tikz-phillipscurve}
+    \mycomment{
+    The Phillips curve conveys the idea that there is a relationship between inflation and unemployment.
+
+    This was generally considered true until the age of stagflation, where inflation and unemployment happen together.
+
+    Supply shocks may shift this curve to the right; and it can generally be rather unstable. The reality seems more complex.
+    }
+\end{frame}
+
+
+%% okun's law, structural unemployment, temporal unemployment, phillips curve, insider-outsider

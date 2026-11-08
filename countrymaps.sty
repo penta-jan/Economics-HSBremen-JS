@@ -1,0 +1,600 @@
+% countrymaps.sty -- draw country outlines as TikZ pictures
+%
+%   \drawmap{germany}
+%   \drawmap[width=4cm, style={fill=blue!20}]{france, germany[fill=red!30]}
+%   \begin{countrymap}{germany}
+%     \node[circle,fill,inner sep=1.5pt,label=Hannover] at (geo cs:9.73,52.37) {};
+%   \end{countrymap}
+%
+% Data: countrymaps-index.tex + countrymaps-paths.tex (default: Natural
+% Earth 1:50m, public domain).  Other datasets can be built with the scripts in
+% tools/ and selected with \usepackage[data=<prefix>]{countrymaps}.
+%
+% License: LPPL 1.3c
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]
+\ProvidesExplPackage{countrymaps}{2026/10/13}{0.1}
+  {Country outlines as TikZ pictures}
+\RequirePackage{tikz}
+
+% ------------------------------------------------------------------ variables
+\str_new:N   \g__cm_prefix_str
+\str_new:N   \g__cm_dataproj_str
+\seq_new:N   \g__cm_keys_seq
+\prop_new:N  \g__cm_alias_prop
+\prop_new:N  \l__cm_want_prop
+\ior_new:N   \g__cm_ior
+\str_new:N   \l__cm_tmp_str
+\str_new:N   \l__cm_norm_str
+\tl_new:N    \l__cm_key_tl
+\tl_new:N    \l__cm_itemopts_tl
+\seq_new:N   \l__cm_focus_seq        % keys of the countries asked for
+\prop_new:N  \l__cm_focusopts_prop   % key -> per-item tikz options
+\prop_new:N  \l__cm_focusname_prop   % key -> name used for the coordinate
+\seq_new:N   \l__cm_context_seq
+\fp_new:N    \l__cm_xmin_fp
+\fp_new:N    \l__cm_xmax_fp
+\fp_new:N    \l__cm_ymin_fp
+\fp_new:N    \l__cm_ymax_fp
+\fp_new:N    \l__cm_cos_fp
+\fp_new:N    \l__cm_s_fp
+% transformation used by the `geo' coordinate system (deg -> pt)
+\tl_new:N \l__cm_xzero_tl  \tl_set:Nn \l__cm_xzero_tl { 0 }
+\tl_new:N \l__cm_yzero_tl  \tl_set:Nn \l__cm_yzero_tl { 0 }
+\tl_new:N \l__cm_xs_tl     \tl_set:Nn \l__cm_xs_tl { 1 }  % applied twice
+\tl_new:N \l__cm_ys_tl     \tl_set:Nn \l__cm_ys_tl { 1 }  % applied twice
+
+% ----------------------------------------------------------------------- keys
+\keys_define:nn { countrymaps }
+  {
+    width          .dim_set:N  = \l__cm_width_dim,
+    width          .initial:n  = 6cm,
+    height         .dim_set:N  = \l__cm_height_dim,
+    height         .initial:n  = 0pt,
+    style          .tl_set:N   = \l__cm_style_tl,
+    style          .initial:n  = { draw=black!70, fill=black!10, line~join=round },
+    style+         .code:n     = \tl_put_right:Nn \l__cm_style_tl { ,#1 },
+    overseas       .bool_set:N = \l__cm_overseas_bool,
+    overseas       .default:n  = true,
+    projection     .choices:nn = { local, plain }
+                                 { \str_set:Nx \l__cm_proj_str { \l_keys_choice_tl } },
+    margin         .fp_set:N   = \l__cm_margin_fp,
+    margin         .initial:n  = 0,
+    context        .bool_set:N = \l__cm_context_bool,
+    context        .default:n  = true,
+    states         .bool_set:N = \l__cm_states_bool,
+    states         .default:n  = true,
+    state~style    .tl_set:N   = \l__cm_statestyle_tl,
+    state~style    .initial:n  = { draw=black!45, line~width=.3pt, line~join=round },
+    context~style  .tl_set:N   = \l__cm_contextstyle_tl,
+    context~style  .initial:n  = { draw=black!30, fill=black!3, line~join=round },
+    labels         .bool_set:N = \l__cm_labels_bool,
+    labels         .default:n  = true,
+    state~labels   .bool_set:N = \l__cm_statelabels_bool,
+    state~labels   .default:n  = true,
+    state~label~style .tl_set:N = \l__cm_statelabelstyle_tl,
+    state~label~style .initial:n = { font=\tiny, align=center, text=black!70 },
+    label~style    .tl_set:N   = \l__cm_labelstyle_tl,
+    label~style    .initial:n  = { font=\scriptsize, align=center },
+    tikz           .tl_set:N   = \l__cm_tikz_tl,
+    cache          .bool_set:N = \l__cm_cache_bool,
+    cache          .initial:n  = true,
+    at             .tl_set:N   = \l__cm_at_tl,
+    anchor         .choices:nn =
+      { center, north, south, east, west,
+        north~east, north~west, south~east, south~west }
+      { \tl_set_eq:NN \l__cm_anchor_tl \l_keys_choice_tl },
+    anchor         .initial:n  = center,
+    data           .code:n     = \str_gset:Nn \g__cm_prefix_str {#1},
+    data           .initial:n  = countrymaps,
+  }
+\str_new:N \l__cm_proj_str
+\ProcessKeyOptions [ countrymaps ]
+
+\NewDocumentCommand \countrymapsetup { m } { \keys_set:nn { countrymaps } {#1} }
+
+% ------------------------------------------------------------- data (index)
+\NewDocumentCommand \countrymapsdataprojection { m }
+  { \str_gset:Nn \g__cm_dataproj_str {#1} }
+\NewDocumentCommand \countrymapsdefcountry { m m m m m m }
+  {
+    \seq_gput_right:Nn \g__cm_keys_seq {#1}
+    \tl_gset:cn { g__cm_name_#1_tl } {#2}
+    \clist_map_inline:nn {#3} { \prop_gput:Nnn \g__cm_alias_prop {##1} {#1} }
+    \tl_gset:cn { g__cm_bbmain_#1_tl } {#4}
+    \tl_gset:cn { g__cm_bball_#1_tl }  {#5}
+    \tl_gset:cn { g__cm_label_#1_tl }  {#6}
+  }
+% a first-level subdivision (state, province, ...) of country #1
+\NewDocumentCommand \countrymapsdefstate { m m m m m m m }
+  {
+    \seq_if_exist:cF { g__cm_states_#1_seq } { \seq_new:c { g__cm_states_#1_seq } }
+    \seq_gput_right:cn { g__cm_states_#1_seq } {#2}
+    \tl_gset:cn { g__cm_parent_#2_tl } {#1}
+    \tl_gset:cn { g__cm_name_#2_tl } {#3}
+    \clist_map_inline:nn {#4} { \prop_gput:Nnn \g__cm_alias_prop {##1} {#2} }
+    \tl_gset:cn { g__cm_bbmain_#2_tl } {#5}
+    \tl_gset:cn { g__cm_bball_#2_tl }  {#6}
+    \tl_gset:cn { g__cm_label_#2_tl }  {#7}
+  }
+\prg_new_conditional:Npnn \__cm_if_state:n #1 { T, F, TF }
+  { \tl_if_exist:cTF { g__cm_parent_#1_tl } { \prg_return_true: } { \prg_return_false: } }
+\seq_new:N \l__cm_autostates_seq
+\seq_new:N \l__cm_ctxstates_seq
+
+\cs_new_protected:Npn \__cm_load_index:
+  {
+    \file_if_exist:nTF { \g__cm_prefix_str -index.tex }
+      {
+        \group_begin:   % read with document catcodes, so names keep their spaces
+          \ExplSyntaxOff
+          \file_input:n { \g__cm_prefix_str -index.tex }
+        \group_end:
+      }
+      { \msg_error:nnx { countrymaps } { no-data } { \g__cm_prefix_str } }
+    \str_if_empty:NT \l__cm_proj_str
+      {
+        \str_set:Nx \l__cm_proj_str
+          { \str_if_empty:NTF \g__cm_dataproj_str { local } { \g__cm_dataproj_str } }
+      }
+  }
+
+\msg_new:nnn { countrymaps } { no-data }
+  { Data~file~'#1-index.tex'~not~found. }
+\msg_new:nnn { countrymaps } { unknown }
+  {
+    Unknown~country~or~state~'#1'~(normalized:~'#2').\\
+    Use~a~name,~or~an~ISO~code~like~'de',~'deu'~or~'de-hb'.\\
+    States/provinces~are~available~for:~#3.
+  }
+\seq_new:N \l__cm_withstates_seq
+\cs_new_protected:Npn \__cm_states_list:
+  {
+    \seq_clear:N \l__cm_withstates_seq
+    \seq_map_inline:Nn \g__cm_keys_seq
+      {
+        \seq_if_exist:cT { g__cm_states_##1_seq }
+          { \seq_put_right:Nv \l__cm_withstates_seq { g__cm_name_##1_tl } }
+      }
+  }
+
+% --------------------------------------------------------- name normalization
+\cs_new_protected:Npn \__cm_normalize:nN #1 #2
+  {
+    \str_set:Nx \l__cm_tmp_str { \str_lowercase:f { \tl_to_str:n {#1} } }
+    \str_remove_all:Nn \l__cm_tmp_str { ~ }
+    \str_clear:N #2
+    \str_map_inline:Nn \l__cm_tmp_str
+      {
+        \bool_lazy_or:nnT
+          { \int_compare_p:n { `a <= `##1 <= `z } }
+          { \int_compare_p:n { `0 <= `##1 <= `9 } }
+          { \str_put_right:Nn #2 {##1} }
+      }
+  }
+
+% #1 = user input; sets \l__cm_key_tl or returns false
+\prg_new_protected_conditional:Npnn \__cm_lookup:n #1 { T, TF }
+  {
+    \__cm_normalize:nN {#1} \l__cm_norm_str
+    \prop_get:NVNTF \g__cm_alias_prop \l__cm_norm_str \l__cm_key_tl
+      { \prg_return_true: }
+      {
+        \__cm_states_list:
+        \msg_error:nnxxx { countrymaps } { unknown } { \tl_to_str:n {#1} }
+          { \l__cm_norm_str } { \seq_use:Nn \l__cm_withstates_seq { ,~ } }
+        \prg_return_false:
+      }
+  }
+
+% ----------------------------------------------------------- path loading
+% paths file lines:  KEY m|o (x,y)--(x,y)--...--cycle [(x,y)--...--cycle]
+\cs_new_protected:Npn \__cm_load_paths:N #1
+  {
+    \prop_clear:N \l__cm_want_prop
+    \seq_map_inline:Nn #1
+      {
+        \tl_if_exist:cF { g__cm_pathm_##1_tl }
+          { \prop_put:Nnn \l__cm_want_prop {##1} { } }
+      }
+    \prop_if_empty:NF \l__cm_want_prop
+      {
+        \prop_map_inline:Nn \l__cm_want_prop
+          {
+            \tl_gclear_new:c { g__cm_pathm_##1_tl }
+            \tl_gclear_new:c { g__cm_patho_##1_tl }
+          }
+        \ior_open:Nn \g__cm_ior { \g__cm_prefix_str -paths.tex }
+        \ior_map_inline:Nn \g__cm_ior
+          { \tl_if_blank:nF {##1} { \__cm_line:w ##1 \q_stop } }
+        \ior_close:N \g__cm_ior
+      }
+  }
+\cs_new_protected:Npn \__cm_line:w #1 ~ #2 ~ #3 \q_stop
+  {
+    \prop_if_in:NnT \l__cm_want_prop {#1}
+      {
+        \tl_set:Nn \l__cm_tmp_tl {#3}
+        \tl_replace_all:NnV \l__cm_tmp_tl { ( } \c__cm_geocs_tl
+        \tl_gput_right:cx { g__cm_path#2_#1_tl } { \exp_not:V \l__cm_tmp_tl \c_space_tl }
+      }
+  }
+\tl_new:N \l__cm_tmp_tl
+\tl_const:Nx \c__cm_geocs_tl { ( geo \c_space_tl cs \c_colon_str }
+
+% forget loaded outlines (key `cache=false', or \countrymapsclearcache)
+\cs_new_protected:Npn \__cm_free:N #1
+  {
+    \seq_map_inline:Nn #1
+      { \cs_undefine:c { g__cm_pathm_##1_tl } \cs_undefine:c { g__cm_patho_##1_tl } }
+  }
+\NewDocumentCommand \countrymapsclearcache { }
+  {
+    \seq_map_inline:Nn \g__cm_keys_seq
+      {
+        \cs_undefine:c { g__cm_pathm_##1_tl } \cs_undefine:c { g__cm_patho_##1_tl }
+        \seq_if_exist:cT { g__cm_states_##1_seq }
+          { \exp_args:Nc \__cm_free:N { g__cm_states_##1_seq } }
+      }
+  }
+
+% ------------------------------------------------------------ geometry
+\cs_new_protected:Npn \__cm_bbox_union:n #1 { \__cm_bbox_union:w #1 \q_stop }
+\cs_new_protected:Npn \__cm_bbox_union:w #1 , #2 , #3 , #4 \q_stop
+  {
+    \fp_set:Nn \l__cm_xmin_fp { min( \l__cm_xmin_fp, #1 ) }
+    \fp_set:Nn \l__cm_ymin_fp { min( \l__cm_ymin_fp, #2 ) }
+    \fp_set:Nn \l__cm_xmax_fp { max( \l__cm_xmax_fp, #3 ) }
+    \fp_set:Nn \l__cm_ymax_fp { max( \l__cm_ymax_fp, #4 ) }
+  }
+\prg_new_conditional:Npnn \__cm_bbox_intersects:n #1 { T }
+  { \__cm_bbox_intersects:w #1 \q_stop }
+\cs_new:Npn \__cm_bbox_intersects:w #1 , #2 , #3 , #4 \q_stop
+  {
+    \fp_compare:nTF
+      {
+        #1 < \l__cm_xmax_fp && #3 > \l__cm_xmin_fp &&
+        #2 < \l__cm_ymax_fp && #4 > \l__cm_ymin_fp
+      }
+      { \prg_return_true: } { \prg_return_false: }
+  }
+
+% the `geo' coordinate system:  (geo cs:<lon>,<lat>)
+\tikzdeclarecoordinatesystem { geo } { \__cm_geo:w #1 \q_stop }
+\cs_new_protected:Npn \__cm_geo:w #1 , #2 \q_stop
+  {
+    \pgf@x = #1 pt \scan_stop:
+    \advance \pgf@x by - \l__cm_xzero_tl pt \scan_stop:
+    \pgf@x = \l__cm_xs_tl \pgf@x
+    \pgf@x = \l__cm_xs_tl \pgf@x
+    \pgf@y = #2 pt \scan_stop:
+    \advance \pgf@y by - \l__cm_yzero_tl pt \scan_stop:
+    \pgf@y = \l__cm_ys_tl \pgf@y
+    \pgf@y = \l__cm_ys_tl \pgf@y
+  }
+
+% ------------------------------------------------------------ main setup
+% #1 = keys, #2 = clist of countries (each optionally followed by [opts])
+\cs_new_protected:Npn \__cm_setup:nn #1 #2
+  {
+    \keys_set:nn { countrymaps } {#1}
+    \seq_clear:N \l__cm_focus_seq
+    \prop_clear:N \l__cm_focusopts_prop
+    \prop_clear:N \l__cm_focusname_prop
+    \clist_map_inline:nn {#2} { \__cm_item:w ##1 [ ] \q_stop }
+    % bounding box of the requested countries
+    \fp_set:Nn \l__cm_xmin_fp { inf }  \fp_set:Nn \l__cm_xmax_fp { -inf }
+    \fp_set:Nn \l__cm_ymin_fp { inf }  \fp_set:Nn \l__cm_ymax_fp { -inf }
+    \seq_map_inline:Nn \l__cm_focus_seq
+      {
+        \bool_if:NTF \l__cm_overseas_bool
+          { \exp_args:Nv \__cm_bbox_union:n { g__cm_bball_##1_tl } }
+          { \exp_args:Nv \__cm_bbox_union:n { g__cm_bbmain_##1_tl } }
+      }
+    \fp_compare:nT { \l__cm_xmax_fp < \l__cm_xmin_fp }   % nothing valid
+      {
+        \fp_set:Nn \l__cm_xmin_fp { 0 } \fp_set:Nn \l__cm_xmax_fp { 1 }
+        \fp_set:Nn \l__cm_ymin_fp { 0 } \fp_set:Nn \l__cm_ymax_fp { 1 }
+      }
+    \__cm_apply_margin:
+    % projection and scale
+    \str_if_eq:VnTF \l__cm_proj_str { local }
+      {
+        \fp_set:Nn \l__cm_cos_fp
+          { max( cosd( (\l__cm_ymin_fp + \l__cm_ymax_fp) / 2 ), 0.1 ) }
+      }
+      { \fp_set:Nn \l__cm_cos_fp { 1 } }
+    \fp_set:Nn \l__cm_s_fp
+      {
+        \dim_to_fp:n { \l__cm_width_dim }
+        / ( (\l__cm_xmax_fp - \l__cm_xmin_fp) * \l__cm_cos_fp )
+      }
+    \dim_compare:nNnT \l__cm_height_dim > { 0pt }
+      {
+        \fp_set:Nn \l__cm_s_fp
+          {
+            min( \l__cm_s_fp, \dim_to_fp:n { \l__cm_height_dim }
+                 / ( \l__cm_ymax_fp - \l__cm_ymin_fp ) )
+          }
+      }
+    \tl_set:Nx \l__cm_xzero_tl { \fp_to_decimal:N \l__cm_xmin_fp }
+    \tl_set:Nx \l__cm_yzero_tl { \fp_to_decimal:N \l__cm_ymin_fp }
+    \tl_set:Nx \l__cm_xs_tl
+      { \fp_eval:n { round( sqrt( \l__cm_s_fp * \l__cm_cos_fp ), 5 ) } }
+    \tl_set:Nx \l__cm_ys_tl
+      { \fp_eval:n { round( sqrt( \l__cm_s_fp ), 5 ) } }
+    % neighbouring countries
+    \seq_clear:N \l__cm_context_seq
+    \bool_if:NT \l__cm_context_bool
+      {
+        \seq_map_inline:Nn \g__cm_keys_seq
+          {
+            \seq_if_in:NnF \l__cm_focus_seq {##1}
+              {
+                \exp_args:Nv \__cm_bbox_intersects:nT { g__cm_bball_##1_tl }
+                  { \seq_put_right:Nn \l__cm_context_seq {##1} }
+              }
+          }
+      }
+    % all states of the requested countries (key `states')
+    \seq_clear:N \l__cm_autostates_seq
+    \bool_if:NT \l__cm_states_bool
+      {
+        \seq_map_inline:Nn \l__cm_focus_seq
+          {
+            \seq_if_exist:cT { g__cm_states_##1_seq }
+              {
+                \seq_map_inline:cn { g__cm_states_##1_seq }
+                  {
+                    \seq_if_in:NnF \l__cm_focus_seq {####1}
+                      {
+                        \exp_args:Nv \__cm_bbox_intersects:nT { g__cm_bball_####1_tl }
+                          { \seq_put_right:Nn \l__cm_autostates_seq {####1} }
+                      }
+                  }
+              }
+          }
+      }
+    % with `context', a state is shown among its neighbouring states
+    \seq_clear:N \l__cm_ctxstates_seq
+    \bool_if:NT \l__cm_context_bool
+      {
+        \seq_map_inline:Nn \l__cm_focus_seq
+          {
+            \__cm_if_state:nT {##1}
+              {
+                \seq_map_inline:cn { g__cm_states_ \tl_use:c { g__cm_parent_##1_tl } _seq }
+                  {
+                    \seq_if_in:NnF \l__cm_focus_seq {####1}
+                      {
+                        \seq_if_in:NnF \l__cm_ctxstates_seq {####1}
+                          {
+                            \exp_args:Nv \__cm_bbox_intersects:nT { g__cm_bball_####1_tl }
+                              { \seq_put_right:Nn \l__cm_ctxstates_seq {####1} }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    \seq_set_eq:NN \l__cm_tmp_seq \l__cm_focus_seq
+    \seq_concat:NNN \l__cm_tmp_seq \l__cm_tmp_seq \l__cm_context_seq
+    \seq_concat:NNN \l__cm_tmp_seq \l__cm_tmp_seq \l__cm_autostates_seq
+    \seq_concat:NNN \l__cm_tmp_seq \l__cm_tmp_seq \l__cm_ctxstates_seq
+    \__cm_load_paths:N \l__cm_tmp_seq
+  }
+\seq_new:N \l__cm_tmp_seq
+
+\cs_new_protected:Npn \__cm_apply_margin:
+  {
+    \fp_compare:nT { \l__cm_margin_fp > 0 }
+      {
+        \fp_set:Nn \l__cm_tmpa_fp
+          { \l__cm_margin_fp * (\l__cm_xmax_fp - \l__cm_xmin_fp) }
+        \fp_set:Nn \l__cm_tmpb_fp
+          { \l__cm_margin_fp * (\l__cm_ymax_fp - \l__cm_ymin_fp) }
+        \fp_sub:Nn \l__cm_xmin_fp { \l__cm_tmpa_fp }
+        \fp_add:Nn \l__cm_xmax_fp { \l__cm_tmpa_fp }
+        \fp_sub:Nn \l__cm_ymin_fp { \l__cm_tmpb_fp }
+        \fp_add:Nn \l__cm_ymax_fp { \l__cm_tmpb_fp }
+      }
+  }
+\fp_new:N \l__cm_tmpa_fp
+\fp_new:N \l__cm_tmpb_fp
+
+% one list item:  name   or   name[tikz options]
+\cs_new_protected:Npn \__cm_item:w #1 [ #2 ] #3 \q_stop
+  {
+    \tl_if_blank:nF {#1}
+      {
+        \__cm_special:nF {#1}
+          {
+            \__cm_lookup:nT {#1}
+              {
+                \seq_if_in:NVF \l__cm_focus_seq \l__cm_key_tl
+                  { \seq_put_right:NV \l__cm_focus_seq \l__cm_key_tl }
+                \prop_put:NVn \l__cm_focusopts_prop \l__cm_key_tl {#2}
+                \prop_put:NVV \l__cm_focusname_prop \l__cm_key_tl \l__cm_norm_str
+              }
+          }
+      }
+  }
+% `world' / `all' select every country
+\prg_new_protected_conditional:Npnn \__cm_special:n #1 { F }
+  {
+    \__cm_normalize:nN {#1} \l__cm_norm_str
+    \bool_lazy_or:nnTF
+      { \str_if_eq_p:Vn \l__cm_norm_str { world } }
+      { \str_if_eq_p:Vn \l__cm_norm_str { all } }
+      {
+        \seq_map_inline:Nn \g__cm_keys_seq
+          {
+            \seq_if_in:NnF \l__cm_focus_seq {##1}
+              { \seq_put_right:Nn \l__cm_focus_seq {##1} }
+          }
+        \prg_return_true:
+      }
+      { \prg_return_false: }
+  }
+
+% ------------------------------------------------------------ drawing
+\tl_new:N \l__cm_path_tl
+\cs_new_protected:Npn \__cm_draw_country:nn #1 #2  % key, style
+  {
+    \tl_set:Nx \l__cm_path_tl
+      {
+        \exp_not:v { g__cm_pathm_#1_tl }
+        \bool_if:NT \l__cm_overseas_bool { \exp_not:v { g__cm_patho_#1_tl } }
+      }
+    \__cm_tikz_path:nV {#2} \l__cm_path_tl
+  }
+\cs_new_protected:Npn \__cm_draw_context:n #1
+  {
+    \tl_set:Nx \l__cm_path_tl
+      { \exp_not:v { g__cm_pathm_#1_tl } \exp_not:v { g__cm_patho_#1_tl } }
+    \__cm_tikz_path:VV \l__cm_contextstyle_tl \l__cm_path_tl
+  }
+\cs_new_protected:Npn \__cm_tikz_path:nn #1 #2 { \path [#1] #2 ; }
+\cs_generate_variant:Nn \__cm_tikz_path:nn { nV, VV }
+
+\cs_new_protected:Npn \__cm_picture_body:
+  {
+    \bool_if:NT \l__cm_context_bool
+      {
+        \use:x
+          {
+            \exp_not:N \path [ use~as~bounding~box ]
+            \c__cm_geocs_tl \fp_to_decimal:N \l__cm_xmin_fp , \fp_to_decimal:N \l__cm_ymin_fp )
+            rectangle
+            \c__cm_geocs_tl \fp_to_decimal:N \l__cm_xmax_fp , \fp_to_decimal:N \l__cm_ymax_fp ) ;
+            \exp_not:N \clip
+            \c__cm_geocs_tl \fp_to_decimal:N \l__cm_xmin_fp , \fp_to_decimal:N \l__cm_ymin_fp )
+            rectangle
+            \c__cm_geocs_tl \fp_to_decimal:N \l__cm_xmax_fp , \fp_to_decimal:N \l__cm_ymax_fp ) ;
+          }
+        \seq_map_function:NN \l__cm_context_seq \__cm_draw_context:n
+        \seq_map_function:NN \l__cm_ctxstates_seq \__cm_draw_context:n
+      }
+    % countries, then their state borders, then explicitly named states
+    \seq_map_inline:Nn \l__cm_focus_seq
+      { \__cm_if_state:nF {##1} { \__cm_draw_focus:n {##1} } }
+    \seq_map_inline:Nn \l__cm_autostates_seq
+      { \exp_args:NnV \__cm_draw_country:nn {##1} \l__cm_statestyle_tl }
+    \seq_map_inline:Nn \l__cm_focus_seq
+      { \__cm_if_state:nT {##1} { \__cm_draw_focus:n {##1} } }
+    \__cm_state_coordinates:
+    % named coordinates: (germany), (DEU), ... at the label point
+    \seq_map_inline:Nn \l__cm_focus_seq
+      {
+        \use:x
+          {
+            \exp_not:N \coordinate (##1) at
+            \c__cm_geocs_tl \tl_use:c { g__cm_label_##1_tl } ) ;
+          }
+        \prop_get:NnNT \l__cm_focusname_prop {##1} \l__cm_tmp_tl
+          { \use:x { \exp_not:N \coordinate (\l__cm_tmp_tl) at (##1) ; } }
+        \bool_if:NT \l__cm_labels_bool
+          {
+            \exp_args:NV \__cm_label:nn \l__cm_labelstyle_tl {##1}
+          }
+      }
+  }
+\cs_new_protected:Npn \__cm_draw_focus:n #1
+  {
+    \prop_get:NnNF \l__cm_focusopts_prop {#1} \l__cm_itemopts_tl
+      { \tl_clear:N \l__cm_itemopts_tl }
+    \tl_set:Nx \l__cm_tmp_tl
+      { \exp_not:V \l__cm_style_tl , \exp_not:V \l__cm_itemopts_tl }
+    \exp_args:NnV \__cm_draw_country:nn {#1} \l__cm_tmp_tl
+  }
+\cs_new_protected:Npn \__cm_label:nn #1 #2
+  { \node [#1] at (#2) { \tl_use:c { g__cm_name_#2_tl } } ; }
+\cs_new_protected:Npn \__cm_state_coordinates:
+  {
+    \seq_map_inline:Nn \l__cm_autostates_seq
+      {
+        \use:x
+          {
+            \exp_not:N \coordinate (##1) at
+            \c__cm_geocs_tl \tl_use:c { g__cm_label_##1_tl } ) ;
+          }
+        \bool_if:NT \l__cm_statelabels_bool
+          { \exp_args:NV \__cm_label:nn \l__cm_statelabelstyle_tl {##1} }
+      }
+  }
+
+% ------------------------------------------------------------ user interface
+% Outside a tikzpicture the environment makes its own picture; inside one
+% (e.g. together with `on background layer') it only opens a scope.
+\bool_new:N \l__cm_inpic_bool
+\tl_new:N   \l__cm_scopeopts_tl
+\prop_const_from_keyval:Nn \c__cm_anchor_prop
+  {
+    center = {.5,.5}, north = {.5,1}, south = {.5,0}, east = {1,.5},
+    west = {0,.5}, north~east = {1,1}, north~west = {0,1},
+    south~east = {1,0}, south~west = {0,0}
+  }
+% `at' + `anchor': shift the map so that its anchor lands on the given point
+\cs_new_protected:Npn \__cm_position:
+  {
+    \tl_clear:N \l__cm_scopeopts_tl
+    \tl_if_blank:VF \l__cm_at_tl
+      {
+        \exp_last_unbraced:Nf \__cm_position:w
+          { \prop_item:NV \c__cm_anchor_prop \l__cm_anchor_tl } \q_stop
+      }
+  }
+\cs_new_protected:Npn \__cm_position:w #1 , #2 \q_stop
+  {
+    \tl_set:Nx \l__cm_scopeopts_tl
+      {
+        shift = { ( \exp_not:V \l__cm_at_tl ) } ,
+        xshift = \fp_eval:n
+          { - #1 * (\l__cm_xmax_fp - \l__cm_xmin_fp) * \l__cm_s_fp * \l__cm_cos_fp } pt ,
+        yshift = \fp_eval:n
+          { - #2 * (\l__cm_ymax_fp - \l__cm_ymin_fp) * \l__cm_s_fp } pt
+      }
+  }
+\cs_generate_variant:Nn \prop_item:Nn { NV }
+
+\NewDocumentEnvironment { countrymap } { O{} m }
+  {
+    \group_begin:
+    \tikzifinpicture
+      { \bool_set_true:N \l__cm_inpic_bool }
+      { \bool_set_false:N \l__cm_inpic_bool }
+    \__cm_setup:nn {#1} {#2}
+    \__cm_position:
+    \bool_if:NTF \l__cm_inpic_bool
+      {
+        \use:x
+          {
+            \exp_not:N \begin { scope }
+              [ \exp_not:V \l__cm_tikz_tl , \exp_not:V \l__cm_scopeopts_tl ]
+          }
+      }
+      {
+        \use:x
+          {
+            \exp_not:N \begin { tikzpicture } [ \exp_not:V \l__cm_tikz_tl ]
+            \exp_not:N \begin { scope } [ \exp_not:V \l__cm_scopeopts_tl ]
+          }
+      }
+    \__cm_picture_body:
+  }
+  {
+    \end { scope }
+    \bool_if:NF \l__cm_inpic_bool { \end { tikzpicture } }
+    \bool_if:NF \l__cm_cache_bool { \__cm_free:N \l__cm_tmp_seq }
+    \group_end:
+  }
+\NewDocumentCommand \drawmap { O{} m }
+  { \begin { countrymap } [#1] {#2} \end { countrymap } }
+
+% \countryname{germany} -> Germany
+\NewExpandableDocumentCommand \countryname { m }
+  { \__cm_name:n {#1} }
+\cs_new:Npn \__cm_name:n #1 { \tl_use:c { g__cm_name_ \__cm_key:n {#1} _tl } }
+\cs_new:Npn \__cm_key:n #1
+  { \exp_args:NNe \prop_item:Nn \g__cm_alias_prop { \str_lowercase:n {#1} } }
+
+\__cm_load_index:

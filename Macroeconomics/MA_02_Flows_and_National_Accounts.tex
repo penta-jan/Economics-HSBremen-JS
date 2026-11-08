@@ -1,0 +1,903 @@
+%%% MA_01_Fundamentals.tex -- reorganised; frames moved from the old MA_xx files (see comments)
+
+\section{The Circular Flow Model and National Accounts}
+
+%%% Fundamental Equation Y = C + I + G 
+
+\begin{frame}{Stock and Flow Quantities}
+    \mytext{
+    Economics is concerned with economic activity. 
+    
+    We are chiefly concerned with \textbf{income:} 
+    \begin{itemize}
+        \item the production (of income),
+        \item the use (of income) in
+        \begin{itemize}
+            \item consumption, or 
+            \item savings and investment.
+        \end{itemize}
+    \end{itemize}
+
+    Wealth (stock, or net worth) is interesting too, but more insofar as it is a source of income.
+    
+    % Pure stocks are less a concern. Anything `sitting' around does not economically count. It is only interesting when sold or bought, when it yields some kind of interest, when it grows or shrinks.
+    }
+    \mycomment{
+        Economic activity concerns the production, distribution or consumption of goods. Looking at a picture or a sunset and enjoying it is not economic activity. 
+        
+        Stocks are interesting insofar as they have value; but the value of economic concern is the exchange value, not the (individual) use value. For economics it does not matter how much you enjoy your car; economics asks only how much you can sell it for.
+    }
+\end{frame}
+
+\begin{frame}{Planned and Realised Quantities}
+    \mytext{
+    What we plan and what we get is not always the same.
+    \begin{itemize}
+        \item planned savings, planned investments need not be identical to then realised savings and investments.
+        \item in the present, everyone, and the economy as a whole, is subject to a budget constraint.
+        \item with budget constraint comes balance mechanics (Wolfgang \noun{Stützel}). There are accounting identities that cannot be negotiated.
+        \item differences between planned saving and planned investment are resolved by changes in income, so that realised saving and investment always match.
+    \end{itemize}
+    }
+
+\end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 4]
+% \begin{frame}{Stock Quantities vs. Flow Quantities}
+%     \mycomment{
+%     Numbers need to be put in relation (to other numbers), so that we can make sense of them. Small percentages of large numbers are large numbers also. If you double a number of a certain order of magnitude, you get a new number in the same order of magnitude. 
+
+%     Most importantly: are we dealing with absolute quantities, or with the growth of quantities?
+%     }
+%     \mytext{
+%     \begin{description}
+%         \item[Stock quantities] describe how much there is of something at a present time. 
+%         \item[Flow quantities] describe how much is added or subtracted per time frame (usually a year).
+%         \item[Orders of Magnitude] are often more important than precise numbers,
+%         \item[Growth Rates] are connecting stock and flow quantities; discern 1st and 2nd order derivatives to describe trends.
+%     \end{description}
+%     }
+% \end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 5]
+% \begin{frame}{Flow vs. Derivatives / Marginal Rates}
+%     \mycomment{
+%         To make numbers speak---for us, to understand numbers properly---we must always put them into perspective. So for us, growth rates are typically more interesting than absolutes; and absolutes are intersting when put into relation to other absolutes. 
+%     }
+%     \showmybitmap{../shared/bitmaps/only-a-sith-deals-in-absolutes.png}
+% \end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 6]
+% \begin{frame}{Flow vs. Derivatives / Marginal Rates}
+%     \mytext{
+%      \begin{itemize}
+%          \item Flow rates: how much more \textit{per period}
+%          \item Marginal rates: how much more \textit{per unit}
+%      \end{itemize}
+%      Mathematically, \textit{marginal rates} are the derivative of the function:
+%      \begin{equation}
+%          f'(x) = \frac{df}{dx}
+%      \end{equation}
+%      Since marginal rates are important for optimisation, they are more relevant for decision making than stock or flow values.
+%     }
+% \end{frame}
+
+\begin{frame}{Consumption and Production}
+    \mytext{
+    Most of what we consume is produced immediately before it is consumed. 
+
+    What is produced `appears'; what is consumed `disappears'.
+
+    Intermediate steps may exist; so a finished product is the sum of many steps of value added. (Avoid double counting!)
+
+    Products (and services) come into existence through the combination of \textbf{production factors.}
+    }
+    \mycomment{
+    }
+\end{frame}
+
+\begin{frame}{Value Added}
+    \showmytikz{../shared/tikz/tikz-valueadded}
+    \mycomment{Production is more than just re-combination. The product is more than the sum of its parts.
+
+    Typical production factors are:
+    \begin{itemize}
+        \item raw materials,
+        \item pre-products or parts,
+        \item energy,
+        \item labour,
+        \item the means of production: tools, machines, factory buildings etc.,
+        \item know-how.
+    \end{itemize}
+
+    }
+\end{frame}
+
+\begin{frame}{Value Added}
+    \showmytikz[2]{../shared/tikz/tikz-valueadded}
+    \mycomment{
+
+    This \textbf{value added} originates from the way the factors are combined; the final product has more value (on markets) than the costs (of the factors). 
+    
+    The factors used in production are sourced on markets; the product is sold on a market. All this only makes economic sense as long as value is added (or at least not destroyed).
+    }
+\end{frame}
+
+\begin{frame}{Production Factors}
+    \showmytikz[3]{../shared/tikz/tikz-valueadded}
+    \mycomment{
+        Some factors are simply material or energy inputs which are bought on markets. 
+
+        These can be stored to some extent, but are usually processed immediately.       
+
+        These factors are remunerated by payment.
+    }
+\end{frame}
+
+\begin{frame}{Production Factors}
+    \showmytikz[4]{../shared/tikz/tikz-valueadded}
+    \mycomment{
+        Labour is another important factor. No factory runs without someone pressing the buttons. Labour is very different from material inputs, as it is sourced in different ways. Typically work contracts are longer employment contracts. 
+
+        Labour is remunerated by wages or salaries.
+    }
+\end{frame}
+
+\begin{frame}{Production Factors}
+    \showmytikz[5]{../shared/tikz/tikz-valueadded}
+    \mycomment{
+        Finally, some factors remain at the site, and can even be accumulated. These are the means of production: tools, machines, buildings, land and other properties. 
+
+        Another word for these assets is \textbf{capital.} They are tangible assets (such as tools) and intangible assets (such as know-how, brands, or patents).
+
+        Capital is remunerated by \textbf{rents, interest, and profits} paid to their owners or for the loans that were required to purchase them.
+    }
+\end{frame}
+
+%%% Circular Model of the Economy
+
+\begin{frame}{Circular Model of the Economy}
+    \mycomment{
+    We model the economy at a high degree of abstraction. Firstly, there are households, and there are firms. Of course, every human can be both; but the functional differentiation is fundamental.
+
+    Households buy and consume goods and services that are provided by firms with payments for goods and fees for services. These are the markets for goods and services.
+
+    This does not mean that everything produced is necessarily consumed. The household may decide to save some of its income, the firms may produce more than is consumed. Thus, savings and investments will also take place. 
+
+    Notice that one of the arrows in the picture is a physical flow: goods and services; while fees and payments are financial flows. So this is not yet a closed cycle; firms would sell out, households spend all their money.
+
+    This circular model does at this point not state anything about stocks.
+    }
+    \showmytikz[1]{../shared/tikz/tikz-flowmodel-own}
+\end{frame}
+
+\begin{frame}{Circular Model of the Economy}
+    \mycomment{
+    How can households possibly pay for the goods and services? By selling their work and labour to firms. For this, they receive salaries and wages. These are the labour markets. Again, we have a physical flow (of labour and work) and a financial flow (of salaries and wages).
+    }
+    \showmytikz[1,2]{../shared/tikz/tikz-flowmodel-own}
+\end{frame}
+
+\begin{frame}{Circular Model of the Economy}
+    \mycomment{
+    These markets are both flows; but households also dedicate a part of their wealth to firms, and invest into firms. For this capital and investment they receive interest and dividends (and profits). This are the capital markets. Note that again financial flows (interest and dividends) correspond to real flows (capital and investment). 
+    }
+    \showmytikz[1,2,3]{../shared/tikz/tikz-flowmodel-own}
+\end{frame}
+
+\begin{frame}{Circular Model of the Economy}
+    \mycomment{
+    Apart from households and firms, we have a third actor: the state. The state makes all this possible by establishing a legal order and providing the economy with currency. In addition, the state raises taxes: chiefly, but not only, income taxes, but also taxes on transactions and to some extent on firms; it raises levies; it pays transfers; and it also buys goods, services, and is an employer.
+
+    We will expand this model later to include the \enquote{rest of the world}. The circular understanding of the economy informs us about the relationship of interactions: the fact that \textbf{every economic interaction has two sides.}
+    }
+    \showmytikz[label=fig:flowmodel,step={1,2,3,4}]{../shared/tikz/tikz-flowmodel-own}
+\end{frame}
+
+
+%%%%%%%%%%% National Accounts
+
+
+\begin{frame}{National Accounts}
+    \mytext{
+    National Statistical Agencies and the Central Bank are the \enquote{book-keepers} of an Economy. 
+
+    This data is collected from many sources, among which tax offices, worked upon, and published. Their methods of calculation are not necessarily identical.
+    }
+    \mycomment{
+    The System of National Accounts (SNA) is a system of book-keeping on the national level \cite{SysNatAcc2025} \cite{lequillerblades2006}. The figures are provided by a number of sources, as households and firms must disclose their economic activity as they pay taxes.
+
+    The latest standard is 2025 SNA as adapted by the UN Statistical Commission \cite{SysNatAcc2025}.
+    }   
+\end{frame}
+
+
+\begin{frame}{National Accounts}
+    \mytext{
+    There is harmonisation at EU level, and to some degree at UN level. The data is transmitted to Eurostat and the UN Statistics Division (UNSD), again worked upon, then transmitted and collected by international organisations (UN System: IMF, World Bank; BIS, etc.)    
+
+    There are \textbf{current accounts} and \textbf{accumulation accounts.} Both of them show \textbf{flows} and are thus comparable to \textbf{income statements,} not to balance sheets.
+
+    \colorbox{yellow!40}{Current accounts} record the production, distribution and use of income in the period. 
+    
+    \colorbox{green!40}{Accumulation accounts} record the flows that change the stocks of assets and liabilities. 
+    
+
+    }
+    \mycomment{
+    There are variations and also slight differences on the national level between different calculations of the SNA. There has been a wide degree of standardisation, particularly after WWII. This comes from institutions like the IMF or the EU, which require standardised reporting.
+    
+    % Balance sheets, such as statistics about the absolute value of accumulated assets, are much harder to compute. Assets are difficult to evaluate as long as they are not traded . Statistics on wealth are typically based upon surveys and self-assessment.
+    }
+\end{frame}
+
+\begin{frame}{National Accounts}
+    \mycomment{Current accounts express flow values (within a particular time frame, typically a year). One example is GDP (per year).
+    }
+    \mytext{
+
+     \colorbox{yellow!40}{\textbf{Current accounts}}
+        \begin{itemize}
+            \item production accounts
+            \item primary distribution of income
+            \item secondary distribution of income
+            \item use of income accounts
+        \end{itemize}
+
+        The rest of the World is represented in the Trade Balance, also a current account. We will deal with that later.
+        
+    }
+\end{frame}
+
+\begin{frame}{National Accounts}
+    \mycomment{Accumulation accounts express the change of assets held by institutional units. The most important of this is the \textbf{capital account}. The part of the (overall) capital account that crosses borders appears as sub-account in the  Balance of Payments. 
+
+    % On top of that, and complementary of that, \textbf{additional accounts} are held. These are sometimes the result of double book keeping and highlight other aspects of the economy.
+
+    % \textbf{Balance sheets} per institutional unit, sector, group
+    
+    % \textbf{Goods and services accounts}
+    
+    % \textbf{Accounts for the rest of the world}
+
+
+    
+    }
+    \mytext{
+    \colorbox{green!40}{\textbf{Accumulation accounts}}
+        \begin{itemize}
+            \item \textbf{capital account}
+            \item \textbf{financial account}
+            \item other changes in assets account
+            \item revaluation account
+        \end{itemize}
+    
+ 
+
+    %% https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Building_the_System_of_National_Accounts_-_basic_concepts
+    }
+\end{frame}
+
+\begin{frame}{National Accounts: Current Accounts}
+    \mycomment{
+    The current accounts collect data from all sectors, such as households, industry, services, and also the public sector. Every unit (firm, household etc.) has inputs and outputs, which are recorded here. 
+
+    The resulting balance is the sum of value added.
+    
+    }
+    \showmytikz{../shared/tikz/tikz-sna-current}
+\end{frame}
+
+
+
+\begin{frame}{National Accounts: Production Accounts}
+    \mycomment{
+        The production account collects everything produced in each sector, and what was used up in producing it. The difference between all those inputs and the outputs is Gross Value Added (GVA). This is generated income, so it is recorded in the current account Generation of Income.
+    }
+    \showmytikz[1]{../shared/tikz/tikz-sna-current-steps}
+\end{frame}
+
+
+\begin{frame}{National Accounts: Generation of Income}
+    \mycomment{
+        The Generation of Income Account shows how the income generated is paid out in form of compensation of employees (wages and salaries, employer's social contributions). Another position is net taxes on production and imports (taxes such as VAT minus subsidies). 
+        
+        The balancing item is the operating surplus (of the sector) or \enquote{mixed income} (for households). This is primary income, and moved as balancing term to the Allocation of Prime Income Account. 
+    }
+    \showmytikz[1,2]{../shared/tikz/tikz-sna-current-steps}
+\end{frame}
+
+\begin{frame}{National Accounts: Primary Income}
+    \mycomment{
+    Now this income is broken down into the receivers of this income. In addition, property income (paid and received) is also primary income. This account shows who is receiving which parts of the primary income. Typically, households is a large position, while corporation's position is small, since they pay most of this income out through dividends or interest. 
+
+    Summing up the balances of primary incomes results in \textbf{Gross National Income}:
+    \begin{equation}
+        \begin{array}{rcl}
+             GNI = & +& GDP \\
+            & +&\text{primary income received abroad} \\
+            & -& \text{primary income paid abroad}
+        \end{array}
+    \end{equation}
+    }
+    \showmytikz[1,2,3]{../shared/tikz/tikz-sna-current-steps}
+\end{frame}
+
+\begin{frame}{National Accounts: Secondary Distribution}
+    \mycomment{
+    A part of this income is then re-distributed as secondary income through transfers and taxes. Among this is income taxes, social contributions such as pensions and benefits, child care etc.\ paid and received. Here also transfers between different levels of government are recorded.
+    
+    Then we finally have disposable income. This is the main measure for household's living standards.
+    }
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-sna-current-steps}
+\end{frame}
+
+\begin{frame}{National Accounts: Use of Income}
+    \mycomment{
+    Finally, we can look how this disposable income is used; the two uses being \textbf{consumption} and \textbf{savings}. The account breaks down into many uses of consumption.
+    
+    Everything not consumed is saved. This balance goes to the capital account, and this link is of particular interest for economists.
+    }
+    \showmytikz[1,2,3,4,5]{../shared/tikz/tikz-sna-current-steps}
+\end{frame}
+
+
+%%% Accumulation Accounts
+
+\begin{frame}{National Accounts: Accumulation Accounts}
+    \mycomment{
+    The part of disposable income not consumed in the period is, by definition, \textbf{saving:} it will be there in the next period, so it is something that accumulates. 
+    
+    The capital account records saving and capital transfers, and the transactions in non-financial assets (produced and non-produced, tangible and intangible) that they finance.
+   
+    Saving enters the capital account with investment that it finances as counterpart; the balance (difference between savings and investment) is net borrowing or lending.
+
+    }
+    \showmytikz[1]{../shared/tikz/tikz-sna-capital}
+\end{frame}
+
+
+\begin{frame}{National Accounts: Accumulation Accounts}
+    \mycomment{
+    Together with net capital transfers, saving finances either the acquisition of non-financial assets (capital account) or a net acquisition of financial assets, i.e.\ net lending (financial account).
+    
+    The financial account records transactions in financial assets and liabilities---those that carry over into the next period.
+    
+    Every financial asset has a counterpart liability. 
+    The financial account therefore shows, by instrument, which sectors are net lenders and which are net borrowers.
+
+    In an open economy, the total economy's net lending need not be zero: if domestic saving exceeds domestic investment, the difference corresponds to a net acquisition of claims on the rest of the world, and vice versa.
+    }
+    \showmytikz[1,2]{../shared/tikz/tikz-sna-capital}
+\end{frame}
+
+
+\begin{frame}{National Accounts: Accumulation Accounts}
+    \mycomment{
+    Changes not due to transactions are recorded in the other changes in volume and revaluation accounts.
+    
+    The accumulation accounts record just how much the stock of assets in the economy has grown from one period to the next. 
+    
+    
+    They explain the change in net worth
+    between the opening and closing balance sheets---for each sector and for the economy as a whole, where net worth is national wealth.
+
+    
+    }
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-sna-capital}
+\end{frame}
+
+\begin{frame}{National Net Worth}
+    \mytext{
+    The (accumulated) stocks as recorded in the accumulation account both appear in the national balance sheets. So they record the change of asset stocks in that period (accumulation).    
+        \begin{equation}
+        \begin{aligned}
+            &\phantom{{}={}}\text{opening balance} \\
+            &{}+ \text{accumulation accounts} \\
+            &{}= \text{closing balance}
+        \end{aligned}
+    \end{equation}
+    
+   The result is \textbf{national net worth,} which is the sum all non-financial assets plus net financial claims to the rest of the world.
+
+   As by 2026, Germany's national net worth was about 27.2 trillion Euro: 23.4 trillion non-financial assets, 3.7 trillion net claims on the rest of the world.
+    }
+    \mycomment{
+    National net worth statistics are not available for most countries, and generally difficult to compare and come by. Often, only the net worth of households is statistically covered. But still, there are plenty of evaluation questions: how much is a mountain range, how much a rain forest worth?
+    }
+\end{frame}
+
+
+%%% Gross Domestic Product
+
+\begin{frame}{Gross Domestic Product}
+    \mytext{
+    The sum of everything produced (all value added) in an Economy is the Gross Domestic Product.
+
+    It can be expressed or calculated in three ways:
+    \begin{enumerate}
+        \item by \strut\colorbox{orange!40}{origin/production}
+        \item by \strut\colorbox{blue!40}{distribution}
+        \item by \strut\colorbox{green!40}{expenditure}
+    \end{enumerate}
+
+    % Note that it does not express assets or changes of ownership.
+
+    All three ways to compute GDP must yield the same result, were it not for errors and omissions.
+    }    
+    \mycomment{
+    The calculation by origin (also \textit{by production}) draws its data from the production account (a current account). 
+
+    The calculation by distribution takes its data from the income account, the allocation and the distribution accouts (current accounts).
+
+    The calculation by expenditure takes its data from the Use of income account, but also the capital account (an accumulation account) and the external account of goods and services (a current account).
+    }
+\end{frame}
+
+\begin{frame}{Gross Domestic Product of Germany}
+    \begin{hsbfull}[width=\textwidth, max totalheight=\textheight]        
+        \showmybitmap{../shared/bitmaps/BIP2025destatis-big.png}
+    \end{hsbfull}
+\end{frame}
+
+
+\begin{frame}{Gross Domestic Product}
+    \begin{hsbfull}
+        \showmytikz[1,2,3]{../shared/tikz/tikz-gdp}
+    \end{hsbfull}
+\end{frame}
+
+
+\begin{frame}{Gross Domestic Product by Origin}
+    \mycomment{
+    Registering Gross Value Added (GVA) in products and services across various sectors shows where GDP has been created. It takes its data from the Production Account. The government is one of these sectors, of course.
+    
+    The origin analysis helps understanding the structure of production in an economy. 
+
+    The actual composition, and the development of this composition, of each of these balances is of course of major interest. In our figures, the entries are not proportional.
+    \begin{equation}        
+    \begin{split}
+        \text{GDP} = & + \sum \left(\text{GVA}\right)\\ 
+              & + \text{taxes on products}\\
+              & - \text{subsidies on products}
+    \end{split}
+    \end{equation}
+    with
+    \begin{equation}
+        \begin{split}
+            \text{GVA} = & + \text{Gross Value of Output}\\
+                         & - \text{Intermediate Consumption}
+        \end{split}
+    \end{equation}
+    }
+    \showmytikz[1]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+% \begin{frame}{Gross Domestic Product by Origin}
+%     \mytext{
+%     The Equation of \colorbox{orange!40}{Origin} shows Gross Value Added (GVA) $+$ taxes on products $-$ subsidies on products:
+%     \begin{equation}        
+%     \begin{split}
+%         \text{GDP} = & + \sum \left(\text{GVA}\right)\\ 
+%               & + \text{taxes on products}\\
+%               & - \text{subsidies on products}
+%     \end{split}
+%     \end{equation}
+%     with
+%     \begin{equation}
+%         \begin{split}
+%             \text{GVA} = & + \text{Gross Value of Output}\\
+%                          & - \text{Intermediate Consumption}
+%         \end{split}
+%     \end{equation}
+%     }
+% \end{frame}
+
+
+\begin{frame}{Gross Domestic Product by Distribution}
+    \mycomment{
+    Registering how the income generated is distributed along different groups and in different types of income delivers good insights on the distributive effects. It takes its data from the Generation of Income Accounts.
+
+    All of these accounts will reveal more detail when expanded. For instance, rather than just looking at the sum of all wages and salaries, it will be interesting to look at the distribution between high earners and low earners, the geographical distribution, and also the regional, spatial distribution. 
+
+    One of the most striking questions is how GDP is distributed not just between high and low earners, but between earners of wages and salaries on the one hand and by receivers of rents, interests, and profits on the other. That is to ask how the production factors labour and capital are remunerated. 
+    \begin{equation}
+        \begin{split}
+            \text{GDP} = & + \text{wages}  + \text{salaries} \\
+                         & + \text{rents} + \text{interest} \\
+                         & + \text{profits} \\
+                         & + \text{taxes} - \text{subsidies} \\
+                         & + \text{depreciation} \\
+        \end{split}        
+    \end{equation}
+    
+    }
+    \showmytikz[2]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+
+
+% \begin{frame}{GDP by Distribution}
+%     \mytext{
+%     The Equation of \colorbox{blue!40}{Distribution} shows that everything produced (GDP) is distributed as someone or somebodies' income; so as salaries or wages, as profits kept in the companies, or taxes minus subsidies.
+%     \begin{equation}
+%         \begin{split}
+%             \text{GDP} = & + \text{compensation of employees} \\
+%                          & + \text{gross operating surplus \& mixed income} \\
+%                          & + \text{taxes on products}\\
+%                          & - \text{subsidies on products}
+%         \end{split}        
+%     \end{equation}
+%     }
+% \end{frame}
+
+% \begin{frame}{GDP by Distribution}
+%     \mytext{
+%     \colorbox{blue!40}{Distribution}  can be broken down further:
+%     \begin{equation}
+%         \begin{split}
+%             \text{GDP} = & + \text{wages} \\
+%                       & + \text{rents} \\
+%                       & + \text{interest} \\
+%                       & + \text{profits} \\
+%                       & + \text{taxes} \\
+%                       & - \text{subsidies} \\
+%                       & + \text{depreciation} \\
+%         \end{split}        
+%     \end{equation}
+%     }
+% \end{frame}
+
+
+\begin{frame}{Gross Domestic Product by Expenditure}
+    \mycomment{
+    GDP by expenditure is calculated using data from the Income Accounts, the Capital Account, and the External Goods and Services Accounts. Thus, it combines data from current and accumulation accounts, which is the interesting part.
+    
+    \textbf{Everything produced is consumed, invested, bought by the state, or exported. }
+
+    \begin{equation}
+    \colorbox{green!20}{$
+        \begin{aligned}
+            & \text{GDP} & Y = & + \text{consumption} && C\\
+            & &              & + \text{investment} && I\\
+            & &              & + \text{government spending} && G \\
+            & &              & + \text{exports} && Ex \\
+            & &              & - \text{imports} && Im 
+        \end{aligned}
+    $}
+    \end{equation}
+
+    From the three ways to calculate GDP, the expenditure approach is closest to actual \textbf{decisions of the members of the economy.}
+
+    For this reason, expenditure statistics takes centre stage for macroeconomic analyses and policy design. This calculation shows the role of government expenditure and net exports. 
+    }
+    \showmytikz[3]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+
+
+
+% \begin{frame}{GDP by Expenditure}
+%     \mytext{
+%     The Equation of \colorbox{green!40}{Expenditure} shows at how everything produced (GDP) is \colorbox{green!40}{used}. 
+
+%     }    
+%     \mycomment{
+%     For most economic analyses and macroeconomic theory, this is the most important identity.
+%     }
+% \end{frame}
+
+\begin{frame}{GDP by Expenditure}
+    \mytext{
+    The Fundamental \colorbox{green!40}{Expenditure} Equation in Macroeconomics:
+        \begin{equation}\label{eq:fund}
+            \colorbox{green!40}{$Y = C + I + G + Ex - Im$}
+        \end{equation}
+    shows that output is bought by households ($C$), firms ($I$), the state ($G$), or the rest of the world ($Ex-Im$).
+    
+    This shows the sectors 
+    \begin{itemize}
+        \item households (consumption)
+        \item firms (investment)
+        \item government
+        \item rest of the world.
+    \end{itemize}
+    }    
+\end{frame}
+
+\begin{frame}{GDP by Income Use}
+    \mytext{
+        % Ex post, per rules of accounting, we have a fundamental identity in a closed economy without state:
+        % \begin{equation}
+        %     \colorbox{blue!20}{$S \equiv I$}
+        % \end{equation}
+        Income is either consumed, saved, or paid in taxes.
+
+        Thus, we can write the \colorbox{yellow!40}{Income-Use} equation:
+        \begin{equation}
+           \colorbox{yellow!40}{$Y = C + S +  T$}
+        \end{equation}
+        with $T$ taxes. So the income is consumed, saved, or paid in taxes.
+    }    
+\end{frame}
+
+\begin{frame}{Combine Expenditure and Income Use}
+    \mytext{
+        Expenditure view:
+        \begin{equation}\label{eq:expenditureside}
+            \colorbox{green!40}{$Y = C+I+G+Ex-Im$}
+        \end{equation}
+        Income-use view:
+        \begin{equation}\label{eq:incomeuseside}
+            \colorbox{yellow!40}{$Y = C+S+T$}
+        \end{equation}
+        
+        Setting these equal:
+        \begin{equation}\label{eq:y-distr-use}
+            \colorbox{green!40}{$C+I+G+Ex-Im$} = \colorbox{yellow!40}{$C+S+T$}
+        \end{equation}
+    }
+    \mycomment{
+        }
+\end{frame}
+
+\begin{frame}{Private and Public Sector vs. Foreign Sector Balance}
+    \mytext{
+        Rearranging Equation~\ref{eq:y-distr-use}, we get:
+        \begin{equation}
+            \colorbox{red!40}{$\left(S-I\right)\; +\; \left(T-G\right)\; =\; \left(Ex - Im\right)$}
+        \end{equation}
+        \textbf{The savings-investment gap of the private sector and the state together equal the net exports.}
+    }
+    \mycomment{        
+        In an open economy with state, the difference between private savings and private investment ($S-I$) plus government's saving ($T-G$) (the sum being national savings minus investment) equals the current account balance.
+        }
+\end{frame}
+
+\begin{frame}{Private and Public Sector vs. Foreign Sector Balance}
+    \mytable{
+    \begin{tabular}{lccc}
+        \toprule
+        Sector:    & private & public & foreign \\
+          & $S-I$ & $T-G$ & $Ex-Im$ \\
+        \midrule
+        USA     &  $<0$ & $<0$ & $<0$ \\
+        Germany     &  $>0$ & $\lesssim 0$ & $>0$ \\
+        China     &  $>0$ & $<0$ & $>0$ \\
+        Singapore    &  $>0$ & $>0$ & $>0$ \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}{Closed vs.\ Open Economy, $S=I$}
+    \mycomment{
+    The trade balance depends on many other factors, such as the exchange rate and interest rate differentials. This is a whole new topic. 
+
+    At this point recall that identities do not imply causality. 
+    }
+    \mytext{
+        We will build models of the economy from ground up; so at the beginning, we will abstract from exports and imports and assume the economy is closed. 
+
+        Then the complete equation
+        \begin{equation}
+            \colorbox{red!40}{$\left(S-I\right)\; +\; \left(T-G\right)\; =\; \left(Ex - Im\right)$}
+        \end{equation}
+        becomes in the closed economy
+        \begin{equation}
+            (S-I)\; +\; (T-G)\; =\; 0
+        \end{equation}
+        hence
+        \begin{equation}
+            \implies\quad \colorbox{blue!20}{$\left(S - I\right)\; =\; \left(G -T\right)$}
+        \end{equation}
+        $\implies$ the entire private sector's surplus equals the governments deficit. With a balanced budget,  $S=I$ holds. \textbf{This is a major insight we will build upon.}
+    }
+\end{frame}
+
+% %%% [moved from MA_3_World_Economy_GDPs.tex, frame 16]
+% \begin{frame}{Macroeconomics: Gross Domestic Product}
+%     \mycomment{
+%     Eq.~\ref{eq:fund} is called the fundamental equation of Macroeconomics representing the expenditure approach. These identities, most importantly $S=I$ in a closed economy, are fundamental, as they are account-based.
+%     }
+%     \mytext{
+%     Sum of everything produced / used in a country
+%     \begin{equation}\label{eq:fund}
+%         Y = C + I + Ex - Im + G
+%     \end{equation}
+
+%     Everything produced ($Y$) is either
+%     \begin{itemize}
+%         \item consumed ($C$) or 
+%         \item invested ($I$), or
+%         \item exported ($Ex$) or
+%         % \item not produced, but imported ($Im$) or
+%         \item state expenditure ($G$).
+%     \end{itemize}
+
+%     The capital stock $\Delta K$ is then change in the capital stock (net investment). 
+
+%     Note that GDP is a flow quantity.
+%     }
+
+% \end{frame}
+
+% %%% [moved from MA_1_Fundamentals.tex, frame 22]
+% \begin{frame}{Production and Consumption}
+%     \mytext{
+%         Everything that is produced is either consumed or saved:
+
+%         \begin{equation}
+%             S = Y - C = I
+%         \end{equation}
+
+%         (abstracting, for now, from government expenditure and from net exports.)
+
+%         This is a fundamental balance / identity in respect to \textbf{net} savings and \textbf{net} investment, and relates to \textbf{real} assets.
+%     }
+%     \mycomment{
+%         Transfer of property or the creation of debt is an entirely different issue. If Alice spends not (hence `saves') half of her income, but lends it to Bob instead (hence `gives Bob a credit' or `buys a bond issued by Bob'), then that income is transferred to Bob, who in turn can either consume it (as if it was a consumer credit) or invest it into real assets.
+
+%         Thus you see that lending is not saving in the macro sense. Only real capital formation corresponds to savings ($S$).
+%     }
+% \end{frame}
+
+
+% \begin{frame}{GDP by Expenditure}
+%     \mytext{
+
+%         This is because ex post, per rules of accounting, we have a fundamental identity in a closed economy without state:
+
+%         \begin{equation}
+%             S \equiv I
+%         \end{equation}
+
+%         In the open economy, this becomes:
+
+%         \begin{equation}
+%             (S - I) + (T - G) = Ex - Im
+%         \end{equation}
+%     }    
+% \end{frame}
+
+
+\begin{frame}{Paradox of Thrift}
+    \mytext{
+    Consider:
+    \begin{itemize}
+        \item households deciding to save 10 more, so they consume 10 less.
+        \item firms produce as planned, so 10 more do not get sold (pile up in warehouses). The statistics record this as investment (inventory change).
+        \item $\Delta S = \Delta I= 10$. The identity holds.
+        \item next, firms will cut production, so income (of households) falls, and saving falls back; nobody ends up saving more.
+    \end{itemize}
+    }
+    \mycomment{
+    This shows: 
+    \begin{itemize}
+        \item a choice that one individual household can make may not work out if all households choose this.
+        \item planned and realised savings and investment are not the same.
+        \item the identity $S\equiv I$ is not a behavioural fact, but an accounting fact.
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Nominal vs.\ Real GDP}
+    \mytext{
+    All values are recorded at current prices.
+
+    But prices vary (inflate) over time. This needs to be recorded, and can than be used to properly compare economic figures across time.
+
+    \begin{equation}
+        \text{real GDP} = \frac{\text{nominal GDP}}{\text{GDP deflator}}\times 100
+    \end{equation}
+
+    \begin{equation}
+        \text{real GDP} = \sum \left(\text{current quantity} \times \text{base year price} \right)
+    \end{equation}
+
+    \begin{equation}
+        \text{GDP deflator} = \frac{\text{nominal GDP}}{\text{real GDP}}\times 100
+    \end{equation}
+    }
+    \mycomment{
+        The GDP Deflator takes all prices into account. This makes sense to compare GDP figures. It is not a good measure for inflation though. For that we typically exclude certain goods---and look only at those most commonly consumed.
+        
+    }
+\end{frame}
+
+\begin{frame}{CPI and HICP}
+    \mycomment{
+        Prices vary relative to one another, often quite dramatically. If, however, all prices change, this could be interpreted as change in the value of money. 
+
+        To measure inflation, that is the change of price level, we must choose a basket of goods. For households, the value of money will be depending on the basket of goods they typically and regularly consume. That includes foodstuff, house rents, energy, but also holidays and entertainment.
+            
+        Care must be taken by selecting this basket, and by weighting the components.  Some components my or may not be included, e.g. the price of owner occupied housing (in CPI, but not in HICP). But there are other baskets, such as the Producer Price Index PPI.
+    }
+    \mytext{
+    Inflation is measured using price index, i.e. a weighted index of a basket. 
+    
+    The question is what to include, and what not.
+
+    \begin{itemize}
+        \item Consumer Price Index (CPI) 
+        \item Harmonised Index of Consumer Prices (HICP, in the EU)
+    \end{itemize}
+
+    \begin{equation}
+        \text{annual CPI} = \frac{\text{value of basket in current year}}{\text{value of basket in base year}}
+    \end{equation}
+   
+    }
+\end{frame}
+
+\begin{frame}{Purchasing Power Parity Comparisons}
+    \mytext{
+    To compare values across countries, a common denominator is required. But the nominal exchange rate may be problematic (over- or undervalued). Thus, the price of the same baskets of goods is used to correct for that.
+
+    \begin{itemize}
+        \item Purchasing Power Parity: PPP
+        \item used for international comparisons
+        \item typically OECD / IMF / World Bank data
+    \end{itemize}
+
+    \mycomment{
+        If you travel from one country to another and have to change your money to another currency, you may find out that the same amount of money goes further or less far in the other country. Thus, measured by PPP, one of the currencies is undervalued. So a comparison of wages in one country or the other makes less sense using the nominal exchange rate. Using the PPP rate tells you how well off wage receivers in the two countries really are. The common unit is often called \enquote{international dollar}.
+
+        The PPP rate is not exactly the same as the Real Exchange Rate, which additionally takes the price levels in both countries into account. As a result, GDP of poorer countries looks often much larger in PPP terms than at market rates: because they typically have a lower price level.
+    }   
+    }
+\end{frame}
+
+\begin{frame}{Beyond GDP}
+    \mytext{
+    GDP is a relatively clear measure. Alternatives, such as Human Development Index from the UNDP, are less easy to measure. HDI takes into account measures of -
+    \begin{itemize}
+        \item a long and healthy life
+        \item being knowledgeable
+        \item decent standard of living
+    \end{itemize}
+    }
+    \mycomment{
+       In addition to this, UNDP  calculates other indices, such as the
+       \begin{itemize}
+           \item Inequality-adjusted HDI (IHDI)
+           \item Multidimensional Poverty Index (MPI)
+           \item Gender Development Index (GDI)
+           \item the Planetary pressures-adjusted HDI (PHDI)
+       \end{itemize}
+    These are useful and important measures of policy success, but they expand the scope beyond the purely economic.
+    }   
+\end{frame}
+
+\begin{frame}{Beyond GDP}
+    \mytext{
+    If states can publish indices beyond GDP, so can companies. Sustainability reports point in this direction.
+
+    If companies were obliged to compile balance sheets and income statements that include indices which are not purely economical, these could be compounded into a system similar to the SNA.
+
+    Proponents of such approaches include Christian \noun{Felber} \cite{felber2019change}. However, as by today this remains apocryphal. Companies publishing such statements might face lower refinancing costs; but the exact method to achieve such accounting remains disputed.
+    }
+\end{frame}
+
+%%% [moved from MA_8_Economic_Policy.tex, frame 7]
+\begin{frame}{Doughnut Economics}
+    \showmytikz{../shared/tikz/tikz-doughnut}
+    \mycomment{
+    A recent concept by Kate \noun{Raworth} \cite{Raworth2017}. The core idea is that economic activity should have, or has, corner conditions or boundaries. 
+ 
+    }
+    
+\end{frame}
+
+%%% [moved from MA_8_Economic_Policy.tex, frame 8]
+\begin{frame}{Sustainable Development Goals, UN}
+    \showmytikz{../shared/tikz/tikz-sdggrid}
+    \mycomment{
+    2015, the United Nations have agreed on the 17 SDGs as part of the Agenda 2030 \cite{UN2015Agenda2030}. A level below that, 169 targets have been defined. On the national level (Germany), there is the Deutsche Nachhaltigkeitsstrategie \cite{Bundesregierung2025DNS}, including indicators. 
+    
+    The 17 SDGs have been criticised. Why these 17? And how are they quantifiable? Are these actually goals, or areas of activity? And which tools shall be employed to which ends?
+    }
+\end{frame}

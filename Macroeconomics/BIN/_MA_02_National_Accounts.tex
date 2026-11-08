@@ -1,0 +1,270 @@
+%%% MA_02_National_Accounts.tex -- reorganised; frames moved from the old MA_xx files (see comments)
+
+\section{National Accounts}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 11]
+%%% Gross Domestic Product
+
+\begin{frame}{Gross Domestic Product}
+    \mytext{
+    The sum of everything produced in an Economy is the Gross Domestic Product.
+
+    It can be expressed or calculated in three ways:
+    \begin{enumerate}
+        \item by Origin
+        \item by Distribution
+        \item by Expenditure
+    \end{enumerate}
+
+    Note that it does not express assets or changes of ownership.
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 12]
+\begin{frame}{Gross Domestic Product by Origin}
+    \mycomment{
+    Registering Gross Value Added (GVA) in products and services across various sectors shows where GDP has been created. Net taxes have to be added, since this is value re-distributed from the private sector to the state.
+
+    The distribution analysis helps understanding the structure of production in an economy. 
+    }
+    \showmytikz[1]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 13]
+\begin{frame}{Gross Domestic Product by Distribution}
+    \mycomment{
+    Registering how the income generated is distributed along different groups and in different types of income delivers good insights on the distributive effects.
+    }
+    \showmytikz[2]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 14]
+\begin{frame}{Gross Domestic Product by Expenditure}
+    \mycomment{
+    Everything produced (all supply) is also consumed, or saved (demand). For economic analysis, this expenditure statistics is the most important statistic.
+    }
+    \showmytikz[3]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 15]
+\begin{frame}{Gross Domestic Product}
+    \mycomment{
+    There are three ways to calculate the Gross Domestic Product by summing up accounts kept by national statistic bureaus. Each of them must result in the same value, be it not for errors and omissions.
+
+    The actual composition, and the development of this composition, of each of these balances is of course of major interest. In our figure, the entries are not proportional. 
+    }
+    \showmytikz[1,2,3]{../shared/tikz/tikz-gdp}
+    
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 16]
+\begin{frame}{GDP Germany}
+    \showmybitmap{shared/bitmaps/BIP2025destatis.png}
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 17]
+\begin{frame}{GDP by Origin}
+    \mytext{
+    The Equation of Origin shows Gross Value Added (GVA) $+$ taxes on products $-$ subsidies on products:
+    \begin{equation}        
+    \begin{split}
+        \text{GDP} = & + \sum \left(\text{GVA}\right)\\ 
+              & + \text{taxes on products}\\
+              & - \text{subsidies on products}
+    \end{split}
+    \end{equation}
+    with
+    \begin{equation}
+        \begin{split}
+            \text{GVA} = & + \text{Gross Value of Output}\\
+                         & - \text{Intermediate Consumption}
+        \end{split}
+    \end{equation}
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 18]
+\begin{frame}{GDP by Distribution}
+    \mytext{
+    Everything produced (GDP) is distributed as someone or somebodies' income; so as salaries or wages, as profits kept in the companies, or taxes minus subsidies.
+    \begin{equation}
+        \begin{split}
+            \text{GDP} = & + \text{compensation of employees} \\
+                         & + \text{gross operating surplus \& mixed income} \\
+                         & + \text{taxes on products}\\
+                         & - \text{subsidies on products}
+        \end{split}        
+    \end{equation}
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 19]
+\begin{frame}{GDP by Distribution}
+    \mytext{
+    This can be broken down further:
+    \begin{equation}
+        \begin{split}
+            \text{GDP} = & + \text{wages} \\
+                     = & + \text{rents} \\
+                     = & + \text{interest} \\
+                     = & + \text{profits} \\
+                     = & + \text{taxes} \\
+                     = & - \text{subsidies} \\
+                     = & + \text{depreciation} \\
+%                     = & + \text{net foreign factor income}  %% GNI
+        \end{split}        
+    \end{equation}
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 20]
+\begin{frame}{GDP by Expenditure}
+    \mytext{
+    The most interesting approach looks at how everything produced (GDP) is used. 
+    \begin{equation}
+        \begin{aligned}
+            & Y & \text{GDP} = & + \text{consumption} && C\\
+            & &              & + \text{investment} && I\\
+            & &              & + \text{government spending} && G \\
+            & &              & + \text{exports} && Ex \\
+            & &              & - \text{imports} && Im 
+        \end{aligned}
+    \end{equation}
+        
+    }    
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 21]
+\begin{frame}{GDP by Expenditure}
+    \mytext{
+    The Fundamental Expenditure Equation in Macroeconomics:
+        \begin{equation}
+            \boxed{Y = C + I + G + Ex - Im}
+        \end{equation}
+
+        We can also write:
+        \begin{equation}
+           Y = C + S + T
+        \end{equation}
+
+        This is because of the fundamental identity of savings and investment:
+        \begin{equation}
+            S = I
+        \end{equation}
+
+
+    }    
+\end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 16]
+\begin{frame}{Macroeconomics: Gross Domestic Product}
+    \mycomment{
+    Eq.~\ref{eq:fund} is called the fundamental equation of Macroeconomics representing the expenditure approach. These identities, most importantly $S=I$ in a closed economy, are fundamental, as they are account-based.
+    }
+    \mytext{
+    Sum of everything produced / used in a country
+    \begin{equation}\label{eq:fund}
+        Y = C + I + Ex - Im + G
+    \end{equation}
+
+    Everything produced ($Y$) is either
+    \begin{itemize}
+        \item consumed ($C$) or 
+        \item invested ($I$, equals savings $I=S$), or
+        \item exported ($Ex$) or
+        \item not produced, but imported ($Im$) or
+        \item state expenditure ($G$).
+    \end{itemize}
+
+    The capital stock $\Delta K$ is $I-depreciation$.
+
+    Note that GDP is a flow quantity.
+    }
+
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 22]
+\begin{frame}{Production and Consumption}
+    \mytext{
+        Everything that is produced is either consumed or saved:
+
+        \begin{equation}
+            S = Y - C = I
+        \end{equation}
+
+        (abstracting, for now, from government expenditure and from net exports.)
+
+        This is a fundamental balance / identity in respect to \textbf{net} savings and \textbf{net} investment, and relates to \textbf{real} assets.
+
+        Transfer of property or the creation of debt is an entirely different issue. If Alice spends not (hence `saves') half of her income, but lends it to Bob instead (hence `gives Bob a credit' or `buys a bond issued by Bob'), then that income is transferred to Bob, who in turn can either consume it (as if it was a consumer credit) or invest it into real assets.
+    }
+\end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 17]
+% \section{National Accounts and Balance of Payments}
+
+\begin{frame}{National Accounts}
+    \mytext{
+    The System of National Accounts (SNA) is a system of book-keeping on the national level. \cite{SysNatAcc2025} \cite{lequillerblades2006}
+
+    There are \textbf{current accounts} and \textbf{accumulation accounts.} Both of them are comparable to income statements, not to balance sheets.
+    }
+    \mycomment{Historically, there are variations and also slight differences on the national level. There has been a wide degree of standardisation, particularly after WWII. This comes from institutions like the IMF or the EU, which require standardised reporting.}
+\end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 18]
+\begin{frame}{National Accounts}
+    \mycomment{Current accounts express flow values (within a particular time frame, typically a year). One example is GDP (per year).
+
+    One important current account is the \textbf{trade balance: the account of imports of goods and services.}
+    }
+    \mytext{
+
+     \textbf{Current accounts}
+        \begin{itemize}
+            \item production accounts
+            \item primary distribution of income
+            \item secondary distribution of income
+            \item \textbf{imports and exports of goods and services}
+            \item use of income accounts
+        \end{itemize}
+
+    }
+\end{frame}
+
+%%% [moved from MA_3_World_Economy_GDPs.tex, frame 19]
+\begin{frame}{National Accounts}
+    \mycomment{Accumulation accounts express the change of assets held by institutional units. The most important of this is the \textbf{capital account}. The part of the (overall) capital account that crosses borders appears as sub-account in the  Balance of Payments. 
+
+    % On top of that, and complementary of that, \textbf{additional accounts} are held. These are sometimes the result of double book keeping and highlight other aspects of the economy.
+
+    % \textbf{Balance sheets} per institutional unit, sector, group
+    
+    % \textbf{Goods and services accounts}
+    
+    % \textbf{Accounts for the rest of the world}
+
+
+    
+    }
+    \mytext{
+    \textbf{Accumulation accounts}
+        \begin{itemize}
+            \item \textbf{capital account}
+            \item \textbf{financial account}
+            \item other changes in assets account
+            \item revaluation account
+        \end{itemize}
+    
+ 
+
+    %% https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Building_the_System_of_National_Accounts_-_basic_concepts
+    }
+\end{frame}
+
+
+%%% TODO (new content): real vs. nominal GDP; price indices (CPI/HICP, GDP deflator); PPP-adjusted comparisons; limits of GDP / beyond GDP (HDI etc.)
+

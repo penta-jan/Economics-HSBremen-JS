@@ -1,0 +1,108 @@
+\documentclass[paper=a5,listof=totoc]{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage{xcolor}
+\usepackage{hsbcommon}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{multicol}
+
+\usepackage[scale=3,colorspec=0.96,text=internal~use~only]{draftwatermark}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 13th\or
+    April 20th\or
+    May 4th\or
+    May 11th\or
+    May 18th\or
+    June 1st\or
+    June 8th\or
+    June 15th\or
+    June 22nd\or
+    June 26th (Friday)\or
+    June 29th\or
+    July 6th\or
+    \else
+  \fi
+}
+
+\title{Einführung in die Energiemärkte}
+\author{Jan Suchanek}
+% \date{Summer Semester \the\year\\\today}
+
+\automark{section}
+\pagestyle{scrheadings}
+\ihead{\leftmark}
+   \chead{}
+   \ohead{Einführung in die Energiemärkte}
+
+\setlength{\parskip}{1ex}
+
+\makeindex
+
+\begin{document}
+
+\onehalfspacing
+
+\maketitle
+
+\begin{abstract}
+    Dies ist das Whitecover-Skript für den (noch in Planung befindlichen) Kurs. Es gibt die Folien 1:1 wieder. Eine Hand \faHandPointRight\ verweist auf Folienwechsel. Mit der Ausarbeitung des Foliensatzes wächst dieses Skript mit. Es dient zugleich als Basis für die im Multiple-Choice format online durchgeführte Abschlussprüfung.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\clearpage
+
+%%% Inhalt
+
+\include{EM_Einführung}
+
+\include{EM_Rollen}
+
+\include{EM_Produzenten}
+
+\include{EM_Merit_Order}
+
+
+
+\clearpage
+
+\listoffigures
+ 
+\listoftables
+
+\newpage
+
+   \nocite{*}
+    \printbibliography[heading=bibintoc]
+
+    \clearpage
+    \thispagestyle{empty}
+    
+    ~
+    
+    % \cleardoublepage
+    % \phantomsection
+    % \addcontentsline{toc}{section}{Control Questions}
+    % \includepdf[pages=-]{Macroeconomics/questionbank/ME_QuestionPool.pdf}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Index}
+\printindex
+
+\end{document}

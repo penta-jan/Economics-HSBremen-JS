@@ -1,0 +1,23 @@
+% beamerfontthemeIBB.sty
+% Schriftschema fuer das IBB Beamer-Theme
+
+\ProvidesPackage{beamerfontthemeIBB}[2026/01/01 IBB font theme]
+
+% Serifenlose Hausschrift (typisch fuer moderne Corporate-Designs).
+% Beamer nutzt ohnehin \sffamily; wir waehlen hier Helvetica-Metriken fuer
+% ein sauberes, corporate wirkendes Schriftbild. Wer eine Lizenz fuer
+% "Source Sans Pro" o.ae. hat, kann diese Zeile einfach ersetzen durch:
+%   \RequirePackage{sourcesanspro}
+\RequirePackage[scaled=0.92]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize, series=\mdseries, shape=\itshape}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{frametitle}{size=\normalsize, series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\scriptsize, series=\mdseries}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamerfont{footline}{size=\tiny}
+\setbeamerfont{page number in head/foot}{size=\tiny}

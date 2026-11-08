@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2}}\makeatother
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (8,0) node[below left] {\scriptsize income per capita};
+    \draw[->] (0,0) -- (0,6) node[above] {\scriptsize inequality};
+
+    \draw plot[smooth,tension=1] coordinates {(1,1) (4,5) (7,1)};
+    \node[below] at (7,1) {?};
+
+    \ifstep{1}{
+        \draw[red] plot[smooth,tension=1] coordinates {(1,1) (3,5) (5,2) (7,3)};
+        \node[red,above] at (7,3) {?};
+    }
+\end{tikzpicture}
+\end{document}

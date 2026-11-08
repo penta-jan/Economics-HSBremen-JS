@@ -2,7 +2,7 @@
 \documentclass{standalone}
 \usepackage{hsbcommon}
 \begin{document}
-\showmytreeraw[only 2]{forest-economic-policy.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\showmytreeraw[1,2,3,4,5,6,7]{forest-economic-policy.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
 \end{document}
 %STEPEND
     \begin{forest}
@@ -27,7 +27,7 @@
             %STEPEND
         ] 
         [Process policy,rotate=90
-            [Fiscal policy (budgetary)
+            [\colorbox{blue!40}{Fiscal policy}
                 %STEPBEGIN{2}
                 [Taxes
                     [direct taxes]
@@ -38,9 +38,9 @@
                     [production subsidies]
                     [investment subsidies
                         [loans
-                            [lost grants]
+                            [non-repayable grants]
                             [grants]
-                            [silent partnership]
+                            [silent participation]
                             [government investment]
                         ]
                         [loan guarantees]
@@ -63,18 +63,33 @@
                 ]
                 %STEPEND
             ]
-            [Monetary policy
+            [\colorbox{red!40}{Monetary policy}
                 %STEPBEGIN{3}
                 [Interest rates]
                 [Open market policy]
                 [Reserve requirements]
                 %STEPEND
             ]
-            [Structural policy
-                %STEPBEGIN{3}
-                [Infrastructure]
-                [Site policy and spacial incentives]
-                [Public goods]
+            [\colorbox{yellow!40}{Structural policy}
+                %STEPBEGIN{4}
+                [Grid Infrastructure
+                    [Communication]
+                    [Energy]
+                    [Transport]
+                ]
+                [Land-use Planning
+                    [drainage and irrigation]
+                    [mining and extraction]
+                    [land settlement or reclamation]
+                    [nature preservation]
+                ]
+                [Location policy and spacial incentives]
+                [Public goods
+                    [health care]
+                    [child care]
+                    [education]
+                    [research]
+                ]
                 %STEPEND
             ]
             [Other fields

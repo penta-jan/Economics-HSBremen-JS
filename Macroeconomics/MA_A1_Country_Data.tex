@@ -1,0 +1,171 @@
+
+
+\begin{frame}{Country Data for Comparison}
+    \mytext{
+        The following shows some core economic data points for a selection of economies. The figures are mainly based on IMF data, and serve illustrative purposes. To make them comparable, local currency values have been converted into current USD.
+        \begin{itemize}
+            \item What figures strike you most?
+            \item What figures you missing?
+            \item What should be set in relation to what?
+        \end{itemize}
+
+    }
+\end{frame}
+
+\newcommand{\mylinks}{
+\hyperref[DE]{DE} - 
+\hyperref[MX]{MX} - 
+\hyperref[IN]{IN} - 
+\hyperref[CN]{CN} - 
+\hyperref[US]{US} - 
+\hyperref[CA]{CA} - 
+\hyperref[BR]{BR} - 
+\hyperref[NG]{NG} - 
+\hyperref[SA]{SA}  
+}
+
+
+\begin{frame}[plain]{\strut Germany, Bremen}
+    \beameronly{
+        \drawmap[tikz={remember picture, overlay}, at=current page.center,
+               width=.9\paperwidth, height=.8\paperheight,
+               style={fill=blue!8, draw=blue!25}]{germany,bremen[fill=red!20]}
+    }
+    \mytable[1]{\label{DE}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    Destatis; Stat. Landesamt Bremen; IMF WEO (Apr 2026); Bundesbank; ECB; Trading Economics (FX, 22 Sep 2026); own calculations.
+    }
+    \mylinks
+    }
+\end{frame}
+
+
+\begin{frame}[plain]{\strut Mexico, Sinaloa}
+    
+    \beameronly{
+    \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.7\paperheight,
+           style={fill=blue!8, draw=blue!25}]{mexico,sinaloa[fill=red!20]}
+    }
+    \mytable[2]{\label{MX}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    INEGI; SHCP; Gob. de Sinaloa; OECD (yield)
+    }
+    \mylinks   
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut India, Maharashtra}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{india,maharashtra[fill=red!20]}
+    }
+    \mytable[3]{\label{IN}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    MoSPI; Union Budget 2025-26; Govt. of Maharashtra (Economic Survey, CAG); RBI
+    }
+    \mylinks
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut China, Guangdong}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{china,guangdong[fill=red!20]}
+    }
+    \mytable[4]{\label{CN}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    NBS China; Guangdong Statistics Bureau; Ministry of Finance; own estimate (Guangdong debt)
+    }
+    \mylinks
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut USA, Florida}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{usa,florida[fill=red!20]}
+    }
+    \mytable[5]{\label{US}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    BEA; Census Bureau; CBO / US Treasury; State of Florida
+    }
+    \mylinks
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut Canada, Quebec}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{canada,quebec[fill=red!20]}
+    }
+    \mytable[6]{\label{CA}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    Statistics Canada; Dept. of Finance Canada; Finances Québec; Bank of Canada
+    }
+    \mylinks
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut Brazil, Rio de Janeiro}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{brazil,rio de janeiro[fill=red!20]}
+    }
+    \mytable[7]{\label{BR}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    IBGE; Tesouro Nacional; Gov. do Estado do RJ; Banco Central do Brasil
+    }
+    \mylinks
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut Nigeria, Lagos}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{nigeria,lagos[fill=red!20]}
+    }
+    \mytable[8]{\label{NG}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    NBS Nigeria; DMO; Budget Office of the Federation; Lagos State Govt.
+    }
+    \mylinks
+    }
+    
+\end{frame}
+
+\begin{frame}[plain]{\strut South Africa, KwaZulu-Natal}
+    \beameronly{
+   \drawmap[tikz={remember picture, overlay}, at=current page.center,
+           width=.9\paperwidth, height=.8\paperheight,
+           style={fill=blue!8, draw=blue!25}]{south africa,kwazulu-natal[fill=red!20]}
+    }
+    \mytable[9]{\label{SA}
+    \input{../shared/tikz/tab-economicdata}
+    \mysource{
+    Stats SA; National Treasury; KZN Provincial Treasury; OECD (yield)
+    }
+    \mylinks
+    }
+\end{frame}
+

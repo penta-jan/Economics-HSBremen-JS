@@ -1,0 +1,67 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\colorlet{initiator}{green!40}
+\colorlet{executor}{yellow!40}
+\colorlet{user}{blue!40}
+\colorlet{other}{orange!40}
+\colorlet{affected}{red!40}
+\begin{document}
+\showmytreeraw[1,2,3,4,5,6,7]{forest-unsystem.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [United Nations 
+        [UN Proper
+            %STEPBEGIN{0,proper}
+            [General Assembly
+                [G7] 
+                [G20] 
+                [...]
+            ]
+            [Secretariat]
+            [International Court of Justice]
+            [Security Council]
+            [Economic and Social Coucil]
+            %STEPEND
+        ]
+        [Specialised\\ Agencies,align=left
+            %STEPBEGIN{1,special}
+            [IMF - International Monetary Funds,fill=yellow!40]
+            [World Bank,fill=green!40]
+            [FAO - Food and Agriculture Organisation]
+            [WHO - World Health Organisation]
+            [IMO - International Maritime Organisation]
+            [ILO - International Labour Organisation]
+            [...]
+            %STEPEND
+        ]
+        [Other Entities\\ and Bodies,align=left
+            %STEPBEGIN{1,other}
+            [UNHCR -- High Comissioner on Refugees]
+            [UNU - University]
+            [UNOPS - Office for Project Services]
+            [...]
+            %STEPEND
+        ]
+        [Related\\ Organisations,align=left
+            %STEPBEGIN{1,related}
+            [WTO - World Trade Organisation,fill=orange!40]
+            [IAEA - International Atomic Energy Agency]
+            [ICC - International Criminal Court]
+            [ITC - International Trade Center]
+            [UNCTAD - Conference on Trade and Development,fill=blue!20]
+            [UNIDO - Industrial Development Organisation]
+            [...]
+            %STEPEND
+        ]
+    ]
+    \end{forest}    
+% \end{document}

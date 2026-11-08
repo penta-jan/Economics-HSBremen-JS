@@ -1,0 +1,133 @@
+\section{Rollen im Strommarkt}
+
+
+\begin{frame}{Produzenten, Verbraucher, Verteilnetzbetreiber}
+    \mycomment{
+    Energienetze verbinden Produzenten von Energie mit Verbrauchern, und Energiemärkte verbinden Verkäufer mit Kunden, Anbietern mit Nachfragern.
+
+    Produzenten sind große Kraftwerksbetreiber, aber auch vergleichsweise kleine Produzenten von Wind- und Solarstrom.
+
+    Verbraucher sind Haushalte und Unternehmen. 
+
+    Die physische Verbindung geschieht über die Stromnetze. Produzenten wie Verbraucher hängen dabei an regionalen Mittelspannungs-Verteilnetzen. 
+
+    Die Übertragung von Strom ist sehr effizient. Immer müssen Last und Erzeugung übereinstimmen, was lokal kaum möglich ist. Daher braucht es eine weitere Netzebene.
+    
+    Physikalisch \enquote{fließt} wird der Strom allerdings nicht und wird auch nicht \enquote{verbrauch}, sondern er fließt in beide Richtungen.
+    }
+    \showmytikz[1]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Übertragungsnetzbetreiber}
+    \mycomment{
+
+    Die Verteilnetze sind untereinander durch das Übertragungsnetz auf Hochspannungsebene verbunden.
+
+    Übertragungsnetzbetreiber (VNBs) sind in Deutschland je nach Region 50Hertz, Amprion, TenneT TransnetBW.
+
+    Gesetzlich ist vorgeschrieben, dass ÜNB und VNB getrennte Unternehmen sein müssen. Das ist eine Form von Unbundling.
+
+    Sie betreiben das physische Netz, dürfen aber nicht selbst mit Strom handeln. Das ist eine weitere Form von Unbundling.
+    }
+    \showmytikz[1,2]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Lieferanten: Versorger und Händler}
+    \mycomment{
+    Stromhändler  kaufen Leistung bei Produzenten ein und verkaufen sie an die Lieferanten. Diese versorgen die Endkunden, kümmern sich also um Kundengewinnung, Service und Abrechnung.
+
+    Der gesamte monetäre Layer ist unabhängig vom Netzbetrieb. Die Energieversorger haben mit der technischen Zurverfügungstellung nichts zu tun. 
+
+    Auf den Energiemärkten muss das Angebot immer der Nachfrage entsprechen: es darf nicht mehr Strom verkauft werden, als produziert wird, und nicht mehr eingespeist werden, als abgenommen wird. Das muss sehr genau -- auf die Viertelstunde genau -- funktionieren, denn es gibt kaum Speicher.
+
+    }
+    \showmytikz[1,2,3]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Bilanzkreismanagement}
+    \mycomment{
+    Daher muss jeder Händler bzw. Versorger genau so viel Strom einzukaufen, wie er verkauft. Dabei gibt es die Möglichkeit, Verantwortung für einen Bilanzkreis zu übernehmen.
+    
+    Jeder Einspeise- und Entnahmepunkt muss zu einem solchen Bilanzkreis gehören. Dabei geht es um die Marktlokation, oft gleich Messlokation. Es sind also marktliche, nicht physikalische Knoten.
+    
+    Die Rolle Bilanzkreisverantwortlicher (BKV) bietet sich besonders an, wenn der Händler Kraftwerke oder große Lasten auch steuern bzw. regeln kann. 
+    
+    Zu dem Bilanzkreismanagement gehört ein Fahrplan, um diesen Ausgleich in jeder Viertelstunde sicherzustellen. 
+    
+    Die Teilnehmer dieses Bilanzkreises können phyisch weit voneinander entfernt sein. 
+    %
+    }
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Die Strombörse}
+    \mycomment{
+    Neben direkten Verträgen (Over the Counter, OTC) können Händler und große Produzenten auch die Strombörse benutzen - die EEX oder EPEX spot. Bilanzkreisverantwortliche müssen dies sogar, um ihren Bilanzkreis auszugleichen.
+    
+    Dort sorgt schon das Marktdesign dafür, dass Angebot und Nachfrage stets übereinstimmen. 
+    
+    Einige wenige sehr große Verbraucher kaufen ihren Strom direkt an der Strombörse.
+    
+    Neben direktem Energiekauf (Spotmarkt) werden an der Börse auch Termingeschäfte (Futures) und Optionen (Put- und Calloptionen) gehandelt. Über die Börse sind die Märkte auch Europa- und sogar weltweit verbunden.
+    }
+    \showmytikz[1,2,3,5]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Ausgleichsenergie}
+    \mycomment{
+    Wenn ein Händler bzw. Versorger nicht genug oder zu viel Strom für seinen Bilanzkreis eingekauft hat, so muss er die fehlende Energie  (Ausgleichsenergie) von seinem ÜNB beziehen bzw. abgeben. Der Preis dafür wird von den ÜNB ermittelt. Es wird sichergestellt, dass ein ordentlicher Ausgleich stets lukrativer ist.
+
+    Die Rollen von (Groß-)Händlern und Lieferanten (Stromversorgern) sind nicht notwendigerweise getrennt. Größere Versorger wie Stadtwerke sind häufig auch Bilanzkreisverantwortliche. Gerade kleinere und unabhängige Versorger agieren arbeitsteilig mit Großhändlern, die dann Bilanzkreisverantwortliche sind.
+
+    Die Differenz zwischen günstigem Einkauf an der Strombörse und dem höheren Preis der Ausgleichsenergie ist der Anreiz, Bilanzkreisverantwortung zu übernehmen.
+    
+    }
+    \showmytikz[2,3,4,5,6]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Netzentgelte}
+    \mycomment{
+    Verbraucher zahlen darüber hinaus Netzentgelte direkt an die Verteilnetzbetreiber. Diese zahlen ihrerseits Entgelte an die ÜNB.
+
+    Für den Anschluss von Produzenten erhalten die VNB keine Netzentgelte -- allerdings gibt es Ausnahmen bzw. Ausgleichszahlungen bei besonders unausgeglichen Verhältnissen, wenn beispielsweise besonders viele Erneuerbare an einem VNB hängen, der wenige Verbraucher hat.
+
+    Netzentgelte werden erhoben nach einer \enquote{Postage Stamp} Methode und sind unabhängig von der Entfernung, grade wie Briefe bei der Post. Auf der Erzeugerseite sind die Netzbetreiber verpflichtet, Produzenten einen Anschluss anzubieten (Netzausbau). 
+    }
+    \showmytikz[2,3,6,7]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Steuern und Umlagen}
+    \mycomment{
+    Der Staat kontrolliert das gesamte System über Regulierungen, über Steuern und Umlagen und Konzessionen. Die Politik und Höhe der Zahlungen ändern sich vergleichsweise häufig, machen aber einen nicht unbeträchtlichen Teil der Stromrechnung der Verbraucher aus und bestimmen das Marktgeschehen damit deutlich.
+
+    Nicht dargestellt ist hier die Marktrolle der Messstellenbetreiber. Wettbewerbliche Messestellenbetreiber sind unabhängige Unternehmen, die Stromzähler installieren und betreiben. Häufig ist der lokale Verteilnetzbetreiber zugleich Messstellenbetreiber als Grundzuständiger. 
+    
+    Wir sehen: die Strommärkte sind sehr komplex aufgebaut, und es gibt sehr unterschiedliche Rollen, die häufig von verschiedenen Personen wahrgenommen werden. Oft ist diese Trennung eine juristische Notwendigkeit (Unbundling).
+    }
+    \showmytikz[1,2,3,4,5,6,7,8]{../shared/tikz/tikz-energiemarkt}
+    
+\end{frame}
+
+\begin{frame}{Weitere Akteure und Themen}
+    \mytext{
+    \begin{itemize}
+        \item Rollenüberschneidung: \enquote{Prosumer}
+        \item kritische Infrastruktur: jeder hängt am Netz
+        \item sekundär: Erbauer von Kraftwerken und Netzen
+        \item Arbeitsplätze: direkt und indirekt
+        \item Preise: gesamtwirtschaftliche Bedeutung
+        \item Europäisches Verbundnetz / Europarecht
+        \item fossile Brennstoffe: Mobilität, e-Mobilität
+        \item Effizienz: Dämmung, Heizung: Gebäudesektor
+        \item internationale Konkurrenz: Industriestrompreise
+        \item Data Center, KI, Digitalisierung
+    \end{itemize}
+    }
+\end{frame}

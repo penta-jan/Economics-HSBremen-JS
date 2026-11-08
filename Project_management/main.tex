@@ -1,0 +1,136 @@
+\documentclass[t,10pt,leqno,aspectratio=43]{beamer}
+\usepackage{hsbcommon}
+\usetheme{HSB}
+
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+\setbeamertemplate{itemize items}[triangle]
+\setlength{\leftmargini}{3ex}
+\setlength{\leftmarginii}{0.5cm}
+
+\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+%% define the dates
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    October 19th\or
+    October 28th\or%2
+    November 11th\or%4
+    November 18th\or%5
+    Nobember 25th\or%6
+    December 2nd\or%7
+    December 16th\or%8
+    January 6th\or%9
+    January 13th\or%10
+    January 20th\or%11
+    January 27th\or%12
+    Week 13\or%13
+    Week 14\or%14
+    \else
+  \fi
+}
+
+\newcommand{\mystudents}[1][, ]{%
+ \noindent
+ Agathe#1
+ Alex#1
+ Amaury#1
+ Aurelia~Tiara#1
+ Bintang~Rafi#1
+ Carme#1
+ Ditto~Arya#1
+ Gabriel#1
+ Katka~Odelle#1
+ Luca#1
+ Sabrina#1
+ Samya#1
+ Sarah#1
+ Tiago Nicolas
+}
+
+%%% TOC MANIPULATION
+\input{../beamerpagenumbers}
+
+\makeatletter
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip-3pt}
+  {}
+  {}
+
+\AtBeginSection[]
+{
+    \subtitle{%
+    Session \thesection\ -- \secname\  -- \mysession{\thesection}
+    }
+    \titleframe
+
+    \begin{frame}{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\makeatother
+
+%%%
+
+\title[Project Management, HSBremen \the\year]{Project Management}
+\author[Jan Suchanek]{Jan Suchanek}
+\date{Winter Semester \the\year}
+\institute{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}}
+
+\setlength{\parskip}{1ex}
+
+\begin{document}
+
+\onehalfspacing
+
+% \frame{\titlepage}
+\titleframe
+
+
+
+
+% \begin{frame}[plain]{}
+%     \begin{center}
+%         \large
+%         ~\par\vspace{3cm}
+%         Welcome!
+
+%         And today's topic is...
+%     \end{center}
+% \end{frame}
+
+% \include{PM_0_Introduction}
+
+\input{main-input.tex}
+
+
+
+\begin{frame}[plain]{}
+    \begin{center}
+    \Large
+    ~\par\vspace{3cm}
+    Thank you!
+    \end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Literature and Links}
+   \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}

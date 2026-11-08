@@ -1,0 +1,71 @@
+% beamerinnerthemeIBB.sty
+% Inneres Layout: Titelseite, Listen, Bloecke, TOC
+
+\ProvidesPackage{beamerinnerthemeIBB}[2026/01/01 IBB inner theme]
+
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+% ---------------------------------------------------------------
+% Titelseite
+% ---------------------------------------------------------------
+\defbeamertemplate*{title page}{IBB}[1][]
+{
+  \begin{tikzpicture}[remember picture, overlay]
+    % Blauer Vollflaechen-Hintergrund
+    \fill[ibbBlue] (current page.south west) rectangle (current page.north east);
+    % Diagonaler heller Akzentstreifen unten links
+    \fill[ibbDarkBlue] (current page.south west) -- ++(0,1.5cm) --
+      ($(current page.south west)+(0.62\paperwidth,0)$) -- ++(0,-1.5cm) -- cycle;
+    % Gelber Akzentbalken
+    \fill[ibbYellow] ($(current page.south west)+(0,1.5cm)$) rectangle
+      ($(current page.south west)+(0.62\paperwidth,1.62cm)$);
+    % Kleines Markenquadrat oben rechts (angelehnt an IBB-Iconografie)
+    \fill[ibbYellow] ($(current page.north east)+(-1.3cm,-1.3cm)$) rectangle
+      ($(current page.north east)+(-0.6cm,-0.6cm)$);
+  \end{tikzpicture}
+  \vskip1.2cm
+  \begin{beamercolorbox}[wd=\paperwidth, sep=8pt, leftskip=1cm, rightskip=1cm]{title}
+    \usebeamerfont{title}\inserttitle\par
+    \ifx\insertsubtitle\@empty\else
+      \vskip4pt
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+    \fi
+  \end{beamercolorbox}
+  \vskip0.6cm
+  \begin{beamercolorbox}[wd=\paperwidth, sep=8pt, leftskip=1cm]{author}
+    \usebeamerfont{author}\insertauthor
+    \ifx\insertinstitute\@empty\else\\[2pt]{\small\insertinstitute}\fi
+    \par\vskip4pt
+    \usebeamerfont{date}\insertdate
+  \end{beamercolorbox}
+  \vskip1.9cm
+  \vfill
+}
+
+% ---------------------------------------------------------------
+% Inhaltsverzeichnis
+% ---------------------------------------------------------------
+\setbeamertemplate{section in toc}{%
+  \textcolor{ibbYellow!80!ibbBlue}{\rule[-0.15em]{0.5em}{0.5em}}~\inserttocsection\par
+}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.6em}\textcolor{ibbLightBlue}{\textbullet}~\inserttocsubsection\par
+}
+
+% ---------------------------------------------------------------
+% Aufzaehlungszeichen: gelbe Quadrate / blaue Kreise als Markenmotiv
+% ---------------------------------------------------------------
+\setbeamertemplate{itemize item}{\textcolor{ibbYellow!80!ibbBlue}{\rule{0.45em}{0.45em}}}
+\setbeamertemplate{itemize subitem}{\textcolor{ibbBlue}{\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\textcolor{ibbLightBlue}{--}}
+
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertsubenumlabel.}
+
+% ---------------------------------------------------------------
+% Bloecke mit abgerundeten Ecken
+% ---------------------------------------------------------------
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+

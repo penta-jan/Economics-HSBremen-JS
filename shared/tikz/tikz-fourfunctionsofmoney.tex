@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \def\diamond{2.5}
+    \node[fill=yellow!40] (M) at (0:0) {MONEY};
+    \draw (0:\diamond) -- (90:\diamond) -- (180:\diamond) -- (270:\diamond) -- cycle;
+    \foreach [count=\i] \myfunc/\myexpl/\mycol in {
+        medium/of exchange/green,
+        unit/of account/green,
+        storage/of value/orange,
+        standard/of deferred payment/orange%
+    }
+    {
+        \node[draw,rounded corners,fill=\mycol!40,text width=16ex,minimum height=10ex,align=center] (\i) at (\i*90:\diamond) {
+            \textbf{\myfunc}\\\myexpl
+        };
+    }
+    \node[draw=none] (time) [rotate=45,inner sep=-1.5ex,ellipse,thick,fit={(3) (4)}] {};
+     \ifstep{1,time}{
+        \begin{scope}[red]        
+            \node(time) [draw, rotate=45,inner sep=-1.5ex,ellipse,thick,fit={(3) (4)}] {};
+            \node[fill=white] at (time) {in time};
+        \end{scope}
+     }
+    
+\end{tikzpicture}
+\end{document}

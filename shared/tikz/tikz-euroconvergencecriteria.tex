@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\begin{document}
+\begin{tikzpicture}
+    \tikzset{
+        goal/.style={
+            draw,
+            text width=2cm,
+            minimum height=10ex,
+            align=center,
+            rounded corners
+        }
+    }
+    \foreach [count=\i] \myziel in 
+    {%
+    government debt level,
+    yearly budget deficit,
+    stable price level,
+    low interest rate,
+    exchange rate stability%
+    }
+    {
+        \node[goal] (N\i) at (18+72*\i:3) {};
+    }
+    
+    \node[goal,fill=yellow!20,fit=(N1)(N2)] (fiscal) {};
+    \node[below right] at (fiscal.north west) {fiscal criterion};
+    
+    \foreach \i in {1,2,3,4,5}
+    \foreach \ii in {\i,...,5}
+        {\ifnum\i=\ii\else
+        \draw[<->] (N\i) -- (N\ii);
+        \fi}
+
+        \foreach [count=\i] \myziel in 
+            {%
+            government debt,
+            budget deficit,
+            price level,
+            interest rate,
+            exchange rate stability%            
+            }
+            {
+                \node[goal, fill=yellow!20] (N\i) at (18+72*\i:3) {\myziel};
+            }
+
+ 
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,40 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\showmytreeraw[1,2]{forest-oecdsystem.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [OECD 
+        [OECD\\ proper,align=left
+            [Secretariat,l sep+=1.5em, for children={fork sep=2em}
+                %STEPBEGIN{1,secretariat}
+                [Centre for Tax Policy\\ and Administration,align=left]
+                [Directorate for Financial\\ and Enterprise Affairs,align=left]
+                [Economics Department]
+                [...]
+                %STEPEND
+            ]
+            [Committees]
+        ]
+        [Special\\ Bodies,align=left
+            %STEPBEGIN{2,special}
+            [IEA - International Energy Agency,fill=yellow!40]
+            [NEA - Nuclear Energy Agency]
+            [TUAC - Trade Union Advisory Committee]
+            [BDN - Blue Dot Network] 
+            [...]
+            %STEPEND
+        ]
+    ]
+    \end{forest}
+
+ 

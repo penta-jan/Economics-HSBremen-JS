@@ -1,0 +1,195 @@
+\documentclass[t,10pt,leqno]{beamer}
+\usepackage{hsbcommon}
+\usetheme{HSB}
+\usepackage{tabularx}
+\usepackage{chemfig}
+\usepackage{multicol}
+
+\usepackage{mathtools, xcolor}
+\newtagform{colored}[\color{HSBhellgruen}]{\color{HSBhellgruen}(}{)}
+\usetagform{colored}
+
+% \usetikzlibrary{fit, shapes.geometric}
+\usepackage[utf8]{inputenc}
+\usepackage{adjustbox}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{setspace}
+\usepackage{biblatex}
+\usepackage{eurosym}
+\addbibresource{literature.bib}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+\tikzset{->/.style={-Latex}}
+
+\usepackage{adjustbox}
+
+\setbeamertemplate{itemize items}[triangle] 
+\setlength{\leftmargini}{3ex}
+\setlength{\leftmarginii}{0.5cm}
+
+% \setbeamerfont*{itemize/enumerate body}{size=\footnotesize}
+\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+
+% \setbeamersize{text margin left=10pt,text margin right=125pt}
+
+% \usepackage{enumitem} %% INCOMPATIBLE
+
+
+
+\newcommand{\mysession}[1]{%
+  \ifcase#1\relax\or
+    April 7th\or
+    April 14th\or
+    April 21th\or
+    April 28th\or
+    May 5th\or
+    May 19th\or
+    May 26th\or
+    June 2nd\or
+    June 9th\or
+    June 16th\or
+    June 30th\or
+    June 2nd\or
+    July 7th\else
+    \@ctrerr
+  \fi
+}
+
+%%% TOC MANIPULATION
+
+\input{../beamerpagenumbers}
+
+\makeatletter
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip-3pt}
+  {}
+  {}
+
+\AtBeginSection[]
+{
+    % \begin{inhaltsverzeichnis}
+    %     \setbeamercolor{section in toc}{fg=white}
+    %     \setbeamercolor{section in toc shaded}{fg=black}
+    %     \begin{frame}[plain]{Overview}
+    %     \bigskip
+    %     \footnotesize
+    %     \tableofcontents[currentsection,sectionstyle=show/shaded]
+    %     \end{frame}
+    % \end{inhaltsverzeichnis}
+
+    \subtitle{Session \thesection\ -- \secname\
+    -- \mysession{\thesection}
+    }
+    \titleframe
+    
+    \begin{frame}{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+    
+}
+
+\makeatother
+
+
+%%%
+
+\title[Foreign Trade, HSBremen \the\year]{Foreign Trade and International Organisations}
+\author[Jan Suchanek]{Jan Suchanek}
+\date{Summer Semester \the\year}
+\institute{\includegraphics[width=4cm]{../shared/img/1600px-Logo_HSB_Hochschule_Bremen_cropped.png}}
+%\institute{HS Bremen, Global Management}
+
+\setlength{\parskip}{1ex}
+
+% \setlist[description]{leftmargin=0cm,labelindent=0cm,labelwidth=5ex}
+
+
+
+\begin{document}
+
+\onehalfspacing
+
+\titleframe
+
+
+
+% \begin{frame}[plain]{}
+%     \centering~\par\vspace{3cm}\Large 
+%     Welcome!
+    
+%     Today's topic is...
+% \end{frame}
+
+%% first block: 5 weeks
+
+\include{FT_0_Introduction_Organsiation}
+
+\include{FT_1_World_Economy_and_BOP}
+
+% \include{FT_2_Freight}  %%% next semester: move to end
+
+% \include{FT_3_ToT_Effects_of_Trade}
+
+% \include{FT_4_Classic_Trade_Theory}
+
+% \include{FT_5_STUDENTS-PRESENT-I}
+
+
+% \include{FT_7_State_Tariffs}
+
+% \include{FT_8_Subsidies}
+
+% \include{FT_6_MNEs}   
+
+
+% %% MNOs, Trade Fairs etc.
+
+% \include{FT_9_International_Order}
+
+
+% \include{FT_10_Monetary_Theory}
+
+% \include{FT_11_Global_Macroeconomics}
+
+% \include{FT_12_STUDENTS_PRESENT_II}
+
+
+% \AtBeginSection[]
+% {
+%     \begin{inhaltsverzeichnis}
+%         \setbeamercolor{section in toc}{fg=white}
+%         \setbeamercolor{section in toc shaded}{fg=black}
+%         \begin{frame}[plain]{Overview}
+%         \bigskip
+%         \footnotesize
+%         \tableofcontents[currentsection,sectionstyle=show/shaded]
+%         \end{frame}
+%     \end{inhaltsverzeichnis}
+    
+%     \subtitle{Annex: \secname}
+%     \titleframe
+% }
+
+% \begin{frame}{Thanks for now!}
+%     Please ask your questions now.
+% \end{frame}
+
+\begin{frame}[plain]{}
+    \centering
+    ~\par
+    \vspace{3cm}
+    \large Thank you!
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Literature and Links}
+   \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}

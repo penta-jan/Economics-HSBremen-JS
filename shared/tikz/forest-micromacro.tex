@@ -1,0 +1,46 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\showmytreeraw[1,2]{forest-micromacro.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [Economic Theory
+        [\colorbox{yellow!40}{Micro-Economics}, for children={fill=yellow!20,fork sep=2em},l sep+=2.5em
+            %STEPBEGIN{1}
+            [consumer theory]
+            [production theory]
+            [markets: partial equilibrium]
+            [market failure and welfare]
+            [taxes on individual markets]
+            [regulation]
+            [resources and externalities]
+            [information and strategic behaviour]
+            %STEPEND
+        ]
+        [\colorbox{green!40}{Macro-Economics}, for children={fill=green!20,fork sep=2.5em},l sep+=3em
+            %STEPBEGIN{2}
+            [aggregate production]
+            [aggregate consumption]
+            [aggregate savings and investment]
+            [macroeconomic equilibrium and growth]
+            [welfare and employment]
+            [taxes and fiscal spending]
+            [planetary boundaries]
+            [international economic relations]
+            [credit{,} money supply and demand]
+            [inflation{,} price level]
+            [interest rates]
+            [business cycles and crises]
+            %STEPEND
+        ]
+    ]
+    \end{forest}

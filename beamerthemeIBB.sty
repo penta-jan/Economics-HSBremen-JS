@@ -1,0 +1,44 @@
+% beamerthemeIBB.sty
+%
+% Inoffizielles LaTeX-Beamer-Theme im Corporate Design des
+% IBB - Institut fuer Berufliche Bildung (ibb.com).
+%
+% Farben abgeleitet von der Website ibb.com (Theme-Color #0075AA)
+% zzgl. einer gelben Akzentfarbe, wie sie dort in Icons/Highlights
+% verwendet wird. Dies ist keine offizielle IBB-Vorlage, sondern
+% eine Annaeherung an das oeffentlich sichtbare Erscheinungsbild.
+%
+% Verwendung:
+%   \documentclass{beamer}
+%   \usetheme{IBB}
+%
+% Optionen:
+%   nosectionpages  - unterdrueckt die automatischen Sektions-Zwischenfolien
+%
+% -------------------------------------------------------------
+
+\ProvidesPackage{beamerthemeIBB}[2026/01/01 v1.0 IBB corporate beamer theme]
+
+\mode<presentation>
+
+\newif\if@ibb@nosectionpages
+\@ibb@nosectionpagesfalse
+\DeclareOption{nosectionpages}{\@ibb@nosectionpagestrue}
+\ProcessOptions\relax
+
+\useoutertheme{IBB}
+\useinnertheme{IBB}
+\usecolortheme{IBB}
+\usefonttheme{IBB}
+
+\if@ibb@nosectionpages
+  \ibb@sectionpagefalse
+\fi
+
+% Allgemeine Beamer-Einstellungen
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{bibliography item}[triangle]
+\setbeamercovered{transparent=15}
+
+\mode
+<all>

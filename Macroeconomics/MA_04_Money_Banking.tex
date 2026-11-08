@@ -1,0 +1,545 @@
+%%% MA_06_Money_Banking.tex -- reorganised; frames moved from the old MA_xx files (see comments)
+
+\section{Money and Banking}
+
+%%% [moved from MA_4_Money.tex, frame 4]
+\begin{frame}{Borrowing and Lending}
+    \mytext{
+    \begin{itemize}
+        \item If I give my daughter only 100 Euro a month...
+        \item ... but she buys stuff for 200 Euro a month...
+        \item there must be some other source of income!
+        \item ... so either she sells something else...
+        \item ... or she lives of borrowed money.
+        \item Even if she steals, she will accumulate liabilities!
+    \end{itemize}
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 5]
+\begin{frame}{Borrowing and Lending}
+    \mytext{
+    \begin{itemize}
+        \item Maybe she lives of capital transfer? Like her grandmother sponsoring her?
+        \item Maybe she is over-spending off her credit card?
+        \item Maybe someone lends her money?
+        \item So, she issues bonds?
+        \item What are the costs of that borrowed money?
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
+    \mycomment{
+    Borrowing and lending can happen in a number of ways. One is to issue bonds (between people and less formal often called an IOU \enquote{I owe you}). You sell your debt for less than what you promise to repay. The difference can be stated in percent, and is then called \textbf{yield.}
+
+    So the money transfered \textit{at the end} is clear, and yield is a result of the \textit{present price.}
+    }
+    \showmytikz[1,calculation]{shared/tikz/tikz-borrow-lend}
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
+    \mycomment{
+    Debt can also be issued by taking up credit. In this case, the money received at the \textit{beginning} is clear, and the interest paid per year; the repayment equals the money received at the beginning. 
+
+    When such credit is traded, what is at stake is not the price, but the interest rate.
+
+    Both forms---issuing bonds or taking up credit---are mathematical equivalents. Often bonds also pay out per year (\enquote{coupon}); there are many variants possible.
+    }
+    \showmytikz[2,calculation]{shared/tikz/tikz-borrow-lend}
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
+    \mytext{
+    Reasons to borrow money:
+    \begin{itemize}
+        \item for consumption (consumer credit)
+        \item \textbf{for investment (profit)}
+    \end{itemize}
+    Reasons to lend money:
+    \begin{itemize}
+        \item save haven (e.g. savings to bank)
+        \item \textbf{profit (investment)}
+    \end{itemize}
+    Banks collect many small savings and bundle them to larger charges then lent out; so banks transform duration and sizes of such credit. On top, the banking system can also create credit \textit{ex nihilo.}
+    }
+    \mycomment{
+        Borrowing and lending can raise sums that would not be available in a hand-to-mouth economy.
+
+        The availability of such larger sums is prerequisite for an industrial society.
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 6]
+\begin{frame}{The Costs of Money: Interest Rates}
+    \mytext{
+    \begin{itemize}
+        \item The cost of money is called interest.
+        \item Interest is typically expressed as interest~rate~($i$).
+        \item There is also a (hidden) cost of money: inflation~$(\pi)$.
+        \item Internationally, there is also (the chance of) devaluation (or revaluation) of currency~($\Delta Exp$).
+    \end{itemize}
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 7]
+% \begin{frame}{Money}
+%     \mycomment{
+%     Money is not a commodity like any other. But what exactly is money, where does it come from, what constitutes its value and what guarantees that it keeps this value?
+%     }
+%     \mytext{
+%     \begin{itemize}
+%         \item There can be debt without money
+%         \item However, most debt will be monetary
+%         \item We must think about money
+%     \end{itemize}
+%     }
+% \end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 8]
+\begin{frame}{History of Money}
+    \mycomment{
+    For a long time, precious metals served as money. Little was understood that the actual function of money is different to that of any other good, that it is actually not a "good" in the same way that all other commodities are.
+
+    The early story of money is a story of divergence of the actual face value of coins relative to the metal price, leading to the eventual decoupling of the two.
+    }
+\mytext{
+    \begin{itemize}
+        \item Money - a commodity?
+        \begin{itemize}
+            \item gold, gold standard 
+            \item silver ...
+            \item Gresham's law
+            \item paper money?
+            \item digital money?
+        \end{itemize}
+    \end{itemize}
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 9]
+\begin{frame}{History of Money}
+    \mycomment{
+    Isaak \noun{Newton} became Head of the Royal Mint, and he wanted to \textit{discourage} the use of gold as currency in favour of silver. ("Sterling" is actually a silver term.) He thus decreed that while before, the gold:silver ratio was about 1:20, it would now be exchanged 1:21, believing this would disfavour gold.
+
+    But the effect was that foreigners brought in gold, that was now more expensive than silver, while silver left the country. The "gold standard" was acknowledged almost a century later.
+    }
+    \mytext{
+    \begin{itemize}
+        \item Bank of England issues paper money: 1694
+        \item Pound Sterling gold standard: 1717, 1821
+        \item Banque de France issues paper money: 1800
+        \item Greenback: American Civil War United States Notes
+        \item Federal Reserve System FED 1913
+        \item Reichsmark gold standard until 1914
+        \item German hyperinflation
+        \item Russian attempts to abolish money 1917-1921
+        \item Bretton Woods system until 1973
+        \item Euro 2002
+    \end{itemize}
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 10]
+\begin{frame}{History of Money}
+    \mycomment{
+    In addition to central banks (or mints) issuing currency, the banking sector developed. This allows the creation of "book money" and to conduct payments without the actual shipping of currency. Using the banking system, merchants could now ship wares back and forth and square their accounts without the perilous transportation of precious metals in the opposite direction.
+
+    By doing so, banks can indeed create book money. This must be limited by some required guarantees and underlying reserves to preserve bank runs. The supervision of banks is one of the chief responsibilities of the central banks.
+    }
+    \mytext{
+    \begin{itemize}
+        \item Sconto, conto, credit, debit: Italian
+        \item Giro system 17th century, Marc Banco (Hamburg 1619, Nurnberg, Venice...)
+        \item Banking system / double book keeping: Florence
+        \item Securities, bonds, stocks (Wertpapier)
+        \item "check": English
+    \end{itemize}
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 11]
+\begin{frame}{History of Money}
+    \mycomment{
+    Along with the development of new means of payments came the development of other financial institutions, where debt in the form of shares and stocks can be traded. This came along with new forms of companies, financed by a multitude of shareholders. Those companies are also liable only up to the underlaying investment (limited company), and are their own legal personality, and without any person holding liability.
+    }
+    \mytext{
+    \begin{itemize}
+        \item First stock exchange Brügge 1276
+        \item Paris 1572
+        \item Hamburg 1558, Berlin 1685, Bremen 1682
+        \item London 1773, New York 1792
+    \end{itemize}
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 12]
+\begin{frame}{History of Money}
+    \mycomment{
+    The history of money is not over, as we keep developing new means of payment. Digitalisation and the invention of strong encryption makes new forms of payment possible. The underlying principle though, that states and their request for taxes (legal tender) are the ultimate guarantors of the value of money, remains unchanged.
+    }
+    \mytext{
+    \begin{itemize}
+        \item Credit cards: Diners Club 1950, 1977 VISA
+        \item ATMs since 1960, Online Banking since 2000s
+        \item Debit cards / Maestro, VISA debit
+        \item SWIFT 1973
+        \item Crypto: DES, Triple DES, AES since 1977
+        \item Bitcoin 2008, Ethereum
+        \item CBDC (Central bank digital currency)?
+        \item Quantum computer?
+    \end{itemize}
+    }
+\end{frame}
+
+
+
+\begin{frame}{The Four Functions of Money}
+    \showmytikz{../shared/tikz/tikz-fourfunctionsofmoney}
+    \mycomment{
+    For a currency to be accepted money, it must serve four functions. Other commodities like gold and silver may be highly liquid, as they can be exchanged \textit{for money} easily. But they are not money still as long as there is \textit{real money} that serves these functions better.
+
+    % Money is a medium of exchange not just in the moment, but also inter-temporally. 
+
+    Other things may work as storage of value, such as real estate. But they will not work as well as medium of exchange; and they will not be easy to calculate with: just how many acres of land (what land?) is worth how many kettle?
+    }
+\end{frame}
+
+
+%%% GRESHAM'S LAW
+
+%%% [moved from MA_4_Money.tex, frame 17]
+\begin{frame}{Currency}
+\mycomment{
+It is important to remember the general impossibility to compare the use value (that is individual) to the exchange value (that is determined on markets) of any good. Money has no use value at all but is all exchange value, which is its strength.
+
+Notice that the exchange value is at parts dependent on the costs to produce a good---that is, in competitive markets. In non-competitive markets, the value can be higher than the costs to produce.
+}
+\mytext{
+    There is a fundamental difference between
+    \begin{itemize}
+        \item use value, and
+        \item exchange value.
+        % \item intrinsic value (strike price vs. underlying)
+    \end{itemize}
+
+    Money has no use value.
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 18]
+\begin{frame}{Currency}
+\mycomment{
+States guarantee the value of currency, and they actually force their subjects to use it. States hold a monopoly on money. Nobody except the central bank can issue currency. And banks creating book money are under supervision of the central banks.
+}
+\mytext{
+    \begin{itemize}
+        \item Obligation to accept (for debt settlement)
+        \item Paying taxes etc. in that currency
+        \item fiat money: no intrinsic value
+        \item legal tender
+    \end{itemize}
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 19]
+\begin{frame}{Currency}
+\showmytikz{../shared/tikz/tikz-threequalitiescurrency}
+
+\mycomment{
+    Currencies compete with one another in an open economy. However, some countries---most notable China---have opted out of full convertibility. This means that the "currency of the people" (Renminbi, with its unit "Yuan" meaning "unit") is stable and scarce, but not convertible. Other currencies are convertible, but often not stable. There is much to be said about optimum currency areas and whether or not a currency should be pegged to another, to a bundle, or free-float.
+}
+\end{frame}
+
+\begin{frame}{Gresham-Copernicus Law}
+    \mytext{
+    \enquote{Bad money drives out good money} \textit{if they are exchanged at the same price.}
+
+    If gold and silver are in circulation, and silver tends to devalue, people will hoard gold and spend silver.
+
+    So at the end, only silver ends up in circulation.
+
+    Currency must have a higher face value than intrinsic (material) value to be fiat money (compare \enquote{token coin}).
+
+    However, if the devaluation is too quick, the reverse happens (Thier's Law).
+    }
+    
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 20]
+\begin{frame}{Quantitative Theory of Money}
+\showmytikz[1,2]{../shared/tikz/tikz-quantitytheoryofmoney}
+\mycomment{
+    Imagine a two-sector economy, with only fishermen and coconut farmers.
+
+    The (exchange) value of fish in coconut will depend entirely on how many fish and how many coconut are brought to the market (per market day). This in turn will depend on preferences of the consumers, and on the effort needed for fishing and harvesting. 
+
+    Imagine a seasonal shortage of coconut relative to plenty of fish. Then some fishermen will change profession and start harvesting coconut. 
+    
+    If labour is mobile (and all that counts), then costs to fish and harvest should equal out.
+
+    This is a world of exchange without money, which may work if there are only fish and coconut. 
+    
+    As commerce expands beyond fish and coconut, a common denominator will become desirable. 
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 21]
+\begin{frame}{Quantitative Theory of Money}
+\showmytikz[1,2,3,4]{../shared/tikz/tikz-quantitytheoryofmoney}
+\mycomment{
+        Now our islanders agree using some sea shells (of an extinct species) as medium of exchange. 
+        
+        Farmers buy fish with shells, and fishermen with shells buy coconut. 
+    
+        The value of the shells (money) depends only on two factors:
+        \begin{itemize}
+            \item the speed of circulation
+            \item the quantity of shells in circulation
+        \end{itemize}
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 22]
+\begin{frame}{Quantitative Theory of Money}
+\showmytikz[1,3]{../shared/tikz/tikz-quantitytheoryofmoney}
+\mycomment{
+        For the system (or better: this model!) to work, the shells must retain circulation. For they do not have any use value, fishermen would not accept shells without farmers accepting shells.
+        
+        So why shells? And where do these shells come from? One quality the shells have is that nobody can create them at will. Really? But we can create debt, can we not?  
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 23]
+\begin{frame}{Quantitative Theory of Money}
+\showmytikz[1,3,5]{../shared/tikz/tikz-quantitytheoryofmoney}
+\mycomment{
+        In our model world, neither $A$ nor $B$ ever invest in new fishing nets or ladders. If a farmer wants to take time off to make a new ladder instead of harvesting, they would need to get some credit to not starve while they do this. The fishermen would have to supply shells as a loan (and then fish in exchange for shells). Where would that credit come from, if the farmers need all their money for transactions?
+
+        In other words: the quantitative theory of money, while absolutely worth knowing and considering, has its limits. It assumes there is a world without credit, without debt, without interest rate, without past or future, without inequality, without power and ownership, without permissions, competing currencies, etc.
+}
+\end{frame}
+
+% \begin{frame}{Banks}
+%     \mytext{
+    
+%     }
+% \end{frame}
+
+
+\begin{frame}{Savings First, or Credit First?}
+    \mytext{
+    Two theories shaped the 20th century debate: \textbf{Neoclassic} and \textbf{Keynesiansim.}
+
+    In each case, the identity of savings and investment hold. The debate is about the causal direction, which of course has policy implications.
+
+    The neoclassic view on banking is that banks are just like any othr actors in the economy. Like traders, they bundle supply and demand, and help with allocation (of money). 
+
+    The Keynesian view sees banking as a core function in the economy, as banks supply the economy with money through credit, which makes investment possible to begin with.
+    }
+    
+\end{frame}
+
+\begin{frame}{Theory of Money  I - Debit First}
+    \mycomment{
+    One theory---a popular, but disproven one---assumes that banks came into existence after money. That is, there was money in circulation (gold, silver etc.). Banks were founded to safeguard  gold and silver.
+
+    We call this "debit first" theory. In this world, debit is everything; credit comes later, or remains an exception.
+    }
+    \mytable{
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Business}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 500 stuff & \\
+                 \tikzmark{gold1} 500 gold  &  1000 equity\\\hline
+            \end{tabular}
+    
+           \bigskip
+    
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Bank}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 \tikzmark{gold2} 0 gold   & 0 bank notes \\\hline
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture]
+                \draw[red,->,bend left=-90] (pic cs:gold1) to (pic cs:gold2);
+            \end{tikzpicture}
+    }
+\end{frame}
+
+
+\begin{frame}{Theory of Money  I - Debit First}
+    \mytext{
+    In the neoclassic view, money is simply a convention of the subjects in free markets, who found banks to their convenience. So first comes saving (debit), then investment (credit).
+    }
+    
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 25]
+\begin{frame}{Theory of Money  I - Debit First}
+    \mycomment{
+    According to this, banks would collect the "hard cash" (gold, silver etc.) and issue bank notes instead. 
+    }
+\mytable{
+        \begin{tabular}{p{20ex}|p{20ex}}
+            \multicolumn{2}{c}{My Business}\\
+             debit (assets) & credit (liabilities) \\\hline            
+             500 stuff &  \\ 
+             500 bank notes \tikzmark{note2}  &  1000 equity\\\hline
+        \end{tabular}
+
+        \bigskip
+
+        \begin{tabular}{p{20ex}|p{20ex}}
+            \multicolumn{2}{c}{My Bank}\\
+             debit (assets) & credit (liabilities) \\\hline            
+             500 gold & \tikzmark{note1} 500 bank notes \\\hline
+        \end{tabular}
+        \begin{tikzpicture}[overlay, remember picture]
+                \draw[red,->,out=180,in=0] (pic cs:note1) to (pic cs:note2);
+        \end{tikzpicture}
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 26]
+\begin{frame}{Theory of Money  I - Debit First}
+
+\mycomment{
+    In the next step, we can substitute the bank notes even further---by current accounts or digital money. Whether there is  an actual paper bill or an electronic proof, the idea is the same: The Theory of Money here is debit. 
+
+    While this is a nice theory, it does not explain where money came from in the first place. We now know that the value of money has other origins.
+}
+
+\mytable{
+        \begin{tabular}{p{20ex}|p{20ex}}
+            \multicolumn{2}{c}{My Business}\\
+             debit (assets) & credit (liabilities) \\\hline            
+             500 stuff &  \\ 
+             500 debit to bank &  1000 equity\\\hline
+        \end{tabular}
+
+        \bigskip
+
+        \begin{tabular}{p{20ex}|p{20ex}}
+            \multicolumn{2}{c}{My Bank}\\
+             debit (assets) & credit (liabilities) \\\hline            
+             500 gold & 500 credit from me \\\hline
+        \end{tabular}
+}        
+\end{frame}
+
+
+\begin{frame}{Theory of Money  I - Credit First}
+    \mytext{
+    In the Keynesian view, money is issued by authorities and credit created by banks, which then allow investment and saving. So here credit (investment) comes first, resulting in saving (debit).
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 27]
+\begin{frame}{Theory of Money  II - Credit First}
+    \mycomment{
+    Rather than "us" just having money out of nowhere, we begin with nothing. It is the banks that start supplying the economy with money. The bank creates money "ex nihilo". 
+
+    This is a credit economy, so we call it "credit first", and it is actually more realistic.
+
+    In the first step, the individual(s) have nothing; the bank prints some bank notes, and holds (assumingly) "something" to safeguard its value, and establish trust. 
+    }
+    \mytable{
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Business}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 0 stuff & \\
+                 0 gold &  0 equity\\\hline
+            \end{tabular}
+    
+            \bigskip
+    
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Bank}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 500 gold (?) & 500 equity (?) \\\hline
+            \end{tabular}
+    }        
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 28]
+\begin{frame}{Theory of Money  II - Credit First}
+    \mycomment{
+        In the second step, it lends these bank notes to the economy. 
+    }
+    \mytable{
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Business}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 0 stuff &  \tikzmark{cred2} 500 credit from bank \\
+                 500 bank notes \tikzmark{notes2} &  0 equity\\\hline
+            \end{tabular}
+    
+            \bigskip
+    
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Bank}\\
+                 debit (assets) & credit (liabilities) \\\hline         
+                 500 debit to me \tikzmark{cred1} & 500 equity (?) \\
+                 500 gold (?) & \tikzmark{notes1}(500 bank notes) \\\hline
+            \end{tabular}
+
+        \begin{tikzpicture}[overlay, remember picture]
+                \draw[red,->,out=180,in=0] (pic cs:notes1) to (pic cs:notes2);
+                \draw[green,ultra thick,<->,>=latex,out=-180,in=0] (pic cs:cred2) to (pic cs:cred1);
+        \end{tikzpicture}
+    }        
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 29]
+\begin{frame}{Theory of Money  II - Credit First}
+\mycomment{
+    Now the economic subjects can use this to start trading, invest into machinery, and produce. 
+    
+    They will at the end invest the money in a way that what is produced at the end of the period is larger than what there was before. Thus, money supply must grow in parallel to the growth of the economy. Also, to be able to grow, the economy needs cash supply.
+
+    \begin{itemize}
+        \item Gold is not needed
+        \item creation of money "ex nihilo"
+        \item but: \textbf{interest rates}
+        \item normally, \textbf{interest rate = growth rate}
+    \end{itemize}
+}
+\mytable{
+        \begin{tabular}{p{20ex}|p{20ex}}
+            \multicolumn{2}{c}{My Business}\\
+             debit (assets) & credit (liabilities) \\\hline            
+             \tikzmark{stuff} 500 investment\tikzmark{stuff2} & \tikzmark{creditfrombank}500 credit from bank\tikzmark{creditfrombank2} \\ 
+             \tikzmark{noty} 0 bank notes &  0 equity \\\hline
+        \end{tabular}
+
+        \bigskip
+
+        \begin{tabular}{p{20ex}|p{20ex}}
+            \multicolumn{2}{c}{My Bank}\\
+             debit (assets) & credit (liabilities) \\\hline         
+             \tikzmark{debittome}500 debit to me &  1000 equity\\
+             500 gold (?) &  0 banknotes  \\\hline
+        \end{tabular}
+
+        \begin{tikzpicture}[overlay, remember picture]
+                \draw[red,->,out=180,in=180,looseness=2] (pic cs:noty) to (pic cs:stuff);
+                \draw[red,->,out=0,in=180] (pic cs:creditfrombank2) to node[above] {\scriptsize debt service} (pic cs:debittome);
+                \draw[->,red] (pic cs:stuff2) -- node[above]{\scriptsize interest} (pic cs:creditfrombank);
+        \end{tikzpicture}
+
+}        
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 30]
+\begin{frame}{Banking}
+    \showmytikz{../shared/tikz/tikz-bankingsector}
+    \mycomment{
+    The central bank lends money to banks on the condition of interest payments. The banks lend money to businesses, giving them credit, on the condition of interest payments.
+
+    The businesses employ consumers as workers and labourers, produce goods more worth than the credit they have received, paying the salaries and the interest rates.
+
+    The systems works so that the growth rate needs to relate to the interest rate. The entire system hinges on the central bank, setting the central interest rate.
+    }
+\end{frame}
+

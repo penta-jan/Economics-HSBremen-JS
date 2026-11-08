@@ -32,9 +32,9 @@
         \node[factor] (m5) at (4,3) {tools};
         \node[factor] (m6) at (4,-3) {know-how};
 
-        \node[product] (p) at (4,0) {product};
+        \node[product,fill=gray!20] (p) at (4,0) {product};
 
-        \node[factor,dashed] (va) at (4.75,1.25) {value added};
+        \node[factor,dashed,minimum width=4cm,] (va) at (4,1.5) {value added};
 
         \foreach \i in {1,2,3,4,5,6} 
             \draw[->] (m\i) -- (p);
@@ -66,40 +66,37 @@
     }
 
     \ifstep{3}{
-    \begin{scope}[red,thick]
+    \begin{scope} 
 
-        \node[factor] (m1) at (0,0.8)  {raw materials};
-        \node[factor] (m2) at (0,-0.8)  {pre-products};
-        \node[factor] (m4) at (1,-2.5)  {energy};
+        \node[factor,fill=red!30] (m1) at (0,0.8)  {raw materials};
+        \node[factor,fill=red!30] (m2) at (0,-0.8)  {pre-products};
+        \node[factor,fill=red!30] (m4) at (1,-2.5)  {energy};
 
         \foreach \i in {1,2,4} 
-            \draw[<-] (m\i) -- (p);
+            \draw[<->,double] (m\i) -- (p);
 
 
     \end{scope}
     }
     
   \ifstep{4}{
-    \begin{scope}[red,thick]
-        
-        \node[factor] (m3) at (1,2.5)  {labour};
-        \draw[<-] (m3) -- (p);
+    \begin{scope} 
+        \node[factor,fill=green!30] (m3) at (1,2.5)  {labour};
+        \draw[<->,double] (m3) -- (p);
     \end{scope}
     }
 
     \ifstep{5}{
-    \begin{scope}[red,thick]
+    \begin{scope} 
 
-        \node[factor] (m5) at (4,3) {tools};
-        \node[factor] (m6) at (4,-3) {know-how};
+        \node[factor,fill=blue!30] (m5) at (4,3) {tools};
+        \node[factor,fill=blue!30] (m6) at (4,-3) {know-how};
         \foreach \i in {5,6} 
-            \draw[<-] (m\i) -- (p);
+            \draw[<->,double] (m\i) -- (p);
 
         
     \end{scope}
     }
 
-    
-        
     \end{tikzpicture}
 \end{document}

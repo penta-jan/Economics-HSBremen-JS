@@ -1,0 +1,49 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\showmytreeraw[1,2,3,4,5,6,7]{forest-eusystem.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+    \begin{forest}
+        for tree={
+            font=\footnotesize,
+            grow' = east,
+            anchor=base west,
+            forked edge,
+            inner sep=2pt
+                }
+    [European Union
+        [Decision making organs
+            %STEPBEGIN{decisionmaking,1}
+            [European Parliament]
+            [European Council\\ (of heads of states or governments),align=left]
+            [Council of the European Union\\ (of state ministers),align=left]
+            [European Commission,fill=orange!40]
+            %STEPEND
+        ]
+        [Other organs
+            %STEPBEGIN{2,other}
+            [CJEU - Court of Justice of the EU
+                [Court of Justice]
+                [General Court]
+            ]
+            [European Central Bank,fill=green!40]
+            [European Court of Auditors]
+            %STEPEND
+        ]
+        [Agencies
+            %STEPBEGIN{3,agencies}
+            [EFSA - European Food Safety Authority]
+            [EFCA - European Fischeries Control Agency]
+            [ACER - Agency for the Cooperation of Energy Regulators]
+            [EDA - European Defence Agency]
+            [EBA - European Banking Authority]
+            [...]
+            %STEPEND
+        ]
+    ]
+    \end{forest}
+
+    
+% \end{document}

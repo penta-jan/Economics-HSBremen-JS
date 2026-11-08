@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\usepackage{array}
+
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7}}\makeatother
+
+\begin{document}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}|}%
+\newcolumntype{T}{L{2.6cm}L{2.6cm}L{2.6cm}L{2.6cm}}%
+    \begin{tabular}{T}
+        \hline
+         & Allocation & \colorbox{blue!20}{Distribution} & \colorbox{red!20}{Stabilisation} \\
+        \hline
+        Order policy
+         & \cellcolor{green!10}\textbf{primary}\par property rights,\par competition law
+         & \textbf{secondary}\par labour law, inheritance law
+         & framework:\par monetary and fiscal rules \\
+        \hline
+        \colorbox{blue!40}{Fiscal policy}
+         & \textbf{secondary}\par\par public goods, Pigouvian taxes
+         &\cellcolor{blue!10}\textbf{primary}\par taxes, transfers
+         & \textbf{secondary;}\par primary in the aggregate \\
+        \hline
+        \colorbox{red!40}{Monetary policy}
+         & ---
+         & side effects (asset prices)
+         & \cellcolor{red!10}\textbf{primary} \\
+        \hline
+        \end{tabular} 
+\end{document}

@@ -1,6 +1,6 @@
 \documentclass{standalone}
 \usepackage{hsbcommon}
-\makeatletter\AtBeginDocument{\@buildstepset{0,1,2,3,4,5,6,7}}\makeatother
+\makeatletter\AtBeginDocument{\@buildstepset{0,1,2,3,4,5,6}}\makeatother
 \begin{document}
 \begin{tikzpicture}
     \tikzset{
@@ -89,11 +89,11 @@
     }
 
     \ifstep{5}{
-       \node[mygains,minimum width=3cm,text width=2cm, minimum height=2.5cm] (gains) at (7,-7) {capital income};
+       \node[mygains,minimum width=2.75cm,text width=1.5cm, minimum height=2.5cm] (gains) at (7,-7) {capital income};
     }
 
     \ifstep{6}{
-        \node[mytransfer,minimum width=3cm,minimum height=0.7cm] (transfer2) at(7,-6.1) {} ;
+        \node[mytransfer,minimum width=2.75cm,minimum height=0.7cm] (transfer2) at(7,-6.1) {} ;
         \draw[dashed,blue,->,bend right=15] (transfer2) to (pensions.south);
         \draw[dashed,blue,->,bend left=10] (transfer2) to (credit.south);
         \draw[dashed,blue,->,bend left=10] (transfer2) to (benefits.south);

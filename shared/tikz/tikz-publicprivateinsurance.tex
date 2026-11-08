@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) node[below]{\phantom{$x_1$}}-- (8,0) node[right] {$y$};
+    \draw[->] (0,0) node[left]{\phantom{$y_1$}}-- (0,8) node[above] {$p$};
+
+    \path [name path=private] (0,3)  -- (8,3) ;  %define globally
+    
+    
+    \coordinate (B) at (5,4);
+    \draw[dashed] (0,|-B) node[left] {$p_b$} -- (B) -- (B|-,0) node[below] {$y_b$};
+    \filldraw (B) node[above left] {$B$} circle (2pt);
+    
+    \draw [name path=costs] (0,2.5) node[left] {$p_a$}  -- (8,2.5) node[below left] {payout / costs};;
+    \draw [name path=public] (0,0) -- (B) -- (8,|-B) node[above left] {public};
+        
+    \path [name intersections={of=costs and public,by=A}];
+    \filldraw (A) node[above left] {$A$} circle (2pt);
+
+    \ifstep{1}{ %% break even of public insurance
+    \begin{scope}[on background layer]
+        \fill[green,opacity=0.25]  (0,0) -- (0,|-A) -- (A) -- cycle;
+        \fill[red,opacity=0.25]   (A) -- (B) -- (8,|-B) -- (8,|-A) --  cycle;
+        
+    \end{scope}
+    }
+
+    \ifstep{2}{  %% alternative: private insurance
+    \begin{scope}[red]
+        \draw   (0,3) node[left] {$p_c$}  -- (8,3) node[above left] {private} ;  %% private
+        \path [name intersections={of=private and public,by=C}];
+    
+        \filldraw (C) node[above left] {$C$} circle (2pt);
+        \draw [dashed] (C) -- (C|-,0) node[below] {$y_c$};
+
+        \ifstep{3}{  %% efficiency loss to public insurance
+        \begin{scope}[on background layer]
+            \fill [fill=white, opacity=0.7] (C) -- (B) -- (8,|-B) -- (8,|-C) -- cycle;
+        \end{scope}
+        }
+    \end{scope}
+    }
+
+    \ifstep{4}{%% solidarbeitrag
+        \begin{scope}[green]
+            % \coordinate (Aplus) at ($(A)+(0,0.75)$);
+            \coordinate (Bplus) at ($(B)+(0,0.5)$);
+            \path[name path=Apath] (A|-,0) -- (A|-,8);
+            \path[name intersections={of=Apath and private,by=D}];
+            % \filldraw (D) node[above left] {$D$} circle (2pt);
+            % \filldraw (Aplus) node[above left] {$A'$} circle (2pt);
+            % \filldraw (Bplus) node[above left] {$B'$} circle (2pt);
+            \draw [thick] (0,|-D) -- (D) -- (Bplus) -- (8,|-Bplus) node[above left] {private w. contrib.};
+        \end{scope}
+    
+    }
+
+    
+
+    
+\end{tikzpicture}
+\end{document}

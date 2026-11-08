@@ -9,6 +9,11 @@
 %          orange-rot   | rot-violett | tuerkisblau-gruen | violett-blau
 
 \newcommand{\HSBorganisation}{HSB}
+% Logo files are named <organisation>_Office-neg.png etc. (see "Logo paths")
+% and by default sit in the project root, next to this file.
+% Only if you keep them in a folder, set it here or after loading the theme
+% (with trailing slash), e.g.  \renewcommand{\HSBlogodir}{../}
+\newcommand{\HSBlogodir}{}
 
 % ── Gradient colour definitions ───────────────────────────────────────────────
 \RequirePackage{xcolor}
@@ -100,9 +105,17 @@
 \AtBeginDocument{\HSBsetscheme}
 
 % ── Logo paths ────────────────────────────────────────────────────────────────
-\newcommand{\ZusatzLogoPath}{../shared/logos/\HSBorganisation_Office-Logos/\HSBorganisation_Zusatz_Office-neg.png}
-\newcommand{\OfficeLogoPath}{../shared/logos/\HSBorganisation_Office-Logos/\HSBorganisation_Office-neg.png}
-\newcommand{\OfficeLogoPathColor}{../shared/logos/\HSBorganisation_Office-Logos/\HSBorganisation_Office-pos.png}
+% Three files per project, in the project root (no ../shared/logos/ tree, no
+% per-organisation folders -- a project carries only its own organisation):
+%     HSB_Office-neg.png           white logo for the dark gradient backgrounds
+%     HSB_Office-pos.png           coloured logo
+%     HSB_Zusatz_Office-neg.png    supplementary ("Zusatz") logo, white
+% \HSBorganisation is only the file-name prefix (HSB -> IBB gives IBB_Office-neg.png).
+% The macros expand lazily, so \renewcommand after loading the theme works;
+% a single path can also be set directly:  \renewcommand{\OfficeLogoPath}{x.png}
+\newcommand{\ZusatzLogoPath}{\HSBlogodir\HSBorganisation_Zusatz_Office-neg.png}
+\newcommand{\OfficeLogoPath}{\HSBlogodir\HSBorganisation_Office-neg.png}
+\newcommand{\OfficeLogoPathColor}{\HSBlogodir\HSBorganisation_Office-pos.png}
 
 % ── Beamer font/colour settings ───────────────────────────────────────────────
 \setbeamerfont{title}{size=\Large, series=\bfseries}

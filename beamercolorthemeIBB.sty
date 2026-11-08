@@ -1,0 +1,77 @@
+% beamercolorthemeIBB.sty
+% Farbschema im Corporate Design des IBB - Institut fuer Berufliche Bildung
+% Primaerfarbe (IBB-Blau) laut ibb.com Theme-Color: #0075AA
+
+\ProvidesPackage{beamercolorthemeIBB}[2026/01/01 IBB color theme]
+
+\RequirePackage{xcolor}
+
+% ---- Kernfarben ----
+\definecolor{ibbBlue}{HTML}{0075AA}      % Primaerfarbe (Markenblau)
+\definecolor{ibbDarkBlue}{HTML}{004F73}  % dunklere Variante fuer Kontraste/Tiefe
+\definecolor{ibbLightBlue}{HTML}{4FA8D8} % helle Variante fuer Akzente/Verlaeufe
+\definecolor{ibbYellow}{HTML}{FFC800}    % Akzentfarbe (Signalgelb, analog Highlight-Icons)
+\definecolor{ibbGrey}{HTML}{53565A}      % Fliesstext-/Sekundaergrau
+\definecolor{ibbLightGrey}{HTML}{F2F4F6} % Hintergrund fuer Boxen/alternierende Zeilen
+\definecolor{ibbWhite}{HTML}{FFFFFF}
+
+% ---- Grundstruktur ----
+\setbeamercolor{palette primary}{bg=ibbBlue, fg=ibbWhite}
+\setbeamercolor{palette secondary}{bg=ibbDarkBlue, fg=ibbWhite}
+\setbeamercolor{palette tertiary}{bg=ibbLightBlue, fg=ibbWhite}
+\setbeamercolor{palette quaternary}{bg=ibbGrey, fg=ibbWhite}
+
+\setbeamercolor{background canvas}{bg=ibbWhite}
+\setbeamercolor{normal text}{fg=ibbGrey, bg=ibbWhite}
+\setbeamercolor{structure}{fg=ibbBlue}
+\setbeamercolor{alerted text}{fg=ibbYellow!85!black}
+
+% ---- Titelseite ----
+\setbeamercolor{title}{fg=ibbWhite, bg=}
+\setbeamercolor{subtitle}{fg=ibbYellow}
+\setbeamercolor{author}{fg=ibbWhite!90!ibbGrey}
+\setbeamercolor{date}{fg=ibbWhite!80!ibbGrey}
+\setbeamercolor{titlelike}{fg=ibbWhite}
+
+% ---- Frametitel ----
+\setbeamercolor{frametitle}{fg=ibbWhite, bg=ibbBlue}
+\setbeamercolor{framesubtitle}{fg=ibbYellow}
+\setbeamercolor{frametitle left accent}{bg=ibbYellow}
+
+% ---- Kopf-/Fusszeile ----
+\setbeamercolor{headline}{fg=ibbWhite, bg=ibbBlue}
+\setbeamercolor{footline}{fg=ibbGrey, bg=ibbLightGrey}
+\setbeamercolor{page number in head/foot}{fg=ibbGrey}
+\setbeamercolor{author in head/foot}{fg=ibbGrey, bg=ibbLightGrey}
+\setbeamercolor{title in head/foot}{fg=ibbGrey, bg=ibbLightGrey}
+\setbeamercolor{section in head/foot}{fg=ibbWhite, bg=ibbBlue}
+
+% ---- Gliederung / Navigation ----
+\setbeamercolor{section in toc}{fg=ibbBlue}
+\setbeamercolor{section in toc shaded}{fg=ibbGrey!60}
+\setbeamercolor{subsection in toc}{fg=ibbDarkBlue}
+
+% ---- Aufzaehlungen ----
+\setbeamercolor{itemize item}{fg=ibbYellow!80!ibbBlue}
+\setbeamercolor{itemize subitem}{fg=ibbBlue}
+\setbeamercolor{itemize subsubitem}{fg=ibbLightBlue}
+\setbeamercolor{enumerate item}{fg=ibbBlue}
+\setbeamercolor{enumerate subitem}{fg=ibbLightBlue}
+
+% ---- Bloecke ----
+\setbeamercolor{block title}{fg=ibbWhite, bg=ibbBlue}
+\setbeamercolor{block body}{fg=ibbGrey, bg=ibbLightGrey}
+\setbeamercolor{block title alerted}{fg=ibbWhite, bg=ibbYellow!85!black}
+\setbeamercolor{block body alerted}{fg=ibbGrey, bg=ibbYellow!15!white}
+\setbeamercolor{block title example}{fg=ibbWhite, bg=ibbDarkBlue}
+\setbeamercolor{block body example}{fg=ibbGrey, bg=ibbLightBlue!15!white}
+
+% ---- Zitate ----
+\setbeamercolor{quote}{fg=ibbDarkBlue}
+
+% ---- Bibliographie ----
+\setbeamercolor{bibliography entry author}{fg=ibbBlue}
+\setbeamercolor{bibliography entry note}{fg=ibbGrey}
+
+% ---- Caption ----
+\setbeamercolor{caption name}{fg=ibbBlue}

@@ -1,0 +1,102 @@
+%%\section{The Goods Market: Aggregate Demand and the Multiplier}
+
+%%% [moved from MA_5_General_Equlibrium.tex, frame 1]
+\begin{frame}{Say's Law}
+    \mytext{
+    Every demand equals supply, as we produce to have something to exchange for what we desire.
+
+    Every supply equals demand, as everything produced will at some point be exchanged (or self-consumed).
+
+    Production is the source of demand.
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 23]
+ 
+
+\begin{frame}{Keynesian Cross}
+    \showmytikz{../shared/tikz/tikz-keynesiancross}
+    \mycomment{
+    Aggregate demand $AD$ is consumption, investment, and government expense;
+    \begin{equation}
+        AD = C+I+G
+    \end{equation}
+    with
+    \begin{equation}
+        C=a+b\left(Y-t\right)
+    \end{equation}
+    and $I,G,t$ constant; so that
+    \begin{equation}
+        AD = e + b\cdot Y
+    \end{equation}
+    with $G$ part of the autonomous part $e$.
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 24]
+\begin{frame}{Keynesian Cross}
+    \showmytikz[2]{../shared/tikz/tikz-keynesiancross}
+    \mycomment{
+    An increase of government spending increases aggregate demand, shifting the $AD$ curve up. The result is a higher output $Y$.
+
+    The same applies for autonomous increase of $I$.
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 25]
+\begin{frame}{Fiscal Multiplier}
+    \mycomment{
+    The idea with the multiplier is that any extra inserted expenditure (by fiscal policy, but anything else for that matter) is someone else's income, who will then re-spend a part of that, saving another part. 
+
+    The size of the multiplier will depend on the propensity to spend (the inverse of the propensity to save), and on taxes paid each time.
+    }
+    \showmytikz{../shared/tikz/tikz-multiplier}
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 26]
+\begin{frame}{Fiscal Multiplier}
+    \mycomment{
+    For now, let us abstract from taxes and net exports.
+    }
+    \mytext{
+    Consumption $C$ is a (constant) part of income $Y$:
+    \begin{equation}
+        C=C_0+c\cdot Y
+    \end{equation}
+    Thus
+    \begin{equation}
+        Y=C_0+c\cdot Y + I + G
+    \end{equation}
+    For (in the short run) constant $I,C_0$ we get
+    \begin{equation}
+        \Delta Y = \frac{\Delta G}{1-c}=\frac{1}{s}
+    \end{equation}
+    with $s$ the savings quota. --
+    Thus the multplier is
+    \begin{equation}
+        M=\frac{1}{1-c}=\frac{1}{s}.
+    \end{equation}
+    }
+    \mycomment{
+    % There are a number of (simplifying) assumptions here. One is that net exports $NX=Ex-Im$ be zero. Sin
+    }
+\end{frame}
+
+%%% [moved from MA_1_Fundamentals.tex, frame 27]
+\begin{frame}{Fiscal Multiplier: Critique}
+    \mytext{
+    \begin{itemize}
+        \item crowding out private demand
+        \item government debt means higher taxes:
+        \item[$\rightarrow$] subjects reduce spending
+        \item debt financing raises interest rates
+        \item monetary policy counteracts
+        \item lock-in problem
+        \item might depend on government debt level
+    \end{itemize}
+    }
+\end{frame}
+
+
+%%% TODO (new content): automatic stabilisers; tax multiplier / balanced-budget multiplier; open-economy multiplier (import leakage)
+

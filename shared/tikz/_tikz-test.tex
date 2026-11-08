@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5}}\makeatother
+\begin{document}
+\begin{tikzpicture}
+    \draw (0,0) -- (8,0);
+    \foreach [count=\i] \myb in {1,2,3}
+    {
+    \ifstep{\i}{
+        \node at (0,\i) {\myb};
+    }
+    }
+    
+\end{tikzpicture}
+\end{document}

@@ -1,6 +1,15 @@
+%STEPBEGIN{0}
 \documentclass{standalone}
-\usepackage[edges]{forest}
+\usepackage{hsbcommon}
+\colorlet{initiator}{green!40}
+\colorlet{executor}{yellow!40}
+\colorlet{user}{blue!40}
+\colorlet{other}{orange!40}
+\colorlet{affected}{red!40}
 \begin{document}
+\showmytreeraw[1,2,3,4,5,6,7]{forest-stakeholders-suchanek-general.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
     \begin{forest}
     for tree={
         font=\footnotesize,
@@ -12,40 +21,50 @@
         anchor=base west
             }
     [\parbox{20ex}{\centering Project Stakeholders}
-        [\textbf{Initiators} 
+        [\textbf{Initiators},fill=initiator
             [Internal
+            %STEPBEGIN{1,ini-in}
                 [Top level management, name=tl]
                 [Specific department(s)]
+            %STEPEND
             ]
             [External
+            %STEPBEGIN{1,ini-ex}
                 [Client or Project Owner, name=cl]
                 [Authorities]
                 [Pressure group(s), name=pgin]
                 [...]
+            %STEPEND
             ]
         ]
-        [\textbf{Executors}
-            [PM
+        [\textbf{Executors},fill=executor
                 [Internal
+                %STEPBEGIN{1,exe-in}
                     [PMO, name=pmo]
                     [Accounting]
                     [IT]
                     [HR]
                     [...]
+                %STEPEND
                 ]
                 [External
+                %STEPBEGIN{1,exe-ex}
                     [Contractors]
                     [Subject Matter Experts]
                     [Authorities]
+                %STEPEND
                 ]
-            ]
         ]
-        [\textbf{Affected}
+        [\textbf{Affected},fill=other
             [Internal
+                %STEPBEGIN{1,aff-in}
                 [Top level management, name=tlaf]
                 [Departments]
+                [Customers{,} Partners]
+                %STEPEND
             ]
             [External
+                %STEPBEGIN{1,aff-ex}
                 [End Users / Customers, name=us]
                 [Suppliers]
                 [Partners
@@ -55,10 +74,8 @@
                 [Pressure group, name=pgaf]
                 [Future generations]
                 [...]
+                %STEPEND
             ]
         ]
     ]
-    \draw (cl.east) to[bend left=90] (us.east);
-    \draw (tl.east) to[bend left=90] (cl.east);
     \end{forest}
-\end{document}

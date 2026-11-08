@@ -6,9 +6,9 @@
 \begin{tikzpicture}
 \renewcommand{\baselinestretch}{0.8}
     \tikzset{
-        every node/.style={}
+        every node/.style={font=\sffamily\scriptsize}
     }
-    \foreach [count=\i] \myshell/\mycolor in {other public funds{,} insitutions and enterprises/white, extra budgets/orange, core budget/red}
+    \foreach [count=\i] \myshell/\mycolor in {other public funds{,} institutions and enterprises/white, extra budgets/orange, core budget/red}
     {
         \draw[fill=\mycolor!20] (0:0) circle (8-2*\i);
         \node[draw, rounded corners, fill=gray!20] at (90:6-1.5*\i) {\normalsize \textbf{\myshell}};
@@ -21,7 +21,7 @@
         }
     };
     \foreach[count=\i] \myposten in {
-        public univerisities, non-market special-purpose associations (Stadtwerke), Landesbetriebe f. Straßenbau, Sondervermögen Bundeswehr, DB InfraGO AG, Klima- und Transformationsfonds, others}
+        public universities, non-market special-purpose associations (Stadtwerke), Landesbetriebe f. Straßenbau, Sondervermögen Bundeswehr, DB InfraGO AG, Klima- und Transformationsfonds, others}
         {
         \node[draw,fill=orange!10,rounded corners] at (\i*45+90:8-5) {
             \parbox{2.5cm}{\centering

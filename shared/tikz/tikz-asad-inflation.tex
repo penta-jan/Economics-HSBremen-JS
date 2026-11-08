@@ -1,0 +1,83 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7}}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc}
+\usepackage{amsmath}
+\usepackage{hsbcommon}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->,>=latex] (0,0) -- (8,0) node (Y) [right] {$Y$};
+        \draw[->,>=latex] (0,0) -- (0,8) node (i) [above] {$P$};
+
+        \node[left] at (0,0) {\phantom{$P_1$}};
+
+        \coordinate (A) at (1,6);
+            % \coordinate (A2) at (2,2);
+        \coordinate (B) at (6,1);
+        
+        \coordinate (C) at (3,1);
+            % \coordinate (C2) at (5,2);
+        \coordinate (D) at (5,7);
+        \path[name path=AD] (A) -- (B);
+        \path[name path=AS] (C) -- (D);
+        % \path[name path=AD] plot[smooth] coordinates {(A) (A2) (B)};
+        % \path[name path=AS] plot[smooth] coordinates {(C) (C2) (D)};
+        \path [name intersections={of=AD and AS, by=E}];
+
+        %% some points out of equilibrium
+            \coordinate (imbal3) at ($(C)!0.2!(D)$);
+            \coordinate (imbal4) at ($(D)!0.2!(C)$);
+            \coordinate (imbal1) at ($(A)!0.2!(B)$);
+            \coordinate (imbal2) at ($(B)!0.2!(A)$);            
+
+        %%  AD Curve
+        \ifstep{1,ad}{
+            \draw  (A) node[above right] {$AD$} -- (B);
+        }
+
+        %% AS Curve 
+        \ifstep{3,as}{
+            \draw (C) -- (D) node[above] {$AS$};
+
+        }
+
+        %% Equilibrium
+
+        \ifstep{5,eq}{
+            \filldraw (E) circle (2pt) node[left] {$A$};
+            \draw[dashed] (i |- E) node [left] {$P_1$} -- (E) -- (E |- Y) node [below] {$Y_1$};        
+        }
+
+
+
+        
+        %% AD curve shift
+        \ifstep{6,adshift}{
+            \begin{scope}[color=red]
+                    \draw[name path=AD2] ($(A)+(1.5,0)$)   node[above right] {$AD'$} -- ($(B)+(1.5,0)$)  ;
+                    \path [name intersections={of=AD2 and AS, by=F1}];
+                    \filldraw (F1) circle (2pt) node[right] {$B$};
+                \draw[dashed] (i |- F1) node [left] {$P_2$} -- (F1) -- (F1 |- Y) node [below] {$Y_2$};
+                \draw[->,>=latex,ultra thick, blue] (E) -- (F1);
+                \draw (i |- F1) -- node[right] {$\pi>0$} (i |- E);
+                
+            \end{scope}
+        }
+
+        %% AS curve shift 
+        \ifstep{7,asshift}{
+            \begin{scope}[color=green]
+                \draw[name path=AS2] ($(C)-(1.5,0)$) -- ($(D)-(1.5,0)$)   node[above] {$AS'$}  ;
+                    \path [name intersections={of=AD and AS2, by=F2}];
+                    \filldraw (F2) circle (2pt) node[left] {$C$};
+                \draw[dashed] (i |- F2) node [left] {$P_2$} -- (F2) -- (F2 |- Y) node [below] {$Y_2$};
+                \draw[->,>=latex,ultra thick, blue] (E) --  (F2);
+                \draw (i |- F2) -- node[right] {$\pi>0$} (i |- E);
+
+            \end{scope}
+        }
+
+
+    \end{tikzpicture}
+\end{document}

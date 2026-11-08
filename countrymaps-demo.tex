@@ -1,0 +1,104 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{countrymaps}
+\usepackage{listings}
+\lstset{literate={ô}{{\^o}}1,basicstyle=\ttfamily\small,columns=fullflexible}
+\setlength\parindent{0pt}
+\begin{document}
+\section*{countrymaps -- examples}
+
+\begin{minipage}[t]{.48\linewidth}
+\begin{lstlisting}
+\drawmap{germany}
+\end{lstlisting}
+\drawmap[width=4cm]{germany}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\linewidth}
+\begin{lstlisting}
+\begin{countrymap}[width=5cm,
+    context, margin=0.08]{de}
+  \node[circle, fill=red,
+    inner sep=1.2pt, label=right:Hannover]
+    at (geo cs:9.73,52.37) {};
+\end{countrymap}
+\end{lstlisting}
+\begin{countrymap}[width=5cm, context, margin=0.08]{de}
+  \node[circle,fill=red,inner sep=1.2pt,label={[font=\footnotesize]right:Hannover}] at (geo cs:9.73,52.37) {};
+\end{countrymap}
+\end{minipage}
+
+\bigskip
+\begin{lstlisting}
+\drawmap[width=7cm, labels, context, margin=.05]
+  {spain, portugal[fill=green!25], france[fill=blue!15]}
+\end{lstlisting}
+\drawmap[width=7cm, labels, context, margin=.05]{spain, portugal[fill=green!25], france[fill=blue!15]}
+
+\bigskip
+\begin{lstlisting}
+\drawmap[width=4cm]{usa}  \drawmap[width=4cm, overseas]{usa}
+\drawmap[height=3cm]{japan} \drawmap[height=3cm]{Côte d'Ivoire}
+\end{lstlisting}
+\drawmap[width=4cm]{usa}\quad \drawmap[width=4cm, overseas]{usa}\quad
+\drawmap[height=3cm]{japan}\quad \drawmap[height=3cm]{Côte d'Ivoire}
+
+\bigskip
+\begin{lstlisting}
+\drawmap[width=\linewidth, projection=plain,
+  style={draw=white, fill=black!55, line width=.1pt}]
+  {world, germany[fill=red]}
+\end{lstlisting}
+\drawmap[width=\linewidth, projection=plain, style={draw=white, fill=black!55, line width=.1pt}]{world, germany[fill=red]}
+
+\newpage
+\section*{States and provinces}
+Available for Germany, India, Canada, USA, Brazil, China, South Africa, Nigeria, Mexico, Australia, Argentina and Russia.
+
+\begin{minipage}[t]{.32\linewidth}
+\begin{lstlisting}
+\drawmap{germany,bremen}
+\end{lstlisting}
+\drawmap[width=4.5cm]{germany,bremen[fill=red!50]}
+\end{minipage}\hfill
+\begin{minipage}[t]{.32\linewidth}
+\begin{lstlisting}
+\drawmap[states]
+  {germany, bayern[fill=blue!20]}
+\end{lstlisting}
+\drawmap[width=4.5cm, states]{germany, bayern[fill=blue!20]}
+\end{minipage}\hfill
+\begin{minipage}[t]{.32\linewidth}
+\begin{lstlisting}
+\drawmap[context, margin=.3,
+  labels]{bremen}
+\end{lstlisting}
+\drawmap[width=4.5cm, context, margin=.3, labels]{bremen}
+\end{minipage}
+
+\bigskip
+\begin{lstlisting}
+\drawmap[states, state labels, width=9cm]{usa, texas[fill=orange!30], georgiaus[fill=red!30]}
+\end{lstlisting}
+\drawmap[states, state labels, width=\linewidth, state label style={font=\fontsize{4}{4}\selectfont}]{usa, texas[fill=orange!30], georgiaus[fill=red!30]}
+
+\bigskip
+\drawmap[states, height=5cm, width=5.5cm]{india}\hfill
+\drawmap[states, height=5cm, width=5.5cm]{china}\hfill
+\drawmap[states, height=5cm, width=5.5cm]{brazil}
+
+\bigskip
+\drawmap[states, height=5cm, width=5.5cm]{canada}\hfill
+\drawmap[states, height=5cm, width=5.5cm]{south africa}\hfill
+\drawmap[states, height=5cm, width=5.5cm]{nigeria}
+
+\bigskip
+\begin{lstlisting}
+\drawmap[states]{mexico, sinaloa[fill=red!40], cdmx[fill=blue!40]}
+\end{lstlisting}
+\drawmap[states, height=5cm, width=5.5cm]{mexico, sinaloa[fill=red!40], cdmx[fill=blue!40]}\hfill
+\drawmap[states, height=5cm, width=5.5cm]{australia}\hfill
+\drawmap[states, height=5cm, width=5.5cm]{argentina}
+
+\bigskip
+\drawmap[states, width=\linewidth]{russia}
+\end{document}

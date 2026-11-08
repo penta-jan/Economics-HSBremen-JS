@@ -1,42 +1,37 @@
 \documentclass{standalone}
-\usepackage{tikz}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3}}\makeatother
+\usepackage{hsbcommon}
 \begin{document}
-    \begin{tikzpicture}[scale=0.8]
-        \node at (-3,4) {Power};
-            \node at (-1,2) {low};
-            \node at (-1,6) {high};
-        \node at (4,-1.5) {Support};
-            \node at (2,-0.5) {low};
-            \node at (6,-0.5) {high};
-        \draw (0,0) -- (0,8) -- (8,8) -- (8,0) -- (0,0);
-        \draw (4,0) -- (4,8) ; \draw (0,4) -- (8,4);
-        
-        \node at (2,2.5) {
-            \parbox{4cm}{\centering
-            disruptors\\
-            \textit{keep an eye on}
-            }
-        };
-            
-        \node at (2,6.5) {
-            \parbox{4cm}{\centering
-            disruptors\\
-            \textit{keep satisfied}
-            }
-        };
-            
-        \node at (6,2.5) {
-            \parbox{4cm}{\centering
-            supporters\\
-            \textit{keep informed}
-            }
-        };
-            
-        \node at (6,6.5) {
-            \parbox{4cm}{\centering
-            promoters\\
-            \textit{keep close}
-            }
-        };
-    \end{tikzpicture}
+\begin{tikzpicture}[scale=0.8,
+    quadlabel/.style={align=center, text width=3cm}]
+
+  % x / y / colour / title / action
+  \foreach \x/\y/\col/\title/\action in {
+      0/0/white/detractors/keep an eye on,
+      0/4/red!20/disruptors/keep satisfied,
+      4/0/green!40/supporters/keep informed,
+      4/4/red!40/promoters/keep close}
+  {
+    \fill[\col] (\x,\y) rectangle ++(4,4);
+    \node  at (\x+2,\y+2.5) {\title};
+    \ifstep{2,action}{
+        \node[fill=yellow!40] at (\x+2,\y+1.8) {\textit{\action}};
+    }
+  }
+
+  % frame and dividers in one command, drawn last so they sit on top
+  \draw[step=4] (0,0) grid (8,8);
+
+  % axis labels
+  \node (p) at (-2,4)   {Power};
+  \node[fill=green!40] (pl) at (-1,2)   {low};
+  \node[fill=red!40] (ph) at (-1,6)   {high};
+  \draw (p) -- (pl); \draw (p) -- (ph);
+  
+  \node (s) at (4,-1.5) {Support};
+  \node[fill=green!40] (sl) at (2,-0.5) {low};
+  \node[fill=red!40] (sh) at (6,-0.5) {high};
+  \draw (s) -- (sl); \draw (s) -- (sh);
+\end{tikzpicture}
 \end{document}

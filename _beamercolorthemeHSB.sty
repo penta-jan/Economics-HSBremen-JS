@@ -1,0 +1,122 @@
+%% beamercolorthemeHSB.sty
+%% Colour theme — all backgrounds are pure TikZ shading gradients.
+%% No PNG background files needed. Logo PNGs are still used.
+
+% ── User settings ─────────────────────────────────────────────────────────────
+
+\newcommand{\HSBthemecolor}{blau-tuerkis}
+% Options: blau-tuerkis | gelb-orange | gruen-hellgruen | hellgruen-gelb
+%          orange-rot   | rot-violett | tuerkisblau-gruen | violett-blau
+
+\newcommand{\HSBorganisation}{HSB}
+
+% ── Gradient colour definitions ───────────────────────────────────────────────
+\RequirePackage{xcolor}
+\RequirePackage{xstring}
+
+% Six colours per scheme: TL, TR, BL, BR, headline-left, headline-right
+% Applied at \begin{document} via \HSBsetscheme.
+
+\newcommand{\HSBsetscheme}{%
+  \IfStrEqCase{\HSBthemecolor}{%
+    {blau-tuerkis}{%
+      \definecolor{HSBbgTL}{RGB}{6,23,59}%
+      \definecolor{HSBbgTR}{RGB}{5,121,152}%
+      \definecolor{HSBbgBL}{RGB}{10,85,140}%
+      \definecolor{HSBbgBR}{RGB}{50,181,201}%
+      \definecolor{HSBhlL} {RGB}{3,28,65}%
+      \definecolor{HSBhlR} {RGB}{49,180,200}%
+    }
+    {gelb-orange}{%
+      \definecolor{HSBbgTL}{RGB}{230,71,11}%
+      \definecolor{HSBbgTR}{RGB}{229,61,13}%
+      \definecolor{HSBbgBL}{RGB}{251,191,0}%
+      \definecolor{HSBbgBR}{RGB}{239,120,34}%
+      \definecolor{HSBhlL} {RGB}{233,78,9}%
+      \definecolor{HSBhlR} {RGB}{238,121,33}%
+    }
+    {gruen-hellgruen}{%
+      \definecolor{HSBbgTL}{RGB}{2,45,6}%
+      \definecolor{HSBbgTR}{RGB}{55,110,30}%
+      \definecolor{HSBbgBL}{RGB}{3,145,90}%
+      \definecolor{HSBbgBR}{RGB}{110,165,60}%
+      \definecolor{HSBhlL} {RGB}{7,58,14}%
+      \definecolor{HSBhlR} {RGB}{110,164,60}%
+    }
+    {hellgruen-gelb}{%
+      \definecolor{HSBbgTL}{RGB}{40,70,12}%
+      \definecolor{HSBbgTR}{RGB}{242,141,0}%
+      \definecolor{HSBbgBL}{RGB}{110,165,60}%
+      \definecolor{HSBbgBR}{RGB}{251,191,0}%
+      \definecolor{HSBhlL} {RGB}{60,84,13}%
+      \definecolor{HSBhlR} {RGB}{251,191,0}%
+    }
+    {orange-rot}{%
+      \definecolor{HSBbgTL}{RGB}{175,14,8}%
+      \definecolor{HSBbgTR}{RGB}{150,13,17}%
+      \definecolor{HSBbgBL}{RGB}{239,120,34}%
+      \definecolor{HSBbgBR}{RGB}{195,6,50}%
+      \definecolor{HSBhlL} {RGB}{180,17,9}%
+      \definecolor{HSBhlR} {RGB}{195,4,49}%
+    }
+    {rot-violett}{%
+      \definecolor{HSBbgTL}{RGB}{54,0,5}%
+      \definecolor{HSBbgTR}{RGB}{56,39,107}%
+      \definecolor{HSBbgBL}{RGB}{195,6,50}%
+      \definecolor{HSBbgBR}{RGB}{121,101,167}%
+      \definecolor{HSBhlL} {RGB}{80,4,13}%
+      \definecolor{HSBhlR} {RGB}{122,101,167}%
+    }
+    {tuerkisblau-gruen}{%
+      \definecolor{HSBbgTL}{RGB}{0,68,65}%
+      \definecolor{HSBbgTR}{RGB}{2,83,32}%
+      \definecolor{HSBbgBL}{RGB}{50,181,201}%
+      \definecolor{HSBbgBR}{RGB}{3,145,90}%
+      \definecolor{HSBhlL} {RGB}{1,77,70}%
+      \definecolor{HSBhlR} {RGB}{2,144,90}%
+    }
+    {violett-blau}{%
+      \definecolor{HSBbgTL}{RGB}{14,14,53}%
+      \definecolor{HSBbgTR}{RGB}{12,31,77}%
+      \definecolor{HSBbgBL}{RGB}{121,101,167}%
+      \definecolor{HSBbgBR}{RGB}{10,85,140}%
+      \definecolor{HSBhlL} {RGB}{17,19,62}%
+      \definecolor{HSBhlR} {RGB}{9,85,141}%
+    }
+  }[]%
+}
+
+% Safe fallback defaults (blau-tuerkis) in case \HSBsetscheme runs
+% before xstring is loaded — prevents undefined-colour pink/errors
+\definecolor{HSBbgTL}{RGB}{5,16,47}
+\definecolor{HSBbgTR}{RGB}{18,138,166}
+\definecolor{HSBbgBL}{RGB}{8,84,137}
+\definecolor{HSBbgBR}{RGB}{50,182,200}
+\definecolor{HSBhlL} {RGB}{3,28,65}
+\definecolor{HSBhlR} {RGB}{49,180,200}
+
+% Apply scheme: immediately (for preamble use) and again at document start
+\HSBsetscheme
+\AtBeginDocument{\HSBsetscheme}
+
+% ── Logo paths ────────────────────────────────────────────────────────────────
+\newcommand{\ZusatzLogoPath}{../shared/logos/\HSBorganisation_Office-Logos/\HSBorganisation_Zusatz_Office-neg.png}
+\newcommand{\OfficeLogoPath}{../shared/logos/\HSBorganisation_Office-Logos/\HSBorganisation_Office-neg.png}
+\newcommand{\OfficeLogoPathColor}{../shared/logos/\HSBorganisation_Office-Logos/\HSBorganisation_Office-pos.png}
+
+% ── Beamer font/colour settings ───────────────────────────────────────────────
+\setbeamerfont{title}{size=\Large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\large}
+
+\definecolor{HSB-blau}{RGB}{10,85,140}
+
+\setbeamercolor{normal text}      {fg=HSB-blau}
+\setbeamercolor{frametitle}       {fg=HSB-blau}
+\setbeamerfont{frametitle}        {size=\normalsize}
+\setbeamerfont{framesubtitle}     {size=\small}
+\setbeamercolor{itemize item}     {fg=HSB-blau}
+\setbeamercolor{itemize subitem}  {fg=HSB-blau}
+\setbeamercolor{section in toc}   {use=normal text, fg=normal text.fg}
+\setbeamercolor{subsection in toc}{use=normal text, fg=normal text.fg}
+\setbeamercolor{enumerate item}   {fg=HSB-blau}
+\setbeamercolor{enumerate subitem}{fg=HSB-blau}

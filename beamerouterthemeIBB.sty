@@ -1,0 +1,94 @@
+% beamerouterthemeIBB.sty
+% Aeusseres Layout: Kopfzeile, Fusszeile, Frametitel, Sidebar
+
+\ProvidesPackage{beamerouterthemeIBB}[2026/01/01 IBB outer theme]
+
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+
+\newif\ifibb@sectionpage
+\ibb@sectionpagetrue
+
+% ---------------------------------------------------------------
+% Kopfzeile: schmaler blauer Balken mit gelbem Unterstrich + Logo-Platzhalter
+% ---------------------------------------------------------------
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.42cm, dp=0pt]{headline}
+    \hspace{0.3cm}\raisebox{-0.05cm}{\tiny\textbf{\insertshorttitle}}
+    \hfill
+    {\color{ibbYellow}\rule{\paperwidth}{0pt}}%
+    \hspace{0.3cm}
+  \end{beamercolorbox}%
+  \vskip0pt
+  {\color{ibbYellow}\rule{\paperwidth}{2pt}}%
+}
+
+% ---------------------------------------------------------------
+% Frametitel: blaue Box mit optionalem Untertitel, gelber Akzentkante links
+%
+% Wichtig: Die Balkenhoehe wird NICHT geschaetzt, sondern exakt aus dem
+% tatsaechlichen Platzbedarf der Titelzeile(n) berechnet (\ht/\dp einer
+% gemessenen Box). \strut in jeder Zeile sorgt dafuer, dass Titel mit und
+% ohne Ober-/Unterlaengen (z. B. "Ü" vs. "a") exakt dieselbe Zeilenhoehe
+% einnehmen - der Balken ist dadurch auf jeder Folie garantiert gleich
+% hoch (bei gleicher An-/Abwesenheit eines Untertitels) und kann nicht
+% durch Textinhalt ueberlaufen.
+% ---------------------------------------------------------------
+\newlength{\ibb@ftaccentwidth}
+\setlength{\ibb@ftaccentwidth}{0.1cm}
+\newsavebox{\ibb@ftbox}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \sbox{\ibb@ftbox}{%
+    \vtop{\hsize=\dimexpr\paperwidth-1.1cm\relax
+      \hbox to \hsize{\color{ibbWhite}\usebeamerfont{frametitle}\strut\insertframetitle\strut\hfil}%
+      \ifx\insertframesubtitle\@empty\else
+        \hbox to \hsize{\color{ibbYellow}\usebeamerfont{framesubtitle}\strut\insertframesubtitle\strut\hfil}%
+      \fi
+    }%
+  }%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=\ht\ibb@ftbox, dp=\dp\ibb@ftbox, sep=0pt]{frametitle}
+    \textcolor{ibbYellow}{\rule[-\dp\ibb@ftbox]{\ibb@ftaccentwidth}{\dimexpr\ht\ibb@ftbox+\dp\ibb@ftbox\relax}}%
+    \hspace{0.4cm}%
+    \usebox{\ibb@ftbox}%
+  \end{beamercolorbox}%
+}
+
+% ---------------------------------------------------------------
+% Fusszeile: Autor | Titel | Datum ..... Foliennummer/Gesamtzahl
+% ---------------------------------------------------------------
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.9cm, dp=0.25cm, leftskip=0.4cm, rightskip=0.4cm]{footline}
+    \usebeamerfont{footline}%
+    \insertshortauthor\ \textbar\ \insertshorttitle
+    \hfill
+    \insertshortdate\ \textbar\ \insertframenumber{}/\inserttotalframenumber
+  \end{beamercolorbox}%
+  {\color{ibbBlue}\rule{\paperwidth}{1pt}}%
+}
+
+% ---------------------------------------------------------------
+% Navigationssymbole ausblenden (unerwuenscht im Corporate Design)
+% ---------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{}
+
+% ---------------------------------------------------------------
+% Sektionsfolien (\section{...} erzeugt automatisch eine Zwischenfolie)
+% ---------------------------------------------------------------
+\AtBeginSection[]{%
+  \ifibb@sectionpage
+  \begin{frame}[plain, noframenumbering]
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill[ibbBlue] (current page.south west) rectangle (current page.north east);
+      \fill[ibbYellow] ($(current page.south west)+(0,3.6cm)$) rectangle
+        ($(current page.south west)+(0.5\paperwidth,3.72cm)$);
+    \end{tikzpicture}
+    \vskip3.9cm
+    \begin{beamercolorbox}[wd=\paperwidth, sep=8pt, leftskip=1cm]{title}
+      \usebeamerfont{frametitle}\LARGE\insertsectionhead\par
+    \end{beamercolorbox}
+    \vfill
+  \end{frame}
+  \fi
+}

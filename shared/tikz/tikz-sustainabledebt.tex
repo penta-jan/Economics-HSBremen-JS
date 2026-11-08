@@ -1,0 +1,119 @@
+\documentclass{standalone}
+%% Show/hide steps for standalone work -- edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{4}}\makeatother
+\usepackage{hsbcommon}
+\begin{document}
+\begin{tikzpicture}[x=0.6cm]
+  %%% ---------------------------------------------------------------
+  %%% Definitions (local to this picture, so the file can be \input
+  %%% anywhere; needs TikZ libraries patterns and arrows.meta)
+  %%% ---------------------------------------------------------------
+  \newif\ifdbfirst
+  \newif\ifdbsecond
+  \pgfkeys{/debtbars/.is family, /debtbars,
+    income/.store in=\dbY,      income=10,     % income in period 1
+    debt/.store in=\dbD,        debt=5,        % debt in period 1
+    growth/.store in=\dbG,      growth=50,     % income growth gamma, in %
+    interest/.store in=\dbI,    interest=25,   % interest rate i, in %
+    newdebt/.store in=\dbN,     newdebt=0,     % primary deficit (>0) or surplus (<0), absolute
+    barheight/.store in=\dbH,   barheight=0.8, % bar height in cm
+    gap/.store in=\dbGap,       gap=2.0,       % vertical gap between periods in cm
+    labelmin/.store in=\dbMin,  labelmin=2,    % segments narrower than this get no text
+    first/.is if=dbfirst,       first=true,    % draw period 1
+    second/.is if=dbsecond,     second=true,   % draw period 2
+  }
+  % print #2 only if segment width #1 is at least labelmin
+  \newcommand\dblab[2]{\pgfmathtruncatemacro\dbok{(#1)>=\dbMin}\ifnum\dbok=1 #2\fi}
+  \tikzset{
+    db income/.style={fill=yellow!80, draw=black},
+    db growth/.style={fill=yellow!40, draw=black},
+    db debt/.style={fill=orange, draw=black},
+    db interest/.style={fill=red!50, draw=black},
+    db new/.style={fill=orange!40, draw=black},
+    db repaid/.style={draw=black, dashed, pattern=north east lines, pattern color=red!70!black},
+    db label/.style={font=\footnotesize\sffamily},
+  }
+  % \debtbars[options]: period 1 on top, period 2 below
+  \newcommand\debtbars[1][]{%
+    \begingroup
+    \pgfkeys{/debtbars,#1}%
+    \pgfmathsetmacro\Ya{\dbY}%
+    \pgfmathsetmacro\Da{\dbD}%
+    \pgfmathsetmacro\Yb{\dbY*(1+\dbG/100)}%
+    \pgfmathsetmacro\Di{\dbD*(1+\dbI/100)}%            old debt plus interest
+    \pgfmathsetmacro\Db{\Di+\dbN}%                     new debt level
+    \pgfmathsetmacro\ba{\Da/\Ya*100}%
+    \pgfmathsetmacro\bb{\Db/\Yb*100}%
+    \pgfmathsetmacro\Dstable{\Da/\Ya*\Yb}%             debt at unchanged ratio
+    \pgfmathtruncatemacro\dir{sign(round((\bb-\ba)*10))}%
+    \pgfmathsetmacro\h{\dbH}%
+    \pgfmathsetmacro\ytwo{-\dbGap-2*\dbH}%             y of period 2 bottom
+    % ---------- period 1
+    \ifdbfirst
+      \draw[db income] (0,0) rectangle node[db label] {income} (\Ya,\h);
+      \draw[db debt]   (0,\h) rectangle node[db label] {debt} (\Da,2*\h);
+      \node[db label, anchor=west] at (\Da+0.3,1.5*\h)
+        {$b_1=\pgfmathprintnumber[fixed,precision=1]{\ba}\,\%$};
+    \fi
+    % ---------- period 2
+    \ifdbsecond
+    \begin{scope}[yshift=\ytwo cm]
+      \draw[db income] (0,0) rectangle node[db label] {old income} (\Ya,\h);
+      \draw[db growth] (\Ya,0) rectangle node[db label] {\dblab{\Yb-\Ya}{growth}} (\Yb,\h);
+      \draw[db debt]   (0,\h) rectangle node[db label] {old debt} (\Da,2*\h);
+      \ifdim \dbN pt<0pt
+        % surplus: part of the interest is paid
+        \draw[db interest] (\Da,\h) rectangle (\Db,2*\h);
+        \draw[db repaid] (\Db,\h) rectangle
+          node[db label, fill=white, inner sep=1pt] {\dblab{\Di-\Db}{repaid}} (\Di,2*\h);
+      \else
+        \draw[db interest] (\Da,\h) rectangle node[db label] {\dblab{\Di-\Da}{interest}} (\Di,2*\h);
+        \ifdim \dbN pt>0pt
+          \draw[db new] (\Di,\h) rectangle node[db label] {\dblab{\Db-\Di}{new debt}} (\Db,2*\h);
+        \fi
+      \fi
+      % marker: debt level that would keep the ratio unchanged
+      % (drawn first, so the white-backed labels cover it)
+      \draw[thick, dashed] (\Dstable,\h-0.15) -- (\Dstable,2*\h+0.95)
+        node[above, db label] {same ratio};
+      % parameters next to their boxes
+      \node[db label, anchor=north] at ({(\Ya+\Yb)/2},-0.05)
+        {$\gamma=\pgfmathprintnumber{\dbG}\,\%$};
+      \node[db label, anchor=south, fill=white, inner sep=1pt] at ({(\Da+\Di)/2},2*\h+0.05)
+        {$i=\pgfmathprintnumber{\dbI}\,\%$};
+      \ifdim \dbN pt<0pt
+        \node[db label, anchor=south, fill=white, inner sep=1pt] at ({(\Db+\Di)/2},2*\h+0.45)
+          {surplus};
+      \fi
+      \pgfmathsetmacro\xr{max(\Di,\Db,\Dstable)+0.3}%
+      \node[db label, anchor=west] at (\xr,1.5*\h)
+        {$b_2=\pgfmathprintnumber[fixed,precision=1]{\bb}\,\%
+          \ifnum\dir>0 >\else\ifnum\dir<0 <\else =\fi\fi b_1$};
+    \end{scope}
+    \fi
+    \endgroup
+  }
+
+  %%% ---------------------------------------------------------------
+  %%% Picture
+  %%% ---------------------------------------------------------------
+  % fixed size for all steps, so the picture doesn't jump (measured: 9.0 x 5.8 cm)
+  \useasboundingbox (-0.05cm,-4.2cm) rectangle (9.1cm,1.65cm);
+
+  % original situation: always shown
+  \debtbars[income=10, debt=5, second=false]
+
+  \ifstep{1}{% i < gamma: room for new debt (1.25) exactly used up
+    \debtbars[income=10, debt=5, growth=50, interest=25, newdebt=1.25, first=false]
+  }
+  \ifstep{2}{% i < gamma: more new debt than the room, ratio rises
+    \debtbars[income=10, debt=5, growth=50, interest=25, newdebt=3, first=false]
+  }
+  \ifstep{3}{% i > gamma without surplus: ratio rises
+    \debtbars[income=10, debt=5, growth=10, interest=25, first=false]
+  }
+  \ifstep{4}{% i > gamma with surplus that pays part of the interest: ratio stable
+    \debtbars[income=10, debt=5, growth=10, interest=25, newdebt=-0.75, first=false]
+  }
+\end{tikzpicture}
+\end{document}

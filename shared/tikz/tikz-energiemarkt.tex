@@ -1,0 +1,194 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\usepackage{marvosym}
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7,8}}\makeatother
+\begin{document}
+\begin{tikzpicture}[y=0.8cm]
+    \tikzset{
+        every node/.style={font=\sffamily},
+        actor/.style={
+            draw,
+            rounded corners,
+            fill=yellow!20
+        },
+        physical/.style={
+            draw,
+            rounded corners,
+            fill=blue!20
+        },
+        monetary/.style={
+            draw,
+            rounded corners,
+        },
+        money/.style={
+            draw,
+            circle,
+            inner sep=0.2,
+            fill=yellow!40
+        },
+        energy/.style={
+            draw,
+            circle,
+            inner sep=0.4,
+            fill=red!40
+        }
+    }
+
+    \foreach [count=\i] \ii in {-4,-2,...,4}
+        {
+        \node[actor,anchor=west] (P2\i) at (3.5,\ii) {Verbraucher};
+        \node[actor,anchor=east] (P1\i) at (-3.5,\ii) {Produzent};
+        }
+
+    \phantom{
+            \node[fit=(P11)(P22),monetary] {};
+            \node[monetary,fill=violet!15] (Staat) at (0,6) {Bund, BNetzA, Gemeinden, Kommunen};            
+    }
+
+    \def\MyOpacity{1}
+    \ifstep{3}{%%% fade physisches Netz 
+        \def\MyOpacity{0.3}
+    }
+
+    \ifstep{1}{%%% Physisches Netz: nur VNB
+        \begin{scope}[opacity=\MyOpacity]
+            
+            \foreach [count=\i] \ii in {-2,0,...,2}
+                {
+                \node[physical] (V1\i) at (-2,\ii) {VNB};
+                \node[physical] (V2\i) at (2,\ii) {VNB};
+                }
+            
+        
+        \foreach \i/\dir in {1/->,2/<-}
+            {
+                \draw[\dir] (P\i1) to node[energy] {\footnotesize \Lightning} (V\i1);
+                \draw[\dir] (P\i2) to node[energy] {\footnotesize \Lightning} (V\i1);
+                \draw[\dir] (P\i3) to node[energy] {\footnotesize \Lightning} (V\i2);
+                \draw[\dir] (P\i4) to node[energy] {\footnotesize \Lightning} (V\i2);
+                \draw[\dir] (P\i5) to node[energy] {\footnotesize \Lightning} (V\i3);
+            }
+
+            %% connecting two VNB directly
+            
+            \draw[->] (V11) -- node[energy] {\footnotesize \Lightning} (V21);
+
+            %%% top VNB
+           \node[physical] (V0) at (0,2) {VNB};
+            \draw[->] (V13) -- node[energy] {\footnotesize \Lightning} (V0);
+            \draw[->] (V0) -- node[energy] {\footnotesize \Lightning} (V23);
+
+
+            
+         
+            
+            % \ifstep{7}{%% Messstellenbetreiber
+            %     \node[draw, fill=white, rotate=90,rounded corners] at (3,0.5) {\footnotesize Messstellenbetreiber}    ;
+            % }
+        \end{scope}
+.south    }
+
+    \ifstep{2}{%%% ÜNB
+        \begin{scope}[opacity=\MyOpacity]
+        \node[physical] (ünb) at (0,0) {ÜNB};
+            \foreach \i in {1,2,3}
+                {
+                    \draw[->,thick] (V1\i) -- node[energy] {\footnotesize \Lightning} (ünb);
+                    \draw[->,thick] (ünb) -- node[energy] {\footnotesize \Lightning} (V2\i);
+                }
+            \draw[->,thick] (V0) -- node[energy] {\footnotesize \Lightning} (ünb);
+        \end{scope}
+    }
+
+
+    \ifstep{3}{%%%  Händler und Lieferanten
+    \begin{scope}[red,thick]
+        \node[monetary,fill=red!10] (H) at (-1.25,-3) {Händler};
+        \node[monetary,fill=red!10] (L) at (1.25,-3) {Lieferant};
+        \draw[->] (L) to node[money] {\scriptsize €} (H);
+
+        \foreach \i in {1,2}
+            {
+            \draw[->,bend left=20] (H) to node[money] {\scriptsize €} (P1\i);
+            \draw[<-,bend right=20] (L) to node[money] {\scriptsize €} (P2\i);
+            }
+
+    \end{scope}
+    
+    }
+    
+    \ifstep{4}{%%% Bilanzkreisverantwortliche 
+    \begin{scope}[red,thick]        
+        \node[fit=(P11)(P22),monetary,thick] (bil) {};
+        \node[above] (BK) at (bil.south) {Bilanzkreis};
+        \draw[dashed,->] (H) -- (P11);
+        \draw[dashed,->] (H) -- (P12);
+        
+        \node[fit=(P13)(P24),draw,opacity=0.5] (bil2) {};
+        \node[opacity=0.5]  at (bil2) {Bilanzkreis};
+        \node[fit=(P15)(P25),draw,opacity=0.5] (bil3) {};
+        \node[opacity=0.5] at (bil3) {Bilanzkreis};
+    \end{scope}
+    
+    }
+    
+    \ifstep{5}{ %%% Börse
+    \begin{scope}[green,thick]
+        \node[monetary,fill=green!10] (Bö) at (0,3) {Strombörse};
+
+        \foreach \i in {3,4,5}
+            {
+            \draw[->,bend right=20] (Bö) to node[money] {\scriptsize €} (P1\i);
+
+           \draw [<->,thick,bend left=45] (H) to node[money] {\scriptsize €} (Bö);            
+            }
+            \draw[<-,bend left=20] (Bö) to node[money] {\scriptsize €} (P25);
+    \end{scope}
+    }
+
+    \ifstep{6}{%% Regelenergie/Ausgleichsenergie reBAP
+        \draw (H) -- node[] {\scriptsize verantwortlich} (BK);
+        \node[physical] (ünb2) at (0,0) {ÜNB};
+        \draw[<->,thick,blue,bend right=20] (H) to node[money] {\scriptsize\Lightning€} (ünb2);
+        \draw[dashed] (ünb2) -- (Bö);
+    }
+    
+    \ifstep{7}{  %% Netzentgelte
+    \begin{scope}[orange,thick]
+
+        \foreach \i in {1,2}
+            {
+            \draw[->,bend left=20] (P2\i)  to node[money] {\scriptsize €} (V21);
+            }    
+
+            \draw[->,bend left=20] (P23) to node[money] {\scriptsize €} (V22);            
+            \draw[->,bend left=20] (P24) to node[money] {\scriptsize €} (V22);            
+            \draw[->,bend left=20] (P25) to node[money] {\scriptsize €} (V23);     
+
+            \foreach [count=\i] \ii in {-2,0,...,2}
+                {
+                \node[draw, rounded corners] (V2\i) at (2,\ii) {VNB};
+                \draw[->,bend left=20] (V2\i) to node[money] {\scriptsize €} (ünb);
+                }
+
+    \end{scope}
+    }
+
+    \ifstep{8}{ %% Steuern & Umlagen
+    \begin{scope}[violet,thick]
+        \node[monetary,fill=violet!15] (Staat) at (0,6) {Bund, BNetzA, Gemeinden, Kommunen};
+
+        \foreach [count=\i] \ii in {-2,-1.60,...,2}
+            {
+            % \node (Q\i) at ($(Staat)+(1,1)$) {};
+            \draw[->] (Staat) -- ($(Staat) + (\ii,-1.4)$);
+            % \draw[->] (Staat) -- ($(Staat) + (\ii:1.2)$);
+            % \draw[->]  ($(Staat) + (\ii+90:1.2)$) -- (Staat);
+            }
+    \end{scope}
+    }
+
+
+
+\end{tikzpicture}
+\end{document}

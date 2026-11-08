@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1}}\makeatother
+\usetikzlibrary{fit}
+\begin{document}
+\begin{tikzpicture}
+
+    
+
+    % dummy start node: sits on N1's east edge, so it's inside the first fit anyway
+    \coordinate (F0) at (0,1.5);
+
+    \ifnotstep{2}{
+    \ifstep{1}{
+    \foreach [count=\i, remember=\i as \lasti (initially 0)] \fta/\contains/\thickness in {
+        free trade agreement/no internal tariffs/10,
+        customs union/common external tariffs/30,
+        common market/free movement of labour and capital/50,
+        economic union/coordinated economic policies/70,
+        currency union/common currency/90
+    }
+    {
+            \node[minimum width=35ex]
+            (N\i) at (0,1.5*\i) {\textit{\contains}};
+                \begin{scope}[on background layer]
+                    \node[rounded corners, inner sep=3ex, fill=yellow!50,opacity=0.5, fit=(F\lasti) (N\i)] {};
+                \end{scope}
+            \node[draw, red, rounded corners, inner sep=3ex,              line width=\thickness/15 pt,fit=(F\lasti) (N\i)]
+            (F\i) {};
+            \node[below right=1ex] at (F\i.north west) {\textbf{\fta}};
+    }    
+    }
+    }
+
+    \ifnotstep{1}{
+    \ifstep{2}{
+    \foreach [count=\i, remember=\i as \lasti (initially 0)] \fta/\contains/\thickness in {
+        currency union/common currency/90,
+        economic union/coordinated economic policies/70,
+        common market/free movement of labour and capital/50,
+        customs union/common external tariffs/30,
+        free trade agreement/no internal tariffs/10
+    }
+    {
+            \node[minimum width=35ex]
+            (N\i) at (0,1.5*\i) {\textit{\contains}};
+                \begin{scope}[on background layer]
+                    \node[rounded corners, inner sep=3ex, fill=yellow!50,opacity=0.5, fit=(F\lasti) (N\i)] {};
+                \end{scope}
+            \node[draw, red, rounded corners, inner sep=3ex,              line width=\thickness/15 pt,fit=(F\lasti) (N\i)]
+            (F\i) {};
+            \node[below right=1ex] at (F\i.north west) {\textbf{\fta}};
+    }
+    }
+    }
+
+\end{tikzpicture}
+\end{document}

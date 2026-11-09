@@ -5,8 +5,8 @@
 \usepackage{hsbcommon}
 \begin{document}
     \begin{tikzpicture}
-        \draw[->,name path=Laxis] (0,0) -- (8.5,0) node[right] (L) {$u$};
-        \draw[->] (0,0) -- (0,5) node[above] (I) {$\pi$};
+        \draw[->] (0,0) -- (8.5,0) node[right] (L) {$u$};
+        \draw[->] (0,0) -- (0,5.5) node[above] (I) {$\pi$};
         \coordinate (B) at (1,5);
         \filldraw (B) circle (2pt) node[above right] {B};        
         \coordinate (C) at (3,3);
@@ -14,10 +14,13 @@
         \coordinate (D) at (7.5,-3);
         \filldraw (D) circle (2pt) node[above right] {D};            
         \draw [name path=phillips] plot [smooth] coordinates { (B) (C) (D)};
-        
-        \path [name intersections={of=phillips and Laxis,by=E}];
-        \filldraw (E) circle (2pt) node[above right] {NAIRU};    
 
+        %% expected inflation: the NAIRU is where actual = expected inflation,
+        %% not where inflation is zero
+        \draw[dashed,name path=expected] (0,1.5) node[left] {$\pi^e$} -- (8.3,1.5);
+        \path [name intersections={of=phillips and expected,by=E}];
+        \filldraw (E) circle (2pt) node[above right] {NAIRU};    
+        \draw[dashed] (E) -- (E |- L) node[below] {$u_n$};
 
         \draw[dashed] (B) -- (B |- L) node[below] {?};
         \draw[dashed] (C) -- (C |- L) node[below] {?};
@@ -25,19 +28,11 @@
 
         \node[anchor=west] at (5,4) {
             \fbox{
-            \parbox{3cm}{
+            \parbox{3.2cm}{\raggedright
             \scriptsize
-            `Non Accelerating Inflation Rate of Umemployment'
+            NAIRU: `Non-Accelerating Inflation Rate of Unemployment'---inflation stays at its expected level $\pi^e$
             }
             }
         };
-        
-        % \node[anchor=west] at (0,-1) {
-        %     \fbox{
-        %     \scriptsize
-        %     Phillips Curve
-        %     }
-        % };
-        
     \end{tikzpicture}
 \end{document}

@@ -20,12 +20,12 @@
     
     \draw[->] (buyer.west) -- node[above] {buys} node[below] {\the\year} (iou.east);
 
-    \draw[->] (buyer.south west) -- node[below,text width=2cm,align=center] (pr) {price: \$90} (gov.south east);
+    \draw[->] (buyer.south west) -- node[below,text width=2cm,align=center] (pr) {price: \$61.39} (gov.south east);
 
     \ifstep{1}{   
         \begin{scope}[red]
-            \node at (-3,-3) (r1) {\$90 in \the\year};
-            \node at (0,-3) (yi) {yield: 5.56\%};
+            \node at (-3,-3) (r1) {\$61.39 in \the\year};
+            \node at (0,-3) (yi) {yield: 5\,\% p.a.};
             \node at (3,-3) (r2) {\$100 in \intenyears};
         
             \draw[<->] (pr) -- (yi);

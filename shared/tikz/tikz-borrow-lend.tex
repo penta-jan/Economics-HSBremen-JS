@@ -4,15 +4,15 @@
 \makeatletter\AtBeginDocument{\@buildstepset{2,3}}\makeatother
 \begin{document}
 \begin{tikzpicture}
-    \newcommand{\intenyears}{\the\numexpr\year+10\relax}
+    \newcommand{\inoneyear}{\the\numexpr\year+1\relax}
     \tikzset{
         mybond/.pic={
         \node[draw,fill=yellow!40,minimum width=1cm,minimum height=1.6cm,align=center]  (iou) {
         \ifnotstep{2}{\ifstep{bond,1}{
-            I will\\ pay you\\ \$100\\ in \intenyears
+            I will\\ pay you\\ \$100\\ in \inoneyear
         }}
         \ifnotstep{1}{\ifstep{credit,2}{
-            I will\\ pay \$ 5.56\\ per year\\ until \intenyears
+            I will\\ pay 5\,\%\\ interest\\ and repay\\ in \inoneyear
         }}
         };
         }
@@ -29,33 +29,33 @@
 
     \draw[->] (buyer.south west) -- node[below,text width=5cm,align=center] (pr) {
         \ifnotstep{2}{\ifstep{1}{
-        price, transfer of: \$90
+        price, transfer of: \$95.24
         }}
         \ifnotstep{1}{\ifstep{2}{
-        credit, transfer of: \$90
+        credit, transfer of: \$95.24
         }}
     } (gov.south east);
 
     \ifstep{calculation,3}{   
         \begin{scope}[red]
             \node at (-3,-3) (r1) {
-                    \$90 in \the\year
+                    \$95.24 in \the\year
             };
             \node[draw] at (0,-3) (yi) {
                 \ifnotstep{2}{\ifstep{1}{
-                    yield: 5.56\%                
+                    yield: 5\,\%                
                 }}
                 \ifnotstep{1}{\ifstep{2}{%
                 \parbox{8ex}
-                    {\centering pay yearly\\ 5.56\% interest}
+                    {\centering interest\\ 5\,\% = \$4.76}
                 }}
             };
-            \node at (3,-3) (r2) {
+            \node[align=center] at (3,-3) (r2) {
                 \ifstep{1}{\ifnotstep{2}{
-                    \$100 in \intenyears
+                    \$100 in \inoneyear
                 }}
                 \ifstep{2}{\ifnotstep{1}{
-                    \$90 in \intenyears
+                    \$95.24 + \$4.76\\ = \$100 in \inoneyear
                 }}
             };
         

@@ -1,18 +1,91 @@
-%%% MA_06_Money_Banking.tex -- reorganised; frames moved from the old MA_xx files (see comments)
+%%% MA_04_Money_Banking.tex -- Session 4
+%%% Order: (A) what money is, (B) history incl. Gresham, (C) quantity theory,
+%%% (D) borrowing, lending, interest, (E) how money is created and measured,
+%%% (F) limits and regulation, (G) interest rates and money demand.
+%%% Inflation and monetary policy are in MA_05.
 
-\section{Money and Banking}
+\section{Money and Credit}
 
+%% [moved from MA_4_Money.tex, frames 41/42; condensed to one recap]
+\begin{frame}{Circular Model: The Money Side}
+    \showmytikz[1,2,3,4]{../shared/tikz/tikz-flowmodel-own}
+    \mycomment{
+        Every flow of goods and labour in the circular model is matched by a flow of money. 
+
+        In an economy without a state, what would play the role of money? Highly liquid goods such as bushels of corn, or coins of precious metal---but they do not fulfil all functions of money equally well, and the content of coins is hard to control.
+
+        In practice, the state provides the currency, and banks create most of the money in circulation. In this session: what money is, how it is created, and what it costs.
+    }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (A) WHAT IS MONEY?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Four Functions of Money}
+    \showmytikz{../shared/tikz/tikz-fourfunctionsofmoney}
+    \mycomment{
+    For a currency to be accepted as money, it must serve four functions. Other commodities like gold and silver may be highly liquid, as they can be exchanged \textit{for money} easily. But they are still not money as long as there is \textit{real money} that serves these functions better.
+
+    Other things may work as a store of value, such as real estate. But they will not work as well as a medium of exchange; and they will not be easy to calculate with: just how many acres of land (what land?) are worth how many kettles?
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 17]
+\begin{frame}{Currency}
+\mycomment{
+It is important to remember the general impossibility to compare the use value (that is individual) to the exchange value (that is determined on markets) of any good. Fiat money has no use value at all but is all exchange value, which is its strength. (Commodity money such as gold does have a use value---which is exactly why it tends to be hoarded, see Gresham's law.)
+
+Notice that the exchange value partly depends on the costs to produce a good---that is, in competitive markets. In non-competitive markets, the value can be higher than the costs to produce.
+}
+\mytext{
+    There is a fundamental difference between
+    \begin{itemize}
+        \item use value, and
+        \item exchange value.
+    \end{itemize}
+
+    Fiat money has no use value.
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 18]
+\begin{frame}{Currency}
+\mycomment{
+States guarantee the value of currency, and they actually make their subjects use it: debts can be settled with it, and taxes must be paid in it. Only the central bank may issue bank notes (in the euro area, coins are issued by the member states). Banks creating book money are under public supervision.
+}
+\mytext{
+    \begin{itemize}
+        \item legal tender: obligation to accept (for debt settlement)
+        \item taxes etc.\ must be paid in that currency
+        \item fiat money: no intrinsic value
+    \end{itemize}
+}
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 19]
+\begin{frame}{Currency}
+\showmytikz{../shared/tikz/tikz-threequalitiescurrency}
+
+\mycomment{
+    Currencies compete with one another in an open economy. Some countries---most notably China---have opted out of full convertibility: the Renminbi (\enquote{people's currency}, unit: yuan) has been convertible for trade (current account) since 1996, but capital flows are restricted. Other currencies are fully convertible, but often not stable. There is much to be said about optimum currency areas and whether or not a currency should be pegged to another, to a basket, or float freely.
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (B) HISTORY OF MONEY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% [moved from MA_4_Money.tex, frame 8]
 \begin{frame}{History of Money}
     \mycomment{
-    For a long time, precious metals served as money. Little was understood that the actual function of money is different to that of any other good, that it is actually not a "good" in the same way that all other commodities are.
+    For a long time, precious metals served as money. Little was understood that the actual function of money is different to that of any other good, that it is actually not a \enquote{good} in the same way that all other commodities are.
 
-    The early story of money is a story of divergence of the actual face value of coins relative to the metal price, leading to the eventual decoupling of the two.
+    The early story of money is a story of divergence of the face value of coins from the metal value, leading to the eventual decoupling of the two.
     }
 \mytext{
     \begin{itemize}
-        \item Money - a commodity?
+        \item Money -- a commodity?
         \begin{itemize}
             \item gold, gold standard 
             \item silver ...
@@ -27,205 +100,146 @@
 %%% [moved from MA_4_Money.tex, frame 9]
 \begin{frame}{History of Money}
     \mycomment{
-    Isaak \noun{Newton} became Head of the Royal Mint, and he wanted to \textit{discourage} the use of gold as currency in favour of silver. ("Sterling" is actually a silver term.) He thus decreed that while before, the gold:silver ratio was about 1:20, it would now be exchanged 1:21, believing this would disfavour gold.
+    Isaac \noun{Newton}, as Master of the Royal Mint, fixed the value of the gold guinea at 21 silver shillings in 1717. This implied a gold:silver ratio of about 1:15.2---more favourable to gold than on the Continent.
 
-    But the effect was that foreigners brought in gold, that was now more expensive than silver, while silver left the country. The "gold standard" was acknowledged almost a century later.
+    The effect: gold was \textit{overvalued} at the Mint. It paid to bring gold into England and to ship silver coins out, where they bought more. Silver coins disappeared from circulation; Britain was on a de facto gold standard, which was made law a century later (1816/1821). A textbook case of Gresham's law (next slide).
     }
     \mytext{
     \begin{itemize}
         \item Bank of England issues paper money: 1694
-        \item Pound Sterling gold standard: 1717, 1821
-        \item Banque de France issues paper money: 1800
+        \item Pound Sterling gold standard: de facto 1717, legally 1816/1821
+        \item Banque de France founded, issues paper money: 1800
         \item Greenback: American Civil War United States Notes
-        \item Federal Reserve System FED 1913
-        \item Reichsmark gold standard until 1914
-        \item German hyperinflation
-        \item Russian attempts to abolish money 1917-1921
-        \item Bretton Woods system until 1973
-        \item Euro 2002
+        \item Federal Reserve System (Fed) 1913
+        \item German Mark (\enquote{Goldmark}) gold standard 1873--1914
+        \item German hyperinflation 1923
+        \item Russian attempts to abolish money 1917--1921
+        \item Bretton Woods system 1944--1971/73
+        \item Euro: 1999 (book money), 2002 (cash)
     \end{itemize}
     }
 \end{frame}
 
-%%% [moved from MA_4_Money.tex, frame 10]
-\begin{frame}{History of Money}
-    \mycomment{
-    In addition to central banks (or mints) issuing currency, the banking sector developed. This allows the creation of "book money" and to conduct payments without the actual shipping of currency. Using the banking system, merchants could now ship wares back and forth and square their accounts without the perilous transportation of precious metals in the opposite direction.
-
-    By doing so, banks can indeed create book money. This must be limited by some required guarantees and underlying reserves to preserve bank runs. The supervision of banks is one of the chief responsibilities of the central banks.
-    }
+\begin{frame}{Gresham-Copernicus Law}
     \mytext{
-    \begin{itemize}
-        \item Sconto, conto, credit, debit: Italian
-        \item Giro system 17th century, Marc Banco (Hamburg 1619, Nurnberg, Venice...)
-        \item Banking system / double book keeping: Florence
-        \item Securities, bonds, stocks (Wertpapier)
-        \item "check": English
-    \end{itemize}
-    }
-\end{frame}
+    \enquote{Bad money drives out good money} \textit{if they must be accepted at the same (legally fixed) price.}
 
-%%% [moved from MA_4_Money.tex, frame 11]
-\begin{frame}{History of Money}
-    \mycomment{
-    Along with the development of new means of payments came the development of other financial institutions, where debt in the form of shares and stocks can be traded. This came along with new forms of companies, financed by a multitude of shareholders. Those companies are also liable only up to the underlaying investment (limited company), and are their own legal personality, and without any person holding liability.
-    }
-    \mytext{
-    \begin{itemize}
-        \item First stock exchange Brügge 1276
-        \item Paris 1572
-        \item Hamburg 1558, Berlin 1685, Bremen 1682
-        \item London 1773, New York 1792
-    \end{itemize}
+    If gold and silver coins circulate at a fixed ratio, and one of them is worth more as metal than at that ratio, people will hoard (or export) that one and spend the other.
+
+    So in the end, only the \enquote{bad} money remains in circulation.
+
+    Modern coins have a higher face value than their material value (\enquote{token coins}), so nobody melts them down. Fiat money has (almost) no material value at all.
+
+    However, if the bad money loses value too quickly, people refuse it, and good money drives out bad (Thiers' Law; e.g.\ dollarisation in hyperinflations).
     }
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 12]
 \begin{frame}{History of Money}
     \mycomment{
-    The history of money is not over, as we keep developing new means of payment. Digitalisation and the invention of strong encryption makes new forms of payment possible. The underlying principle though, that states and their request for taxes (legal tender) are the ultimate guarantors of the value of money, remains unchanged.
+    The history of money is not over, as we keep developing new means of payment. Digitalisation and the invention of strong encryption make new forms of payment possible. The underlying principle though, that states---by accepting it for taxes and declaring it legal tender---are the ultimate guarantors of the value of money, remains unchanged.
     }
     \mytext{
     \begin{itemize}
-        \item Credit cards: Diners Club 1950, 1977 VISA
-        \item ATMs since 1960, Online Banking since 2000s
+        \item Credit cards: Diners Club 1950, BankAmericard 1958 (VISA since 1976)
+        \item ATMs (cash dispensers) since 1967, online banking since the 1980s, widespread since the 2000s
         \item Debit cards / Maestro, VISA debit
         \item SWIFT 1973
-        \item Crypto: DES, Triple DES, AES since 1977
-        \item Bitcoin 2008, Ethereum
-        \item CBDC (Central bank digital currency)?
-        \item Quantum computer?
+        \item Public-key cryptography (Diffie-Hellman 1976, RSA 1977), hash functions
+        \item Bitcoin 2008, Ethereum 2015
+        \item CBDC (central bank digital currency), e.g.\ digital euro?
+        \item Quantum computers?
     \end{itemize}
     }
 \end{frame}
 
-
-
-\begin{frame}{The Four Functions of Money}
-    \showmytikz{../shared/tikz/tikz-fourfunctionsofmoney}
-    \mycomment{
-    For a currency to be accepted money, it must serve four functions. Other commodities like gold and silver may be highly liquid, as they can be exchanged \textit{for money} easily. But they are not money still as long as there is \textit{real money} that serves these functions better.
-
-    % Money is a medium of exchange not just in the moment, but also inter-temporally. 
-
-    Other things may work as storage of value, such as real estate. But they will not work as well as medium of exchange; and they will not be easy to calculate with: just how many acres of land (what land?) is worth how many kettle?
-    }
-\end{frame}
-
-
-%%% GRESHAM'S LAW
-
-%%% [moved from MA_4_Money.tex, frame 17]
-\begin{frame}{Currency}
-\mycomment{
-It is important to remember the general impossibility to compare the use value (that is individual) to the exchange value (that is determined on markets) of any good. Money has no use value at all but is all exchange value, which is its strength.
-
-Notice that the exchange value is at parts dependent on the costs to produce a good---that is, in competitive markets. In non-competitive markets, the value can be higher than the costs to produce.
-}
-\mytext{
-    There is a fundamental difference between
-    \begin{itemize}
-        \item use value, and
-        \item exchange value.
-        % \item intrinsic value (strike price vs. underlying)
-    \end{itemize}
-
-    Money has no use value.
-}
-\end{frame}
-
-%%% [moved from MA_4_Money.tex, frame 18]
-\begin{frame}{Currency}
-\mycomment{
-States guarantee the value of currency, and they actually force their subjects to use it. States hold a monopoly on money. Nobody except the central bank can issue currency. And banks creating book money are under supervision of the central banks.
-}
-\mytext{
-    \begin{itemize}
-        \item Obligation to accept (for debt settlement)
-        \item Paying taxes etc. in that currency
-        \item fiat money: no intrinsic value
-        \item legal tender
-    \end{itemize}
-}
-\end{frame}
-
-%%% [moved from MA_4_Money.tex, frame 19]
-\begin{frame}{Currency}
-\showmytikz{../shared/tikz/tikz-threequalitiescurrency}
-
-\mycomment{
-    Currencies compete with one another in an open economy. However, some countries---most notable China---have opted out of full convertibility. This means that the "currency of the people" (Renminbi, with its unit "Yuan" meaning "unit") is stable and scarce, but not convertible. Other currencies are convertible, but often not stable. There is much to be said about optimum currency areas and whether or not a currency should be pegged to another, to a bundle, or free-float.
-}
-\end{frame}
-
-\begin{frame}{Gresham-Copernicus Law}
-    \mytext{
-    \enquote{Bad money drives out good money} \textit{if they are exchanged at the same price.}
-
-    If gold and silver are in circulation, and silver tends to devalue, people will hoard gold and spend silver.
-
-    So at the end, only silver ends up in circulation.
-
-    Currency must have a higher face value than intrinsic (material) value to be fiat money (compare \enquote{token coin}).
-
-    However, if the devaluation is too quick, the reverse happens (Thier's Law).
-    }
-    
-\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (C) QUANTITY THEORY OF MONEY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% [moved from MA_4_Money.tex, frame 20]
-\begin{frame}{Quantitative Theory of Money}
+\begin{frame}{Quantity Theory of Money}
 \showmytikz[1,2]{../shared/tikz/tikz-quantitytheoryofmoney}
 \mycomment{
     Imagine a two-sector economy, with only fishermen and coconut farmers.
 
-    The (exchange) value of fish in coconut will depend entirely on how many fish and how many coconut are brought to the market (per market day). This in turn will depend on preferences of the consumers, and on the effort needed for fishing and harvesting. 
+    The (exchange) value of fish in coconuts will depend entirely on how many fish and how many coconuts are brought to the market (per market day). This in turn will depend on preferences of the consumers, and on the effort needed for fishing and harvesting. 
 
-    Imagine a seasonal shortage of coconut relative to plenty of fish. Then some fishermen will change profession and start harvesting coconut. 
+    Imagine a seasonal shortage of coconuts relative to plenty of fish. Then some fishermen will change profession and start harvesting coconuts. 
     
-    If labour is mobile (and all that counts), then costs to fish and harvest should equal out.
+    If labour is mobile (and all else equal), then the costs of fishing and harvesting should even out.
 
-    This is a world of exchange without money, which may work if there are only fish and coconut. 
+    This is a world of exchange without money, which may work if there are only fish and coconuts. 
     
-    As commerce expands beyond fish and coconut, a common denominator will become desirable. 
+    As commerce expands beyond fish and coconuts, a common denominator will become desirable. 
 }
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 21]
-\begin{frame}{Quantitative Theory of Money}
+\begin{frame}{Quantity Theory of Money}
 \showmytikz[1,2,3,4]{../shared/tikz/tikz-quantitytheoryofmoney}
 \mycomment{
-        Now our islanders agree using some sea shells (of an extinct species) as medium of exchange. 
+        Now our islanders agree to use some sea shells (of an extinct species) as medium of exchange. 
         
-        Farmers buy fish with shells, and fishermen with shells buy coconut. 
+        Farmers buy fish with shells, and fishermen buy coconuts with shells. 
     
-        The value of the shells (money) depends only on two factors:
+        The value of the shells (money) depends on three factors:
         \begin{itemize}
-            \item the speed of circulation
-            \item the quantity of shells in circulation
+            \item the quantity of shells in circulation $M$
+            \item the speed of circulation $V$
+            \item the amount of fish and coconuts traded $Y$
         \end{itemize}
 }
 \end{frame}
 
+\begin{frame}{Quantity Theory of Money}
+    \mytext{
+    The \textbf{quantity equation} (Fisher):
+    \begin{equation}
+        \colorbox{yellow!40}{$M \cdot V = P \cdot Y$}
+    \end{equation}
+    \begin{itemize}
+        \item $M$: quantity of money
+        \item $V$: velocity (how often each unit is spent per period)
+        \item $P$: price level
+        \item $Y$: real output (transactions)
+    \end{itemize}
+
+    As an identity, it always holds. It becomes a \textit{theory} with two assumptions: $V$ is stable, and $Y$ is given by real factors. Then
+    \begin{equation}
+        \frac{\Delta M}{M} \approx \frac{\Delta P}{P} + \frac{\Delta Y}{Y}
+        \qquad\text{i.e.}\qquad \pi \approx \mu - g
+    \end{equation}
+    }
+    \mycomment{
+    So money growth $\mu$ above real growth $g$ ends up as inflation $\pi$---\textit{if} the assumptions hold. After 2008, central banks multiplied the monetary base, but velocity fell and inflation stayed low. The next slides show why the model has limits.
+    }
+\end{frame}
+
 %%% [moved from MA_4_Money.tex, frame 22]
-\begin{frame}{Quantitative Theory of Money}
+\begin{frame}{Quantity Theory of Money}
 \showmytikz[1,3]{../shared/tikz/tikz-quantitytheoryofmoney}
 \mycomment{
-        For the system (or better: this model!) to work, the shells must retain circulation. For they do not have any use value, fishermen would not accept shells without farmers accepting shells.
+        For the system (or better: this model!) to work, the shells must keep circulating. Since they do not have any use value, fishermen would not accept shells unless farmers accept shells, too.
         
         So why shells? And where do these shells come from? One quality the shells have is that nobody can create them at will. Really? But we can create debt, can we not?  
 }
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 23]
-\begin{frame}{Quantitative Theory of Money}
+\begin{frame}{Quantity Theory of Money}
 \showmytikz[1,3,5]{../shared/tikz/tikz-quantitytheoryofmoney}
 \mycomment{
-        In our model world, neither $A$ nor $B$ ever invest in new fishing nets or ladders. If a farmer wants to take time off to make a new ladder instead of harvesting, they would need to get some credit to not starve while they do this. The fishermen would have to supply shells as a loan (and then fish in exchange for shells). Where would that credit come from, if the farmers need all their money for transactions?
+        In our model world, neither $A$ nor $B$ ever invest in new fishing nets or ladders. If a farmer wants to take time off to make a new ladder instead of harvesting, they would need some credit to not starve while they do this. The fishermen would have to supply shells as a loan (and then fish in exchange for shells). Where would that credit come from, if the farmers need all their money for transactions?
 
-        In other words: the quantitative theory of money, while absolutely worth knowing and considering, has its limits. It assumes there is a world without credit, without debt, without interest rate, without past or future, without inequality, without power and ownership, without permissions, competing currencies, etc.
+        In other words: the quantity theory of money, while absolutely worth knowing and considering, has its limits. It assumes a world without credit, without debt, without interest rate, without past or future, without inequality, without power and ownership, without permissions, competing currencies, etc.
 }
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (D) BORROWING, LENDING, INTEREST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%% [moved from MA_4_Money.tex, frame 4]
 \begin{frame}{Borrowing and Lending}
     \mytext{
@@ -234,7 +248,7 @@ States guarantee the value of currency, and they actually force their subjects t
         \item ... but she buys stuff for 200 Euro a month...
         \item there must be some other source of income!
         \item ... so either she sells something else...
-        \item ... or she lives of borrowed money.
+        \item ... or she lives off borrowed money.
         \item Even if she steals, she will accumulate liabilities!
     \end{itemize}
     }
@@ -244,8 +258,8 @@ States guarantee the value of currency, and they actually force their subjects t
 \begin{frame}{Borrowing and Lending}
     \mytext{
     \begin{itemize}
-        \item Maybe she lives of capital transfer? Like her grandmother sponsoring her?
-        \item Maybe she is over-spending off her credit card?
+        \item Maybe she lives off capital transfers? Like her grandmother sponsoring her?
+        \item Maybe she is over-spending on her credit card?
         \item Maybe someone lends her money?
         \item So, she issues bonds?
         \item What are the costs of that borrowed money?
@@ -255,22 +269,20 @@ States guarantee the value of currency, and they actually force their subjects t
 
 \begin{frame}{Borrowing and Lending}
     \mycomment{
-    Borrowing and lending can happen in a number of ways. One is to issue bonds (between people and less formal often called an IOU \enquote{I owe you}). You sell your debt for less than what you promise to repay. The difference can be stated in percent, and is then called \textbf{yield.}
+    Borrowing and lending can happen in a number of ways. One is to issue bonds (between people and less formally often called an IOU, \enquote{I owe you}). You sell your debt for less than what you promise to repay. The difference, expressed in percent per year, is called the \textbf{yield}.
 
-    So the money transfered \textit{at the end} is clear, and yield is a result of the \textit{present price.}
+    So the money transferred \textit{at the end} is fixed, and the yield results from the \textit{present price}: the lower the price, the higher the yield.
     }
-    \showmytikz[1,calculation]{shared/tikz/tikz-borrow-lend}
+    \showmytikz[1,calculation]{../shared/tikz/tikz-borrow-lend}
 \end{frame}
 
 \begin{frame}{Borrowing and Lending}
     \mycomment{
-    Debt can also be issued by taking up credit. In this case, the money received at the \textit{beginning} is clear, and the interest paid per year; the repayment equals the money received at the beginning. 
+    Debt can also be issued by taking up credit. In this case, the money received at the \textit{beginning} is fixed, and interest is paid per year; the repayment equals the money received at the beginning. 
 
-    When such credit is traded, what is at stake is not the price, but the interest rate.
-
-    Both forms---issuing bonds or taking up credit---are mathematical equivalents. Often bonds also pay out per year (\enquote{coupon}); there are many variants possible.
+    Compare the two: in both cases the borrower receives \$95.24 today and pays \$100 in one year. Both forms---issuing bonds or taking up credit---are equivalent. With longer maturities the cash flows differ, but they can be compared by their present values. Often bonds also pay out per year (\enquote{coupon}); there are many variants.
     }
-    \showmytikz[2,calculation]{shared/tikz/tikz-borrow-lend}
+    \showmytikz[2,calculation]{../shared/tikz/tikz-borrow-lend}
 \end{frame}
 
 \begin{frame}{Borrowing and Lending}
@@ -279,8 +291,8 @@ States guarantee the value of currency, and they actually force their subjects t
     \begin{itemize}
         \item households
                 \begin{itemize}
-                    \item for consumption (consumer loans etc., $\sim 20\%$)
-                    \item for housing (mortgages etc.,  $\sim 80\%$)
+                    \item for housing (mortgages etc., the bulk, $\sim 80\%$)
+                    \item for consumption (consumer loans etc.)
                     \item chiefly through banks
                     \item[$\rightarrow$] pay back from wages 
                 \end{itemize}
@@ -294,9 +306,8 @@ States guarantee the value of currency, and they actually force their subjects t
 
     }
     \mycomment{
-            Banks collect many small savings and bundle them to larger charges then lent out;     
-    so banks transform duration and sizes of such credit (maturity transformation, asset/liability management). 
-    On top, the banking system can also create credit \textit{ex nihilo.}
+            Banks collect many small savings and bundle them into larger loans, and they turn short-term deposits into long-term loans (maturity transformation, asset/liability management). 
+    On top, the banking system can also create credit \textit{ex nihilo} (see below).
     }
 \end{frame}
 
@@ -306,86 +317,130 @@ States guarantee the value of currency, and they actually force their subjects t
         \begin{itemize}
             \item households
                 \begin{itemize}
-                    \item as save haven (e.g.\ savings to bank)
-                    \item[$\rightarrow$] interest rate $\simeq$ inflation rate
+                    \item as safe haven (e.g.\ savings at a bank)
+                    \item[$\rightarrow$] aim: preserve purchasing power, $i \geq \pi$ (not always achieved)
                 \end{itemize}
             \item \textbf{firms, institutional investors}
                 \begin{itemize}
                     \item \textbf{for profit (financial investment)}
-                    \item[$\rightarrow$] interest rate $\simeq$  profit rate
+                    \item[$\rightarrow$] compare with the profit rate of real investment
                 \end{itemize}
         \end{itemize}                
-                
-
     }
     \mycomment{
         Borrowing and lending can raise sums that would not be available in a hand-to-mouth economy.
 
-        The availability of such larger sums is prerequisite for an industrial society.
+        The availability of such larger sums is a prerequisite for an industrial society.
     }
 \end{frame}
 
+\begin{frame}{The Five C's of Credit}
+    \mytext{
+    Not everyone gets credit. Typically, credit worthiness is judged by:
+        \begin{enumerate}
+            \item \textbf{character} -- credit score, payment history, public records
+            \item \textbf{capacity} -- debt-to-income, income stability
+            \item \textbf{capital} -- overall net worth
+            \item \textbf{collateral} -- specific asset the lender can seize
+            \item \textbf{conditions} -- purpose of loan, principal amount, interest rates, economic and industry trends
+        \end{enumerate}
+    }
+        \mycomment{Character, capacity, capital, conditions $\rightarrow$ probability of default; collateral $\rightarrow$ loss given default. Both determine the risk weight, and thus how much capital the \textit{bank} must hold (i.e. capital requirements).}
+\end{frame}
 
+\newcommand{\germanterm}[1]{\footnotesize(\textit{#1})}
 
-\begin{frame}{Deposit Multiplier and Reserve Requirements}
+\begin{frame}{The Five C's of Credit}
+    \mytable{
+        \small\renewcommand{\arraystretch}{1.1}
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.0cm}
+                                     >{\raggedright\arraybackslash}X
+                                     >{\raggedright\arraybackslash}X}
+        \toprule
+         & \textbf{Question} & \textbf{Indicators} \\
+        \midrule
+        \textbf{Character} \newline \germanterm{Kreditwürdigkeit} & Will the borrower \textit{want} to repay? & credit history, SCHUFA score, reputation \\
+        \textbf{Capacity} \newline \germanterm{Kapitaldienstfähigkeit} & \textit{Can} the borrower repay from income? & debt-to-income, cash flow, job stability \\
+        \textbf{Capital} \newline \germanterm{Eigenkapital} & How much own money is at stake? & down payment, equity ratio of the firm \\
+        \textbf{Collateral} \newline \germanterm{Sicherheiten} & What if repayment fails? & land charge \germanterm{Grundschuld}, guarantees \\
+        \textbf{Conditions} \newline \germanterm{Rahmenbedingungen} & Do purpose, terms and environment fit? & purpose, maturity, rate, sector, economy \\
+        \bottomrule
+        \end{tabularx}
+
+        \smallskip
+
+    }
+\end{frame}
+
+%%% [moved from MA_4_Money.tex, frame 10]
+\begin{frame}{History of Banking}
     \mycomment{
-    If I lend money to you, you can lend it on. This way, we could in theory create an infinite of book money.
+    In addition to central banks (or mints) issuing currency, the banking sector developed. This allows the creation of \enquote{book money} and payments without the actual shipping of currency. Using the banking system, merchants could now ship wares back and forth and square their accounts without the perilous transportation of precious metals in the opposite direction.
 
-    This is limited by the obligation of banks to hold reserves. 
-
-    \begin{equation}
-        \text{deposit multiplier} = \frac{1}{\text{required reserve ratio}}
-    \end{equation}
+    By doing so, banks can indeed create book money. This must be limited by required capital and reserves to prevent bank runs. The supervision of banks is one of the chief public responsibilities, often shared with the central bank.
     }
-    \showmytikz{../shared/tikz/tikz-multiplier}
+    \mytext{
+    \begin{itemize}
+        \item Sconto, conto, credit, debit: Italian
+        \item Banking system / double-entry bookkeeping: Northern Italy (Genoa, Florence, Venice; Pacioli 1494)
+        \item Giro banks, 17th century: Amsterdam Wisselbank 1609, Hamburger Bank 1619 (\enquote{Mark Banco}), Venice, Nürnberg
+        \item Securities, bonds, stocks (Wertpapiere)
+        \item \enquote{cheque}: English
+    \end{itemize}
+    }
 \end{frame}
 
-\begin{frame}{Banking}
-    \showmytikz{../shared/tikz/tikz-bankingsector}
+%%% [moved from MA_4_Money.tex, frame 11]
+\begin{frame}{History of Banking}
     \mycomment{
-    The central bank lends money to banks on the condition of interest payments. The banks lend money to businesses, giving them credit, on the condition of interest payments.
-
-    The businesses employ consumers as workers and labourers, produce goods more worth than the credit they have received, paying the salaries and the interest rates.
-
-    The systems works so that the growth rate needs to relate to the interest rate. The entire system hinges on the central bank, setting the central interest rate.
+    Along with the development of new means of payment came the development of other financial institutions, where debt (bonds) and ownership (shares, stocks) can be traded. This came along with new forms of companies, financed by a multitude of shareholders. Those companies are liable only up to their own assets, and shareholders can lose at most what they invested (limited liability). The company is a legal person of its own.
+    }
+    \mytext{
+    \begin{itemize}
+        \item Bruges: trading of bills and commodities (\enquote{Beurse}) from the 15th century; Antwerp 1531
+        \item First stock exchange: Amsterdam 1602 (shares of the VOC, \textit{Vereenigde Oostindische Compagnie})
+        \item Hamburg 1558, Bremen 1682, Berlin 1685
+        \item Paris 1724, London 1773, New York 1792
+    \end{itemize}
     }
 \end{frame}
-
-
 
 %%% [moved from MA_4_Money.tex, frame 6]
 \begin{frame}{The Costs of Money: Interest Rates}
     \mytext{
     \begin{itemize}
-        \item The cost of money is called interest.
+        \item The cost of borrowing money is called interest.
         \item Interest is typically expressed as interest~rate~($i$).
-        \item There is also a (hidden) cost of money: inflation~$(\pi)$.
-        \item Internationally, there is also (the chance of) devaluation (or revaluation) of currency~($\Delta Exp$).
+        \item For whoever \textit{holds} money or \textit{lends} it, there is also a (hidden) cost: inflation~$(\pi)$. For borrowers, inflation lowers the real burden of debt.
+        \item Internationally, there is also (the chance of) devaluation (or revaluation) of the currency~($\Delta e$).
     \end{itemize}
     }
 \end{frame}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (E) HOW IS MONEY CREATED AND MEASURED?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Savings First, or Credit First?}
     \mytext{
-    Two theories shaped the 20th century debate: \textbf{Neoclassic} and \textbf{Keynesiansim.}
+    Two views shaped the 20th century debate on banking.
 
-    In each case, the identity of savings and investment hold. The debate is about the causal direction, which of course has policy implications.
+    In each case, the identity of savings and investment holds. The debate is about the causal direction, which of course has policy implications.
 
-    The neoclassic view on banking is that banks are just like any othr actors in the economy. Like traders, they bundle supply and demand, and help with allocation (of money). 
+    \textbf{Savings first} (classical/neoclassical, \enquote{loanable funds}): banks are intermediaries like any other trader. They collect existing savings and allocate them to investors.
 
-    The Keynesian view sees banking as a core function in the economy, as banks supply the economy with money through credit, which makes investment possible to begin with.
+    \textbf{Credit first} (Schumpeter, post-Keynesians, \enquote{endogenous money}): banks create money when they grant credit, which makes investment possible to begin with; saving follows.
     }
-    
+    \mycomment{
+    Keynes himself, in the IS-LM model we will see in Session 6, treats the money supply as set by the central bank. The credit-first view was developed further by post-Keynesian economists and is today the description used by central banks themselves \cite{mcleay2014money}.
+    }
 \end{frame}
 
-\begin{frame}{Theory of Money  I - Debit First}
+\begin{frame}{Theory of Money I -- Savings First}
     \mycomment{
-    One theory---a popular, but disproven one---assumes that banks came into existence after money. That is, there was money in circulation (gold, silver etc.). Banks were founded to safeguard  gold and silver.
+    The textbook story: there was money in circulation first (gold, silver etc.). Banks were founded to safeguard gold and silver.
 
-    We call this "debit first" theory. In this world, debit is everything; credit comes later, or remains an exception.
+    Such deposit banking really existed (e.g.\ London goldsmiths in the 17th century). What is rejected today is (a) the idea that money originated from barter---anthropologists find credit and debt long before coins---and (b) the idea that modern banks merely pass on existing savings.
     }
     \mytable{
             \begin{tabular}{p{20ex}|p{20ex}}
@@ -408,18 +463,16 @@ States guarantee the value of currency, and they actually force their subjects t
     }
 \end{frame}
 
-
-\begin{frame}{Theory of Money  I - Debit First}
+\begin{frame}{Theory of Money I -- Savings First}
     \mytext{
-    In the neoclassic view, money is simply a convention of the subjects in free markets, who found banks to their convenience. So first comes saving (debit), then investment (credit).
+    In this view, money is simply a convention of the subjects in free markets, who found banks for their convenience. So first comes saving (deposits), then lending and investment.
     }
-    
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 25]
-\begin{frame}{Theory of Money  I - Debit First}
+\begin{frame}{Theory of Money I -- Savings First}
     \mycomment{
-    According to this, banks would collect the "hard cash" (gold, silver etc.) and issue bank notes instead. 
+    According to this, banks would collect the \enquote{hard cash} (gold, silver etc.) and issue bank notes instead. 
     }
 \mytable{
         \begin{tabular}{p{20ex}|p{20ex}}
@@ -443,10 +496,10 @@ States guarantee the value of currency, and they actually force their subjects t
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 26]
-\begin{frame}{Theory of Money  I - Debit First}
+\begin{frame}{Theory of Money I -- Savings First}
 
 \mycomment{
-    In the next step, we can substitute the bank notes even further---by current accounts or digital money. Whether there is  an actual paper bill or an electronic proof, the idea is the same: The Theory of Money here is debit. 
+    In the next step, we can substitute the bank notes even further---by current accounts or digital money. Whether there is an actual paper bill or an electronic record, the idea is the same: the deposit comes first.
 
     While this is a nice theory, it does not explain where money came from in the first place. We now know that the value of money has other origins.
 }
@@ -456,7 +509,7 @@ States guarantee the value of currency, and they actually force their subjects t
             \multicolumn{2}{c}{My Business}\\
              debit (assets) & credit (liabilities) \\\hline            
              500 stuff &  \\ 
-             500 debit to bank &  1000 equity\\\hline
+             500 deposit at bank &  1000 equity\\\hline
         \end{tabular}
 
         \bigskip
@@ -464,26 +517,39 @@ States guarantee the value of currency, and they actually force their subjects t
         \begin{tabular}{p{20ex}|p{20ex}}
             \multicolumn{2}{c}{My Bank}\\
              debit (assets) & credit (liabilities) \\\hline            
-             500 gold & 500 credit from me \\\hline
+             500 gold & 500 deposit owed to me \\\hline
         \end{tabular}
 }        
 \end{frame}
 
+\begin{frame}{Deposit Multiplier: the Textbook View}
+    \mycomment{
+    In the savings-first view, a bank lends out the deposits it receives, minus a reserve. The borrower spends the money, the recipient deposits it at another bank, which lends it out again, and so on.
 
-\begin{frame}{Theory of Money  I - Credit First}
+    With a required reserve ratio of 30\,\% (as in the figure), each round passes on 70\,\%:
+    \begin{equation}
+        \text{deposit multiplier} = \frac{1}{\text{reserve ratio}} = \frac{1}{0.3}\approx 3.3
+    \end{equation}
+
+    But: the euro area reserve requirement is only 1\,\% (since 2012), in the US it is 0\,\% (since 2020). The multiplier would be 100, or infinite. So reserve requirements are \textit{not} what limits money creation today (see below).
+    }
+    \showmytikz{../shared/tikz/tikz-multiplier}
+\end{frame}
+
+\begin{frame}{Theory of Money II -- Credit First}
     \mytext{
-    In the Keynesian view, money is issued by authorities and credit created by banks, which then allow investment and saving. So here credit (investment) comes first, resulting in saving (debit).
+    In the credit-first view, the state defines the currency, and banks create money by granting credit, which then allows investment and, as a result, saving. So here credit (investment) comes first, resulting in saving (deposits).
     }
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 27]
-\begin{frame}{Theory of Money  II - Credit First}
+\begin{frame}{Theory of Money II -- Credit First}
     \mycomment{
-    Rather than "us" just having money out of nowhere, we begin with nothing. It is the banks that start supplying the economy with money. The bank creates money "ex nihilo". 
+    Rather than \enquote{us} just having money out of nowhere, we begin with nothing. It is the banks that start supplying the economy with money. The bank creates money \enquote{ex nihilo}. 
 
-    This is a credit economy, so we call it "credit first", and it is actually more realistic.
+    This is a credit economy, so we call it \enquote{credit first}, and it is the more realistic description.
 
-    In the first step, the individual(s) have nothing; the bank prints some bank notes, and holds (assumingly) "something" to safeguard its value, and establish trust. 
+    In the first step, the individual(s) have nothing; the bank prints some bank notes, and holds (presumably) \enquote{something} to safeguard their value and establish trust. 
     }
     \mytable{
             \begin{tabular}{p{20ex}|p{20ex}}
@@ -504,15 +570,15 @@ States guarantee the value of currency, and they actually force their subjects t
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 28]
-\begin{frame}{Theory of Money  II - Credit First}
+\begin{frame}{Theory of Money II -- Credit First}
     \mycomment{
-        In the second step, it lends these bank notes to the economy. 
+        In the second step, it lends bank notes to the economy. Both balance sheets grow: the bank gains a claim (the loan) and a liability (the notes it issued); the business gains notes and a debt. 
     }
     \mytable{
             \begin{tabular}{p{20ex}|p{20ex}}
                 \multicolumn{2}{c}{My Business}\\
                  debit (assets) & credit (liabilities) \\\hline            
-                 0 stuff &  \tikzmark{cred2} 500 credit from bank \\
+                 0 stuff &  \tikzmark{cred2} 500 loan from bank \\
                  500 bank notes \tikzmark{notes2} &  0 equity\\\hline
             \end{tabular}
     
@@ -521,8 +587,8 @@ States guarantee the value of currency, and they actually force their subjects t
             \begin{tabular}{p{20ex}|p{20ex}}
                 \multicolumn{2}{c}{My Bank}\\
                  debit (assets) & credit (liabilities) \\\hline         
-                 500 debit to me \tikzmark{cred1} & 500 equity (?) \\
-                 500 gold (?) & \tikzmark{notes1}(500 bank notes) \\\hline
+                 500 loan to me \tikzmark{cred1} & 500 equity (?) \\
+                 500 gold (?) & \tikzmark{notes1}500 bank notes \\\hline
             \end{tabular}
 
         \begin{tikzpicture}[overlay, remember picture]
@@ -533,24 +599,24 @@ States guarantee the value of currency, and they actually force their subjects t
 \end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 29]
-\begin{frame}{Theory of Money  II - Credit First}
+\begin{frame}{Theory of Money II -- Credit First}
 \mycomment{
-    Now the economic subjects can use this to start trading, invest into machinery, and produce. 
+    Now the business spends the notes on machinery. The notes are now held by the seller of the machine---they are still in circulation, and still a liability of the bank. The bank's equity does not change.
     
-    They will at the end invest the money in a way that what is produced at the end of the period is larger than what there was before. Thus, money supply must grow in parallel to the growth of the economy. Also, to be able to grow, the economy needs cash supply.
+    The business will invest the money so that what is produced at the end of the period is larger than what there was before, and pays interest and repayment out of it. Thus, money supply grows in parallel to the economy; to be able to grow, the economy needs credit.
 
     \begin{itemize}
-        \item Gold is not needed
-        \item creation of money "ex nihilo"
+        \item gold is not needed
+        \item creation of money \enquote{ex nihilo}
         \item but: \textbf{interest rates}
-        \item normally, \textbf{interest rate = growth rate}
+        \item investment must earn at least the interest rate; benchmark: real interest rate $\approx$ real growth rate (golden rule) -- in practice $r$ can be above or below $g$ (Session 1, debt sustainability)
     \end{itemize}
 }
 \mytable{
         \begin{tabular}{p{20ex}|p{20ex}}
             \multicolumn{2}{c}{My Business}\\
              debit (assets) & credit (liabilities) \\\hline            
-             \tikzmark{stuff} 500 investment\tikzmark{stuff2} & \tikzmark{creditfrombank}500 credit from bank\tikzmark{creditfrombank2} \\ 
+             \tikzmark{stuff} 500 investment\tikzmark{stuff2} & \tikzmark{creditfrombank}500 loan from bank\tikzmark{creditfrombank2} \\ 
              \tikzmark{noty} 0 bank notes &  0 equity \\\hline
         \end{tabular}
 
@@ -559,8 +625,8 @@ States guarantee the value of currency, and they actually force their subjects t
         \begin{tabular}{p{20ex}|p{20ex}}
             \multicolumn{2}{c}{My Bank}\\
              debit (assets) & credit (liabilities) \\\hline         
-             \tikzmark{debittome}500 debit to me &  1000 equity\\
-             500 gold (?) &  0 banknotes  \\\hline
+             \tikzmark{debittome}500 loan to me &  500 equity (?)\\
+             500 gold (?) &  500 bank notes (held by seller)  \\\hline
         \end{tabular}
 
         \begin{tikzpicture}[overlay, remember picture]
@@ -570,5 +636,51 @@ States guarantee the value of currency, and they actually force their subjects t
         \end{tikzpicture}
 
 }        
+\end{frame}
+
+\begin{frame}{Loans Create Deposits}
+    \mycomment{
+    Today, banks do not print notes. When a bank grants a loan, it simply credits the borrower's account: a new loan (asset) and a new deposit (liability) appear at the same moment. Deposits are money---so lending creates money, and repaying a loan destroys it.
+
+    When the business pays for the machine, the deposit moves to the seller's account (possibly at another bank). Banks then settle among themselves in central bank money (reserves).
+    }
+    \mytable{
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Business}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 500 deposit at bank & 500 loan from bank \\\hline
+            \end{tabular}
+    
+            \bigskip
+    
+            \begin{tabular}{p{20ex}|p{20ex}}
+                \multicolumn{2}{c}{My Bank}\\
+                 debit (assets) & credit (liabilities) \\\hline            
+                 500 loan to business & 500 deposit of business \\\hline
+            \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}{Monetary Aggregates}
+\mycomment{
+Central banks have a number of tools to influence the amount of money in circulation. But what exactly counts as money? The broader the aggregate, the less liquid its components.
+
+Until the 1990s, many central banks targeted money growth (the Bundesbank: M3). Since velocity proved unstable, they moved to targeting inflation directly via the interest rate. The ECB still watches M3 as one indicator (\enquote{monetary analysis}).
+}
+\mytext{
+    Euro area definitions (ECB):
+    \begin{itemize}
+        \item \textbf{monetary base (M0)}: cash + banks' reserves at the central bank
+        \item \textbf{M1}: cash in circulation + overnight deposits
+        \item \textbf{M2}: M1 + deposits with agreed maturity up to 2 years + savings deposits (notice up to 3 months)
+        \item \textbf{M3}: M2 + repos, money market fund shares, short-term debt securities (up to 2 years)
+    \end{itemize}
+
+    Not included: e.g.\ long-term deposits, pension savings, shares.
+
+    \bigskip
+
+    Central banks' main policy lever today is the \textbf{interest rate}, not the quantity of money.
+    }
 \end{frame}
 

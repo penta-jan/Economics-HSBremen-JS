@@ -1,38 +1,96 @@
-%%% MA_07_Monetary_Policy_Inflation.tex -- 
+%%% MA_05_Monetary_Policy_Inflation.tex -- Session 5
 
-\section{Money Supply and Inflation}
+\section{Banking and Inflation Control}
 
-%% [moved from MA_4_Money.tex, frame 41]
-\begin{frame}{Circular Model of the Economy}
-    \showmytikz[1,2,3]{../shared/tikz/tikz-flowmodel-own}
+\begin{frame}{Banking}
+    \showmytikz{../shared/tikz/tikz-bankingsector}
     \mycomment{
-        In an economy without state, what would play the role of money? 
+    The central bank provides central bank money (reserves) to banks, against collateral and at its policy rate. The banks lend to businesses (and households, e.g.\ mortgages), creating deposits, on the condition of interest payments.
 
-        You could exchange using highly liquid assets such as bushels of corn, which are always in demand. But they may not fulfil all properties for money, e.g. store of value. The same applies for  coins of precious metal, since it is difficult to control their actual content.
+    The businesses employ consumers as workers, and produce goods worth more than the credit they have received, paying salaries and interest.
+
+    So the system works only if investment earns more than the interest rate---this links interest rates to growth. The entire system hinges on the central bank setting the policy rate.
     }
 \end{frame}
 
-%% [moved from MA_4_Money.tex, frame 42]
-\begin{frame}{Circular Model of the Economy}
-    \showmytikz[1,2,3,4]{../shared/tikz/tikz-flowmodel-own}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (F) LIMITS AND REGULATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{What Limits Money Creation?}
+    \mytext{
+    If not the reserve requirement---what stops banks from lending without limit?
+    \begin{itemize}
+        \item the \textbf{price}: the central bank's policy rate (costs of refinancing)
+        \item \textbf{demand}: there must be creditworthy borrowers who want loans
+        \item \textbf{capital requirements} (Basel III): losses must be covered by equity
+        \item \textbf{liquidity rules}: deposits can leave the bank
+        \item \textbf{supervision}
+    \end{itemize}
+    }
     \mycomment{
-        The state has a significant impact on the economy, and is de facto providing currency. 
+    So the central bank controls money creation mainly through the interest rate, not through the quantity of money. This is why the textbook multiplier is a poor description of modern banking \cite{mcleay2014money}.
+    }
+\end{frame}
+
+
+
+\begin{frame}{Reserve Requirements vs.\ Capital Requirements}
+    \mytable{
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}
+                                     >{\raggedright\arraybackslash}X
+                                     >{\raggedright\arraybackslash}X}
+        \toprule
+         & \textbf{Reserve requirement} \newline (Mindestreserve) & \textbf{Capital requirement} \newline (Eigenkapitalanforderung) \\
+        \midrule
+        \textbf{bank must hold} & central bank money (reserves) & own funds (equity) \\
+        \textbf{measured against} & deposits & loans, weighted by risk \\
+        \textbf{size} & 1\,\% (euro area) & ca.\ 10\,\% \\
+        \textbf{protects against} & lack of liquidity & losses \\
+        \textbf{binding today?} & no & yes \\
+        \bottomrule
+        \end{tabularx}
+ 
+        \bigskip
+ 
+        {\footnotesize Careful: central bank reserves (Zentralbankguthaben) are an \textit{asset}; \enquote{Rücklagen} are part of \textit{equity}.}
+    }
+\end{frame}
+ 
+\begin{frame}{Capital Requirements}
+    \mytext{
+    Banks must finance part of their loans with their own money (equity):
+    \begin{equation}
+        \colorbox{yellow!40}{$\dfrac{\text{equity}}{\text{risk-weighted loans}} \geq \text{ca.\ } 10\,\%$}
+    \end{equation}
+    \begin{itemize}
+        \item riskier loans count more: business loans fully, mortgages less, government bonds not at all
+        \item example: with 10 of equity, a bank can hold about 100 of business loans
+        \item to lend more, the bank needs more equity (retain profits, issue shares)
+        \item losses are borne by the bank's owners first, not by depositors or taxpayers
+    \end{itemize}
+    }
+    \mycomment{
+    The international standard is set by the Basel Committee (Basel III, agreed after the financial crisis) and is EU law. The exact requirement differs by bank: a minimum of 8\,\% plus several buffers.
+ 
+    This is the real limit on bank lending today---not the reserve requirement.
     }
 \end{frame}
 
 
 \begin{frame}{Control Money Supply}
     \mycomment{
-        Since banks can create money out of nothing, there is a temptation to do so. But that undermines the stability of the issued currency through inflation, and undermines trust.
+        Since banks can create money out of nothing, there is a temptation to do so. But that undermines the stability of the currency through inflation, and undermines trust.
 
-        Thus, banks are strictly regulated by the central bank, which is the only institution allowed to issue currency. Private banks can participate in the creation of money and value, but under strict oversight. 
+        Thus, banks are strictly regulated and supervised. Only the central bank may issue bank notes. Private banks participate in the creation of money, but under oversight.
 
-        The independence of the central bank means that it serves the public interest best while it serves its own interests best.
+        Central banks are made independent so that price stability is not sacrificed to short-term political goals (e.g.\ financing the government).
     }
     \mytext{
         \begin{itemize}
-            \item How to stop banks from printing money?
-            \item How to control value of money?
+            \item How to stop banks from creating too much money?
+            \item How to control the value of money?
             \item How to control inflation?
         \end{itemize}
     }
@@ -40,155 +98,136 @@
 
 \begin{frame}{Control Money Supply}
     \mytext{
-    Banks are under strict supervision of the state, i.e. by the Central Bank.
+    Banks are under public supervision:
     \begin{itemize}
-        \item collection of savings and bundling
-        \item risk reduction
-        \item credit creation by banks
+        \item Euro area: ECB (Single Supervisory Mechanism, since 2014) for significant banks
+        \item Germany: BaFin and Bundesbank for the others
+    \end{itemize}
+
+    Tools:
+    \begin{itemize}
+        \item capital requirements (Basel III)
+        \item liquidity requirements
         \item minimum reserve requirements
-        \item re-financing through central bank
+        \item refinancing through the central bank (at the policy rate)
+        \item deposit insurance, resolution rules
     \end{itemize}
-
     }
 \end{frame}
 
-\begin{frame}{M2 Money Supply}
-\mycomment{
-Central banks have a number of tools to control the amount of money in circulation. But what exactly counts as money?
-}
-\mytext{
-    \begin{itemize}
-        \item cash
-        \item checking accounts
-        \item savings accounts
-        \item other (certificats of deposit)
-        \item not retirement accounts and time deposits
-    \end{itemize}
-
-    Central banks typically target M2
-
-    $\rightarrow$ to control inflation
-
-    \bigskip
-
-    Central banks main policy lever is the interest rate. In addition are the rules restricting money creating by commercial banks, such as reserve requirements.
-    }
-    
-\end{frame}
-
-\begin{frame}{Money Demand}
-    \showmytikz[time]{shared/tikz/tikz-fourfunctionsofmoney}
-    \mycomment{
-    People will need more money as they exchange more, so the amount of money must grow with output to keep the value of money stable; or say it this way: money demand grows with output.
-
-    The inter-temporal aspects of money must guarantee the trust into the currency in the long run. Thus the (real) interest rate should correspond to the growth rate of the output $Y$, often abbreviated $g$.
-    }
-\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (G) INTEREST RATES AND MONEY DEMAND
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Nominal vs.\ Real Interest Rate}
     \mytext{
-
-    If the Law of one Price holds, investing my money or saving it should yield the same return. However, the link between interest rate and the profit rate (and by extension, economic growth) is weak at best.
-
     \begin{itemize}
-        \item Growth rate of GDP $g=\frac{dY}{dt}$
-        \item Inflation $\pi=\frac{dP}{dt}$
+        \item Growth rate of GDP $g=\frac{dY/dt}{Y}$
+        \item Inflation $\pi=\frac{dP/dt}{P}$
         \item Nominal interest rate $i$ 
     \end{itemize}    
 
-    Real interest rate:
+    Real interest rate (Fisher equation):
     \begin{equation}
         r=\frac{1+i}{1+\pi}-1
     \end{equation}
     \begin{equation}
-        \colorbox{yellow!40}{$r=i -\pi$ }
+        \colorbox{yellow!40}{$r \approx i -\pi$ }
     \end{equation}
-    
     }
     \mycomment{
-    It is not exactly clear what causes the economy to grow. 
-    
-    The most obvious is population growth: if output per person is stable, more persons will output more. 
+    The approximation is good for small rates. Example: $i=5\,\%$, $\pi=3\,\%$: exact $r=1.94\,\%$, approximately $2\,\%$.
 
-    On top, technological progress, increased efficiency, and new energy sources lead to increased output per head, and thus to growth.
+    When lending or investing, what matters is \textit{expected} inflation $\pi^e$ (ex-ante real rate $r = i - \pi^e$). Afterwards, we can compute the realised (ex-post) real rate with actual inflation.
 
-    Whether the interest rate reacts to growth or does stipulate growth is a matter of debate.    
+    If capital can move freely, lending money and investing in real capital should earn similar (risk-adjusted) returns. In practice, the link between interest rates and the profit rate (and by extension, economic growth) is weak.
     }
 \end{frame}
 
-%% [moved from MA_4_Money.tex, frame 35]
+\begin{frame}{Money Demand}
+    \showmytikz[time]{../shared/tikz/tikz-fourfunctionsofmoney}
+    \mycomment{
+    Why do people hold money (liquidity preference, $L$)?
+    \begin{itemize}
+        \item to make transactions: more output $Y$ needs more money (compare $MV=PY$)
+        \item as precaution and store of value over time
+    \end{itemize}
+    But holding money has an opportunity cost: the interest foregone on bonds or savings. So money demand \textit{falls} as the interest rate $i$ rises:
+    \begin{equation*}
+        L = L(\underset{+}{Y},\underset{-}{i})
+    \end{equation*}
+    We will need this for the $LM$ curve (Session 6).
+    }
+\end{frame}
+
+\begin{frame}{Money Supply and Money Demand}
+\mytext{
+    \begin{itemize}
+        \item demand for money is demand for credit
+        \item[$\rightarrow$] interest rate is the result of the credit market
+        \item or: demand for money is demand for liquidity for economic activity
+        \item[$\rightarrow$] interest rate is the result of the money market
+        \item disputed...
+    \end{itemize}
+}
+\end{frame}
+
 \begin{frame}{Nature of Interest Rates}
 \mycomment{
-While it is clear that the price of money is the interest rate, it is less clear where this interest rate actually "comes from". Is it set voluntarily by the monopolist (that is, the issuer of currency, the central bank), or is it a market outcome?
+While it is clear that the interest rate is the price of borrowing money, it is less clear where this interest rate actually \enquote{comes from}. Is it set by the monopolist (that is, the issuer of currency, the central bank), or is it a market outcome?
 
-The answer is probably in the middle. Yes, it is set by the central bank, which acts like a monopolist. But it is also a market result, just like any monopolist price. The central bank reacts to a market, the money market. But what exactly determines those quantities (money demand and supply) to which the central bank reacts? And does it react so as to maximise its own surplus, to maximise welfare, to maximise the state's revenue, or a mix?
+The answer is: both. The central bank sets \textit{short-term} rates, acting like a monopolist for central bank money. But it reacts to the economy, and \textit{long-term} rates are formed on bond markets: they reflect expected future short-term rates plus a premium for risk and maturity.
 
+And to which end does the central bank set the rate---price stability, employment, financing the state?
 }
 \mytext{
-        Where does the (long term) interest rate come from?
+        Where do interest rates come from?
         \begin{itemize}
-            \item Determined by markets?
-            \item Set by Lender of Last Resort?
-            \item To which end?
-            \item Determined by growth rate?
+            \item short-term: set by the central bank
+            \item long-term: determined by markets?
+            \item to which end?
+            \item determined by the growth rate?
         \end{itemize}
 }
 \end{frame}
 
-%
 %% [moved from MA_4_Money.tex, frame 37]
 \begin{frame}{Nature of Interest Rates}
 \mytext{
-    {Set by Lender of Last Resort?}
+    {Set by the central bank?}
     \begin{itemize}
-        \item Central Bank (CB, national central bank)
-        \item Leading central bank (Federal Open Market Committee, US)
-        \item IMF (Special Drawing Rights), BIS?
-    \end{itemize}
-
-    In any case:
-    \begin{itemize}
-        \item What is the policy of that LoLR $\rightarrow$ public CB
-        \item Price stability ($\pi=0$) (of which basket?) $\rightarrow$ independent CB
-        \item Own (real) income $\rightarrow$ private CB (US?)
-        \item Autonomous, or market participant?
+        \item national central bank / Eurosystem (ECB)
+        \item leading central bank (Federal Open Market Committee, US) influences all others
+        \item IMF, BIS: no rate setting, but coordination and emergency lending (\enquote{lender of last resort} for states)
     \end{itemize}
 }
 \end{frame}
 
-%% [moved from MA_4_Money.tex, frame 38]
 \begin{frame}{Nature of Interest Rates}
 \mytext{
-    {Determined by Growth Rate?}
+    {Determined by the growth rate?}
     \begin{itemize}
         \item What determines the growth rate $g$?
         \item What is in the basket of $P$?
         \item Technological progress?
         \item Population growth?
     \end{itemize}
+
+    Benchmark (\enquote{golden rule}): real interest rate $r$ = real growth rate $g$.
+
+    In reality: $r<g$ in the 2010s, $r>g$ in other periods.
+    % (Session 1, debt sustainability)
 }    
-\end{frame}
+    \mycomment{
+    It is not exactly clear what causes the economy to grow. The most obvious is population growth: if output per person is stable, more persons will produce more. On top, technological progress, increased efficiency, and new energy sources lead to increased output per head (Session 11).
 
-%%% [moved from MA_4_Money.tex, frame 39]
-
-
-\begin{frame}{Costs of Inflation}
-    \mylonglist{
-        \begin{itemize}
-            \item erosion of purchasing power
-            \item menu costs: updating price lists
-            \item tax distortion (bracket creep)
-            \item confusion and inconvenience
-            \item shoe-leather costs: going to the bank more often (for cash)
-            \item redistribution of wealth from lenders to borrowers
-            \item fixed-income squeeze
-            \item investment uncertainty
-            \item higher borrowing costs
-            \item instability
-        \end{itemize}
+    Whether the interest rate reacts to growth or drives growth is a matter of debate.
     }
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (A) INFLATION: TYPES, CAUSES, COSTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Types of Inflation}
     \mytable{
@@ -198,58 +237,65 @@ The answer is probably in the middle. Yes, it is set by the central bank, which 
         \toprule
          & \textbf{Definition: Rising...} & \textbf{Primary measurement} \\
         \midrule
-        \textbf{Consumer price inflation} & prices of consumer goods and services & Consumer Price Index CPI \\
+        \textbf{Consumer price inflation} & prices of consumer goods and services & HICP (euro area), CPI/VPI (national) \\
         \addlinespace
-        \textbf{Monetary inflation} & money supply & total money supply M2 \\
+        \textbf{Producer price inflation} & prices of goods at the factory gate & PPI \\
         \addlinespace
-        \textbf{Asset price inflation} & prices of stocks, houses, and other assets & index, e.g. MSCI private asset index \\
+        \textbf{GDP deflator} & prices of all domestic output & nominal / real GDP \\
+        \addlinespace
+        \textbf{Asset price inflation} & prices of stocks, houses, and other assets & stock indices (DAX, MSCI World), house price indices \\
         \bottomrule
         \end{tabularx}
+
+        % \bigskip
+
+        % {\footnotesize Without qualification, \enquote{inflation} means a sustained rise of consumer prices; the ECB's target refers to the HICP (Session 2). Some authors (older usage, Austrian school) call money growth itself \enquote{monetary inflation}---today it is treated as a possible \textit{cause} of inflation.}
     }
 \end{frame}
 
-
-
 \begin{frame}{Demand-Pull Inflation}
     \mycomment{
-    Rather than due to money supply or demand, prices can also rise simply because aggregate demand increases. A hard winter, for example, or a sudden increase in population.
+    Prices can rise because aggregate demand increases---e.g.\ through expansionary fiscal policy, a credit boom, an export boom, or households spending accumulated savings (as after the COVID lockdowns). Fast money growth works through this channel, too.
 
-    Here, we present a model with an \textit{aggregate} demand curve $AD$, and an \textit{aggregate} supply curve $AS$. We will discuss in much more detail what these actually are, and what influences them.
+    Here, we preview a model with an \textit{aggregate} demand curve $AD$, and an \textit{aggregate} supply curve $AS$. We will discuss in much more detail what these actually are, and what influences them (Session 8).
 
-    We see that an increase in aggregate demand will lead to higher prices, but that this comes with an \textit{increase} in output. This is rather unintuitive: normally, we associate inflation with a decrease in output.
+    An increase in aggregate demand leads to higher prices \textit{and} higher output. This is the typical pattern in a boom: inflation together with low unemployment (Phillips curve, Session 7).
     }
     \showmytikz[as,ad,eq,adshift]{../shared/tikz/tikz-asad-inflation}
 \end{frame}
 
 \begin{frame}{Cost-Push Inflation}
     \mycomment{
-    The all over price level can also increase because of a negative supply shock---for example, less energy being available. In that case, it will appear together with a decrease in output, which we can assume to be the normal case.
+    The overall price level can also increase because of a negative supply shock---for example, less or more expensive energy (oil crises 1973 and 1979, gas prices 2022). In that case, inflation comes together with a \textit{decrease} in output: \textbf{stagflation}.
+
+    This is the harder case for central banks: fighting inflation with higher interest rates deepens the recession.
     }
     \showmytikz[as,ad,eq,asshift]{../shared/tikz/tikz-asad-inflation}
 \end{frame}
 
 \begin{frame}{Built-in Inflation}
     \mycomment{
-    When prices are inflation indexed, inflation can spiral out of control.
+    When wages and other contracts are indexed to past inflation, or when everybody expects inflation and sets wages and prices accordingly, inflation perpetuates itself: a \textbf{wage-price spiral}.
+
+    This is why central banks care so much about inflation \textit{expectations}.
     }
     \showmytikz[]{../shared/tikz/builtininflation}
 \end{frame}
 
-\begin{frame}{Inflation}
+\begin{frame}{Inflation, Wages, and Employment}
     \mycomment{
-    Inflation is a rise of the price level. This means that the monetary base $M$ increases faster than output $Y$. The main result is that wages, which are typically negotiated in larger intervals than prices, go down with inflation. This makes production cheaper.
+    Inflation is a sustained rise of the general price level. Wages are typically negotiated at longer intervals than prices are set. So at first, inflation lowers real wages, which makes production cheaper. What happens next depends on the labour market.
     }
     \mytext{
     \begin{itemize}
-        \item rising prices lowers real wages
+        \item rising prices lower real wages
         \item under full employment:
         \begin{itemize}
-            \item unionisation etc.
-            \item wage goes up
-            \item demand goes up
+            \item unions demand compensation
+            \item wages go up
+            \item costs and demand go up
             \item prices go up
-            \item feedback loop
-            \item CPI consumer price index
+            \item feedback loop (wage-price spiral)
         \end{itemize}
         \item no full employment:
         \begin{itemize}
@@ -261,70 +307,103 @@ The answer is probably in the middle. Yes, it is set by the central bank, which 
     }
 \end{frame}
 
-\begin{frame}{Phillips Curve}
-    \showmytikz{shared/tikz/tikz-phillipscurve}
-    \mycomment{
-    There is an \textit{assumed} correlation between interest rates and (un)employment, called Phillips Curve. We will discuss it later.
+\begin{frame}{Costs of Inflation}
+    \mylonglist{
+        \begin{itemize}
+            \item erosion of purchasing power of money holdings and non-indexed incomes
+            \item even when inflation is \textbf{expected}:
+            \begin{itemize}
+                \item shoe-leather costs: holding less cash, going to  bank more often
+                \item menu costs: updating price lists
+                \item tax distortion (bracket creep, taxes on nominal gains)
+                \item confusion: relative prices harder to read
+            \end{itemize}
+            \item when inflation is \textbf{unexpected}:
+            \begin{itemize}
+                \item redistribution of wealth from lenders to borrowers
+                \item fixed-income squeeze (non-indexed pensions, wages, rents)
+                \item investment uncertainty, higher risk premia, higher borrowing costs
+                \item instability
+            \end{itemize}
+        \end{itemize}
     }
-\end{frame}
-
-
-\begin{frame}{Average vs. Marginal Tax Rates}
-    \showmytikz{../shared/tikz/tikz-marginaltaxrates}
 \end{frame}
 
 \begin{frame}{Inflation and Fiscal Drag}
     \mytext{
-    Assume median income is 10,000 EUR.
-    Below that, you pay 20\% taxes, and above, 50\%.
-    So the average tax burden was 35\%. 
+    Tax rule: 20\,\% on income up to 10,000 EUR, 50\,\% on every euro above.
 
-    Ten years pass, the tax law was not changed, but there was inflation of 50\%. Nominal wages also increased 50\%. Now, median income is 20,000 EUR.
-    
-    There was no real growth.
+    \textbf{Before:} income 10,000 EUR $\rightarrow$ tax 2,000 (20\,\%), net 8,000.
 
-    As a result, the average tax burden went up: more people have moved into the upper tax bracket. 
+    Ten years pass, the tax law is not changed. Prices rise by 50\,\%, nominal wages also by 50\,\%. There is no real growth.
 
+    \textbf{After:} income 15,000 EUR $\rightarrow$ tax $2,000 + 2,500 = 4,500$ (30\,\%), net 10,500.
+
+    In prices of the base year: $10,500/1.5 = 7,000 < 8,000$.
+
+    $\Rightarrow$ Real net income fell by 12.5\,\%, although real gross income did not change.
     }
     \mycomment{
-    The result is a decrease in real wages after tax.
-    This is called \enquote{Kalte Progression} in Germany; in English, \enquote{bracket creep} or \enquote{fiscal drag}: the fact that over time, more and more tax payers fall under the higher rates due to both growth of income and inflation. Real growth, of course, can offset the effect. But in any case, taxes rise (and thus the state quota).
+    This is called \enquote{Kalte Progression} in Germany; in English, \enquote{bracket creep} or \enquote{fiscal drag}: inflation pushes taxpayers into higher brackets although they are not better off. Tax revenue (and thus the state quota) rises without any change in the law.
+
+    Real income growth also moves people into higher brackets---but that is the intended effect of a progressive tax. In Germany, the federal government reports on the effect every two years, and the tariff has been adjusted repeatedly to offset it.
     }
 \end{frame}
 
-%%% TODO (new content): measuri
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% (B) MONETARY POLICY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% [moved from MA_4_Money.tex, frame 43]
-\begin{frame}{Money Supply and Money Demand}
-\mytext{
-    \begin{itemize}
-        \item Demand for money is demand for credit
-        \item interest rate result of credit market
-        \item or: demand for money for economic activity
-        \item interest rate result of money market
-        \item disputed...
-    \end{itemize}
-}
-\end{frame}
-
-
-\begin{frame}{Central Bank Mandate}
+\begin{frame}{Central Bank Mandate: ECB}
     \mycomment{
-    In countries with evolved rule of law (e.g. western democracies), the central bank acts autonomously. Monetary policy is thus aimed at only one goal, in accordance with Tinbergen's rule.
+    In many countries the central bank is independent of the government. The historical background is the experience of governments using monetary policy excessively for their funding needs, causing inflation, currency devaluation and general imbalances.
 
-    The historical background is the experience of governments using monetary policy excessively for their funding needs, causing inflation, currency devaluation and general imbalances.
+    The ECB has a single primary objective, in line with Tinbergen's rule. Not all central banks do: the US Fed has a \textbf{dual mandate} (maximum employment and stable prices; target 2\,\% PCE inflation). The Bank of England's target is set by the government; the bank decides only how to reach it.
     }
     \mytext{
-    \textbf{Primary Mandate:} maintain price stability. It quantifies that as (in the medium term):
+    \textbf{Primary mandate} (Art.\ 127 TFEU): maintain price stability. The ECB defines this as (symmetric, over the medium term):
     \begin{equation}
-        i^* \equiv 2\%
+        \pi^*_{\text{HICP}} = 2\,\%
     \end{equation}
     
-    \textbf{Secondary Mandate:} support EU general economic policies
+    \textbf{Secondary mandate:} without prejudice to price stability, support the general economic policies in the EU
 
-    \textbf{Additional Responsibilities:} financial stability, banking supervision, climate and broader considerations
+    \textbf{Additional responsibilities:} financial stability, banking supervision (since 2014), climate and broader considerations
     }
-    
+\end{frame}
+
+\begin{frame}{Instruments of the ECB}
+    \mytext{
+    \begin{itemize}
+        \item \textbf{key interest rates}:
+        \begin{itemize}
+            \item deposit facility rate (DFR): what banks earn on reserves
+            \item main refinancing operations (MRO): what banks pay for weekly loans
+            \item marginal lending facility (MLF): overnight emergency loans
+        \end{itemize}
+        \item \textbf{open market operations}: refinancing operations against collateral, asset purchases
+        \item \textbf{minimum reserves}: 1\,\% of certain deposits
+        \item \textbf{forward guidance}: communicating future policy
+    \end{itemize}
+    }
+    \mycomment{
+    Since the large asset purchases, banks hold far more reserves than required. Money market rates therefore settle near the deposit facility rate, which the ECB uses as its steering rate.
+    }
+\end{frame}
+
+\begin{frame}{Open Market Operations}
+     \mytext{
+     Central banks implement their interest rate by buying and selling (or lending against) securities: \textbf{open market operations (OMO).} Traditionally, they supply just enough reserves to keep the money market rate at the target.
+
+     When the policy rate is already near zero, central banks can buy large amounts of bonds outright: \textbf{quantitative easing (QE).} This lowers long-term yields and signals that rates will stay low.
+
+     In the euro area, the central bank may buy government bonds only on the secondary market---direct financing of governments is prohibited (Art.\ 123 TFEU).
+     }
+    \mycomment{
+     Quantitative Easing (QE) is a pre-commitment to buy large, fixed volumes of longer-term assets over an extended period. Central banks used this policy extensively from the 2008 crisis on, and again in the COVID crisis.
+
+     The reserves so created are still in the system: central banks now pay interest on them, which made them post losses when rates rose in 2022--23; reducing the holdings (quantitative tightening) takes years.
+    }
 \end{frame}
 
 \begin{frame}{Monetary Policy Transmission Mechanism}
@@ -341,19 +420,19 @@ The answer is probably in the middle. Yes, it is set by the central bank, which 
         \item changes in fiscal policy
         \item changes in commodity prices
     \end{itemize}
-
-    
     }
 \end{frame}
 
 \begin{frame}{Taylor Rule}
     \mytext{
-    Central banks should set interest rates in response to divergences of 
+    John \noun{Taylor} (1993) showed that the Fed's behaviour can be described---and, he argued, should be guided---by a simple rule \cite{taylor1993discretion}. The policy rate responds to divergences of
     \begin{itemize}
-        \item actual inflation from targeted inflation rates
-        \item actual GDP from potential GDP
+        \item \textbf{inflation gap: }actual inflation vs.\ inflation target 
+        \item \textbf{output gap:} actual GDP vs.\ potential GDP 
     \end{itemize}
-
+    }
+    \mycomment{
+    Two gaps, one instrument---does this violate Tinbergen's rule? Not necessarily: the output gap matters because it predicts future inflation. But when the two gaps point in different directions (stagflation), the central bank faces a real trade-off.
     }
 \end{frame}
 
@@ -361,41 +440,36 @@ The answer is probably in the middle. Yes, it is set by the central bank, which 
     \mytext{
     So the rule becomes:
     \begin{equation}
-        i_t =  \quad \pi_t+r^*_t 
-        \quad + a_\pi (\pi_t-\pi^*_t) 
+        i_t =  \quad \pi_t+r^* 
+        \quad + a_\pi (\pi_t-\pi^*) 
         \quad + a_y\cdot 100\frac{(Y_t-\overline{Y_t})}{\overline{Y_t}}
     \end{equation}
     \begin{equation}
         \begin{split}
-            \text{desired real interest rate} \quad  = \quad & \text{equilibrium real interest rate} \\
-            +\quad & a_\pi \times \text{difference from inflation target} \\
+            \text{policy rate} \quad  = \quad & \text{inflation} \\
+            +\quad & \text{equilibrium real rate} \\
+            +\quad & a_\pi \times \text{inflation gap} \\
             +\quad & a_y \times \text{output gap}             
         \end{split}
     \end{equation}
     }
-\end{frame}
-
-\begin{frame}{Open Market Operations}
-     \mytext{
-     Apart from setting the interest rate, central bank can also just buy bonds. This is called \textbf{open market operations (OMO).} Purchasing of government bonds is a convenient way.
-
-     This way the economy can be provided (or flooded) with money while leaving the central interest rate untouched.
-
-     The distortion of the bond markets has an effect on yields, and thus helps keeping interest rates down, while also taming expectations.
-     }
     \mycomment{
-     Quantitative Easing (QE) is a pre-commitment to buy large, fixed volume and longer term assets over an extended period. Central banks used this policy extensively from the 2008 crisis on. The cash so provided has in parts made monetary policy today challenging.
+    Equivalently, moving $\pi_t$ to the left: the \textit{real} rate $i_t-\pi_t$ should exceed its equilibrium value when inflation is above target or output above potential.
+
+    Taylor's original values: $a_\pi = a_y = 0.5$, $r^*=2\,\%$, $\pi^*=2\,\%$.
+
+    Taylor principle: if inflation rises by one point, the nominal rate rises by $1+a_\pi = 1.5$ points, so the real rate rises, too.
     }
 \end{frame}
 
-% \begin{frame}{Time Inconsistency Problem}
-%     \mytext{
-%     Expectations (of inflation) play a major role in monetary policy, and thus credibility.
+\begin{frame}{Time Inconsistency Problem}
+    \mytext{
+    Expectations (of inflation) play a major role in monetary policy, and thus credibility.
 
-%     If the central bank announces low inflation and people build their expectations accordingly, the CB may derivate from their announcement.
+    If the central bank announces low inflation and people build their expectations accordingly, the central bank is tempted to deviate from its announcement (e.g.\ to boost employment in the short run).
 
-%     In the long term, this erodes the credibility of the central bank.
-%     }
-% \end{frame}
+    People anticipate this. In the long term, it erodes the credibility of the central bank---and inflation ends up higher, without any gain in employment.
 
- 
+    $\Rightarrow$ one argument for independent central banks with a clear mandate.
+    }
+\end{frame}

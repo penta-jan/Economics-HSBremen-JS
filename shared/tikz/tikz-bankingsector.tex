@@ -18,7 +18,7 @@
     \foreach [count=\i] \mybank in {-3,0,3}
     {
         \node (mybank\i) at (\mybank,-1) {Bank \i};
-        \draw[->,>=latex] (cb) -- node[fill=white,draw=none] {\scriptsize money} (mybank\i) ;
+        \draw[->,>=latex] (cb) -- node[fill=white,draw=none] {\scriptsize reserves} (mybank\i) ;
         \foreach[count=\ii] \myclient in {-1,0,1}
         {
             \node[rotate=90] (myclient\ii) at (\mybank+\myclient,-3) {Business};

@@ -5,6 +5,14 @@
 \begin{frame}{Banking}
     \showmytikz{../shared/tikz/tikz-bankingsector}
     \mycomment{
+    Banks bundle credits and debits, tranform maturities, and provide credit. It is a hierarchical system with the central bank at the helm. The central bank provides central bank money and cash to the economy. The banks below create book money.
+    }
+    
+\end{frame}
+
+\begin{frame}{Banking}
+    \showmytikz[all]{../shared/tikz/tikz-moneychain}
+    \mycomment{
     The central bank provides central bank money (reserves) to banks, against collateral and at its policy rate. The banks lend to businesses (and households, e.g.\ mortgages), creating deposits, on the condition of interest payments.
 
     The businesses employ consumers as workers, and produce goods worth more than the credit they have received, paying salaries and interest.
@@ -149,7 +157,7 @@
     \mycomment{
     Why do people hold money (liquidity preference, $L$)?
     \begin{itemize}
-        \item to make transactions: more output $Y$ needs more money (compare $MV=PY$)
+        \item to make transactions: more output $Y$ needs more money (compare $MV=PY$), compare Eq.~\ref{eq:quantityequation}
         \item as precaution and store of value over time
     \end{itemize}
     But holding money has an opportunity cost: the interest foregone on bonds or savings. So money demand \textit{falls} as the interest rate $i$ rises:

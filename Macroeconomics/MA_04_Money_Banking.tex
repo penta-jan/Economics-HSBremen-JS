@@ -194,8 +194,8 @@ States guarantee the value of currency, and they actually make their subjects us
 
 \begin{frame}{Quantity Theory of Money}
     \mytext{
-    The \textbf{quantity equation} (Fisher):
-    \begin{equation}
+    The \textbf{quantity equation}:
+    \begin{equation}\label{eq:quantityequation}
         \colorbox{yellow!40}{$M \cdot V = P \cdot Y$}
     \end{equation}
     \begin{itemize}
@@ -205,13 +205,14 @@ States guarantee the value of currency, and they actually make their subjects us
         \item $Y$: real output (transactions)
     \end{itemize}
 
+    }
+    \mycomment{
     As an identity, it always holds. It becomes a \textit{theory} with two assumptions: $V$ is stable, and $Y$ is given by real factors. Then
     \begin{equation}
         \frac{\Delta M}{M} \approx \frac{\Delta P}{P} + \frac{\Delta Y}{Y}
         \qquad\text{i.e.}\qquad \pi \approx \mu - g
     \end{equation}
-    }
-    \mycomment{
+    
     So money growth $\mu$ above real growth $g$ ends up as inflation $\pi$---\textit{if} the assumptions hold. After 2008, central banks multiplied the monetary base, but velocity fell and inflation stayed low. The next slides show why the model has limits.
     }
 \end{frame}
@@ -289,25 +290,32 @@ States guarantee the value of currency, and they actually make their subjects us
     \mytext{
     Reasons to \textbf{borrow} money:
     \begin{itemize}
-        \item households
+        \item households ($\approx$25\% of total, $\approx$50\% of GDP)
                 \begin{itemize}
                     \item for housing (mortgages etc., the bulk, $\sim 80\%$)
                     \item for consumption (consumer loans etc.)
                     \item chiefly through banks
                     \item[$\rightarrow$] pay back from wages 
                 \end{itemize}
-                \item \textbf{firms}
-                \begin{itemize}
-                    \item \textbf{for capital investment (profit)}
-                    \item by various means (bonds, shares, also banks)
-                    \item[$\rightarrow$] pay back from profits
-                \end{itemize}
+        \item \textbf{firms} ($\approx$45\% of total, $\approx$90\% of GDP)
+        \begin{itemize}
+            \item \textbf{for capital investment (profit)}
+            \item by various means (bonds, bank credits)
+            \item[$\rightarrow$] pay back from profits
+            \item shares are equity, not debt
+        \end{itemize}
+        \item \textbf{government} ($\approx$30\% of total, $\approx$58.4\% of GDP)
+        \begin{itemize}
+            \item[$\rightarrow$] pay back from taxes
+        \end{itemize}
     \end{itemize}
 
     }
     \mycomment{
             Banks collect many small savings and bundle them into larger loans, and they turn short-term deposits into long-term loans (maturity transformation, asset/liability management). 
     On top, the banking system can also create credit \textit{ex nihilo} (see below).
+
+    Numbers here are from BIS total credit statistics \cite{bis_totalcredit}: Germany, stocks, not flows, rounded for illustrative purpose, at market value. Shares are equity, hence not included. The financial sector is not included, as that would count entries twice. Firms inflated by loans between companies. Figures for developing countries are lower (less \enquote{financial depth}).
     }
 \end{frame}
 
@@ -348,12 +356,14 @@ States guarantee the value of currency, and they actually make their subjects us
         \mycomment{Character, capacity, capital, conditions $\rightarrow$ probability of default; collateral $\rightarrow$ loss given default. Both determine the risk weight, and thus how much capital the \textit{bank} must hold (i.e. capital requirements).}
 \end{frame}
 
+
 \newcommand{\germanterm}[1]{\footnotesize(\textit{#1})}
+\renewcommand{\germanterm}[1]{}
 
 \begin{frame}{The Five C's of Credit}
     \mytable{
         \small\renewcommand{\arraystretch}{1.1}
-        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.0cm}
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.0cm}
                                      >{\raggedright\arraybackslash}X
                                      >{\raggedright\arraybackslash}X}
         \toprule
@@ -362,13 +372,74 @@ States guarantee the value of currency, and they actually make their subjects us
         \textbf{Character} \newline \germanterm{Kreditwürdigkeit} & Will the borrower \textit{want} to repay? & credit history, SCHUFA score, reputation \\
         \textbf{Capacity} \newline \germanterm{Kapitaldienstfähigkeit} & \textit{Can} the borrower repay from income? & debt-to-income, cash flow, job stability \\
         \textbf{Capital} \newline \germanterm{Eigenkapital} & How much own money is at stake? & down payment, equity ratio of the firm \\
-        \textbf{Collateral} \newline \germanterm{Sicherheiten} & What if repayment fails? & land charge \germanterm{Grundschuld}, guarantees \\
+        \textbf{Collateral} \newline \germanterm{Sicherheiten} & What if repayment fails? & land charge, \germanterm{Grundschuld} guarantees \\
         \textbf{Conditions} \newline \germanterm{Rahmenbedingungen} & Do purpose, terms and environment fit? & purpose, maturity, rate, sector, economy \\
         \bottomrule
         \end{tabularx}
 
         \smallskip
 
+    }
+\end{frame}
+
+
+
+\begin{frame}{How to Get Rid of Debt}
+    \mytable{
+        \footnotesize\renewcommand{\arraystretch}{1.1}
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm}
+                                     >{\raggedright\arraybackslash}X
+                                     >{\raggedright\arraybackslash}p{2.9cm}}
+        \toprule
+        & \textbf{What happens} & \textbf{Debt gone?} \\
+        \midrule
+        \multicolumn{3}{l}{\textit{the debtor can \dots}} \\
+        \textbf{repay} \germanterm{tilgen} & pay from income, profits, or asset sales & \textbf{yes} -- money is destroyed \\
+        \textbf{refinance} \germanterm{umschulden} & a new loan pays off the old one & \textbf{no} -- replaced \\
+        \textbf{restructure} \germanterm{Schuldenschnitt} & longer maturity, lower rate, cut in principal & \textbf{partly} -- creditor loses \\
+        \textbf{swap into equity} & creditor becomes owner & \textbf{yes} -- becomes equity \\
+        \textbf{default} \germanterm{Insolvenz} & creditors share what is left & \textbf{yes} -- creditor loses \\
+        \textbf{inflate and grow} & nominal debt stays, real value falls & real burden falls \\
+        \midrule
+        \multicolumn{3}{l}{\textit{the creditor can \dots}} \\
+        \textbf{sell} the claim & bond market, loan sale, factoring, securitisation & \textbf{no} -- new creditor \\
+        \textbf{write off} \germanterm{abschreiben} & loss is booked against own equity & \textbf{no}-- claim remains \\
+        \bottomrule
+        \end{tabularx}
+    }
+\end{frame}
+
+
+\begin{frame}{Credit Ratings and Investment Grade}
+    \mytable{
+        \small%\renewcommand{\arraystretch}{1.1}
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{1.6cm}
+                                     >{\raggedright\arraybackslash}p{1.6cm}
+                                     >{\raggedright\arraybackslash}X
+                                     >{\raggedleft\arraybackslash}p{3.5cm}}
+        \toprule
+        \textbf{S\&P/Fitch} & \textbf{Moody's} & \textbf{Meaning} & \textbf{Defaulted within 5 years} \\
+        \midrule
+        AAA   & Aaa   & highest quality       & 0.3\,\% \\
+        AA    & Aa    & very high quality     & 0.3\,\% \\
+        A     & A     & high quality          & 0.4\,\% \\
+        BBB   & Baa   & adequate              & 1.4\,\% \\
+        \midrule
+        \multicolumn{3}{l}{\textit{investment grade (BBB$-$ / Baa3 or better)}} & \textit{0.8\,\%} \\
+        \midrule
+        BB    & Ba    & speculative           & 5.8\,\% \\
+        B     & B     & highly speculative    & 15.6\,\% \\
+        CCC/C & Caa/C & close to default      & 46.5\,\% \\
+        \midrule
+        \multicolumn{3}{l}{\textit{speculative grade, \enquote{high yield}, \enquote{junk}}} & \textit{13.6\,\%} \\
+        \bottomrule
+        \end{tabularx}
+
+        \smallskip
+
+        {\scriptsize Source: \cite{sp2025default}}
+        
+        % {\scriptsize Source: S\&P Global Ratings, corporate default study 1981--2024. Ratings rank risk; they promise no specific default probability.}
     }
 \end{frame}
 
@@ -437,6 +508,13 @@ States guarantee the value of currency, and they actually make their subjects us
 \end{frame}
 
 \begin{frame}{Theory of Money I -- Savings First}
+    \mytext{
+    In this view, money is simply a convention of the subjects in free markets, who found banks for their convenience. So first comes saving (deposits), then lending and investment.
+    }
+\end{frame}
+
+
+\begin{frame}{Theory of Money I -- Savings First}
     \mycomment{
     The textbook story: there was money in circulation first (gold, silver etc.). Banks were founded to safeguard gold and silver.
 
@@ -463,11 +541,6 @@ States guarantee the value of currency, and they actually make their subjects us
     }
 \end{frame}
 
-\begin{frame}{Theory of Money I -- Savings First}
-    \mytext{
-    In this view, money is simply a convention of the subjects in free markets, who found banks for their convenience. So first comes saving (deposits), then lending and investment.
-    }
-\end{frame}
 
 %%% [moved from MA_4_Money.tex, frame 25]
 \begin{frame}{Theory of Money I -- Savings First}

@@ -1,0 +1,77 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+% %% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,loan,pay,held,reserves,back}}\makeatother
+\begin{document}
+%% The chain of money creation: central bank -> bank -> firm -> households.
+%% Steps:  1        actors only
+%%         loan     bank grants a loan = creates a deposit (book money)
+%%         pay      firm pays wages: the deposit moves
+%%         held     households hold the deposits at a bank
+%%         reserves bank borrows central bank money at the policy rate
+%%         back     interest and repayment flow back up the chain
+\begin{tikzpicture}[
+    flow/.style={->,very thick,>=latex},
+    lab/.style={font=\sffamily\footnotesize,align=center},
+    bankhouse/.pic={
+        \fill[gray!20] (-0.65,-0.05) rectangle (0.65,-0.65);
+        \draw[fill=gray!30,draw=black] (-0.85,-0.8) rectangle (0.85,-0.65);
+        \foreach \x in {-0.65,-0.28,0.28,0.65}{
+            \draw[fill=gray!30,draw=black] (\x-0.08,-0.65) rectangle (\x+0.08,-0.05);}
+        % \draw[fill=gray!30,draw=black] (-0.85,-0.05) rectangle (0.85,0.1);
+        \draw[fill=gray!30,draw=black] (-0.85,-0.05) -- (-0.85,0.1) -- (0,0.35) -- (0.85,0.1) -- (0.85,-0.05)  -- cycle;
+    },
+]
+    \colorlet{cbmoney}{blue!70!black}
+    \colorlet{bookmoney}{green!45!black}
+    \colorlet{backflow}{red!70!black}
+
+    \def\cx{-1.2}   % column: central bank, bank, firm
+    \def\hx{2.95}    % households
+
+    % keep the picture the same size in every step (8 cm wide)
+    \useasboundingbox (-3.35,-4.3) rectangle (3.8,3.0);
+
+    %% actors
+    \path (\cx,2.15) pic{bankhouse};
+    \node[lab,anchor=south] at (\cx,2.55) {Central bank (ECB)};     % above the house
+
+    \path (\cx,0) pic{bankhouse};
+    \node[lab,anchor=east] at (\cx-0.95,-0.35) {Bank};              % left of the house
+
+    \node[businessman,minimum size=1.6cm] (fi) at (\cx,-2.85) {Firm};
+    \node[alice,minimum size=1.6cm,mirrored] (hh) at (\hx,-2.85) {Households};
+
+    %% money flows down the chain
+    \ifstep{all,reserves}{
+        \draw[flow,cbmoney] (\cx+0.25,1.25) -- (\cx+0.25,0.45)
+            node[lab,midway,right=3pt] {lends reserves\\at policy rate 2\,\%};
+    }
+    \ifstep{all,loan}{
+        \draw[flow,bookmoney] (\cx+0.25,-0.9) -- (\cx+0.25,-1.68)
+            node[lab,midway,right=3pt] {grants a loan\\= new deposit, at 5\,\%};
+    }
+    \ifstep{all,pay}{
+        \draw[flow,bookmoney] (\cx+0.9,-2.6) -- (\hx-0.9,-2.6)
+            node[lab,midway,above] {pays wages};
+    }
+
+    %% households keep their money as deposits at a bank
+    \ifstep{all,held}{
+        \draw[flow,dashed,bookmoney,rounded corners=6pt]
+            (\hx,-1.7) -- (\hx,-0.1) -- (\cx+1.0,-0.1);
+        \node[lab,text=bookmoney,anchor=south] at ({(\cx+1.0+\hx)/2},-0.05)
+            {deposits at the bank};
+    }
+
+    %% interest and repayment flow back up the chain
+    \ifstep{all,back}{
+        \draw[flow,backflow] (\cx-0.25,0.45) -- (\cx-0.25,1.25)
+            node[lab,midway,left=3pt] {interest\\+ collateral};
+        \draw[flow,backflow] (\cx-0.25,-1.68) -- (\cx-0.25,-0.9)
+            node[lab,midway,left=3pt] {interest\\+ repayment};
+        \draw[flow,backflow] (\hx-0.9,-3.15) -- (\cx+0.9,-3.15)
+            node[lab,midway,below] {work, buy goods};
+    }
+\end{tikzpicture}
+\end{document}

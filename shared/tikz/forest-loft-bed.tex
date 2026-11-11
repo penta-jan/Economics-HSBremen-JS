@@ -1,0 +1,62 @@
+%STEPBEGIN{0}
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+\showmytreeraw[5]{forest-loft-bed.tex}   %%% <-- EDIT step list; keep this filename in sync with the file's own name
+\end{document}
+%STEPEND
+% Step 1: root only
+% Step 2: + Execution / Preparation
+% Step 3: + Preparation's tasks
+% Step 4: + Execution's tasks
+% Step 5: + "make a plan" broken down
+% Where a node that later becomes a container has to be hidden, its opening
+% AND closing bracket are tagged with the SAME step spec, so every step's
+% filtered text stays balanced. Tags are never nested.
+    \begin{forest}
+    for tree={
+        font=\footnotesize,
+        grow = east,
+        anchor = west,
+        parent anchor = east,
+        child anchor = west,
+        forked edge,
+        inner sep=0.5pt
+            }
+    [Build a loft bed
+        %STEPBEGIN{2,3,4,5}
+        [Execution
+        %STEPEND
+            %STEPBEGIN{4,5}
+            [assemble]
+            [transport]
+            [paint or conserve]
+            [shape materials]
+            [rent space and tools]
+            [order material]
+            %STEPEND
+        %STEPBEGIN{2,3,4,5}
+        ]
+        [Preparation
+        %STEPEND
+            %STEPBEGIN{3,4,5}
+            [find helpers]
+            [order material]
+            [organise tools and workshop]
+            [finance]
+            [make a plan
+            %STEPEND
+                %STEPBEGIN{5}
+                [calculate]
+                [draw]
+                [measure]
+                [consult]
+                %STEPEND
+            %STEPBEGIN{3,4,5}
+            ]
+            %STEPEND
+        %STEPBEGIN{2,3,4,5}
+        ]
+        %STEPEND
+    ]
+    \end{forest}

@@ -1,0 +1,11 @@
+\documentclass{standalone}
+\usepackage{hsbcommon}
+\begin{document}
+    \scalebox{3}{
+    \begin{ganttchart}{1}{5}
+      \ganttbar[name=task,bar/.append style={fill=green!40}]{Task}{1}{4} \\
+      \ganttmilestone[name=milestone,milestone/.append style={fill=green}]{Result}{4}
+      \ganttlink[]{task}{milestone}
+    \end{ganttchart}
+    }
+\end{document}

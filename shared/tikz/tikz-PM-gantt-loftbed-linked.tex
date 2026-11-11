@@ -3,7 +3,7 @@
 \begin{document}
     \begin{ganttchart}[y unit chart=0.6cm,
     Milenew/.style={milestone/.append style={fill=red}}]{1}{12}
-      \gantttitlelist{1,...,12}{1} \\
+      \gantttitlelist{1,...,11}{1} \\
       \ganttgroup{Planning Loft Bed I}{1}{6}\\
       \ganttbar[name=sketch]{Make a sketch}{1}{4} \\
       \ganttmilestone[name=sketchr]{Sketch ready}{4}\\
@@ -17,7 +17,7 @@
       \ganttlink[]{order}{receive}
       \ganttgroup[name=woodwork]{Woodwork}{7}{11}
       \ganttlink[]{receive}{woodwork}
-      \draw[->,>=latex] (haveexact) -- (woodwork.west);
+      \ganttlink[]{haveexact}{woodwork};
     \end{ganttchart}
 
 \end{document}

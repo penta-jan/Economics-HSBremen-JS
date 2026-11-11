@@ -1,0 +1,728 @@
+
+
+
+\section{Setting Goals}
+
+\begin{frame}{Data Structure of Tasks}
+    
+    \mytext{
+    
+     IMPORTANT: 
+     
+     \begin{itemize}
+        \item a (result $\equiv$ milestone) can be checked!
+        \item a (result $\equiv$ milestone) is an interface!
+        \item a (result $\equiv$ milestone) leads to another task!
+        \item all required resources are themselves dependencies and could in theory be modelled as tasks as well!
+        \item however, cost, man hours, duration etc. are KPIs
+        \item[] (Key Performance Indicators).
+     \end{itemize}
+    }
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Every Task Results in a Milestone}
+    \mycomment{
+    \textbf{Never} define a task without a clearly defined result, which can be checked, and which triggers the handover and closure of that task.
+    }
+    \showmytikz{../shared/tikz/tikz-PM-taskmilestone}
+\end{frame}
+
+
+
+% \begin{frame}{How to create a WBS}
+    
+%     \mytext{
+   
+%         First, with expert knowledge...
+   
+%         \begin{enumerate}
+%             \item brainstorm what needs to be done!
+%             \item group these tasks
+%             \item[$\rightarrow$] flow chart, tree or mindmap format
+%         \end{enumerate}
+        
+%     }
+% \end{frame}
+
+% \begin{frame}{How to create a WBS}
+    
+%     \mytext{
+        
+%         Then,for each task...
+        
+%         \begin{enumerate}
+%             \item define goal ($\equiv$ result, milestone)
+%             \item determine duration
+%             \item determine requirements
+%             \begin{itemize}
+%                 \item dependency on other milestones
+%                 \item resources required
+%             \end{itemize}
+%             \item assign responsibility
+%             \begin{itemize}
+%                 \item identify required competency
+%             \end{itemize}
+%         \end{enumerate}
+%     }
+% \end{frame}
+
+% \begin{frame}{Flow Charts, Lists, Tree Chart, Gannt Diagramm}
+    
+%     \showmytikz{../shared/tikz/tikz-wbs-tree-gantt-list}
+        
+% \end{frame}
+
+
+    % Considering your PM tool,
+    % \begin{itemize}
+    %     \item How easy is it to create a WBS?
+    %     \item How easy is it to create a list of tasks?
+    %     \item What data structure / monitoring does it permit?
+    %     \item Is it easy to swap between representations?
+    %     \item Is it easy to work with for a group?
+    %     \item Does it integrate with other stuff?
+    % \end{itemize}
+    
+    % \framebreak
+ 
+    % Considering your project
+    %     \begin{enumerate}
+    %         \item What main work packages can you make out?
+    %         \item What main milestones can you make out?
+    %         \item What responsible persons do you see?
+    %     \end{enumerate}
+
+    
+%     }
+% \end{frame}
+    
+
+
+% \begin{frame}{Phase Oriented Project Management}
+%     \resizebox{!}{0.7\textheight}{
+%     \input{tikz/tikz-phase-oriented-project-management}
+%     }
+    
+%     Source: \cite{schiersmannthiel}
+% \end{frame}
+
+% \begin{frame}{Typical Main Project Phases (Suchanek)}
+%     \resizebox{!}{0.8\textheight}{
+%         \input{tikz/tikz-chain-projectphases-details}
+%     }
+
+%     \framebreak
+    
+%     \resizebox{\textwidth}{!}{
+%     \input{gantt-mains}
+%     }
+% \end{frame}
+
+
+
+% \begin{frame}{Project Launch per Kerzner}
+
+% \resizebox{!}{0.4\textheight}{
+% \parbox{\textwidth}{
+%     In the launch phase, customer (= project sponsor), project manager (pm), subject matter experts (sme's) and functional leads (leads) are involved. 
+%     \begin{description}
+%     \item[Phase 1] - Initialisation
+%     \begin{itemize}
+%         \item Kickoff-Meeting with customer
+%     \end{itemize}
+%     \item[Phase 2] - Preliminary planning
+%     \begin{itemize}
+%         \item PM, SMEs, Leads: Scope Management plan
+%         \item Perliminary Scope Statement
+%     \end{itemize}
+%     \item[Phase 3] - Detailed planning
+%     \begin{itemize}
+%         \item PM, SMEs, Leads: \textbf{Work Breakdown Structure (WBS)} development
+%         \item WBS dictionary
+%     \end{itemize}
+%     \item[Phase 4] Scope baseline
+%     \begin{itemize}
+%         \item Finalisation of governing documents\\ ("Lastenheft", product requirement documentation)
+%     \end{itemize}
+%     \end{description}
+    
+%     Source: \cite[p. 158]{KerznerHarold2017Pm:a}
+% }
+% }    
+% \end{frame}
+
+% \begin{frame}{The Objectives of a Project}
+
+%     Well defined objectives are prerequisite. BUT
+%     \begin{itemize}
+%         \item objectives may be subject to change.
+%         \item different stake holders may have different views.
+%     \end{itemize}
+    
+    
+%     Defined roles and institutions are much less easy to change.
+    
+% \end{frame}
+
+
+
+% \begin{frame}{Project Flow Chart}
+
+    
+%     \input{tikz/tikz-projectflowchartone.tex}
+    
+%     \framebreak
+
+
+%     \input{tikz/tikz-projectflowcharttwo.tex}
+
+    
+%     \framebreak
+    
+%     \input{tikz/tikz-projectflowchartthree.tex}
+    
+
+    
+    
+% \end{frame}
+
+
+
+
+
+
+
+% \begin{frame}{Dimensions}
+
+%     A project
+%     \begin{itemize}
+%         \item induces change
+%         \item involves people 
+%         \item requires resources
+%         \item has external effects
+%     \end{itemize}
+
+%     A project has
+%     \begin{itemize}
+%         \item technical dimension (`technisches Angebot')
+%         \item business dimension ('kaufmännisches Angebot')
+%         \item human dimension (?)
+%     \end{itemize}
+
+%     \framebreak
+
+%     Every project has multiple dimensions:
+%     \begin{itemize}
+%             \item technical
+%             \item legal
+%             \item economic
+%             \item social
+%             \item ecological
+%             \item IT, data
+%             \item ...
+%     \end{itemize}
+    
+%     \framebreak
+    
+%     The environment could be
+%     \begin{itemize}
+%         \item hostile or friendly
+%         \item stable, or dynamic and reactive
+%     \end{itemize}
+%     % This can be true for
+%     % \begin{itemize}
+%     %     \item technology
+%     %     \item political / legal situation
+%     %     \item economy
+%     %     \item market
+%     % \end{itemize}
+    
+%     $\rightarrow$ Different management styles may be required
+% \end{frame}
+
+
+
+
+
+% \input{break}
+
+%\subtitle{Projects, Tasks, Goals and Objectives}
+
+
+%\frame{\titlepage}
+
+% \begin{frame}{Recap}
+
+%     \begin{itemize}%[<+->]
+%         \item A project is unique
+%         \item A project delivers change
+%         \item A project ventures into the unknown
+%         \item A project is supposed to deliver value
+%         \item A project consists of tasks
+%         \item Complex projects have sub-projects
+%     \end{itemize}
+    
+%     % \framebreak
+    
+%     % \begin{enumerate}%[<+->]
+%     %     \item Who wants the project to happen?
+%     %     \item How will success be measured?
+%     %     \item Where is the project located?
+%     %     \item What is required?
+%     %     \item How do we get it done?
+%     %     \begin{itemize}
+%     %         \item Personel
+%     %         \item Material
+%     %         \item Other stakeholders
+%     %         \item $\dots$
+%     %     \end{itemize}
+%     % \end{enumerate}
+% \end{frame}
+
+
+
+
+% \begin{frame}{WBS Work Breakdown Structure}  % depends on: forest
+%     \begin{forest}
+%     for tree={
+%         font=\footnotesize,
+%         grow = east,
+%         parent anchor = east,
+%         child anchor = west,
+%         forked edge,
+%         inner sep=2pt
+%             }
+%     [Travel to Jerusalem
+%         [arrive]
+%         [start walking [face problems]]
+%         [wake up]
+%     ]
+%     \end{forest}
+
+    
+% \end{frame}
+
+
+% \begin{frame}{WBS Work Breakdown Structure}  % depends on: forest
+%     \begin{forest}
+%     for tree={
+%         font=\footnotesize,
+%         grow = east,
+%         parent anchor = east,
+%         child anchor = west,
+%         forked edge,
+%         inner sep=2pt
+%             }
+%     [Travel to Jerusalem
+%         [Reviewing [create picture book][review]]
+%         [Execution [go to airport][pack stuff]]
+%         [Preparation [...][book hotel][book flight][check finances / start saving]]
+%     ]
+%     \end{forest}
+    
+        
+%     \framebreak
+    
+%     \smartdiagram[sequence diagram]{preparation, execution, reviewing}
+    
+%     `We cross the bridge once we come to it' - philosophy
+    
+%     Foresight?
+    
+% \end{frame}
+
+
+% \begin{frame}{WBS Hold a Conference}  % depends on: forest
+%     \begin{forest}
+%     for tree={
+%         font=\footnotesize,
+%         grow = east,
+%         parent anchor = east,
+%         child anchor = west,
+%         forked edge,
+%         inner sep=0.5pt
+%             }
+%     [Hold a conference
+%         [Review]
+%         [Execution [venue management][stage service][moderation][welcome participants] ]
+%         [Physical planning [contracts][bookings] ]
+%         [Content planning [curate: choose presenters][Invite][Book space][Book services]]
+%         [Preparation [set up team][finance][plan][advertise][conceptualise]]
+%     ]
+%     \end{forest}
+    
+% \end{frame}
+
+
+
+% \begin{frame}{WBS Expedition}  % depends on: forest
+%     \begin{forest}
+%     for tree={
+%         font=\footnotesize,
+%         grow = east,
+%         parent anchor = east,
+%         child anchor = west,
+%         forked edge,
+%         inner sep=0.5pt
+%             }
+%     [Expedition to Antarctica
+%         [Review 
+%             [publication]
+%             [stakeholder report]
+%             [closing]
+%             ]
+%         [Execution  
+%             [scientific research]
+%             [watch out weather etc.]
+%             [navigate]
+%             [set sail / logistics]
+%         ]
+%         [Preparation 
+%             [schedule]
+%             [formulate goal]
+%             [plan expenses]
+%             [find business case] 
+%             [identify sponsors]
+%             [find vessel]
+%             [build up team]
+%         ]
+%     ]
+%     \end{forest}
+% \end{frame}
+
+
+
+
+% \begin{frame}{Product Breakdown}
+%     \begin{forest}
+%     for tree={
+%         font=\footnotesize,
+%         grow = west,
+%         parent anchor = west,
+%         child anchor = east,
+%         forked edge,
+%         inner sep=0.5pt
+%             }
+%     [New Factory
+%         [Managment documents
+%             [Business case]
+%             [Project governance report]
+%             [Project closure report]
+%         ]
+%         [Legal documents
+%             [Approved insurance documents]
+%             [Usage certificate]
+%         ]
+%         [Factory requirements
+%             [Use requirements document]
+%             [Solution design document]
+%         ]
+%         [Operational factory
+%             [Selected factory]
+%             [Fitted internal walls]
+%             [Installed furniture and fixtures]
+%             [Installed IT and office equipment]
+%             [Fitted factory machinery]
+%             [Marketed factory]
+%         ]
+%         [Factory Employees]
+%         [Launched Factory]
+%         ]
+%     \end{forest}
+    
+%     Source: \cite[p. 168]{Roberts}
+
+% \end{frame}
+
+\begin{frame}{Tasks, Work Packages, Milestones}
+    \mycomment{
+    So you must define results for your work packages and your tasks. You can then let the internal planning of each task (and work package) to whoever is responsible. 
+    }
+    
+    \mytext{
+    \begin{itemize}
+        \item Projects are defined by outcomes
+        \item Tasks / Work Packages too
+        \item Outcomes are \textbf{milestones}
+        \item Milestones are \textbf{interface}
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Goal Setting / Defining Milestones}
+    
+    \mytext{
+    \begin{itemize}
+        \item How to set clear goals
+        \item Useful / measurable mile stones
+        \item Measure quality, quantity, \textbf{time}
+    \end{itemize}
+    }
+\end{frame}
+
+
+% \begin{frame}{Product Flow Chart (part)}
+%     \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+%         text width=4.5em, text badly centered, node distance=2cm, inner sep=0pt]
+%     \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+%         text width=5em, text centered, rounded corners, minimum height=4em]
+%     \tikzstyle{line} = [draw, -latex']
+%     \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+%         minimum height=2em]
+        
+%     \begin{tikzpicture}[scale=0.2, node distance = 2.2cm, auto]
+%     \footnotesize
+%         % Place nodes
+%         \node [block] (case) {business case};
+%         \node [block, below of=case] (gov) {governance document};
+%         \node [block, below left of=gov] (use) {user requirements document};
+%         \node [block, below right of=gov] (sol) {solution design document};
+%         \node [block, below right of=use] (sel) {selected factory};
+%         % Draw edges
+%         \path [line] (case) -- (gov);
+%         \path [line] (gov) -- (use);
+%         \path [line] (gov) -- (sol);
+%         \path [line] (use) -- (sel);
+%         \path [line] (sol) -- (sel);
+%     \end{tikzpicture}
+    
+%     Source: \cite[p. 169]{Roberts}
+    
+% \end{frame}
+
+\begin{frame}{The Art of Setting Clear Goals}
+    
+    \mytext{
+    \begin{itemize}
+        \item Define precisely what you want
+        \item ...and from whom
+        \item ...and when
+        \item ...and how you will check
+        \item ...and what happens if...
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{The Three Constraints}
+    \showmytikz[caption={The Three Constraints (Planning)},label=fig:threeconstraints-planning]{../shared/tikz/tikz-threeconstraints}
+    \mycomment{
+    You can have it \textbf{cheap,} \textbf{fast, }or \textbf{good.}
+    
+    Choose two!
+    
+    \vfill
+    \begin{itemize}
+        \item Which is more `flexible': quality, time, costs?
+        \item Is any one factor critical / not disputable?
+        \item Do all stake holder see this in the same way?
+        \item How do they interact?
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{SMART Goals}
+    \mycomment{
+    Not only do you need to set goals, but these must also be clearly defined in a number of dimensions, and also be achievable altogether. 
+    }
+    \mytext{
+    Goals must be \colorbox{yellow!40}{SMART}:
+    
+    \begin{description}
+        \item[S] specific (simple, sensible, significant)
+        \item[M] measurable (meaningful, motivating)
+        \item[A] achievable (agreed, attainable)
+        \item[R] relevant (reasonable, realistic and resourced, results-based)
+        \item[T] time bound (time-based, time limited, time/cost limited, timely, time-sensitive)
+    \end{description}
+ 
+    
+    % German `operational definiert'
+    
+    }
+\end{frame}
+
+\begin{frame}{Goal Setting for Success }
+    \mycomment{
+    Locke and Latham \cite{LOCKE1968157} have worked out that goals you set (for your employees) need to fulfil five critera for success. The goal must be stated clearly; it must contain a bit of a challenge; you must request commitment to this goal from the person you have set it to; you must take and provide feedback; and the task has to have the right amount of complexity: highly complex tasks require extra time and buffer. 
+    }
+    \mytext{
+    Five goal-setting principles for success:
+    
+    \begin{enumerate}
+        \item Clarity
+        \item Challenge
+        \item Commitment
+        \item Feedback
+        \item Task complexity
+    \end{enumerate}
+    
+    \cite{LOCKE1968157}
+        
+    }
+\end{frame}
+
+\begin{frame}{Tasks, Milestones}
+    
+    \mytext{
+    \begin{itemize}
+        \item s.m.a.r.t. goals can be milestones
+        \item tasks need planning also... or do they?
+        \item task/milestone definition: carefully!
+        \item is the milestone flexible in time, scope, costs?
+        \item is there a way to review goals?
+        \item whom is the responsibility attributed to?
+    \end{itemize}
+    }
+\end{frame}
+
+
+
+
+% \begin{frame}{Products vs.~Tasks and Time}
+%     \begin{itemize}
+%         \item Producs need to be produced
+%         \item Production must be planned
+%         \item Production takes time: tasks take time!
+%         \item Move from a product view to a process view
+%         \item Time is the most important \emph{influenceable }cost factor
+%         \item How can we estimate time?
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Scope Creep}
+%     \begin{itemize}
+%         \item Sponsor realises he wants more
+%         \item Management realises product needs more
+%         \item Milking the sponsor or milking the mananger?
+%         \item What is necessary?
+%         \item How can this all be paid for?
+%     \end{itemize}
+% \end{frame}
+
+% % \begin{frame}{Product Description}
+% %     \begin{itemize}
+% %         \item Title
+% %         \item Purpose
+% %         \item Composition
+% %         \item Derivation
+% %         \item Format
+% %         \item Audience
+% %         \item Quality criteria
+% %         \item Quality method
+% %     \end{itemize}
+% % \end{frame}
+
+% % \begin{frame}{The Three Constraints}
+% %     \begin{tikzpicture}[scale=0.8]
+% %         \coordinate (A) at (0,0);
+% %         \coordinate (B) at (-3,-5);
+% %         \coordinate (C) at (3,-5);
+% %         \coordinate (X) at (0,-3.35);
+% %         \draw (A) -- (B) node[midway,above,rotate=60] {Costs};
+% %         \draw (B) -- (C) node[midway,below] {Quality/Performance/Technology};
+% %         \draw (C) -- (A) node[midway,above,rotate=-60] {Time};
+% %         \path[draw=blue, -stealth, rotate=90,
+% %       postaction={decorate,decoration={text effects along path,
+% %         text={\ Within good customer relations \ }, text align=center, 
+% %         text effects/.cd, 
+% %           text along path, 
+% %           every character/.style={fill=white, yshift=-0.5ex}}}]
+% %       (X) circle (4);
+% %     \end{tikzpicture}
+    
+% %     Probably the most important slide.
+% % \end{frame}
+
+% \begin{frame}{Scope Freeze Milestones}
+%     \begin{itemize}
+%         \item A date where the scope cannot be altered
+%         \item Typically, specifications are set
+%         \item Also design freeze, customer approval freeze...
+%         \item De-couple sponsor from product
+%         \item De-couple project management from product?
+%         \item There is agile!!
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{MoScCoW - Scheme}
+%     \begin{description}
+%         \item[M] must have: non-negotiable
+%         \item[S] should have: not vital, but adds significant value
+%         \item[C] could have: nice to have but small impact when left out
+%         \item[W] will not have: stuff without priority in the given time frame.
+%     \end{description}    
+% \end{frame}
+
+\begin{frame}{Plan planning!}
+    
+    \mytext{
+    Planning 
+    \begin{itemize}
+        \item creates a model or scenarios
+        \item gathers information about possible futures
+        \item is a process that takes time in itself
+        \item may be self-referential and prone to loops
+        \item aims at changing the future, creating value
+        \item is necessarily simpler than reality
+        \item will get more specific the closer the time
+        \begin{itemize}
+            \item have a very clear plan for tomorrow
+            \item another for the near future
+            \item another for the far future
+            \item and values for orientation
+        \end{itemize}
+    \end{itemize}
+    }
+\end{frame}
+
+% \begin{frame}{Famous Words}
+% \begin{quote}
+%     Culture eats strategy for breakfast.
+    
+
+% \end{quote}
+%     \medskip
+%     \flushright ---Attr.: Peter \noun{Drucker}
+    
+% \end{frame}
+
+
+
+% \begingroup
+%     \ifdefined\setbeamercolor\setbeamercolor{background canvas}{bg=violet!20}\fi
+%     \begin{frame}{TASK}
+    
+%     \mytext{
+%     Create a Gantt-Diagram for the Project Loft Bed (slide~\ref{sl:loftbed}), defining tasks, milestones etc.
+%         \begin{enumerate}
+%             \item How long will the project take?
+%             \item What are the most important tasks, and why?
+%             \item Which tasks can be done in parallel?
+%             \item How many work hours will you need?
+%             \item Which skill sets will you need?
+%         \end{enumerate}
+    
+%     }
+% \end{frame}
+% \endgroup
+ 
+ 
+%  \begin{frame}{Your example projects!}
+%     In groups:
+%     \begin{itemize}
+%         \item Present each other one of your example projects
+%         \item Who wanted what?
+%         \item Was it delivered in time, budget, quality?
+%     \end{itemize}
+    
+%     Share one example!
+%     \parbox{8cm}{    
+%     \centering
+%     \clock[0.9]{11}{45}{5}
+%     }
+% \end{frame}

@@ -6,10 +6,10 @@
     \begin{tikzpicture}[
     every node/.style={draw, circle, text width=0.8*\mywidth, align=center, font={\sffamily}}
     ]
-        \node[fill=yellow] (wbs) at (0:\mydist) {2.\\ Tree chart (WBS)};
-        \node[fill=green] (tab) at (90:\mydist) {1.\\ Flow chart (BPMN)};
+        \node[fill=yellow!40] (wbs) at (0:\mydist) {2.\\ Tree chart (WBS)};
+        \node[fill=green!40] (tab) at (90:\mydist) {1.\\ Flow chart (BPMN)};
         \node[fill=lightgray] (lis) at (180:\mydist) {3.\\ List form };
-        \node[fill=red] (gan) at (270:\mydist) {4.\\ Gantt chart};
+        \node[fill=red!40] (gan) at (270:\mydist) {4.\\ Gantt chart};
     
         \draw[<->,ultra thick,>=latex] (wbs) -- (tab);
         \draw[<->,ultra thick,>=latex] (wbs) -- (lis);

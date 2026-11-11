@@ -1087,3 +1087,10 @@
   \global\let\@stepset\@stepset@saved
   \endgroup
 }
+
+%%% to mirror trees
+
+\newcommand{\mirror}[1]{{%
+  \forestset{default preamble+={before typesetting nodes={for tree={
+      grow'=west, anchor=east, parent anchor=west, child anchor=east}}}}%
+  #1}}

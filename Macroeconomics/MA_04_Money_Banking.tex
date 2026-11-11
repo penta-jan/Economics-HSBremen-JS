@@ -320,6 +320,34 @@ States guarantee the value of currency, and they actually make their subjects us
 \end{frame}
 
 \begin{frame}{Borrowing and Lending}
+    The figure shows total borrowing in Germany 2025 \cite{bis_totalcredit}. Note that firms, in particular, have other ways of financing such as the issueance of shared (equity) which is not recorded as debt.
+
+    The banks themselves are supervised by the central bank, so intra-financial sector relations are not in the picture.
+    \showmytikz[total]{../shared/tikz/tikz-debtstructure}
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
+    \mycomment{
+    Households are mainly taking credit from banks, and of this, about 80\,\% are mortgages for housing. Developed countries typically have much lower rates here.
+    }
+    \showmytikz[households]{../shared/tikz/tikz-debtstructure}
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
+    \mycomment{
+    Firms typically have other ways to borrow than bank credits, such as group loans or corporate bonds. A significant part of this is held abroad (numbers for Germany).
+    }
+    \showmytikz[firms]{../shared/tikz/tikz-debtstructure}
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
+    \mycomment{
+    Government debt is held mostly abroad, but also by the central bank (Bundesbank as part of the ECB system) and ordinary banks. Figures here are at market value (BIS), rather than face value (Maastricht criterium).
+    }
+    \showmytikz[government]{../shared/tikz/tikz-debtstructure}
+\end{frame}
+
+\begin{frame}{Borrowing and Lending}
     \mytext{
     Reasons to \textbf{lend} money:
         \begin{itemize}
@@ -328,11 +356,19 @@ States guarantee the value of currency, and they actually make their subjects us
                     \item as safe haven (e.g.\ savings at a bank)
                     \item[$\rightarrow$] aim: preserve purchasing power, $i \geq \pi$ (not always achieved)
                 \end{itemize}
-            \item \textbf{firms, institutional investors}
+            \item \textbf{firms, non-financial}
+                \begin{itemize}
+                    \item intra-company lending
+                \end{itemize}
+            \item \textbf{financial institutions}
                 \begin{itemize}
                     \item \textbf{for profit (financial investment)}
                     \item[$\rightarrow$] compare with the profit rate of real investment
                 \end{itemize}
+            \item \textbf{central bank}
+            \begin{itemize}
+                \item monetary policy
+            \end{itemize}
         \end{itemize}                
     }
     \mycomment{

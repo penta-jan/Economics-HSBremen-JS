@@ -3,20 +3,42 @@
 
 
 \begin{frame}{Bias for Action}
-    
+    \mycomment{
+    We might think planning is prerequisite for action, but it isn't. Planning is a science, that not everyone is trained at. For many roles, planning is not even required!
+    }
     \mytext{
     \begin{itemize}
         \item Tendency to act without plan
         \item Makes sense when there are no risks
         \item Example: business-as-usual
-        \item Planning often under-financed or not financed!?
-        \item Optimism bias
+        \item Planning is often under-financed or not financed
+        \item Optimism bias: need to plan is under-estimated
     \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Planning}
+    \mytext{
+    Planning, a genuine human capacity, is to
+    \begin{itemize}
+        \item define a desired state (the goal),
+        \item lay out the steps necessary to achieve it,
+        \item lay out the steps necessary to achieve these, etc.,
+        \item bring them into an efficient order.
+    \end{itemize}
+    Plans are based on available information; but the information we have grows with planning, and again with execution. So \textbf{plans change.}
+    }
+    \mycomment{
+    Animals do not plan, or when they plan, only a few steps ahead. Humans have the capacity to make plans: to project a goal in the future, and to take multiple steps to achieve them. 
+    We can build, but we can build the tools we need to build, and so forth.
     }
 \end{frame}
 
 
 \begin{frame}{Agenda, to-do-lists}
+    \mycomment{
+    A popular way to plan things is to write everything that needs to be done down at once---on a \enquote{to-do-list}. While this is a good starting point, such lists have severe shortcomings.
+    }
     
     \mytext{
     \begin{itemize}
@@ -26,7 +48,7 @@
         \item possible multi-tasking?
         \item division of labour?
         \item better: define a date (point in time)! $\rightarrow$ \textit{schedule!}
-        \item have multiple agendae for different dates
+        \item have multiple agenda for different dates
         \item colour scheme (red-yellow-green)
         \item \textbf{software}
     \end{itemize}
@@ -34,17 +56,18 @@
 \end{frame}
 
 
-\begin{frame}{'Eisenhower' Matrix}
+\begin{frame}{\enquote{Eisenhower} Matrix}
     \showmytikz{../shared/tikz/tikz-eisenhower}
     \mycomment{
-        \vfill
-    Source: own design / commons
+        The so-called \enquote{Eisenhower} matrix shows a way you could classify tasks from your to-do-list. Such things that are absolutly urgent should be done immediately without hesitation. Every thing else should either be scheduled, delegate, or simply deleted.
     }
 \end{frame}
 
 
 \begin{frame}{Project Management Software}
-    
+    \mycomment{
+    These considerations should suffice to understand why planning, and project management in general, should not be left to a sheet of paper, or a paper calendar. Today, we will use Project Management Software. 
+    }
     \mytext{
     \begin{itemize}
         \item Why?
@@ -56,7 +79,6 @@
 
 
 \begin{frame}{Foresight, Planning}
-    
     \mytext{
     \begin{itemize}
         \item Efficiency comes with planning. 
@@ -91,7 +113,9 @@
 % \end{frame}
 
 \begin{frame}{Project Flow Chart}
-    
+    \mycomment{
+    Most projects can at best be understood in form of a flow chart to demonstrate its temporal order.
+    }
     \mytext{
     \begin{itemize}
         \item X initialised the project
@@ -108,107 +132,99 @@
 \end{frame}
 
 \begin{frame}{Project Flow Chart}    
+    \mycomment{
+    In the simplest form, such a flow chart will correspond to the typical phases a project has.
+    }
     \showmytikz{../shared/tikz/tikz-PM-project-flow-linear}
     \end{frame}
 
 \begin{frame}{Project Flow Chart}
+    \mycomment{
+    The parts from the flow diagram above can be re-written: the supervision and governance exists throughout the entire project; then, there is the temporal axis of planning, execution and final product. The end result will have to be justified before the project sponsor, who is at the origin of the project.
+    }
     \showmytikz{../shared/tikz/tikz-PM-project-flow-branching}
     \end{frame}
 
 \begin{frame}{Project Flow Chart}    
+    \mycomment{
+    The temporal axis can be further devided: there will be multiple  rounds and feedback loops in the planning phase; the execution will consist of many sub-projects; and the final product will have multiple dimensions or qualities.
+    }
     \showmytikz{../shared/tikz/tikz-PM-project-flow-branching-labeled}
     
     
 \end{frame}
 
 \begin{frame}{What needs to be done?}
-    
+    \mycomment{
+    When we want to start planning, we must identify the requirements and the required tasks first; then, identify the resources each requires, and their temporal order.
+
+    But most importantly, we must understand that every planning is preliminary. Even the best of plan will have to change for unforeseen reasons. Planning must take incertainty into account.
+    }
     \mytext{
     \begin{itemize}
         \item \textbf{Planning starts with listing tasks}
-        \item[] \textbf{and defining their deliverables}
-        \item[] 
+        \item[$\Rightarrow$] \textbf{and defining their deliverables}
         \item \textbf{Planning is scheduling tasks}
-        \item[] \textbf{and allocating resources}
-        \item[] 
+        \item[$\Rightarrow$] \textbf{and allocating resources}
         \item \textbf{Plans change!}
     \end{itemize}
     }
 \end{frame}
 
 \begin{frame}{Sub-Projects are called 'Work Packages'}
+    \mycomment{
+    As discussed, projects consists of sub-projects. As these are assigned to responsible parties, they are called \enquote{work packages}. 
+    }
     
     \mytext{
     
-    Sub-projects are often distributed
+    Sub-projects are often distributed to different responsible parties, hence the name: 
     
-    \medskip
     
-    \textbf{`Work package' (WP)}
+    \textbf{Work package} (WP)
     
-    \medskip
+    % \medskip
     
-    German: `Arbeitspaket (AP)' - `Teilarbeitspaket'\\
-    English: Subproject, Task, Work Package
+    % German: `Arbeitspaket (AP)' - `Teilarbeitspaket'\\
+    % English: Subproject, Task, Work Package
     }
+\end{frame}
+
+
+\begin{frame}{Break Work down to Tasks}
+    \mycomment{
+    At first, identify task carefully; group them by work package.
+    }
+  \showmytree[1]{../shared/tikz/forest-work-breakdown.tex}
+\end{frame}
+
+
+\begin{frame}{Break Work down to Tasks}
+    \mycomment{
+    The \enquote{normal} way to present this is the other way round
+    }
+  \mirror{\showmytree[1]{../shared/tikz/forest-work-breakdown.tex}}
 \end{frame}
 
 
 
 \begin{frame}{Break Work down to Tasks}
+    \mycomment{Then, assign these work packages to someone responsible. In larger projects, these would be consortium partners or contractors. In smaller projects, team leaders. }
+  \showmytree[2]{../shared/tikz/forest-work-breakdown.tex}
+\end{frame}
 
-    \begin{forest}
-        for tree={
-            font=\footnotesize,
-            grow = east,
-            anchor=west,
-              forked edge,
-            inner sep=2pt
-                }
-        [Project
-            [Work package ... [...][...]]
-            [Work package 3 [Task 3.2 ][Task 3.1 ]]
-            [Work package 2 [Task 2.2 ][Task 2.1 ]]
-            [Work package 1 [Task 1.3 ][Task 1.2 ][Task 1.1 ]]
-        ]
-    \end{forest}
-    \end{frame}
+\begin{frame}{Break Work down to Tasks}
+    \mycomment{
+    In the next step, each task will be assigned a responsible person. Notice that here, we have identical persons working in multiple work packages. If this is possible or not of course depends on the actual governance structure. It is, however, advisable to cross-assign responsibilities, so that individual task remain connected with the larger picture. 
+    }
+  \showmytree[3]{../shared/tikz/forest-work-breakdown.tex}
+\end{frame}
 
-\begin{frame}{Break Work down to Tasks}    
-        \begin{forest}
-        for tree={
-            font=\footnotesize,
-            grow = east,
-            anchor=west,
-            forked edge,
-            inner sep=2pt
-                }
-        [Project
-            [Work package ... [...][...]]
-            [Work package 3 [Task 3.2 - Alice][Task 3.1 - Alice]]
-            [Work package 2 [Task 2.2 - Charlie][Task 2.1 - Bob]]
-            [Work package 1 [Task 1.3 - Doreen][Task 1.2 - Alice][Task 1.1 - Doreen]]
-        ]
-    \end{forest}
-    \end{frame}
-
-\begin{frame}{Break Work down to Tasks}    
-        \begin{forest}
-        for tree={
-            font=\footnotesize,
-            grow = east,
-            anchor=west,
-            forked edge,
-            inner sep=2pt
-                }
-        [Project
-            [Work package ... [...][...]]
-            [Work package 3 [Task 3.2 - Alice - 12d][Task 3.1 - \textit{Alice - 15d}]]
-            [Work package 2 [Task 2.2 - Charlie - 6d][Task 2.1 - Bob - 8d]]
-            [Work package 1 [Task 1.3 - Doreen - 9d][Task 1.2 - Alice - 4d][Task 1.1 - Doreen - 9d]]
-        ]
-    \end{forest}
-    
+\begin{frame}{Break Work down to Tasks}
+    \mycomment{
+    Finally, each of these tasks must be assigned temporal and financial and other resources. This can be estimated at the beginning, but once there is a responsible person, this person must be given a say on the assumed duration, the requirements, and the resources needed.
+    }
+  \showmytree[4]{../shared/tikz/forest-work-breakdown.tex}
 \end{frame}
 
 
@@ -217,100 +233,99 @@
 \begin{frame}{Flow Charts, Lists, Tree Chart, Gantt Diagramm --}
     
     \mytext{
-You need an overview of what is to be done!
-
-The overview can take the form
-
-\medskip
-
-    \begin{itemize}
-        \item \colorbox{green}{flow chart},a.k.a. \textit{network diagram}
-        \item \colorbox{lightgray}{List}, a.k.a. \textit{register}
-        \item \colorbox{yellow}{WBS}, a.k.a. \textit{tree diagram}
-        \item \colorbox{red}{Gantt Diagram}
-    \end{itemize}
+        The Work Breakdown diagram in form of a tree is a helpful starting point. But now we realise that there is a temporal order of these tasks: some can be worked on in parallel; some depend on one another so that one can only start once the other is completed; and we would like to sum up total resource requirements. So we need other forms to visualise the same project data!
     }
 \end{frame}
 
 \begin{frame}{Flow Charts, Lists, Tree Chart, Gantt Diagramm --}
+    
+    \mytext{
+    You need an overview of what is to be done!
+    
+    The overview can take the form
+    
+    \medskip
+
+    \begin{itemize}
+        \item \colorbox{green!40}{flow chart},a.k.a. \textit{network diagram}
+        \item \colorbox{lightgray}{List}, a.k.a. \textit{register}
+        \item \colorbox{yellow!40}{WBS}, a.k.a. \textit{tree diagram}
+        \item \colorbox{red!40}{Gantt Diagram}
+    \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Flow Charts, Lists, Tree Chart, Gantt Diagramm---}
+    \mytext{
+    You always need all three forms!
+    
     \showmytikz{../shared/tikz/tikz-wbs-tree-gantt-list}
+    }
     \mycomment{
-    \textbf{You always need all four forms!}
-    
-    \medskip
-    
-    
-
-        
+        Project management software should give us the possibility to look at the entire project (or parts of it) in four principal, different forms. 
+       
     }
 \end{frame}
 
 
-\begin{frame}{Project "Kitchen Renovation"}
+\begin{frame}{Flow Chart}
+    \mytext{
+        A \colorbox{green!40}{\textbf{flow chart}} makes the temporal order and dependencies clear, but does not provide much more information than that.
     \showmytikz{../shared/tikz/tikz-chain-kitchen}
+    }
     \mycomment{
-    \colorbox{green}{\textbf{Flowchart}}
-    
-    \medskip
-    
+
+    Consider the simple project to renovate a kitchen. We see at once three phases, or work packages.
+
+    This diagram shows very clearly what has to be done in which order. But it does not show how long each part will take, how much it will cost, who is in charge, etc.   
     
     }
 \end{frame}
 
-\begin{frame}{Project "Kitchen Renovation"}
-    \resizebox{\textwidth}{!}{
+\begin{frame}{List or Register}
+    \mytext{
+    The most comprehensive form is a \colorbox{lightgray}{\textbf{list / register}}. However, as columns become very large, this can become difficult to read. Also, dependencies and temporal order are not visible. 
+    
+    \medskip
+    
+    \mytable{\scriptsize
         \begin{tabular}{rllrrllr}
         \toprule
-        Task & Process & Result & hrs. & Dep. & Assigned & Resources & Budget\\
+        & Process & Result & hrs. & Dep. & Assigned & Resources & Budget\\
         \midrule
         1. & Manage & (the project) & cont. & management & Alice & Telephone & 100 \\
-        2. & Empty room & room empty & 1 & movers & Bob & hand truck, space & 100\\
+        2. & Empty room & room empty & 1 & movers & Bob & space & 100\\
         3. & Paint room & paint dry & 2 & painters & Charlie & paint etc.&  100 \\
         4. & Change floor & new floor & 2 & floorlayers & Bob & floorboards & 300 \\
         5. & Clear out & rubbish disposed & 2 & movers & Bob & van & 100 \\
-        6. & Replace items & new appliancies & 2 & management & Alice & suppliers/consultants  & 4000 \\
+        6. & Replace items & new appliancies & 2 & management & Alice & suppliers  & 4000 \\
         7. & Refurbish & livable room & 2 & Users? & Alice & movers & 500 \\
   
-              \bottomrule
+        \bottomrule
         \end{tabular}
         }
-    \mytext{
-    
-    \colorbox{lightgray}{\textbf{List / register}}
-    
-    \medskip
-    
-    
-        
-        
     }
 \end{frame}
 
-\begin{frame}{Project "Kitchen Renovation"}
+\begin{frame}{Work Breakdown Structure}
     \showmytikz{../shared/tikz/forest-houshold-wbs}
     \mycomment{
-    
-    \colorbox{yellow}{\textbf{WBS Work Breakdown Structure}}
-    
-    \medskip
-    
-    
-    
+       The \colorbox{yellow!40}{\textbf{WBS Work Breakdown Structure}} (in form of a tree) is very informing, but notoriously difficult to produce. But you see that the contents of the WBS and the contents of the list are indentical. A good software solution will allow us to switch from one view to the other. 
     }
 \end{frame}
 
-\begin{frame}{Project "Kitchen Renovation"}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-kitchen-renovation}
-    \mycomment{
-    
-    \colorbox{red}{\textbf{Gantt-Diagram}}
-    
+\begin{frame}{Gantt Diagram}
+    \mytext{
+    \colorbox{red!40}{\textbf{Gantt diagram}} is the most common visualisations of projects, which show very clearly duration and dependencies. 
+
     \medskip
     
-    % 
-                
-    %% is not the right one, took another one. Make new?
-    
+    \showmytikz{../shared/tikz/tikz-PM-gantt-kitchen-renovation}
+    }
+    \mycomment{
+        They do not, however, provide much detail, e.g. about the resources requred or persons in charge. 
+        
+        They are also notoriously difficult to draw and to keep up to date---unless you use appropriate software, that is. 
         
     }
 \end{frame}
@@ -371,7 +386,11 @@ The overview can take the form
 
 
 \begin{frame}{Data Structure of Tasks}
+    \mytext{
+    We have seen that all four forms: \colorbox{green!40}{flow chart}, \colorbox{yellow!40}{tree chart (WBS)}, \colorbox{red!40}{Gantt chart} and \colorbox{lightgray}{list form} are different visualisation of the same core data. 
 
+    
+    \mytable{
     \begin{tabular}{l l l l l l}
     \toprule
          Task & Result &  Resp. & Duration & Budget & Depend. \\
@@ -381,10 +400,23 @@ The overview can take the form
            & ... & ... & ... & ... & ... \\
          \bottomrule
     \end{tabular}
+    }
+    
+        Every task is a data entry. The underlying structure should be a relational database, in that there are clearly defined dependencies between the different fields. 
+        
+    }
+    \mycomment{
+        For example, there must be a data base with personal data (of Doreen, Alice and so forth), and each task is assigned to exactly one such person. 
+
+
+    }
+
     \end{frame}
 
 \begin{frame}{Data Structure of Tasks}
-    
+    \mycomment{
+            This shows why project management software are database applications. Running a word document or an Excel sheet will not do the job.    
+    }
     \mytext{
     
     Every task is an entry in a database with...
@@ -426,6 +458,35 @@ The overview can take the form
     }
 \end{frame}
 
+
+\begin{frame}{From WBS to Gantt-Diagram}
+    \mycomment{
+    Plans cannot be perfect. There are some rules to follow: one, \textbf{each task results in a milestone,} and this milestone is the requirement for the dependent task.
+
+    Perfect planning takes uncertainty into account, and does so by building in buffers. For example, builders need a break; people need a holiday; machines have a maximum time they can run; work can only be done in daytime; deliverances may come too late; additional paperwork might be needed. 
+    }
+    
+    \mytext{
+    
+    \begin{itemize}
+        \item Every task should end in a milestone
+        \item Define dependencies!
+        \item Estimate time (carefully)
+        \item Build in buffers
+        \item Calculate resources
+        \begin{itemize}
+            \item no idle time
+            \item no overlaps
+        \end{itemize}
+        \item Use visualisation / software
+        % \item[] $\rightarrow$ \textbf{reasearch!}
+    \end{itemize}
+    
+    }
+\end{frame}
+
+
+
 \begin{frame}{Data Structure of Tasks}
     
     \mytext{
@@ -441,60 +502,9 @@ The overview can take the form
             \item processes are not results and not milestones!
             \item milestones are not processes!
         \end{itemize}
-        \item a (result $\equiv$ milstone) can be checked!
-        \item a (result $\equiv$ milstone) is an interface!
-        \item a (result $\equiv$ milstone) leads to another task!
-        \item all required resources are themselves dependencies and could in theory be modelled as tasks as well!
-        \item however, cost, man hours, duration etc. are KPIs
-        \item[] (Key Performance Indicators).
+
      \end{itemize}
     }
-\end{frame}
-
-
-
-
-\begin{frame}{How to create a WBS}
-    
-    \mytext{
-   
-        First, with expert knowledge...
-   
-        \begin{enumerate}
-            \item brainstorm what needs to be done!
-            \item group these tasks
-            \item[$\rightarrow$] flow chart, tree or mindmap format
-        \end{enumerate}
-        
-    }
-\end{frame}
-
-\begin{frame}{How to create a WBS}
-    
-    \mytext{
-        
-        Then,for each task...
-        
-        \begin{enumerate}
-            \item define goal ($\equiv$ result, milestone)
-            \item determine duration
-            \item determine requirements
-            \begin{itemize}
-                \item dependency on other milestones
-                \item resources required
-            \end{itemize}
-            \item assign responsibility
-            \begin{itemize}
-                \item identify required competency
-            \end{itemize}
-        \end{enumerate}
-    }
-\end{frame}
-
-\begin{frame}{Flow Charts, Lists, Tree Chart, Gannt Diagramm}
-    
-    \showmytikz{../shared/tikz/tikz-wbs-tree-gantt-list}
-        
 \end{frame}
 
 \begin{frame}{Ideal PM Software Solution}
@@ -505,15 +515,15 @@ The overview can take the form
     We seek a software that
     
     \begin{enumerate}
-        \item Allows us to mindmap WBS
-        \item turns this into a database (list)
-        \item shows this as Gantt-Diagram
-        \item allows us to move things 
-        \item allows us to record changes
-        \item allows us to monitor progress
-        \item allows us to monitor costs
-        \item allows the team to use it
-        \item allows export into presentable forms
+        \item Allows us to mind-map \colorbox{yellow!40}{WBS}
+        \item turns this into a database (\colorbox{lightgray}{list})
+        \item shows this as \colorbox{red!40}{Gantt diagram}
+        \item allows us to \textbf{move things} 
+        \item allows us to \textbf{record changes}
+        \item allows us to \textbf{monitor progress}
+        \item allows us to \textbf{monitor costs}
+        \item allows \textbf{team use} it
+        \item allows \textbf{export into presentable forms}
     \end{enumerate}
     
     }
@@ -538,896 +548,8 @@ The overview can take the form
         \item move the end date of the first task
         \item \textbf{this you demonstrate to the class}
     \end{enumerate}
-    
-    
-
-    % Considering your PM tool,
-    % \begin{itemize}
-    %     \item How easy is it to create a WBS?
-    %     \item How easy is it to create a list of tasks?
-    %     \item What data structure / monitoring does it permit?
-    %     \item Is it easy to swap between representations?
-    %     \item Is it easy to work with for a group?
-    %     \item Does it integrate with other stuff?
-    % \end{itemize}
-    
-    % \framebreak
- 
-    % Considering your project
-    %     \begin{enumerate}
-    %         \item What main work packages can you make out?
-    %         \item What main milestones can you make out?
-    %         \item What responsible persons do you see?
-    %     \end{enumerate}
-
-    
     }
-\end{frame}
-    
+    \end{frame}
+
 \endgroup
-
-
-% \begin{frame}{Phase Oriented Project Management}
-%     \resizebox{!}{0.7\textheight}{
-%     \input{tikz/tikz-phase-oriented-project-management}
-%     }
     
-%     Source: \cite{schiersmannthiel}
-% \end{frame}
-
-% \begin{frame}{Typical Main Project Phases (Suchanek)}
-%     \resizebox{!}{0.8\textheight}{
-%         \input{tikz/tikz-chain-projectphases-details}
-%     }
-
-%     \framebreak
-    
-%     \resizebox{\textwidth}{!}{
-%     \input{gantt-mains}
-%     }
-% \end{frame}
-
-
-
-% \begin{frame}{Project Launch per Kerzner}
-
-% \resizebox{!}{0.4\textheight}{
-% \parbox{\textwidth}{
-%     In the launch phase, customer (= project sponsor), project manager (pm), subject matter experts (sme's) and functional leads (leads) are involved. 
-%     \begin{description}
-%     \item[Phase 1] - Initialisation
-%     \begin{itemize}
-%         \item Kickoff-Meeting with customer
-%     \end{itemize}
-%     \item[Phase 2] - Preliminary planning
-%     \begin{itemize}
-%         \item PM, SMEs, Leads: Scope Management plan
-%         \item Perliminary Scope Statement
-%     \end{itemize}
-%     \item[Phase 3] - Detailed planning
-%     \begin{itemize}
-%         \item PM, SMEs, Leads: \textbf{Work Breakdown Structure (WBS)} development
-%         \item WBS dictionary
-%     \end{itemize}
-%     \item[Phase 4] Scope baseline
-%     \begin{itemize}
-%         \item Finalisation of governing documents\\ ("Lastenheft", product requirement documentation)
-%     \end{itemize}
-%     \end{description}
-    
-%     Source: \cite[p. 158]{KerznerHarold2017Pm:a}
-% }
-% }    
-% \end{frame}
-
-% \begin{frame}{The Objectives of a Project}
-
-%     Well defined objectives are prerequisite. BUT
-%     \begin{itemize}
-%         \item objectives may be subject to change.
-%         \item different stake holders may have different views.
-%     \end{itemize}
-    
-    
-%     Defined roles and institutions are much less easy to change.
-    
-% \end{frame}
-
-
-
-% \begin{frame}{Project Flow Chart}
-
-    
-%     \input{tikz/tikz-projectflowchartone.tex}
-    
-%     \framebreak
-
-
-%     \input{tikz/tikz-projectflowcharttwo.tex}
-
-    
-%     \framebreak
-    
-%     \input{tikz/tikz-projectflowchartthree.tex}
-    
-
-    
-    
-% \end{frame}
-
-
-
-
-
-
-
-% \begin{frame}{Dimensions}
-
-%     A project
-%     \begin{itemize}
-%         \item induces change
-%         \item involves people 
-%         \item requires resources
-%         \item has external effects
-%     \end{itemize}
-
-%     A project has
-%     \begin{itemize}
-%         \item technical dimension (`technisches Angebot')
-%         \item business dimension ('kaufmännisches Angebot')
-%         \item human dimension (?)
-%     \end{itemize}
-
-%     \framebreak
-
-%     Every project has multiple dimensions:
-%     \begin{itemize}
-%             \item technical
-%             \item legal
-%             \item economic
-%             \item social
-%             \item ecological
-%             \item IT, data
-%             \item ...
-%     \end{itemize}
-    
-%     \framebreak
-    
-%     The environment could be
-%     \begin{itemize}
-%         \item hostile or friendly
-%         \item stable, or dynamic and reactive
-%     \end{itemize}
-%     % This can be true for
-%     % \begin{itemize}
-%     %     \item technology
-%     %     \item political / legal situation
-%     %     \item economy
-%     %     \item market
-%     % \end{itemize}
-    
-%     $\rightarrow$ Different management styles may be required
-% \end{frame}
-
-
-
-
-
-% \input{break}
-
-%\subtitle{Projects, Tasks, Goals and Objectives}
-
-
-%\frame{\titlepage}
-
-% \begin{frame}{Recap}
-
-%     \begin{itemize}%[<+->]
-%         \item A project is unique
-%         \item A project delivers change
-%         \item A project ventures into the unknown
-%         \item A project is supposed to deliver value
-%         \item A project consists of tasks
-%         \item Complex projects have sub-projects
-%     \end{itemize}
-    
-%     % \framebreak
-    
-%     % \begin{enumerate}%[<+->]
-%     %     \item Who wants the project to happen?
-%     %     \item How will success be measured?
-%     %     \item Where is the project located?
-%     %     \item What is required?
-%     %     \item How do we get it done?
-%     %     \begin{itemize}
-%     %         \item Personel
-%     %         \item Material
-%     %         \item Other stakeholders
-%     %         \item $\dots$
-%     %     \end{itemize}
-%     % \end{enumerate}
-% \end{frame}
-
-
-
-
-% \begin{frame}{WBS Work Breakdown Structure}  % depends on: forest
-%     \begin{forest}
-%     for tree={
-%         font=\footnotesize,
-%         grow = east,
-%         parent anchor = east,
-%         child anchor = west,
-%         forked edge,
-%         inner sep=2pt
-%             }
-%     [Travel to Jerusalem
-%         [arrive]
-%         [start walking [face problems]]
-%         [wake up]
-%     ]
-%     \end{forest}
-
-    
-% \end{frame}
-
-
-% \begin{frame}{WBS Work Breakdown Structure}  % depends on: forest
-%     \begin{forest}
-%     for tree={
-%         font=\footnotesize,
-%         grow = east,
-%         parent anchor = east,
-%         child anchor = west,
-%         forked edge,
-%         inner sep=2pt
-%             }
-%     [Travel to Jerusalem
-%         [Reviewing [create picture book][review]]
-%         [Execution [go to airport][pack stuff]]
-%         [Preparation [...][book hotel][book flight][check finances / start saving]]
-%     ]
-%     \end{forest}
-    
-        
-%     \framebreak
-    
-%     \smartdiagram[sequence diagram]{preparation, execution, reviewing}
-    
-%     `We cross the bridge once we come to it' - philosophy
-    
-%     Foresight?
-    
-% \end{frame}
-
-
-\begin{frame}{Project Loft Bed }
-    \showmybitmap{../shared/img/hochbett2.jpg}
-    \mycomment{
-  % depends on: forest
-\label{sl:loftbed}
-
-        
-    
-    }
-\end{frame}
-
-\begin{frame}{Project Loft Bed }
-        \showmybitmap{../shared/img/hochbett0.jpg}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }    
-        \showmybitmap{../shared/img/hochbett1.jpg}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }    
-        \showmybitmap{../shared/img/hochbett3.jpg}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }    
-
-
-    \begin{forest}
-    for tree={
-        font=\footnotesize,
-        grow = east,
-        parent anchor = east,
-        child anchor = west,
-        forked edge,
-        inner sep=0.5pt
-            }
-    [Build a loft bed    ]
-    \end{forest}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }
-    \begin{forest}
-    for tree={
-        font=\footnotesize,
-        grow = east,
-        parent anchor = east,
-        child anchor = west,
-        forked edge,
-        inner sep=0.5pt
-            }
-    [Build a loft bed
-        [Execution]
-        [Preparation]
-    ]
-    \end{forest}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }
-    \begin{forest}
-    for tree={
-        font=\footnotesize,
-        grow = east,
-        parent anchor = east,
-        child anchor = west,
-        forked edge,
-        inner sep=0.5pt
-            }
-    [Build a loft bed
-        [Execution]
-        [Preparation [find helpers][order material][organise tools and workshop][finance][make a plan]]
-    ]
-    \end{forest}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }
-    \begin{forest}
-    for tree={
-        font=\footnotesize,
-        grow = east,
-        parent anchor = east,
-        child anchor = west,
-        forked edge,
-        inner sep=0.5pt
-            }
-    [Build a loft bed
-        [Execution [assemble][transport][paint or conserve][shape materials][rent space and tools][order material]]
-        [Preparation [find helpers][order material][organise tools and workshop][finance][make a plan]]
-    ]
-    \end{forest}
-    \end{frame}
-
-\begin{frame}{Project Loft Bed }
-
-    \begin{forest}
-    for tree={
-        font=\footnotesize,
-        grow = east,
-        parent anchor = east,
-        child anchor = west,
-        forked edge,
-        inner sep=0.5pt
-            }
-    [Build a loft bed
-        [Execution [assemble][transport][paint or conserve][shape materials][rent space and tools][order material]]
-        [Preparation [find helpers][order material][organise tools and workshop][finance][make a plan [calculate][draw][measure][consult]]]
-    ]
-    \end{forest}
-    
-\end{frame}
-
-
-
-
-\begin{frame}{From WBS to Gantt-Diagram}
-    
-    \showmytikz{../shared/tikz/tikz-PM-smartd-preparation-execution}
-    \end{frame}
-
-\begin{frame}{From WBS to Gantt-Diagram}    
-    \showmytikz{../shared/tikz/tikz-PM-wbs-to-gantt-sequence}
-    \end{frame}
-
-\begin{frame}{From WBS to Gantt-Diagram}    
-    \showmytikz{../shared/tikz/tikz-PM-gantt-loftbed-simple}
-\end{frame}
-
-\begin{frame}{From WBS to Gantt-Diagram}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-loftbed-nolink}
-\end{frame}
-
-\begin{frame}{From WBS to Gantt-Diagram}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-loftbed-nolink}
-\end{frame}
-
-\begin{frame}{From WBS to Gantt-Diagram}
-    
-    \mytext{
-    
-    \begin{itemize}
-        \item Every task should end in a milestone
-        \item Define dependencies!
-        \item Estimate time (carefully)
-        \item Build in buffers
-        \item Calculate resources
-        \begin{itemize}
-            \item no idle time
-            \item no overlaps
-        \end{itemize}
-        \item Use visualisation / software
-        % \item[] $\rightarrow$ \textbf{reasearch!}
-    \end{itemize}
-    
-    }
-\end{frame}
-
-
-% \begin{frame}{WBS Hold a Conference}  % depends on: forest
-%     \begin{forest}
-%     for tree={
-%         font=\footnotesize,
-%         grow = east,
-%         parent anchor = east,
-%         child anchor = west,
-%         forked edge,
-%         inner sep=0.5pt
-%             }
-%     [Hold a conference
-%         [Review]
-%         [Execution [venue management][stage service][moderation][welcome participants] ]
-%         [Physical planning [contracts][bookings] ]
-%         [Content planning [curate: choose presenters][Invite][Book space][Book services]]
-%         [Preparation [set up team][finance][plan][advertise][conceptualise]]
-%     ]
-%     \end{forest}
-    
-% \end{frame}
-
-
-
-% \begin{frame}{WBS Expedition}  % depends on: forest
-%     \begin{forest}
-%     for tree={
-%         font=\footnotesize,
-%         grow = east,
-%         parent anchor = east,
-%         child anchor = west,
-%         forked edge,
-%         inner sep=0.5pt
-%             }
-%     [Expedition to Antarctica
-%         [Review 
-%             [publication]
-%             [stakeholder report]
-%             [closing]
-%             ]
-%         [Execution  
-%             [scientific research]
-%             [watch out weather etc.]
-%             [navigate]
-%             [set sail / logistics]
-%         ]
-%         [Preparation 
-%             [schedule]
-%             [formulate goal]
-%             [plan expenses]
-%             [find business case] 
-%             [identify sponsors]
-%             [find vessel]
-%             [build up team]
-%         ]
-%     ]
-%     \end{forest}
-% \end{frame}
-
-
-
-
-% \begin{frame}{Product Breakdown}
-%     \begin{forest}
-%     for tree={
-%         font=\footnotesize,
-%         grow = west,
-%         parent anchor = west,
-%         child anchor = east,
-%         forked edge,
-%         inner sep=0.5pt
-%             }
-%     [New Factory
-%         [Managment documents
-%             [Business case]
-%             [Project governance report]
-%             [Project closure report]
-%         ]
-%         [Legal documents
-%             [Approved insurance documents]
-%             [Usage certificate]
-%         ]
-%         [Factory requirements
-%             [Use requirements document]
-%             [Solution design document]
-%         ]
-%         [Operational factory
-%             [Selected factory]
-%             [Fitted internal walls]
-%             [Installed furniture and fixtures]
-%             [Installed IT and office equipment]
-%             [Fitted factory machinery]
-%             [Marketed factory]
-%         ]
-%         [Factory Employees]
-%         [Launched Factory]
-%         ]
-%     \end{forest}
-    
-%     Source: \cite[p. 168]{Roberts}
-
-% \end{frame}
-
-\begin{frame}{Tasks, Work Packages, Milestones}
-    
-    \mytext{
-    \begin{itemize}
-        \item Projects are defined by outcomes
-        \item Tasks / Work Packages too
-        \item Outcomes are \textbf{milestones}
-        \item Milestones are \textbf{interface}
-    \end{itemize}
-    }
-\end{frame}
-
-\begin{frame}{Project Cabin}
-
-    \showmybitmap{../shared/img/fitting-stairs2.JPG}
-\end{frame}
-
-\begin{frame}{Project Cabin}
-    \showmybitmap{../shared/img/fitting-stairs.JPG}
-\end{frame}
-
-\begin{frame}{Project Cabin}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-cabin-v1}
-    \mycomment{
-    
-    
-    1st plan: only actual work considerd
-    
-    }
-\end{frame}
-
-\begin{frame}{Project Cabin}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-cabin-v2}
-    \mycomment{
-    
-    
-    Procurement takes longer than expected
-    
-    }
-\end{frame}
-
-\begin{frame}{Project Cabin}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-cabin-v3}
-    \mycomment{
-    
-    
-
-    One trade waits for the other
-    
-    }
-\end{frame}
-
-\begin{frame}{Project Cabin}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-cabin-v4}
-    \mycomment{
-    
-    
-    
-    3 trades work in month 5. But when is the planning done?
-    
-    }
-\end{frame}
-
-\begin{frame}{Project Cabin}
-    \showmytikz{../shared/tikz/tikz-PM-gantt-cabin-v5}
-    \end{frame}
-
-\begin{frame}{Project Cabin}
-    
-    \mytext{
-    
-    \begin{itemize}
-        \item Planning is super important
-        \item Planning itself can and must be planned
-        \item Plans may change!
-        \begin{itemize}
-            \item Make flexible plans!
-            \item Plan for alternatives!
-        \end{itemize}
-        \item Planning looks at \textbf{interfaces}
-        \item Planning is communication
-    \end{itemize}
-    
-    }
-\end{frame}
-
- 
-
-\begin{frame}{Goal Setting / Defining Milestones}
-    
-    \mytext{
-    \begin{itemize}
-        \item How to set clear goals
-        \item Useful / measurable mile stones
-        \item Measure quality, quantity, \textbf{time}
-    \end{itemize}
-    }
-\end{frame}
-
-
-% \begin{frame}{Product Flow Chart (part)}
-%     \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-%         text width=4.5em, text badly centered, node distance=2cm, inner sep=0pt]
-%     \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-%         text width=5em, text centered, rounded corners, minimum height=4em]
-%     \tikzstyle{line} = [draw, -latex']
-%     \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
-%         minimum height=2em]
-        
-%     \begin{tikzpicture}[scale=0.2, node distance = 2.2cm, auto]
-%     \footnotesize
-%         % Place nodes
-%         \node [block] (case) {business case};
-%         \node [block, below of=case] (gov) {governance document};
-%         \node [block, below left of=gov] (use) {user requirements document};
-%         \node [block, below right of=gov] (sol) {solution design document};
-%         \node [block, below right of=use] (sel) {selected factory};
-%         % Draw edges
-%         \path [line] (case) -- (gov);
-%         \path [line] (gov) -- (use);
-%         \path [line] (gov) -- (sol);
-%         \path [line] (use) -- (sel);
-%         \path [line] (sol) -- (sel);
-%     \end{tikzpicture}
-    
-%     Source: \cite[p. 169]{Roberts}
-    
-% \end{frame}
-
-\begin{frame}{The Art of Setting Clear Goals}
-    
-    \mytext{
-    \begin{itemize}
-        \item Define precisely what you want
-        \item ...and from whom
-        \item ...and when
-        \item ...and how you will check
-        \item ...and what happens if...
-    \end{itemize}
-    }
-\end{frame}
-
-\begin{frame}{The Three Constraints}
-    \showmytikz[caption={The Three Constraints (Planning)},label=fig:threeconstraints-planning]{../shared/tikz/tikz-threeconstraints}
-    \mycomment{
-    
-    
-    Probably the most important slide.
-    }
-\end{frame}
-
-\begin{frame}{The Three Constraints}
-    
-    \mytext{
-    You can have it \textbf{cheap,} \textbf{fast, }or \textbf{good.}
-    
-    Choose two!
-    
-    \vfill
-    \begin{itemize}
-        \item Which is more `flexible': quality, time, costs?
-        \item Is any one factor critical / not disputable?
-        \item Do all stake holder see this in the same way?
-        \item How do they interact?
-    \end{itemize}
-    }
-\end{frame}
-
-
-\begin{frame}{SMART}
-    
-    \mytext{
-    \begin{description}
-        \item[S] specific (simple, sensible, significant)
-        \item[M] measurable (meaningful, motivating)
-        \item[A] achievable (agreed, attainable)
-        \item[R] relevant (reasonable, realistic and resourced, results-based)
-        \item[T] time bound (time-based, time limited, time/cost limited, timely, time-sensitive)
-    \end{description}
-    
-    \vfill
-    
-    This applies for tasks and for projects.  
-    
-    German `operational definiert'
-    
-    }
-\end{frame}
-
-
-
-
-
-
-
-\begin{frame}{Locke and Latham}
-    
-    \mytext{
-    Five goal-setting principles for success:
-    
-    \begin{enumerate}
-        \item Clarity
-        \item Challenge
-        \item Commitment
-        \item Feedback
-        \item Task complexity
-    \end{enumerate}
-    
-    \cite{LOCKE1968157}
-        
-    }
-\end{frame}
-
-\begin{frame}{Tasks, Milestones}
-    
-    \mytext{
-    \begin{itemize}
-        \item s.m.a.r.t. goals can be milestones
-        \item tasks need planning also... or do they?
-        \item task/milestone definition: carefully!
-        \item is the milestone flexible in time, scope, costs?
-        \item is there a way to review goals?
-        \item whom is the responsibility attributed to?
-    \end{itemize}
-    }
-\end{frame}
-
-
-
-
-% \begin{frame}{Products vs.~Tasks and Time}
-%     \begin{itemize}
-%         \item Producs need to be produced
-%         \item Production must be planned
-%         \item Production takes time: tasks take time!
-%         \item Move from a product view to a process view
-%         \item Time is the most important \emph{influenceable }cost factor
-%         \item How can we estimate time?
-%     \end{itemize}
-% \end{frame}
-
-% \begin{frame}{Scope Creep}
-%     \begin{itemize}
-%         \item Sponsor realises he wants more
-%         \item Management realises product needs more
-%         \item Milking the sponsor or milking the mananger?
-%         \item What is necessary?
-%         \item How can this all be paid for?
-%     \end{itemize}
-% \end{frame}
-
-% % \begin{frame}{Product Description}
-% %     \begin{itemize}
-% %         \item Title
-% %         \item Purpose
-% %         \item Composition
-% %         \item Derivation
-% %         \item Format
-% %         \item Audience
-% %         \item Quality criteria
-% %         \item Quality method
-% %     \end{itemize}
-% % \end{frame}
-
-% % \begin{frame}{The Three Constraints}
-% %     \begin{tikzpicture}[scale=0.8]
-% %         \coordinate (A) at (0,0);
-% %         \coordinate (B) at (-3,-5);
-% %         \coordinate (C) at (3,-5);
-% %         \coordinate (X) at (0,-3.35);
-% %         \draw (A) -- (B) node[midway,above,rotate=60] {Costs};
-% %         \draw (B) -- (C) node[midway,below] {Quality/Performance/Technology};
-% %         \draw (C) -- (A) node[midway,above,rotate=-60] {Time};
-% %         \path[draw=blue, -stealth, rotate=90,
-% %       postaction={decorate,decoration={text effects along path,
-% %         text={\ Within good customer relations \ }, text align=center, 
-% %         text effects/.cd, 
-% %           text along path, 
-% %           every character/.style={fill=white, yshift=-0.5ex}}}]
-% %       (X) circle (4);
-% %     \end{tikzpicture}
-    
-% %     Probably the most important slide.
-% % \end{frame}
-
-% \begin{frame}{Scope Freeze Milestones}
-%     \begin{itemize}
-%         \item A date where the scope cannot be altered
-%         \item Typically, specifications are set
-%         \item Also design freeze, customer approval freeze...
-%         \item De-couple sponsor from product
-%         \item De-couple project management from product?
-%         \item There is agile!!
-%     \end{itemize}
-% \end{frame}
-
-% \begin{frame}{MoScCoW - Scheme}
-%     \begin{description}
-%         \item[M] must have: non-negotiable
-%         \item[S] should have: not vital, but adds significant value
-%         \item[C] could have: nice to have but small impact when left out
-%         \item[W] will not have: stuff without priority in the given time frame.
-%     \end{description}    
-% \end{frame}
-
-\begin{frame}{Plan planning!}
-    
-    \mytext{
-    Planning 
-    \begin{itemize}
-        \item creates a model or scenarios
-        \item gathers information about possible futures
-        \item is a process that takes time in itself
-        \item may be self-referential and prone to loops
-        \item aims at changing the future, creating value
-        \item is necessarily simpler than reality
-        \item will get more specific the closer the time
-        \begin{itemize}
-            \item have a very clear plan for tomorrow
-            \item another for the near future
-            \item another for the far future
-            \item and values for orientation
-        \end{itemize}
-    \end{itemize}
-    }
-\end{frame}
-
-% \begin{frame}{Famous Words}
-% \begin{quote}
-%     Culture eats strategy for breakfast.
-    
-
-% \end{quote}
-%     \medskip
-%     \flushright ---Attr.: Peter \noun{Drucker}
-    
-% \end{frame}
-
-
-
-\begingroup
-    \ifdefined\setbeamercolor\setbeamercolor{background canvas}{bg=violet!20}\fi
-    \begin{frame}{TASK}
-    
-    \mytext{
-    Create a Gantt-Diagram for the Project Loft Bed (slide~\ref{sl:loftbed}), defining tasks, milestones etc.
-        \begin{enumerate}
-            \item How long will the project take?
-            \item What are the most important tasks, and why?
-            \item Which tasks can be done in parallel?
-            \item How many work hours will you need?
-            \item Which skill sets will you need?
-        \end{enumerate}
-    
-    }
-\end{frame}
-\endgroup
- 
- 
-%  \begin{frame}{Your example projects!}
-%     In groups:
-%     \begin{itemize}
-%         \item Present each other one of your example projects
-%         \item Who wanted what?
-%         \item Was it delivered in time, budget, quality?
-%     \end{itemize}
-    
-%     Share one example!
-%     \parbox{8cm}{    
-%     \centering
-%     \clock[0.9]{11}{45}{5}
-%     }
-% \end{frame}

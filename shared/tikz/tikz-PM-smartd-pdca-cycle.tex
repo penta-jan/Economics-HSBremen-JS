@@ -1,5 +1,12 @@
 \documentclass{standalone}
 \usepackage{hsbcommon}
 \begin{document}
-\smartdiagram[circular diagram:clockwise]{Plan,Do,Check,Adjust}
+% \smartdiagram[circular diagram:clockwise]{Plan,Do,Check,Adjust}
+\begin{tikzpicture}
+    \foreach [count=\i] \pdca in {plan,do,check,adjust}
+    {
+        \node[draw,circle,fill=green!40,minimum size=8ex] at ({180-\i*90}:2) {\pdca};
+        \draw[->,thick] ({180-\i*90-20}:2) arc[start angle={180-\i*90-20}, delta angle=-50, radius=2];
+    }
+\end{tikzpicture}
 \end{document}

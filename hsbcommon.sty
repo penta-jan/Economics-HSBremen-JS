@@ -867,7 +867,7 @@
       \pgfextractx{\hsbautorootx}{\pgfpointanchor{hsbautoroot}{center}}
       \pgfmathsetmacro{\hsbautorootmidy}{(\pgf@picminy+\pgf@picmaxy)/2}
       \draw(hsbautoroot.center)--(\hsbautorootx,\hsbautorootmidy pt);
-      \node[rotate=90,anchor=south]at(\hsbautorootx,\hsbautorootmidy pt){HSBLABELPLACEHOLDER};
+      \node[rotate=90,anchor=\hsbrootlabelanchor]at(\hsbautorootx,\hsbautorootmidy pt){HSBLABELPLACEHOLDER};
     }
   }
 
@@ -1090,7 +1090,13 @@
 
 %%% to mirror trees
 
+% Side of the rotated root label that touches the tree (set by \showmytree's
+% root re-centring): south = label left of the root (normal tree growing east),
+% north = label right of the root (mirrored tree, see \mirror).
+\newcommand{\hsbrootlabelanchor}{south}
+
 \newcommand{\mirror}[1]{{%
+  \def\hsbrootlabelanchor{north}%
   \forestset{default preamble+={before typesetting nodes={for tree={
       grow'=west, anchor=east, parent anchor=west, child anchor=east}}}}%
   #1}}

@@ -6,3 +6,5 @@ Project Management
 Foreign Trade and International Organisations
 Microeconomics
 Macroeconomics and Economic Policy.
+Content was created by me.
+AI was used for refactoring and some of the more advanced step system (forest).

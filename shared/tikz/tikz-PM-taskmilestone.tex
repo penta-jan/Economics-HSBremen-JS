@@ -1,11 +1,35 @@
 \documentclass{standalone}
 \usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7,8}}\makeatother
 \begin{document}
-    \scalebox{3}{
+    \scalebox{2}{
     \begin{ganttchart}{1}{5}
+      % fixed bounding box for all steps
+      % (temporarily change \useasboundingbox to \draw[gray] to see and tune it)
+      \useasboundingbox (-2.8cm,1.2cm) rectangle (2.9cm,-3.3cm);
+
       \ganttbar[name=task,bar/.append style={fill=green!40}]{Task}{1}{4} \\
-      \ganttmilestone[name=milestone,milestone/.append style={fill=green}]{Result}{4}
+      \ganttmilestone[name=milestone,milestone/.append style={fill=green}]{result: Milestone}{4}
       \ganttlink[]{task}{milestone}
+
+    \ifstep{1,taskconnections}{
+    \begin{scope}[red]
+      \node (re) at (0,1) {resources};
+      \node (rq) at (-1,0.6) {dependencies};
+      \node (fa) at (2,0.6) {\textit{fallout}};
+      \draw[<->] (re) -- (task);
+      \draw[<->] (rq) -- (task);
+      \draw[->] (task) -- (fa);
+    \end{scope}
+    }
+    \ifstep{2,milestoneconnections}{
+    \begin{scope}[blue]
+        \node [below=1cm of milestone] (rm) {requirements};
+        \draw [->] (rm) -- (milestone);
+        \draw [->,dashed] (rm) -- (task);
+    \end{scope}
+    }
     \end{ganttchart}
     }
 \end{document}

@@ -1,26 +1,57 @@
 \documentclass{standalone}
-\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
-\usepackage{tikz}
-\usetikzlibrary{intersections, calc}
 \usepackage{hsbcommon}
+%% Show/hide steps for standalone work — edit this line:
+\makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4,5,6,7,8}}\makeatother
 \begin{document}
-    \begin{tikzpicture}
-      \draw (-1,-1.5) rectangle (7,4.5);
-      \node[draw, diamond,fill=red] (m1) at (1,1.5) {};
-      \draw (1.5,0) rectangle (3,3);
-      \node[draw, diamond,fill=red] (m2) at (3.5,1.5) {};
-      \draw (4,0) rectangle (5.5,3);
-      \node[draw, diamond,fill=red] (m3) at (6,1.5) {};
-      \draw[->] (m3) -- (5.5,1.5);
-      \draw[->] (4,1.5) -- (m2);
-      \draw[->] (m2) -- (3,1.5);
-      \draw[->] (1.5,1.5) -- (m1);
-      \node (def) at (0,4) {definition};
-      \node (cont) at (3.5,-1) {control};
-      \draw[->] (def) -| (m2);
-      \draw[->] (cont) -- (m2);
-      \draw[->, dashed] (4,3) -- (def);
-      \draw[->] (def) -- (1.5,3);
-      \draw[->] (cont) -- (3,0);
-    \end{tikzpicture}
+    \scalebox{2}{
+    \begin{ganttchart}{1}{8}
+      % fixed bounding box for all steps
+      % (temporarily change \useasboundingbox to \draw[gray] to see and tune it)
+      \useasboundingbox (-2.8cm,0) rectangle (4.5cm,-3cm);
+
+      \ganttbar[name=task,bar/.append style={fill=green!40}]{Task 1}{1}{4} \\
+      \ganttmilestone[name=milestone,milestone/.append style={fill=red}]{control: Milestone}{4}\\
+      \ganttlink[]{task}{milestone}
+      \ganttbar[name=task2,bar/.append style={fill=orange!40}]{Task 2}{5}{8}
+      \ganttlink[]{milestone}{task2}
+      \ifstep{1}
+      {
+      \begin{scope}[red]
+          
+          \draw[->,dashed,bend right=60] (task2.north) to node[right] {\scriptsize\textit{needs}} (milestone);
+          \draw[->,dashed,bend left=80] (milestone) to node[left] {\scriptsize\textit{informs}} (task);
+      \end{scope}
+      }
+      \ifstep{2}{
+          \node [draw,green,dashed,circle, minimum size=1.5cm] at (milestone) {};
+        }
+    \end{ganttchart}
+    }
 \end{document}
+
+% \documentclass{standalone}
+% \makeatletter\AtBeginDocument{\@buildstepset{1,2,3,4}}\makeatother
+% \usepackage{tikz}
+% \usetikzlibrary{intersections, calc}
+% \usepackage{hsbcommon}
+% \begin{document}
+%     \begin{tikzpicture}
+%       \draw (-1,-1.5) rectangle (7,4.5);
+%       \node[draw, diamond,fill=red] (m1) at (1,1.5) {};
+%       \draw (1.5,0) rectangle (3,3);
+%       \node[draw, diamond,fill=red] (m2) at (3.5,1.5) {};
+%       \draw (4,0) rectangle (5.5,3);
+%       \node[draw, diamond,fill=red] (m3) at (6,1.5) {};
+%       \draw[->] (m3) -- (5.5,1.5);
+%       \draw[->] (4,1.5) -- (m2);
+%       \draw[->] (m2) -- (3,1.5);
+%       \draw[->] (1.5,1.5) -- (m1);
+%       \node (def) at (0,4) {definition};
+%       \node (cont) at (3.5,-1) {control};
+%       \draw[->] (def) -| (m2);
+%       \draw[->] (cont) -- (m2);
+%       \draw[->, dashed] (4,3) -- (def);
+%       \draw[->] (def) -- (1.5,3);
+%       \draw[->] (cont) -- (3,0);
+%     \end{tikzpicture}
+% \end{document}

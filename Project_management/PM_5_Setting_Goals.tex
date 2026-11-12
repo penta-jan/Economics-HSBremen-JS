@@ -28,8 +28,29 @@
 \begin{frame}{Every Task Results in a Milestone}
     \mycomment{
     \textbf{Never} define a task without a clearly defined result, which can be checked, and which triggers the handover and closure of that task.
+
+    These requirements stem from the \textit{next} task, the one following the milestone; the milestone is a handover-point.
     }
     \showmytikz{../shared/tikz/tikz-PM-taskmilestone}
+\end{frame}
+
+\begin{frame}{Every Task Results in a Milestone}
+    \mycomment{
+        The requirements define the qualities the milestone must have for the task to be finished, and the milestone achieved.
+        By this, the requirements inform the task. 
+    }
+    \showmytikz[2]{../shared/tikz/tikz-PM-taskmilestone}
+\end{frame}
+
+\begin{frame}{Every Task Results in a Milestone}
+    \mycomment{
+        The task that leads to the milestone comes with requirements itself: dependencies. For one, certain tasks can only start when other tasks are already completed; these dependencies inform the milestone that is \textit{before} the task.
+
+        Resources are needed for the task; these being provided is a dependency. The difference is that while dependencies simply require the step before to be achieved, resources are \textit{busy} during the task. (This is to some degree true on dependencies: as long as the roofer (in person: a resource) works on the roof (topping out which was the prior milestone), that roof is busy.)
+
+        There is also \textit{fallout:} results of the taks that are not part of the milestone or finished product. Waste is an example. It is pivotal to tidy up everything after a taks is concluded: workers must be paid etc.; so all these fallouts must be part of a complete project plan (waste must be treated, etc.).
+    }
+    \showmytikz[1,2]{../shared/tikz/tikz-PM-taskmilestone}
 \end{frame}
 
 
